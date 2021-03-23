@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		AEE23CFA260A729000AABD40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23CF9260A729000AABD40 /* AppDelegate.swift */; };
 		AEE23CFC260A729000AABD40 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23CFB260A729000AABD40 /* SceneDelegate.swift */; };
-		AEE23CFE260A729000AABD40 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23CFD260A729000AABD40 /* ViewController.swift */; };
+		AEE23CFE260A729000AABD40 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23CFD260A729000AABD40 /* ListViewController.swift */; };
 		AEE23D01260A729000AABD40 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE23CFF260A729000AABD40 /* Main.storyboard */; };
 		AEE23D04260A729000AABD40 /* harr2890_project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AEE23D02260A729000AABD40 /* harr2890_project.xcdatamodeld */; };
 		AEE23D06260A729000AABD40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEE23D05260A729000AABD40 /* Assets.xcassets */; };
 		AEE23D09260A729000AABD40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE23D07260A729000AABD40 /* LaunchScreen.storyboard */; };
 		AEE23D14260A729100AABD40 /* harr2890_projectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23D13260A729100AABD40 /* harr2890_projectTests.swift */; };
 		AEE23D1F260A729100AABD40 /* harr2890_projectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23D1E260A729100AABD40 /* harr2890_projectUITests.swift */; };
+		AEE23D30260A7C0200AABD40 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23D2F260A7C0200AABD40 /* Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +40,7 @@
 		AEE23CF6260A729000AABD40 /* harr2890_project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = harr2890_project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE23CF9260A729000AABD40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEE23CFB260A729000AABD40 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AEE23CFD260A729000AABD40 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AEE23CFD260A729000AABD40 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		AEE23D00260A729000AABD40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AEE23D03260A729000AABD40 /* harr2890_project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = harr2890_project.xcdatamodel; sourceTree = "<group>"; };
 		AEE23D05260A729000AABD40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +52,7 @@
 		AEE23D1A260A729100AABD40 /* harr2890_projectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = harr2890_projectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE23D1E260A729100AABD40 /* harr2890_projectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = harr2890_projectUITests.swift; sourceTree = "<group>"; };
 		AEE23D20260A729100AABD40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEE23D2F260A7C0200AABD40 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,12 +105,13 @@
 			children = (
 				AEE23CF9260A729000AABD40 /* AppDelegate.swift */,
 				AEE23CFB260A729000AABD40 /* SceneDelegate.swift */,
-				AEE23CFD260A729000AABD40 /* ViewController.swift */,
+				AEE23CFD260A729000AABD40 /* ListViewController.swift */,
 				AEE23CFF260A729000AABD40 /* Main.storyboard */,
 				AEE23D05260A729000AABD40 /* Assets.xcassets */,
 				AEE23D07260A729000AABD40 /* LaunchScreen.storyboard */,
 				AEE23D0A260A729000AABD40 /* Info.plist */,
 				AEE23D02260A729000AABD40 /* harr2890_project.xcdatamodeld */,
+				AEE23D2F260A7C0200AABD40 /* Item.swift */,
 			);
 			path = harr2890_project;
 			sourceTree = "<group>";
@@ -261,7 +264,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEE23CFE260A729000AABD40 /* ViewController.swift in Sources */,
+				AEE23D30260A7C0200AABD40 /* Item.swift in Sources */,
+				AEE23CFE260A729000AABD40 /* ListViewController.swift in Sources */,
 				AEE23CFA260A729000AABD40 /* AppDelegate.swift in Sources */,
 				AEE23CFC260A729000AABD40 /* SceneDelegate.swift in Sources */,
 				AEE23D04260A729000AABD40 /* harr2890_project.xcdatamodeld in Sources */,
