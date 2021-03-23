@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,29 +13,40 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Not Forget" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="21Y-iP-WCK">
-                                <rect key="frame" x="123" y="194" width="168.5" height="29"/>
+                                <rect key="frame" x="103" y="75" width="169" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App is Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fhz-yC-g89">
-                                <rect key="frame" x="143.5" y="273" width="127" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="117.5" y="411" width="140" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.0082145637570000003" green="0.0" blue="0.91388754380000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appstore" translatesAutoresizingMaskIntoConstraints="NO" id="cuO-dH-WJZ">
+                                <rect key="frame" x="59.5" y="130" width="256" height="256"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="256" id="Qxj-gi-D0A"/>
+                                    <constraint firstAttribute="height" constant="256" id="bfG-jL-6A3"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBlueColor"/>
                         <constraints>
-                            <constraint firstItem="Fhz-yC-g89" firstAttribute="top" secondItem="21Y-iP-WCK" secondAttribute="bottom" constant="50" id="NbM-Jc-A1H"/>
+                            <constraint firstItem="Fhz-yC-g89" firstAttribute="top" secondItem="cuO-dH-WJZ" secondAttribute="bottom" constant="25" id="NbM-Jc-A1H"/>
                             <constraint firstItem="Fhz-yC-g89" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="QOV-2L-Yfn"/>
+                            <constraint firstItem="cuO-dH-WJZ" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="aHx-7f-k2Z"/>
+                            <constraint firstItem="cuO-dH-WJZ" firstAttribute="top" secondItem="21Y-iP-WCK" secondAttribute="bottom" constant="25" id="apr-TL-ttX"/>
                             <constraint firstItem="21Y-iP-WCK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="pGm-wq-cis"/>
-                            <constraint firstItem="21Y-iP-WCK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="qaK-PH-C8a"/>
+                            <constraint firstItem="21Y-iP-WCK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="75" id="qaK-PH-C8a"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -45,8 +56,9 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <image name="appstore" width="1024" height="1024"/>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
