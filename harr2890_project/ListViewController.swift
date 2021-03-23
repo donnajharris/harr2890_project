@@ -40,19 +40,30 @@ class ListViewController: UIViewController, UITableViewDataSource, UITabBarDeleg
             cell?.title?.text = tableData[indexPath.row].getTitle()
                             
             // set the cell text
-            cell?.date?.text = tableData[indexPath.row].getDate()
+            cell?.date?.text = tableData[indexPath.row].getDateString()
 
             return cell! // return  the cell to the table view
     }
     
     
     // initialize the data source
-    func createData(){
-       let item1 = Item(title: "Use roast beef", date: "March 25")
-       tableData.append(item1)
+    func createData() {
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        let date1 = formatter.date(from: "25/03/2021")
+        let date2 = formatter.date(from: "22/09/2021")
+        let date3 = formatter.date(from: "02/01/2022")
+        
+        let item1 = Item(title: "Use roast beef", date: date1!)
+        tableData.append(item1)
                 
-       let item2 = Item(title: "Passport expires", date: "May 22")
-       tableData.append(item2)
+        let item2 = Item(title: "Passport expires", date: date2!)
+        tableData.append(item2)
+        
+        let item3 = Item(title: "Credit card expires", date: date3!)
+        tableData.append(item3)
+        
      } // createData
     
     

@@ -10,9 +10,9 @@ import Foundation
 class Item {
     
     private var title : String
-    private var date : String // will be a date
+    private var date : Date?
     
-    init(title: String, date: String) {
+    init(title: String, date: Date) {
         self.title = title
         self.date = date
     }
@@ -22,8 +22,18 @@ class Item {
         return self.title
     }
     
-    func getDate() -> String {
-        return self.date
+    func getDate() -> Date {
+        return self.date!
+    }
+    
+    
+    /*
+     reference: https://www.hackingwithswift.com/example-code/system/how-to-convert-dates-and-times-to-a-string-using-dateformatter
+     */
+    func getDateString() -> String {
+        let formatter1 = DateFormatter()
+        formatter1.dateFormat = "MMM. d, yyyy"
+        return formatter1.string(from: self.date!)
     }
     
 }
