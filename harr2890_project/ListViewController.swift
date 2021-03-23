@@ -54,21 +54,40 @@ class ListViewController: UIViewController, UITableViewDataSource, UITabBarDeleg
         let date1 = formatter.date(from: "25/03/2021")
         let date2 = formatter.date(from: "22/09/2021")
         let date3 = formatter.date(from: "02/01/2022")
-        
-        let item1 = Item(title: "Use roast beef", date: date1!)
-        tableData.append(item1)
-                
-        let item2 = Item(title: "Passport expires", date: date2!)
+
+
+        let item2 = Item(title: "Credit card expires", date: date3!)
         tableData.append(item2)
         
-        let item3 = Item(title: "Credit card expires", date: date3!)
+        let item3 = Item(title: "Use roast beef", date: date1!) // changed order for sort
         tableData.append(item3)
         
+        let item1 = Item(title: "Passport expires", date: date2!)
+        tableData.append(item1)
+
+        
+//        let item1 = Item(title: "Use roast beef", date: date1!) // changed order for sort
+//        tableData.append(item1)
+//
+//        let item2 = Item(title: "Passport expires", date: date2!)
+//        tableData.append(item2)
+//
+//        let item3 = Item(title: "Credit card expires", date: date3!)
+//        tableData.append(item3)
+        
      } // createData
+    
+    func sortDataByDate() {
+        tableData.sort {
+            $0.getDate() < $1.getDate()
+        }
+    }
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         createData()
+        sortDataByDate()
     }
 }
