@@ -11,7 +11,8 @@ import UIKit
 class TableViewCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var date: UILabel!
-
+    @IBOutlet weak var type: UILabel!
+    
 }
 
 class ListViewController: UIViewController, UITableViewDataSource, UITabBarDelegate {
@@ -41,9 +42,13 @@ class ListViewController: UIViewController, UITableViewDataSource, UITabBarDeleg
                             
             // set the cell text
             cell?.date?.text = tableData[indexPath.row].getDateString()
-
+        
+            // set the preposition type text
+            cell?.type?.text = tableData[indexPath.row].getTypeString()
+        
             return cell! // return  the cell to the table view
-    }
+        
+    } // TV - cellForRowAt indexPath
     
     
     // initialize the data source
@@ -56,17 +61,17 @@ class ListViewController: UIViewController, UITableViewDataSource, UITabBarDeleg
         let date3 = formatter.date(from: "02/01/2022")
 
 
-        let item2 = Item(title: "Credit card expires", date: date3!)
+        let item2 = Item(title: "Credit card expires", date: date3!, type: Item.ItemType.ON)
         tableData.append(item2)
         
-        let item3 = Item(title: "Use roast beef", date: date1!) // changed order for sort
+        let item3 = Item(title: "Use roast beef", date: date1!, type: Item.ItemType.BY)
         tableData.append(item3)
         
-        let item1 = Item(title: "Passport expires", date: date2!)
+        let item1 = Item(title: "Passport expires", date: date2!, type: Item.ItemType.ON)
         tableData.append(item1)
 
         
-//        let item1 = Item(title: "Use roast beef", date: date1!) // changed order for sort
+//        let item1 = Item(title: "Use roast beef", date: date1!)
 //        tableData.append(item1)
 //
 //        let item2 = Item(title: "Passport expires", date: date2!)

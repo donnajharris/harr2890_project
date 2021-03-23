@@ -21,39 +21,52 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListViewReuseIdentifier" id="VR7-F8-Dgh" customClass="TableViewCell" customModule="harr2890_project" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="41.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="41"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VR7-F8-Dgh" id="u5W-MI-pGv">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="41.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="41"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCf-3q-R3s">
-                                                    <rect key="frame" x="16" y="10" width="74.5" height="21.5"/>
+                                                    <rect key="frame" x="16" y="10" width="74.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7R-Pt-NCd" userLabel="Date">
-                                                    <rect key="frame" x="274" y="12.5" width="30" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                    <rect key="frame" x="274" y="11" width="30" height="19"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruC-fv-Ile" userLabel="Type">
+                                                    <rect key="frame" x="246" y="13" width="25" height="15"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="i7R-Pt-NCd" firstAttribute="leading" secondItem="ruC-fv-Ile" secondAttribute="trailing" constant="3" id="0e9-4f-goY"/>
                                                 <constraint firstItem="i7R-Pt-NCd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OCf-3q-R3s" secondAttribute="trailing" constant="8" symbolic="YES" id="16k-yq-A8V"/>
                                                 <constraint firstItem="OCf-3q-R3s" firstAttribute="leading" secondItem="u5W-MI-pGv" secondAttribute="leadingMargin" id="3fk-Cg-ObX"/>
                                                 <constraint firstItem="i7R-Pt-NCd" firstAttribute="bottom" secondItem="u5W-MI-pGv" secondAttribute="bottomMargin" id="6ff-C7-lfX"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OCf-3q-R3s" secondAttribute="trailing" constant="20" symbolic="YES" id="D6R-f0-kR6"/>
                                                 <constraint firstItem="i7R-Pt-NCd" firstAttribute="trailing" secondItem="u5W-MI-pGv" secondAttribute="trailingMargin" id="M1a-qj-G83"/>
                                                 <constraint firstItem="i7R-Pt-NCd" firstAttribute="baseline" secondItem="OCf-3q-R3s" secondAttribute="baseline" id="ZmJ-9T-Doi"/>
+                                                <constraint firstItem="ruC-fv-Ile" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OCf-3q-R3s" secondAttribute="trailing" constant="8" symbolic="YES" id="ifi-8w-ID0"/>
                                                 <constraint firstItem="OCf-3q-R3s" firstAttribute="centerY" secondItem="u5W-MI-pGv" secondAttribute="centerY" id="lOh-zj-Wjp"/>
                                                 <constraint firstItem="i7R-Pt-NCd" firstAttribute="firstBaseline" secondItem="OCf-3q-R3s" secondAttribute="firstBaseline" id="uBV-lA-zoq"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="ruC-fv-Ile" firstAttribute="centerY" secondItem="VR7-F8-Dgh" secondAttribute="centerY" id="4G3-Xa-6nD"/>
+                                            <constraint firstItem="i7R-Pt-NCd" firstAttribute="centerY" secondItem="VR7-F8-Dgh" secondAttribute="centerY" id="Q5p-jD-hvy"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="date" destination="i7R-Pt-NCd" id="z2s-Lo-WRo"/>
                                             <outlet property="title" destination="OCf-3q-R3s" id="90Q-0N-4mQ"/>
+                                            <outlet property="type" destination="ruC-fv-Ile" id="Bdn-dV-S31"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -136,7 +149,7 @@
                     <tabBarItem key="tabBarItem" title="List" image="list.dash" catalog="system" id="9lM-mw-0FQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zow-8o-VtI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
