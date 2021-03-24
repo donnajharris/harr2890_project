@@ -15,6 +15,8 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var dateField: UIDatePicker!
     @IBOutlet weak var saveButton: UIButton!
     
+    private let ON = 0
+    private let BY = 1
     
     
     private var item : Item?
@@ -50,10 +52,19 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate {
         // Add the returned Item to the list
         let title = nameField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let date = dateField.date
-        
-        //let type = typeField.selected ????
-        let type = Item.ItemType.ON
-        
+        var type : Item.ItemType
+
+        switch typeField.selectedSegmentIndex {
+        case ON:
+            type = Item.ItemType.ON
+        case BY:
+            type = Item.ItemType.BY
+        default:
+            type = Item.ItemType.ON
+        }
+    
+        //print("The value selected is: \(type)")
+                
         item = Item(title: title, date: date, type: type)
 
     } // prepare
