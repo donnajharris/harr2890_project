@@ -131,7 +131,7 @@
                                 </segments>
                             </segmentedControl>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="qqY-bP-zAl">
-                                <rect key="frame" x="27.666666666666657" y="171" width="320" height="216"/>
+                                <rect key="frame" x="28" y="171" width="320" height="216"/>
                             </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mWs-Lo-Tva"/>
@@ -159,6 +159,7 @@
                     <connections>
                         <outlet property="dateField" destination="qqY-bP-zAl" id="LCS-Qy-425"/>
                         <outlet property="nameField" destination="H49-f7-LsF" id="mvb-qg-QyG"/>
+                        <outlet property="saveButton" destination="LZm-B9-7ZE" id="nOB-HX-4Z7"/>
                         <outlet property="typeField" destination="C9A-XV-kcR" id="GQB-Gp-adS"/>
                     </connections>
                 </viewController>

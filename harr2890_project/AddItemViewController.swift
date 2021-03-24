@@ -6,12 +6,16 @@
 //
 
 import UIKit
+import os.log
 
 class AddItemViewController: UIViewController, UINavigationControllerDelegate {
 
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var typeField: UISegmentedControl!
     @IBOutlet weak var dateField: UIDatePicker!
+    @IBOutlet weak var saveButton: UIButton!
+    
+    
     
     private var item : Item?
 
@@ -27,17 +31,35 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     
-    
-    @IBAction func saveNewItem(_ sender: Any) {
-        
-        print("Save Item button pressed")
-    }
-    
-    
     @IBAction func cancelPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
+    
+    // For the Save Button
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        
+        // Configure the destination view controller only when the save button is pressed.
+        guard let button = sender as? UIButton, button === saveButton else {
+            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            return
+        }
+               
+        // Add the returned Item to the list
+        let title = nameField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let date = dateField.date
+        
+        //let type = typeField.selected ????
+        let type = Item.ItemType.ON
+        
+        item = Item(title: title, date: date, type: type)
+
+    } // prepare
+ 
+    
+
     
     /*
     // MARK: - Navigation

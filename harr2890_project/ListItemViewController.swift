@@ -21,9 +21,9 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
 
     
     let simpleTableIdentifier = "table_identifier"
-    //    private let showSegueId = "ShowDetails"
+    //private let showSegueId = "ViewItemDetails"
     private let cellIdentifier = "ListViewReuseIdentifier"
-    var tableData = [Item]() // the data source
+    private var tableData = [Item]() // the data source
     
     
     
@@ -34,6 +34,7 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     
+    // MARK: - TableView methods
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        return tableData.count
@@ -63,6 +64,28 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
         
     } // TV - cellForRowAt indexPath
     
+    
+    // MARK: - Navigation
+    
+    @IBAction func unwindToItemList(sender: UIStoryboardSegue) {
+        
+        if let sourceVC = sender.source as? AddItemViewController,
+           let newItem = sourceVC.getNewItem() {
+
+                // Add a new item.
+                let newIndexPath = IndexPath(row: tableData.count, section: 0)
+
+//                SharingDeck.sharedDeck.getDeck().addNewCard(card: newCard)
+//
+//                tableData = SharingDeck.sharedDeck.getDeck().getCards()
+//                myTableView.insertRows(at: [newIndexPath], with: .automatic)
+            
+                tableData.append(newItem)
+                myTableView.insertRows(at: [newIndexPath], with: .automatic)
+        }
+    } // unwindToItemkList
+    
+    // MARK: - Helper functions
     
     // initialize the data source
     func createData() {
@@ -101,28 +124,6 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    
-    
 
-    
-    
-    
-    @IBAction func unwindToItemList(sender: UIStoryboardSegue) {
-        
-        if let sourceVC = sender.source as? AddItemViewController,
-           let newItem = sourceVC.getNewItem() {
-
-                // Add a new item.
-                let newIndexPath = IndexPath(row: tableData.count, section: 0)
-
-//                SharingDeck.sharedDeck.getDeck().addNewCard(card: newCard)
-//
-//                tableData = SharingDeck.sharedDeck.getDeck().getCards()
-//                myTableView.insertRows(at: [newIndexPath], with: .automatic)
-            
-                tableData.append(newItem)
-                myTableView.insertRows(at: [newIndexPath], with: .automatic)
-        }
-    } // unwindToItemkList
 
 }
