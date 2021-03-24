@@ -1,5 +1,5 @@
 //
-//  ListViewController.swift
+//  ListItemViewController.swift
 //  harr2890_project
 //
 //  Created by Donna Harris on 2021-03-23.
@@ -15,12 +15,25 @@ class TableViewCell: UITableViewCell {
     
 }
 
-class ListViewController: UIViewController, UITableViewDataSource, UITabBarDelegate {
+class ListItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate {
+    
+    @IBOutlet weak var myTableView: UITableView!
+
     
     let simpleTableIdentifier = "table_identifier"
     //    private let showSegueId = "ShowDetails"
     private let cellIdentifier = "ListViewReuseIdentifier"
     var tableData = [Item]() // the data source
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        createData()
+        sortDataByDate()
+    }
+    
+    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        return tableData.count
@@ -90,9 +103,26 @@ class ListViewController: UIViewController, UITableViewDataSource, UITabBarDeleg
     
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        createData()
-        sortDataByDate()
-    }
+
+    
+    
+    
+    @IBAction func unwindToItemList(sender: UIStoryboardSegue) {
+        
+        if let sourceVC = sender.source as? AddItemViewController,
+           let newItem = sourceVC.getNewItem() {
+
+                // Add a new item.
+                let newIndexPath = IndexPath(row: tableData.count, section: 0)
+
+//                SharingDeck.sharedDeck.getDeck().addNewCard(card: newCard)
+//
+//                tableData = SharingDeck.sharedDeck.getDeck().getCards()
+//                myTableView.insertRows(at: [newIndexPath], with: .automatic)
+            
+                tableData.append(newItem)
+                myTableView.insertRows(at: [newIndexPath], with: .automatic)
+        }
+    } // unwindToItemkList
+
 }

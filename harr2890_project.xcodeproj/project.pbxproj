@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE2313CA260AC58300A21B17 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2313C9260AC58300A21B17 /* AddItemViewController.swift */; };
 		AEE23CFA260A729000AABD40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23CF9260A729000AABD40 /* AppDelegate.swift */; };
 		AEE23CFC260A729000AABD40 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23CFB260A729000AABD40 /* SceneDelegate.swift */; };
-		AEE23CFE260A729000AABD40 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23CFD260A729000AABD40 /* ListViewController.swift */; };
+		AEE23CFE260A729000AABD40 /* ListItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23CFD260A729000AABD40 /* ListItemViewController.swift */; };
 		AEE23D01260A729000AABD40 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE23CFF260A729000AABD40 /* Main.storyboard */; };
 		AEE23D04260A729000AABD40 /* harr2890_project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AEE23D02260A729000AABD40 /* harr2890_project.xcdatamodeld */; };
 		AEE23D06260A729000AABD40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEE23D05260A729000AABD40 /* Assets.xcassets */; };
@@ -37,10 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AE2313C9260AC58300A21B17 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		AEE23CF6260A729000AABD40 /* harr2890_project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = harr2890_project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE23CF9260A729000AABD40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEE23CFB260A729000AABD40 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AEE23CFD260A729000AABD40 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		AEE23CFD260A729000AABD40 /* ListItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemViewController.swift; sourceTree = "<group>"; };
 		AEE23D00260A729000AABD40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AEE23D03260A729000AABD40 /* harr2890_project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = harr2890_project.xcdatamodel; sourceTree = "<group>"; };
 		AEE23D05260A729000AABD40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -105,13 +107,14 @@
 			children = (
 				AEE23CF9260A729000AABD40 /* AppDelegate.swift */,
 				AEE23CFB260A729000AABD40 /* SceneDelegate.swift */,
-				AEE23CFD260A729000AABD40 /* ListViewController.swift */,
+				AEE23CFD260A729000AABD40 /* ListItemViewController.swift */,
 				AEE23CFF260A729000AABD40 /* Main.storyboard */,
 				AEE23D05260A729000AABD40 /* Assets.xcassets */,
 				AEE23D07260A729000AABD40 /* LaunchScreen.storyboard */,
 				AEE23D0A260A729000AABD40 /* Info.plist */,
 				AEE23D02260A729000AABD40 /* harr2890_project.xcdatamodeld */,
 				AEE23D2F260A7C0200AABD40 /* Item.swift */,
+				AE2313C9260AC58300A21B17 /* AddItemViewController.swift */,
 			);
 			path = harr2890_project;
 			sourceTree = "<group>";
@@ -265,10 +268,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEE23D30260A7C0200AABD40 /* Item.swift in Sources */,
-				AEE23CFE260A729000AABD40 /* ListViewController.swift in Sources */,
+				AEE23CFE260A729000AABD40 /* ListItemViewController.swift in Sources */,
 				AEE23CFA260A729000AABD40 /* AppDelegate.swift in Sources */,
 				AEE23CFC260A729000AABD40 /* SceneDelegate.swift in Sources */,
 				AEE23D04260A729000AABD40 /* harr2890_project.xcdatamodeld in Sources */,
+				AE2313CA260AC58300A21B17 /* AddItemViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
