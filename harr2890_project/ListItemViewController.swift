@@ -74,14 +74,12 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
 
                 // Add a new item.
                 let newIndexPath = IndexPath(row: tableData.count, section: 0)
-
-//                SharingDeck.sharedDeck.getDeck().addNewCard(card: newCard)
-//
-//                tableData = SharingDeck.sharedDeck.getDeck().getCards()
-//                myTableView.insertRows(at: [newIndexPath], with: .automatic)
             
                 tableData.append(newItem)
                 myTableView.insertRows(at: [newIndexPath], with: .automatic)
+            
+                sortDataByDate()
+                myTableView.reloadData()
         }
     } // unwindToItemkList
     
@@ -122,7 +120,7 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
         tableData.sort {
             $0.getDate() < $1.getDate()
         }
-    }
+    } // end
     
 
 
