@@ -48,7 +48,7 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
             // then get the data...
         
         //TEST
-            testAddDataToDB()
+            //testAddDataToDB()
             testGetAllDataFromDB()
             
             
@@ -125,6 +125,9 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
             
                 tableData.append(newItem)
                 myTableView.insertRows(at: [newIndexPath], with: .automatic)
+            
+                // add item to the DB
+                database?.insertItem(item: newItem)
             
                 sortDataByDate()
                 myTableView.reloadData()
