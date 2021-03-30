@@ -49,13 +49,48 @@ class Item {
         return self.type
     }
     
-    func getTypeString() -> String {
+    static func getTypeString(type: ItemType) -> String {
         switch type {
         case ItemType.ON:
             return "on"
         case ItemType.BY:
             return "by"
         }
+    }
+    
+    static func getTypeString(item: Item) -> String {
+        
+        let type = item.getType()
+        
+        switch type {
+        case ItemType.ON:
+            return "on"
+        case ItemType.BY:
+            return "by"
+        }
+    }
+    
+    static func isTypeString(_ string: String) -> Bool {
+        if string.lowercased() == "on" || string.lowercased() == "by" {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    static func translateToItemType(string : String) -> ItemType? {
+        if isTypeString(string) {
+            switch string {
+            case "on":
+                return Item.ItemType.ON
+            case "by":
+                return Item.ItemType.BY
+            default:
+                return nil
+            }
+        }
+        
+        return nil
     }
     
 }

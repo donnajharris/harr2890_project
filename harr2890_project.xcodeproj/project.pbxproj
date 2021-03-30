@@ -13,6 +13,7 @@
 		AE7F70B126139F6F00253CAE /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE7F709926139EBA00253CAE /* SQLite.framework */; };
 		AE7F70B426139F9000253CAE /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE7F709926139EBA00253CAE /* SQLite.framework */; };
 		AE7F70B526139F9000253CAE /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE7F709926139EBA00253CAE /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AE7F70C62613A24900253CAE /* DBAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F70C52613A24900253CAE /* DBAccess.swift */; };
 		AEE23CFA260A729000AABD40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23CF9260A729000AABD40 /* AppDelegate.swift */; };
 		AEE23CFC260A729000AABD40 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23CFB260A729000AABD40 /* SceneDelegate.swift */; };
 		AEE23CFE260A729000AABD40 /* ListItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23CFD260A729000AABD40 /* ListItemViewController.swift */; };
@@ -111,6 +112,7 @@
 		AE4A4892260BF1F200E45D96 /* harr2890_project-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "harr2890_project-Bridging-Header.h"; sourceTree = "<group>"; };
 		AE6E54BF260B0B5E004CE1EB /* AddItemVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemVCTests.swift; sourceTree = "<group>"; };
 		AE7F708E26139EBA00253CAE /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../Downloaded Packages/SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
+		AE7F70C52613A24900253CAE /* DBAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBAccess.swift; sourceTree = "<group>"; };
 		AEE23CF6260A729000AABD40 /* harr2890_project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = harr2890_project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE23CF9260A729000AABD40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEE23CFB260A729000AABD40 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 		AE7F70B726139FAE00253CAE /* DAL */ = {
 			isa = PBXGroup;
 			children = (
+				AE7F70C52613A24900253CAE /* DBAccess.swift */,
 			);
 			path = DAL;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE7F70C62613A24900253CAE /* DBAccess.swift in Sources */,
 				AEE23D30260A7C0200AABD40 /* Item.swift in Sources */,
 				AEE23CFE260A729000AABD40 /* ListItemViewController.swift in Sources */,
 				AEE23CFA260A729000AABD40 /* AppDelegate.swift in Sources */,

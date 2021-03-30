@@ -11,7 +11,7 @@ import UIKit
 let NO_DB = 0
 let WITH_DB = 1
 
-let MODE = NO_DB
+let MODE = WITH_DB //NO_DB
 
 class TableViewCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
@@ -30,22 +30,29 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
     private var tableData = [Item]() // the data source
     
     
-    var database:OpaquePointer? = nil
+    //var database:OpaquePointer? = nil
+    private var database : DBAccess? = nil
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+            
         switch MODE {
         case NO_DB:
             createData()
+            
         case WITH_DB:
-            if connectToDB() != SQLITE_OK {
-                print("Exiting...")
-                return
-            }
+            let path = dataFilePath()
+            print("path = \(path)")
+            database = DBAccess(path: path)
+            // then get the data...
+        
+        //TEST
+            testAddDataToDB()
+            testGetAllDataFromDB()
             
             
+        
         default:
             createData()
         }
@@ -56,25 +63,24 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
         
     } // viewDidLoad
     
-    func connectToDB() -> Int32 {
-        let result = sqlite3_open(dataFilePath(), &database)
-        if result != SQLITE_OK {
-            sqlite3_close(database)
-            print("Failed to open database")
-        }
+    
+    func testAddDataToDB() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        let date1 = formatter.date(from: "25/05/2022")
+        let item3 = Item(title: "Do something with roast beef!!!", date: date1!, type: Item.ItemType.BY)
+
+        let result = database?.insertItem(item: item3)
+        print("result = \(result!)")
+    }
+    
+    func testGetAllDataFromDB() {
+        let result = database?.getAllItems()
+        print("result = \(result!)")
         
-        return result
-            
-    } // connectToDB
-    
-    
-    @objc func applicationWillResignActive(notification:NSNotification) {
-        print("Closing the database")
-        sqlite3_close(database)
-    } // applicationWillResignActive
-    
-    
-    
+        tableData = result!
+
+    }
     
     // MARK: - TableView methods
 
@@ -100,7 +106,7 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
             cell?.date?.text = tableData[indexPath.row].getDateString()
         
             // set the preposition type text
-            cell?.type?.text = tableData[indexPath.row].getTypeString()
+            cell?.type?.text = Item.getTypeString(item: tableData[indexPath.row])
         
             return cell! // return  the cell to the table view
         
@@ -170,7 +176,7 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
         let urls = FileManager.default.urls(for:
             .documentDirectory, in: .userDomainMask)
         var url:String?
-        url = urls.first?.appendingPathComponent("data.plist").path
+        url = urls.first?.appendingPathComponent("itemsDB.plist").path
         return url!
     } // dataFilePath
 
