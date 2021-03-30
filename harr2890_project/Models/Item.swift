@@ -14,6 +14,7 @@ class Item {
         case BY
     }
     
+    private var id : Int64?
     private var title : String
     private var type : ItemType
     private var date : Date?
@@ -24,7 +25,20 @@ class Item {
         self.type = type
     }
     
+    init(id: Int64, title: String, date: Date, type: ItemType) {
+        self.id = id
+        self.title = title
+        self.date = date
+        self.type = type
+    }
     
+    func getId() -> Int64? {
+        return id
+    }
+    
+    func setId(value : Int64) {
+        id = value
+    }
     
     
     func getTitle() -> String {

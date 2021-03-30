@@ -27,12 +27,11 @@ class DBAccess {
         // should fail immediately if it doesn't work
         database = try! Connection(path)
         
-        // IF table does not already exist.... TODO:
-        createItemsTable()
+        initItemsTable()
         
-    } // end init
+    } // init
     
-    private func createItemsTable() {
+    private func initItemsTable() {
         try! database.run(itemsTable.create(ifNotExists: true) { t in
             t.column(itemId, primaryKey: true)
             t.column(itemTitle)
@@ -47,7 +46,7 @@ class DBAccess {
         // )
 
 
-    }
+    } // createItemsTable
     
     func insertItem(item: Item) -> Int64 {
         let insert = itemsTable.insert(
@@ -60,7 +59,8 @@ class DBAccess {
         // INSERT INTO "items" ("title", "type", "date") VALUES ('MyTitle', 'BY', DateObject)
 
         return rowid
-    }
+        
+    } //insertItem
 
     func getAllItems() -> [Item] {
         var items = [Item]()
@@ -69,16 +69,27 @@ class DBAccess {
             print("id: \(itemRow[itemId]), title: \(itemRow[itemTitle]), type: \(itemRow[itemType]), date: \(itemRow[itemDate])")
             // id: 1, name: Optional("Alice"), email: alice@mac.com
             
-            let item = Item(title: itemRow[itemTitle],
+            let item = Item(id: itemRow[itemId],
+                            title: itemRow[itemTitle],
                             date: itemRow[itemDate]!,
                             type: Item.translateToItemType(string: itemRow[itemType])!)
             
             items.append(item)
         }
-        // SELECT * FROM "users"
         
         
         return items
+        
+    } // getAllItems
+    
+    
+    func removeItem(rowId: Int64) -> Int {
+        
+        let filteredTable : Table = itemsTable.filter(itemId == rowId)
+        
+        let result = try! database.run(filteredTable.delete())
+        
+        return result
     }
     
     

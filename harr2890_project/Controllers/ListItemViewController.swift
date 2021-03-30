@@ -50,6 +50,7 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
         //TEST
             //testAddDataToDB()
             testGetAllDataFromDB()
+            //testDeleteRow1()
             
             
         
@@ -72,6 +73,13 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
 
         let result = database?.insertItem(item: item3)
         print("result = \(result!)")
+    }
+    
+    func testDeleteRow1() {
+        
+        let result = database?.removeItem(rowId: 1)
+        print("result = \(result!)")
+
     }
     
     func testGetAllDataFromDB() {
@@ -127,12 +135,29 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
                 myTableView.insertRows(at: [newIndexPath], with: .automatic)
             
                 // add item to the DB
-                database?.insertItem(item: newItem)
+                let rowId = database?.insertItem(item: newItem)
+                newItem.setId(value: rowId!)
             
                 sortDataByDate()
                 myTableView.reloadData()
         }
-    } // unwindToItemkList
+    } // unwindToItemList
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let itemId = tableData[indexPath.row].getId()
+            
+            tableData.remove(at: indexPath.row)
+
+
+            let result = database?.removeItem(rowId: itemId!)
+            print("remove from DB result = \(result!)")
+
+            myTableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    } // TV - editingStyle forRowAt
+    
     
     // MARK: - Helper functions
     
