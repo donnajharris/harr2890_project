@@ -4,9 +4,14 @@
 //
 //  Created by Donna Harris on 2021-03-23.
 //
+//  ** The DEFAULT controller for the app **
 
 import UIKit
 
+let NO_DB = 0
+let WITH_DB = 1
+
+let MODE = NO_DB
 
 class TableViewCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
@@ -19,19 +24,56 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var myTableView: UITableView!
 
-    
     let simpleTableIdentifier = "table_identifier"
     //private let showSegueId = "ViewItemDetails"
     private let cellIdentifier = "ListViewReuseIdentifier"
     private var tableData = [Item]() // the data source
     
     
+    var database:OpaquePointer? = nil
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createData()
+        
+        switch MODE {
+        case NO_DB:
+            createData()
+        case WITH_DB:
+            if connectToDB() != SQLITE_OK {
+                print("Exiting...")
+                return
+            }
+            
+            
+        default:
+            createData()
+        }
+        
+        
         sortDataByDate()
-    }
+        
+        
+    } // viewDidLoad
+    
+    func connectToDB() -> Int32 {
+        let result = sqlite3_open(dataFilePath(), &database)
+        if result != SQLITE_OK {
+            sqlite3_close(database)
+            print("Failed to open database")
+        }
+        
+        return result
+            
+    } // connectToDB
+    
+    
+    @objc func applicationWillResignActive(notification:NSNotification) {
+        print("Closing the database")
+        sqlite3_close(database)
+    } // applicationWillResignActive
+    
+    
     
     
     // MARK: - TableView methods
@@ -123,5 +165,13 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
     } // end
     
 
+    
+    func dataFilePath() -> String {
+        let urls = FileManager.default.urls(for:
+            .documentDirectory, in: .userDomainMask)
+        var url:String?
+        url = urls.first?.appendingPathComponent("data.plist").path
+        return url!
+    } // dataFilePath
 
 }
