@@ -121,6 +121,9 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
     } // TV - cellForRowAt indexPath
     
     
+    
+    
+    
     // MARK: - Navigation
     
     @IBAction func unwindToItemList(sender: UIStoryboardSegue) {
@@ -143,8 +146,11 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     } // unwindToItemList
     
-    
+    // REMOVING item from display AND database
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        // IDEAS for archiving: https://stackoverflow.com/questions/48515945/swipe-to-delete-with-multiple-options
+        
         if editingStyle == .delete {
             let itemId = tableData[indexPath.row].getId()
             
@@ -157,6 +163,9 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
             myTableView.deleteRows(at: [indexPath], with: .fade)
         }
     } // TV - editingStyle forRowAt
+    
+    
+
     
     
     // MARK: - Helper functions
