@@ -31,9 +31,10 @@ class DBAccess {
         
     } // init
     
+    
     private func initItemsTable() {
         try! database.run(itemsTable.create(ifNotExists: true) { t in
-            t.column(itemId, primaryKey: true)
+            t.column(itemId, primaryKey: .autoincrement)
             t.column(itemTitle)
             t.column(itemType)
             t.column(itemDate)
@@ -45,8 +46,8 @@ class DBAccess {
         //     "date" DATE
         // )
 
-
     } // createItemsTable
+    
     
     func insertItem(item: Item) -> Int64 {
         let insert = itemsTable.insert(
@@ -60,8 +61,9 @@ class DBAccess {
 
         return rowid
         
-    } //insertItem
+    } // insertItem
 
+    
     func getAllItems() -> [Item] {
         var items = [Item]()
         
@@ -77,7 +79,6 @@ class DBAccess {
             items.append(item)
         }
         
-        
         return items
         
     } // getAllItems
@@ -86,13 +87,10 @@ class DBAccess {
     func removeItem(rowId: Int64) -> Int {
         
         let filteredTable : Table = itemsTable.filter(itemId == rowId)
-        
         let result = try! database.run(filteredTable.delete())
-        
         return result
-    }
-    
-    
+        
+    } // removeItem
     
 }
 
