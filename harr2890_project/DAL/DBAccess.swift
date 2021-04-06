@@ -68,8 +68,7 @@ class DBAccess {
         var items = [Item]()
         
         for itemRow in try! database.prepare(itemsTable) {
-            print("id: \(itemRow[itemId]), title: \(itemRow[itemTitle]), type: \(itemRow[itemType]), date: \(itemRow[itemDate])")
-            // id: 1, name: Optional("Alice"), email: alice@mac.com
+            print("id: \(itemRow[itemId]), title: \(itemRow[itemTitle]), type: \(itemRow[itemType]), date: \(itemRow[itemDate]!)")
             
             let item = Item(id: itemRow[itemId],
                             title: itemRow[itemTitle],
