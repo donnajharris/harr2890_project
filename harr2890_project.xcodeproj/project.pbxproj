@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		AE2313CA260AC58300A21B17 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2313C9260AC58300A21B17 /* AddItemViewController.swift */; };
 		AE4A488E260BF12500E45D96 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE4A488D260BF12500E45D96 /* libsqlite3.tbd */; };
+		AE65321B261CC02400EC8A4A /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE65321A261CC02400EC8A4A /* EditItemViewController.swift */; };
+		AE65321F261CC09A00EC8A4A /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE65321E261CC09A00EC8A4A /* ItemViewController.swift */; };
 		AE6E54C0260B0B5E004CE1EB /* AddItemVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E54BF260B0B5E004CE1EB /* AddItemVCTests.swift */; };
 		AE7F70B126139F6F00253CAE /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE7F709926139EBA00253CAE /* SQLite.framework */; };
 		AE7F70B426139F9000253CAE /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE7F709926139EBA00253CAE /* SQLite.framework */; };
@@ -110,6 +112,8 @@
 		AE2313C9260AC58300A21B17 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		AE4A488D260BF12500E45D96 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		AE4A4892260BF1F200E45D96 /* harr2890_project-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "harr2890_project-Bridging-Header.h"; sourceTree = "<group>"; };
+		AE65321A261CC02400EC8A4A /* EditItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
+		AE65321E261CC09A00EC8A4A /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		AE6E54BF260B0B5E004CE1EB /* AddItemVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemVCTests.swift; sourceTree = "<group>"; };
 		AE7F708E26139EBA00253CAE /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../Downloaded Packages/SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		AE7F70C52613A24900253CAE /* DBAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBAccess.swift; sourceTree = "<group>"; };
@@ -218,7 +222,9 @@
 			isa = PBXGroup;
 			children = (
 				AE2313C9260AC58300A21B17 /* AddItemViewController.swift */,
+				AE65321A261CC02400EC8A4A /* EditItemViewController.swift */,
 				AEE23CFD260A729000AABD40 /* ListItemViewController.swift */,
+				AE65321E261CC09A00EC8A4A /* ItemViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -482,10 +488,12 @@
 				AE7F70C62613A24900253CAE /* DBAccess.swift in Sources */,
 				AEE23D30260A7C0200AABD40 /* Item.swift in Sources */,
 				AEE23CFE260A729000AABD40 /* ListItemViewController.swift in Sources */,
+				AE65321B261CC02400EC8A4A /* EditItemViewController.swift in Sources */,
 				AEE23CFA260A729000AABD40 /* AppDelegate.swift in Sources */,
 				AEE23CFC260A729000AABD40 /* SceneDelegate.swift in Sources */,
 				AEE23D04260A729000AABD40 /* harr2890_project.xcdatamodeld in Sources */,
 				AE2313CA260AC58300A21B17 /* AddItemViewController.swift in Sources */,
+				AE65321F261CC09A00EC8A4A /* ItemViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,7 +600,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -647,7 +655,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

@@ -20,12 +20,14 @@ class TableViewCell: UITableViewCell {
     
 }
 
-class ListItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate {
+//class ListItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate {
+    
+class ListItemViewController: UITableViewController, UITabBarDelegate {
     
     @IBOutlet weak var myTableView: UITableView!
 
     let simpleTableIdentifier = "table_identifier"
-    //private let showSegueId = "ViewItemDetails"
+    private let showSegueId = "ShowItemDetails"
     private let cellIdentifier = "ListViewReuseIdentifier"
     private var tableData = [Item]() // the data source
     
@@ -36,20 +38,26 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            
+        
+        // suppress the noise of the UI Constraint messages while developing logic
+        //UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
+        UserDefaults.standard.set(true, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
+
+
+        
         switch MODE {
         case NO_DB:
             createData()
             
         case WITH_DB:
             let path = dataFilePath()
-            print("path = \(path)")
+            //print("path = \(path)")
             database = DBAccess(path: path)
             // then get the data...
         
         //TEST
             //testAddDataToDB()
-            testGetAllDataFromDB()
+            testGetAllDataFromDB()  // TODO: rework this to get something else on startup?
             //testDeleteRow1()
             
         default:
@@ -58,7 +66,11 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
         
         sortDataByDate()
         
+        
     } // viewDidLoad
+    
+    
+    
     
     
     func testAddDataToDB() {
@@ -82,20 +94,22 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func testGetAllDataFromDB() {
         let result = database?.getAllItems()
-        print("result = \(result!)")
+        //print("result = \(result!)")
         
         tableData = result!
 
     } // testGetAllDataFromDB
     
+    
+    
     // MARK: - TableView methods
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        return tableData.count
     }
     
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier,
                                                  for: indexPath)
                                     as? TableViewCell
@@ -117,6 +131,37 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
             return cell! // return  the cell to the table view
         
     } // TV - cellForRowAt indexPath
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        print("\n\nYou selected row \(indexPath) -- good job!\n\n")
+        
+         tableView.deselectRow(at: indexPath, animated: true)
+         performSegue(withIdentifier: showSegueId,
+                      sender: tableData[indexPath.row])
+        
+        print("Data is: \(tableData[indexPath.row].getTitle())")
+    }  // TV - didSelectRowAt
+    
+    
+    // REMOVING item from display AND database
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        // IDEAS for archiving: https://stackoverflow.com/questions/48515945/swipe-to-delete-with-multiple-options
+        
+        if editingStyle == .delete {
+            let itemId = tableData[indexPath.row].getId()
+            
+            tableData.remove(at: indexPath.row)
+
+
+            let result = database?.removeItem(rowId: itemId!)
+            print("remove from DB result = \(result!)")
+
+            myTableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    } // TV - editingStyle forRowAt
     
     
     
@@ -143,23 +188,19 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
     } // unwindToItemList
     
     
-    // REMOVING item from display AND database
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        super.prepare(for: segue, sender: sender)
+        let ack = sender as! Item
         
-        // IDEAS for archiving: https://stackoverflow.com/questions/48515945/swipe-to-delete-with-multiple-options
-        
-        if editingStyle == .delete {
-            let itemId = tableData[indexPath.row].getId()
-            
-            tableData.remove(at: indexPath.row)
+        print("\nSo... sender is???....\(ack.getTitle())\n")
 
-
-            let result = database?.removeItem(rowId: itemId!)
-            print("remove from DB result = \(result!)")
-
-            myTableView.deleteRows(at: [indexPath], with: .fade)
+        if segue.identifier == showSegueId {
+            let vc = segue.destination as! ItemViewController
+            vc.initWithItem(item: sender as! Item)
         }
-    } // TV - editingStyle forRowAt
+        
+    }
     
     
 

@@ -1,25 +1,31 @@
 //
-//  AddItemViewController.swift
+//  EditItemViewController.swift
 //  harr2890_project
 //
-//  Created by Donna Harris on 2021-03-23.
+//  Created by Donna Harris on 2021-04-06.
 //
 
 import UIKit
 import os.log
 
-class AddItemViewController: UIViewController, UINavigationControllerDelegate {
+class EditItemViewController: UIViewController, UINavigationControllerDelegate {
 
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var typeField: UISegmentedControl!
     @IBOutlet weak var dateField: UIDatePicker!
     @IBOutlet weak var saveButton: UIButton!
     
+
+    
     
     private var item : Item?
 
-    func getNewItem() -> Item? {
+    func getChangedItem() -> Item? {
         return item
+    }
+    
+    func editItem(item: Item) {
+        self.item = item
     }
     
     
@@ -30,13 +36,13 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate {
         dateField.datePickerMode = .date
         dateField.preferredDatePickerStyle = .wheels
         
+        print("HI! You are here... >>> \(item!.getTitle())\n\n\n")
+        
+        self.nameField.text = item!.getTitle()
+        self.typeField.selectedSegmentIndex = item!.getTypeValue()
+        self.dateField.date = item!.getDate()
+        
 
-
-    }
-    
-    
-    @IBAction func cancelPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
     }
     
     
@@ -65,8 +71,6 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate {
     } // prepare
     
     
-    // TODO: this should be moved!
-    
     // Turns the segment control into somtehing usable, as an ItemType
     func setType(typeField: UISegmentedControl) -> Item.ItemType {
         var type : Item.ItemType
@@ -85,3 +89,4 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate {
     } // setType
 
 }
+

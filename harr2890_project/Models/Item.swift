@@ -8,11 +8,18 @@
 import Foundation
 
 class Item {
-    
+
+
     enum ItemType {
         case ON
         case BY
     }
+    
+    // The order of the segmented controls in storyboard
+    static let ON = 0
+    static let BY = 1
+    
+    
     
     private var id : Int64?
     private var title : String
@@ -61,6 +68,15 @@ class Item {
     
     func getType() -> ItemType {
         return self.type
+    }
+    
+    func getTypeValue() -> Int {
+        switch type {
+        case ItemType.ON:
+            return Item.ON
+        case ItemType.BY:
+            return Item.BY
+        }
     }
     
     static func getTypeString(type: ItemType) -> String {
