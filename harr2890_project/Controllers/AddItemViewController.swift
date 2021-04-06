@@ -29,6 +29,12 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // default without time on date picker
+        dateField.datePickerMode = .date
+        dateField.preferredDatePickerStyle = .wheels
+        
+
 
     }
     
