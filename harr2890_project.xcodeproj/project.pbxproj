@@ -168,6 +168,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AE6531DF261CA63700EC8A4A /* BusinessLogic */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BusinessLogic;
+			sourceTree = "<group>";
+		};
 		AE7F708F26139EBA00253CAE /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +256,7 @@
 		AEE23CF8260A729000AABD40 /* harr2890_project */ = {
 			isa = PBXGroup;
 			children = (
+				AE6531DF261CA63700EC8A4A /* BusinessLogic */,
 				AE7F70BB26139FD500253CAE /* Delegates */,
 				AE7F70BA26139FC800253CAE /* Controllers */,
 				AE7F70B926139FBE00253CAE /* Views */,

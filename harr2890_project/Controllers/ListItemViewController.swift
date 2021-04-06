@@ -52,15 +52,11 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
             testGetAllDataFromDB()
             //testDeleteRow1()
             
-            
-        
         default:
             createData()
         }
         
-        
         sortDataByDate()
-        
         
     } // viewDidLoad
     
@@ -73,14 +69,16 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
 
         let result = database?.insertItem(item: item3)
         print("result = \(result!)")
-    }
+    } //testAddDataToDB
+    
     
     func testDeleteRow1() {
         
         let result = database?.removeItem(rowId: 1)
         print("result = \(result!)")
 
-    }
+    } // testDeleteRow1
+    
     
     func testGetAllDataFromDB() {
         let result = database?.getAllItems()
@@ -88,7 +86,7 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
         
         tableData = result!
 
-    }
+    } // testGetAllDataFromDB
     
     // MARK: - TableView methods
 
@@ -122,8 +120,6 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
     
     
     
-    
-    
     // MARK: - Navigation
     
     @IBAction func unwindToItemList(sender: UIStoryboardSegue) {
@@ -146,6 +142,7 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     } // unwindToItemList
     
+    
     // REMOVING item from display AND database
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
@@ -166,8 +163,6 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
     
     
 
-    
-    
     // MARK: - Helper functions
     
     // initialize the data source
@@ -201,14 +196,14 @@ class ListItemViewController: UIViewController, UITableViewDataSource, UITableVi
         
      } // createData
     
+    
     func sortDataByDate() {
         tableData.sort {
             $0.getDate() < $1.getDate()
         }
-    } // end
+    } // sortDataByDate
     
 
-    
     func dataFilePath() -> String {
         let urls = FileManager.default.urls(for:
             .documentDirectory, in: .userDomainMask)
