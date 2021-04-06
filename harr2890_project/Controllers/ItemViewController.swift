@@ -67,8 +67,12 @@ class ItemViewController: UIViewController {
     } // unwindToItemList
     
     
-
-    // return after cancel
+    @IBAction func closePressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    // return after cancel edit
     @IBAction func unwindToHome(unwindSegue: UIStoryboardSegue){
 
     }

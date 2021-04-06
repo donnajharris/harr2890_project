@@ -47,6 +47,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="View Item" id="o7g-Iu-h3L">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="Kuh-QQ-SEP">
+                            <connections>
+                                <action selector="closePressed:" destination="ZGG-Vv-2c7" id="AlU-E0-mq0"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="C2M-8t-2ze">
                             <connections>
                                 <segue destination="DKA-S2-pK5" kind="show" identifier="EditItem" id="lg9-ap-Rhd"/>
@@ -61,7 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L3Y-bB-fJO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2072" y="628"/>
+            <point key="canvasLocation" x="3069.375" y="627.5"/>
         </scene>
         <!--Edit Item-->
         <scene sceneID="Ipl-Vi-EHB">
@@ -124,7 +129,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GUa-TD-fzm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="n60-cZ-BeV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3000" y="628"/>
+            <point key="canvasLocation" x="3997.5" y="627.5"/>
         </scene>
         <!--Add New Item-->
         <scene sceneID="Bak-AS-wby">
@@ -245,7 +250,7 @@
                     <tabBarItem key="tabBarItem" title="List" image="list.dash" catalog="system" id="9lM-mw-0FQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zow-8o-VtI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -329,7 +334,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="myTableView" destination="K3a-bN-NCw" id="a4J-79-q2x"/>
-                        <segue destination="ZGG-Vv-2c7" kind="show" identifier="ShowItemDetails" id="vn8-2U-WfE"/>
+                        <segue destination="CHM-Uf-e00" kind="show" identifier="ShowItemDetails" id="cmH-oz-yE0"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eqf-HU-Apo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -343,7 +348,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Zd2-2d-3mS"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BY7-KQ-ZBy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -354,6 +359,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g4s-kf-vb2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3096" y="-246"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cX5-NY-rO0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CHM-Uf-e00" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Uu2-yb-4Q2"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="s5H-F0-3WR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZGG-Vv-2c7" kind="relationship" relationship="rootViewController" id="BcC-Up-GHi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hOi-aT-StM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2071.875" y="627.5"/>
         </scene>
     </scenes>
     <resources>

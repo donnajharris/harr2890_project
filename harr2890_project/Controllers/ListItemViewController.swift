@@ -195,8 +195,11 @@ class ListItemViewController: UITableViewController, UITabBarDelegate {
         
         print("\nSo... sender is???....\(ack.getTitle())\n")
 
+        // Reference: https://stackoverflow.com/questions/30209626/could-not-cast-value-of-type-uinavigationcontroller
+        
         if segue.identifier == showSegueId {
-            let vc = segue.destination as! ItemViewController
+            let nav = segue.destination as! UINavigationController
+            let vc = nav.topViewController as! ItemViewController
             vc.initWithItem(item: sender as! Item)
         }
         
