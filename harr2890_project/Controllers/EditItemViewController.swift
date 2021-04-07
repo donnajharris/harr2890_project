@@ -8,7 +8,7 @@
 import UIKit
 import os.log
 
-class EditItemViewController: UIViewController, UINavigationControllerDelegate {
+class EditItemViewController: UIViewController, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var typeField: UISegmentedControl!
@@ -40,6 +40,9 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate {
         self.typeField.selectedSegmentIndex = item!.getTypeValue()
         self.dateField.date = item!.getDate()
         
+        self.nameField.delegate = self // set delegate
+
+        
         print("Enter the Edit Item view")
         print(item!)
     }
@@ -70,6 +73,22 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate {
 
 
     } // prepare
+    
+    
+    @IBAction func Tap(_ sender: UITapGestureRecognizer) {
+        nameField.resignFirstResponder()
+        typeField.resignFirstResponder()
+        dateField.resignFirstResponder()
+    }
+    
+    /* Reference:
+     https://www.zerotoappstore.com/how-to-hide-keyboard-in-swift-return-key.html
+     */
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder() // dismiss keyboard
+        return true
+    } // textFieldShouldReturn
+    
     
     
     // Turns the segment control into somtehing usable, as an ItemType

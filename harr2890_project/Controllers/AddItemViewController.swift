@@ -8,7 +8,7 @@
 import UIKit
 import os.log
 
-class AddItemViewController: UIViewController, UINavigationControllerDelegate {
+class AddItemViewController: UIViewController, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var typeField: UISegmentedControl!
@@ -29,12 +29,31 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate {
         // default without time on date picker
         dateField.datePickerMode = .date
         dateField.preferredDatePickerStyle = .wheels
+        
+        self.nameField.delegate = self // set delegate
+
     }
     
     
     @IBAction func cancelPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    
+    @IBAction func Tap(_ sender: UITapGestureRecognizer) {
+        nameField.resignFirstResponder()
+        typeField.resignFirstResponder()
+        dateField.resignFirstResponder()
+    }
+    
+    
+    /* Reference:
+     https://www.zerotoappstore.com/how-to-hide-keyboard-in-swift-return-key.html
+     */
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder() // dismiss keyboard
+        return true
+    } // textFieldShouldReturn
     
     
     // For the Save Button
