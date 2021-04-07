@@ -35,14 +35,13 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate {
         // default without time on date picker
         dateField.datePickerMode = .date
         dateField.preferredDatePickerStyle = .wheels
-        
-        print("HI! You are here... >>> \(item!.getTitle())\n\n\n")
-        
+                
         self.nameField.text = item!.getTitle()
         self.typeField.selectedSegmentIndex = item!.getTypeValue()
         self.dateField.date = item!.getDate()
         
-
+        print("Enter the Edit Item view")
+        print(item!)
     }
     
     
@@ -63,10 +62,12 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate {
         let type = setType(typeField: typeField)
 
 
-    
-        //print("The value selected is: \(type)")
-                
-        item = Item(title: title, date: date, type: type)
+        // new set to true because this item has changed
+        item?.setTitle(value: title)
+        item?.setType(value: type)
+        item?.setDate(value: date)
+        item?.setChangedFlag(changed: true)
+
 
     } // prepare
     

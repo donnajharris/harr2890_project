@@ -30,6 +30,7 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate {
         dateField.datePickerMode = .date
         dateField.preferredDatePickerStyle = .wheels
         
+        print("HAAHAHAHAHAHAHA")
 
 
     }
@@ -57,10 +58,8 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate {
         let type = setType(typeField: typeField)
 
 
-    
-        //print("The value selected is: \(type)")
-                
-        item = Item(title: title, date: date, type: type)
+        // isNew flag is set to indicate a new item
+        item = Item(title: title, date: date, type: type, changed: true)
 
     } // prepare
     

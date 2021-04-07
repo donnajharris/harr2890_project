@@ -1,5 +1,5 @@
 //
-//  ListItemViewController.swift
+//  ListViewController.swift
 //  harr2890_project
 //
 //  Created by Donna Harris on 2021-03-23.
@@ -20,14 +20,14 @@ class TableViewCell: UITableViewCell {
     
 }
 
-//class ListItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate {
-    
-class ListItemViewController: UITableViewController, UITabBarDelegate {
+
+class ListViewController: UITableViewController, UITabBarDelegate {
     
     @IBOutlet weak var myTableView: UITableView!
 
     let simpleTableIdentifier = "table_identifier"
     private let showSegueId = "ShowItemDetails"
+    private let addSegueId = "AddingItem"
     private let cellIdentifier = "ListViewReuseIdentifier"
     private var tableData = [Item]() // the data source
     
@@ -40,10 +40,7 @@ class ListItemViewController: UITableViewController, UITabBarDelegate {
         super.viewDidLoad()
         
         // suppress the noise of the UI Constraint messages while developing logic
-        //UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
-        UserDefaults.standard.set(true, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
-
-
+        UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
         
         switch MODE {
         case NO_DB:
@@ -71,16 +68,19 @@ class ListItemViewController: UITableViewController, UITabBarDelegate {
     
     
     
-    
-    
+    // TODO: Repurpose to add EXAMPLES that serve as instructions?
     func testAddDataToDB() {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
         let date1 = formatter.date(from: "25/05/2022")
-        let item3 = Item(title: "Do something with roast beef!!!", date: date1!, type: Item.ItemType.BY)
+        let item3 = Item(title: "Do something with roast beef!!!", date: date1!, type: Item.ItemType.BY, changed: false)
 
-        let result = database?.insertItem(item: item3)
-        print("result = \(result!)")
+        let resultId = database?.insertItem(item: item3)
+        
+        print("result = \(resultId!)")
+        
+        item3.setId(value: resultId!)
+        
     } //testAddDataToDB
     
     
@@ -141,7 +141,8 @@ class ListItemViewController: UITableViewController, UITabBarDelegate {
          performSegue(withIdentifier: showSegueId,
                       sender: tableData[indexPath.row])
         
-        print("Data is: \(tableData[indexPath.row].getTitle())")
+        print(tableData[indexPath.row])
+
     }  // TV - didSelectRowAt
     
     
@@ -156,7 +157,7 @@ class ListItemViewController: UITableViewController, UITabBarDelegate {
             tableData.remove(at: indexPath.row)
 
 
-            let result = database?.removeItem(rowId: itemId!)
+            let result = database?.removeItem(rowId: Int64(itemId!))
             print("remove from DB result = \(result!)")
 
             myTableView.deleteRows(at: [indexPath], with: .fade)
@@ -167,6 +168,7 @@ class ListItemViewController: UITableViewController, UITabBarDelegate {
     
     // MARK: - Navigation
     
+    // unwind from adding
     @IBAction func unwindToItemList(sender: UIStoryboardSegue) {
         
         if let sourceVC = sender.source as? AddItemViewController,
@@ -186,14 +188,42 @@ class ListItemViewController: UITableViewController, UITabBarDelegate {
                 myTableView.reloadData()
         }
     } // unwindToItemList
+
     
+    // returning up edits/viewing
+    @IBAction func unwindToItemListFromView(sender: UIStoryboardSegue) {
+        
+        if let sourceVC = sender.source as? ItemViewController,
+           let item = sourceVC.getItem() {
+
+            if item.hasChanged() {
+            
+                print(item)
+                
+                let updatedRows = database?.updateItem(item: item, rowId: item.getId()!)
+                if updatedRows != 1 {
+                    print("Problem updating row with\n\t\(item)")
+                    return
+                }
+    
+                sortDataByDate()
+                myTableView.reloadData()
+            }
+            
+        }
+    } // unwindToItemList
+        
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         super.prepare(for: segue, sender: sender)
-        let ack = sender as! Item
         
-        print("\nSo... sender is???....\(ack.getTitle())\n")
+        if segue.identifier == addSegueId {
+            return
+        }
+        
+        let item = sender as! Item
+        print(item)
 
         // Reference: https://stackoverflow.com/questions/30209626/could-not-cast-value-of-type-uinavigationcontroller
         
@@ -203,7 +233,7 @@ class ListItemViewController: UITableViewController, UITabBarDelegate {
             vc.initWithItem(item: sender as! Item)
         }
         
-    }
+    } // prepare - for segue
     
     
 
@@ -219,25 +249,15 @@ class ListItemViewController: UITableViewController, UITabBarDelegate {
         let date3 = formatter.date(from: "02/01/2022")
 
 
-        let item2 = Item(title: "Credit card expires", date: date3!, type: Item.ItemType.ON)
+        let item2 = Item(title: "Credit card expires", date: date3!, type: Item.ItemType.ON, changed: false)
         tableData.append(item2)
         
-        let item3 = Item(title: "Use roast beef", date: date1!, type: Item.ItemType.BY)
+        let item3 = Item(title: "Use roast beef", date: date1!, type: Item.ItemType.BY, changed: false)
         tableData.append(item3)
         
-        let item1 = Item(title: "Passport expires", date: date2!, type: Item.ItemType.ON)
+        let item1 = Item(title: "Passport expires", date: date2!, type: Item.ItemType.ON, changed: false)
         tableData.append(item1)
-
-        
-//        let item1 = Item(title: "Use roast beef", date: date1!)
-//        tableData.append(item1)
-//
-//        let item2 = Item(title: "Passport expires", date: date2!)
-//        tableData.append(item2)
-//
-//        let item3 = Item(title: "Credit card expires", date: date3!)
-//        tableData.append(item3)
-        
+  
      } // createData
     
     

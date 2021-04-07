@@ -18,7 +18,7 @@
 		AE7F70C62613A24900253CAE /* DBAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F70C52613A24900253CAE /* DBAccess.swift */; };
 		AEE23CFA260A729000AABD40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23CF9260A729000AABD40 /* AppDelegate.swift */; };
 		AEE23CFC260A729000AABD40 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23CFB260A729000AABD40 /* SceneDelegate.swift */; };
-		AEE23CFE260A729000AABD40 /* ListItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23CFD260A729000AABD40 /* ListItemViewController.swift */; };
+		AEE23CFE260A729000AABD40 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23CFD260A729000AABD40 /* ListViewController.swift */; };
 		AEE23D01260A729000AABD40 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE23CFF260A729000AABD40 /* Main.storyboard */; };
 		AEE23D04260A729000AABD40 /* harr2890_project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AEE23D02260A729000AABD40 /* harr2890_project.xcdatamodeld */; };
 		AEE23D06260A729000AABD40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEE23D05260A729000AABD40 /* Assets.xcassets */; };
@@ -120,7 +120,7 @@
 		AEE23CF6260A729000AABD40 /* harr2890_project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = harr2890_project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE23CF9260A729000AABD40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEE23CFB260A729000AABD40 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AEE23CFD260A729000AABD40 /* ListItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemViewController.swift; sourceTree = "<group>"; };
+		AEE23CFD260A729000AABD40 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		AEE23D00260A729000AABD40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AEE23D03260A729000AABD40 /* harr2890_project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = harr2890_project.xcdatamodel; sourceTree = "<group>"; };
 		AEE23D05260A729000AABD40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -223,7 +223,7 @@
 			children = (
 				AE2313C9260AC58300A21B17 /* AddItemViewController.swift */,
 				AE65321A261CC02400EC8A4A /* EditItemViewController.swift */,
-				AEE23CFD260A729000AABD40 /* ListItemViewController.swift */,
+				AEE23CFD260A729000AABD40 /* ListViewController.swift */,
 				AE65321E261CC09A00EC8A4A /* ItemViewController.swift */,
 			);
 			path = Controllers;
@@ -487,7 +487,7 @@
 			files = (
 				AE7F70C62613A24900253CAE /* DBAccess.swift in Sources */,
 				AEE23D30260A7C0200AABD40 /* Item.swift in Sources */,
-				AEE23CFE260A729000AABD40 /* ListItemViewController.swift in Sources */,
+				AEE23CFE260A729000AABD40 /* ListViewController.swift in Sources */,
 				AE65321B261CC02400EC8A4A /* EditItemViewController.swift in Sources */,
 				AEE23CFA260A729000AABD40 /* AppDelegate.swift in Sources */,
 				AEE23CFC260A729000AABD40 /* SceneDelegate.swift in Sources */,

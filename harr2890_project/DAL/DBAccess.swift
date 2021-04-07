@@ -50,30 +50,49 @@ class DBAccess {
     
     
     func insertItem(item: Item) -> Int64 {
+        
         let insert = itemsTable.insert(
                 itemTitle <- item.getTitle(),
                 itemType <- Item.getTypeString(item: item),
                 itemDate <- item.getDate()
         )
         
-        let rowid = try! database.run(insert)
+        let itemId = try! database.run(insert)
         // INSERT INTO "items" ("title", "type", "date") VALUES ('MyTitle', 'BY', DateObject)
 
-        return rowid
+        return itemId
         
     } // insertItem
+    
+    
+    func updateItem(item: Item, rowId: Int64) -> Int {
+        
+        let filteredTable : Table = itemsTable.filter(itemId == rowId)
+
+        let update = filteredTable.update(
+            itemTitle <- item.getTitle(),
+            itemType <- Item.getTypeString(item: item),
+            itemDate <- item.getDate()
+        )
+        
+        let updatedRows = try! database.run(update)
+        
+        return updatedRows
+    } // updateItem
 
     
     func getAllItems() -> [Item] {
         var items = [Item]()
         
         for itemRow in try! database.prepare(itemsTable) {
-            //print("id: \(itemRow[itemId]), title: \(itemRow[itemTitle]), type: \(itemRow[itemType]), date: \(itemRow[itemDate]!)")
+
+            // print(itemRow)
             
             let item = Item(id: itemRow[itemId],
                             title: itemRow[itemTitle],
                             date: itemRow[itemDate]!,
-                            type: Item.translateToItemType(string: itemRow[itemType])!)
+                            type: Item.translateToItemType(string: itemRow[itemType])!,
+                            changed: false)
             
             items.append(item)
         }

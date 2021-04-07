@@ -49,7 +49,7 @@
                     <navigationItem key="navigationItem" title="View Item" id="o7g-Iu-h3L">
                         <barButtonItem key="leftBarButtonItem" title="Close" id="Kuh-QQ-SEP">
                             <connections>
-                                <action selector="closePressed:" destination="ZGG-Vv-2c7" id="AlU-E0-mq0"/>
+                                <segue destination="4ng-jN-EYE" kind="unwind" unwindAction="unwindToItemListFromViewWithSender:" id="jyl-oJ-7Th"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="C2M-8t-2ze">
@@ -65,6 +65,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L3Y-bB-fJO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="4ng-jN-EYE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3069.375" y="627.5"/>
         </scene>
@@ -129,37 +130,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GUa-TD-fzm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="n60-cZ-BeV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3997.5" y="627.5"/>
+            <point key="canvasLocation" x="4095" y="628"/>
         </scene>
         <!--Add New Item-->
         <scene sceneID="Bak-AS-wby">
             <objects>
                 <viewController id="dEB-0M-fge" customClass="AddItemViewController" customModule="harr2890_project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sS6-9K-FBi">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZm-B9-7ZE">
-                                <rect key="frame" x="126" y="415" width="68" height="30"/>
+                                <rect key="frame" x="126" y="427" width="68" height="30"/>
                                 <state key="normal" title="Save Item"/>
                                 <connections>
-                                    <segue destination="khH-7L-vS2" kind="unwind" unwindAction="unwindToItemListWithSender:" id="OMN-BG-jIa"/>
+                                    <segue destination="khH-7L-vS2" kind="unwind" unwindAction="unwindToItemListWithSender:" id="nap-Y6-YZA"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter what you want to recall" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H49-f7-LsF">
-                                <rect key="frame" x="16" y="64" width="288" height="34"/>
+                                <rect key="frame" x="16" y="76" width="288" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="C9A-XV-kcR">
-                                <rect key="frame" x="125.5" y="113" width="69" height="32"/>
+                                <rect key="frame" x="125.5" y="125" width="69" height="32"/>
                                 <segments>
                                     <segment title="on"/>
                                     <segment title="by"/>
                                 </segments>
                             </segmentedControl>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="qqY-bP-zAl">
-                                <rect key="frame" x="0.0" y="159" width="320" height="216"/>
+                                <rect key="frame" x="0.0" y="171" width="320" height="216"/>
                             </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mWs-Lo-Tva"/>
@@ -250,7 +251,7 @@
                     <tabBarItem key="tabBarItem" title="List" image="list.dash" catalog="system" id="9lM-mw-0FQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zow-8o-VtI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -265,7 +266,7 @@
         <!--Due Not Forget-->
         <scene sceneID="6fS-J6-iGe">
             <objects>
-                <tableViewController id="seM-mi-NpT" customClass="ListItemViewController" customModule="harr2890_project" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="seM-mi-NpT" customClass="ListViewController" customModule="harr2890_project" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="K3a-bN-NCw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -328,7 +329,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="KvF-rc-C4V"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="XTb-s4-nFs">
                             <connections>
-                                <segue destination="iMD-Bj-gUg" kind="show" id="Ifd-VC-dQb"/>
+                                <segue destination="iMD-Bj-gUg" kind="presentation" identifier="AddingItem" id="5mw-CN-DQl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -348,7 +349,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Zd2-2d-3mS"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BY7-KQ-ZBy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -367,7 +368,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Uu2-yb-4Q2"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="s5H-F0-3WR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

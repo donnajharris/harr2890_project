@@ -17,8 +17,15 @@ class ItemViewController: UIViewController {
     
     private var item : Item?
     
+    func getItem() -> Item? {
+        return self.item
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        isModalInPresentation = true
         
         nameField.text = item?.getTitle()
         typeField.text = Item.getTypeString(item: item!)
@@ -36,6 +43,7 @@ class ItemViewController: UIViewController {
         self.item = item
         
         print("initWithItem")
+        print(item)
     }
     
     
@@ -57,11 +65,23 @@ class ItemViewController: UIViewController {
         if let vc = sender.source as? EditItemViewController,
            let changedItem = vc.getChangedItem() {
 
-            // Update item.
-
-            nameField.text = changedItem.getTitle()
-            typeField.text = Item.getTypeString(item: changedItem)
-            dateField.text = changedItem.getDateString()
+            print("Changed after edit")
+            print(changedItem)
+            
+            print("compared to item")
+            print(item!)
+            
+            if item!.hasChanged() {
+            
+                // Update item on display
+                nameField.text = changedItem.getTitle()
+                typeField.text = Item.getTypeString(item: changedItem)
+                dateField.text = changedItem.getDateString()
+                
+                // Prepare to update on return to list table view
+                item = changedItem
+            }
+            
 
         }
     } // unwindToItemList
@@ -72,7 +92,7 @@ class ItemViewController: UIViewController {
     }
     
     
-    // return after cancel edit
+    // return point after clicking Cancel on edit view
     @IBAction func unwindToHome(unwindSegue: UIStoryboardSegue){
 
     }
