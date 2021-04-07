@@ -75,9 +75,9 @@ class DBAccess {
             itemDate <- item.getDate()
         )
         
-        let updatedRows = try! database.run(update)
+        let numberOfUpdatedRows = try! database.run(update)
         
-        return updatedRows
+        return numberOfUpdatedRows
     } // updateItem
 
     
@@ -105,8 +105,8 @@ class DBAccess {
     func removeItem(rowId: Int64) -> Int {
         
         let filteredTable : Table = itemsTable.filter(itemId == rowId)
-        let result = try! database.run(filteredTable.delete())
-        return result
+        let numberOfDeletedRows = try! database.run(filteredTable.delete())
+        return numberOfDeletedRows
         
     } // removeItem
     

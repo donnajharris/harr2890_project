@@ -119,6 +119,11 @@
                                 <segue destination="n60-cZ-BeV" kind="unwind" unwindAction="unwindToHomeWithUnwindSegue:" id="pua-iP-V9X"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="dVC-Sn-bfh">
+                            <connections>
+                                <segue destination="n60-cZ-BeV" kind="unwind" unwindAction="unwindToItemListWithSender:" id="dXx-JH-TWb"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="dateField" destination="zcf-Th-LMA" id="IDa-mx-7B0"/>
@@ -182,6 +187,11 @@
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="ywZ-5v-3zi">
                             <connections>
                                 <action selector="cancelPressed:" destination="dEB-0M-fge" id="GGR-7q-Uwc"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="oaZ-aq-Yuo">
+                            <connections>
+                                <segue destination="khH-7L-vS2" kind="unwind" unwindAction="unwindToItemListWithSender:" id="Ess-Bd-rJn"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -251,7 +261,7 @@
                     <tabBarItem key="tabBarItem" title="List" image="list.dash" catalog="system" id="9lM-mw-0FQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zow-8o-VtI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -368,7 +378,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Uu2-yb-4Q2"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="s5H-F0-3WR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

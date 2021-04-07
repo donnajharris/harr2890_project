@@ -31,6 +31,14 @@ class ListViewController: UITableViewController, UITabBarDelegate {
     private let cellIdentifier = "ListViewReuseIdentifier"
     private var tableData = [Item]() // the data source
     
+    // for testing (for now...)
+    func getTableData() -> [Item] {
+        return tableData
+    }
+    
+    func setTableData(items: [Item]) {
+        tableData = items
+    }
     
     //var database:OpaquePointer? = nil
     private var database : DBAccess? = nil
@@ -48,7 +56,7 @@ class ListViewController: UITableViewController, UITabBarDelegate {
             
         case WITH_DB:
             let path = dataFilePath()
-            //print("path = \(path)")
+            print("path = \(path)")
             database = DBAccess(path: path)
             // then get the data...
         

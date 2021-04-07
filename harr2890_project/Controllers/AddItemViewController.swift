@@ -29,10 +29,6 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate {
         // default without time on date picker
         dateField.datePickerMode = .date
         dateField.preferredDatePickerStyle = .wheels
-        
-        print("HAAHAHAHAHAHAHA")
-
-
     }
     
     

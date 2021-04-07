@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE0E8EC4261D75E1000BB7E0 /* Mock_DBAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0E8EC3261D75E1000BB7E0 /* Mock_DBAccess.swift */; };
 		AE2313CA260AC58300A21B17 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2313C9260AC58300A21B17 /* AddItemViewController.swift */; };
 		AE4A488E260BF12500E45D96 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE4A488D260BF12500E45D96 /* libsqlite3.tbd */; };
 		AE5E1637261D66EE00993DDB /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE5E1621261D66DA00993DDB /* SQLite.framework */; };
@@ -15,6 +16,7 @@
 		AE65321F261CC09A00EC8A4A /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE65321E261CC09A00EC8A4A /* ItemViewController.swift */; };
 		AE6E54C0260B0B5E004CE1EB /* AddItemVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E54BF260B0B5E004CE1EB /* AddItemVCTests.swift */; };
 		AE7F70C62613A24900253CAE /* DBAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F70C52613A24900253CAE /* DBAccess.swift */; };
+		AE99B281261D72E1004B846E /* CRUD_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE99B280261D72E1004B846E /* CRUD_Tests.swift */; };
 		AEE23CFA260A729000AABD40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23CF9260A729000AABD40 /* AppDelegate.swift */; };
 		AEE23CFC260A729000AABD40 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23CFB260A729000AABD40 /* SceneDelegate.swift */; };
 		AEE23CFE260A729000AABD40 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23CFD260A729000AABD40 /* ListViewController.swift */; };
@@ -23,7 +25,6 @@
 		AEE23D06260A729000AABD40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEE23D05260A729000AABD40 /* Assets.xcassets */; };
 		AEE23D09260A729000AABD40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE23D07260A729000AABD40 /* LaunchScreen.storyboard */; };
 		AEE23D14260A729100AABD40 /* harr2890_projectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23D13260A729100AABD40 /* harr2890_projectTests.swift */; };
-		AEE23D1F260A729100AABD40 /* harr2890_projectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23D1E260A729100AABD40 /* harr2890_projectUITests.swift */; };
 		AEE23D30260A7C0200AABD40 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23D2F260A7C0200AABD40 /* Item.swift */; };
 /* End PBXBuildFile section */
 
@@ -84,13 +85,6 @@
 			remoteGlobalIDString = AEE23CF5260A729000AABD40;
 			remoteInfo = harr2890_project;
 		};
-		AEE23D1B260A729100AABD40 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AEE23CEE260A729000AABD40 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AEE23CF5260A729000AABD40;
-			remoteInfo = harr2890_project;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -108,6 +102,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AE0E8EC3261D75E1000BB7E0 /* Mock_DBAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock_DBAccess.swift; sourceTree = "<group>"; };
 		AE2313C9260AC58300A21B17 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		AE4A488D260BF12500E45D96 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		AE4A4892260BF1F200E45D96 /* harr2890_project-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "harr2890_project-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -116,6 +111,7 @@
 		AE65321E261CC09A00EC8A4A /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		AE6E54BF260B0B5E004CE1EB /* AddItemVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemVCTests.swift; sourceTree = "<group>"; };
 		AE7F70C52613A24900253CAE /* DBAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBAccess.swift; sourceTree = "<group>"; };
+		AE99B280261D72E1004B846E /* CRUD_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRUD_Tests.swift; sourceTree = "<group>"; };
 		AEE23CF6260A729000AABD40 /* harr2890_project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = harr2890_project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE23CF9260A729000AABD40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEE23CFB260A729000AABD40 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,9 +124,6 @@
 		AEE23D0F260A729100AABD40 /* harr2890_projectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = harr2890_projectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE23D13260A729100AABD40 /* harr2890_projectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = harr2890_projectTests.swift; sourceTree = "<group>"; };
 		AEE23D15260A729100AABD40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AEE23D1A260A729100AABD40 /* harr2890_projectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = harr2890_projectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AEE23D1E260A729100AABD40 /* harr2890_projectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = harr2890_projectUITests.swift; sourceTree = "<group>"; };
-		AEE23D20260A729100AABD40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEE23D2F260A7C0200AABD40 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,13 +138,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		AEE23D0C260A729100AABD40 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AEE23D17260A729100AABD40 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -195,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				AE7F70C52613A24900253CAE /* DBAccess.swift */,
+				AE0E8EC3261D75E1000BB7E0 /* Mock_DBAccess.swift */,
 			);
 			path = DAL;
 			sourceTree = "<group>";
@@ -236,12 +223,19 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
+		AEBF18AA261D832700B9665E /* harr2890_projectUITests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = harr2890_projectUITests;
+			sourceTree = "<group>";
+		};
 		AEE23CED260A729000AABD40 = {
 			isa = PBXGroup;
 			children = (
 				AEE23CF8260A729000AABD40 /* harr2890_project */,
 				AEE23D12260A729100AABD40 /* harr2890_projectTests */,
-				AEE23D1D260A729100AABD40 /* harr2890_projectUITests */,
+				AEBF18AA261D832700B9665E /* harr2890_projectUITests */,
 				AEE23CF7260A729000AABD40 /* Products */,
 				AE4A488C260BF12400E45D96 /* Frameworks */,
 			);
@@ -252,7 +246,6 @@
 			children = (
 				AEE23CF6260A729000AABD40 /* harr2890_project.app */,
 				AEE23D0F260A729100AABD40 /* harr2890_projectTests.xctest */,
-				AEE23D1A260A729100AABD40 /* harr2890_projectUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -280,17 +273,9 @@
 				AEE23D13260A729100AABD40 /* harr2890_projectTests.swift */,
 				AEE23D15260A729100AABD40 /* Info.plist */,
 				AE6E54BF260B0B5E004CE1EB /* AddItemVCTests.swift */,
+				AE99B280261D72E1004B846E /* CRUD_Tests.swift */,
 			);
 			path = harr2890_projectTests;
-			sourceTree = "<group>";
-		};
-		AEE23D1D260A729100AABD40 /* harr2890_projectUITests */ = {
-			isa = PBXGroup;
-			children = (
-				AEE23D1E260A729100AABD40 /* harr2890_projectUITests.swift */,
-				AEE23D20260A729100AABD40 /* Info.plist */,
-			);
-			path = harr2890_projectUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,24 +317,6 @@
 			productReference = AEE23D0F260A729100AABD40 /* harr2890_projectTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		AEE23D19260A729100AABD40 /* harr2890_projectUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AEE23D29260A729100AABD40 /* Build configuration list for PBXNativeTarget "harr2890_projectUITests" */;
-			buildPhases = (
-				AEE23D16260A729100AABD40 /* Sources */,
-				AEE23D17260A729100AABD40 /* Frameworks */,
-				AEE23D18260A729100AABD40 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AEE23D1C260A729100AABD40 /* PBXTargetDependency */,
-			);
-			name = harr2890_projectUITests;
-			productName = harr2890_projectUITests;
-			productReference = AEE23D1A260A729100AABD40 /* harr2890_projectUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -364,10 +331,6 @@
 						LastSwiftMigration = 1230;
 					};
 					AEE23D0E260A729100AABD40 = {
-						CreatedOnToolsVersion = 12.3;
-						TestTargetID = AEE23CF5260A729000AABD40;
-					};
-					AEE23D19260A729100AABD40 = {
 						CreatedOnToolsVersion = 12.3;
 						TestTargetID = AEE23CF5260A729000AABD40;
 					};
@@ -394,7 +357,6 @@
 			targets = (
 				AEE23CF5260A729000AABD40 /* harr2890_project */,
 				AEE23D0E260A729100AABD40 /* harr2890_projectTests */,
-				AEE23D19260A729100AABD40 /* harr2890_projectUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -469,13 +431,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AEE23D18260A729100AABD40 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -486,6 +441,7 @@
 				AE7F70C62613A24900253CAE /* DBAccess.swift in Sources */,
 				AEE23D30260A7C0200AABD40 /* Item.swift in Sources */,
 				AEE23CFE260A729000AABD40 /* ListViewController.swift in Sources */,
+				AE0E8EC4261D75E1000BB7E0 /* Mock_DBAccess.swift in Sources */,
 				AE65321B261CC02400EC8A4A /* EditItemViewController.swift in Sources */,
 				AEE23CFA260A729000AABD40 /* AppDelegate.swift in Sources */,
 				AEE23CFC260A729000AABD40 /* SceneDelegate.swift in Sources */,
@@ -499,16 +455,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE99B281261D72E1004B846E /* CRUD_Tests.swift in Sources */,
 				AEE23D14260A729100AABD40 /* harr2890_projectTests.swift in Sources */,
 				AE6E54C0260B0B5E004CE1EB /* AddItemVCTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AEE23D16260A729100AABD40 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AEE23D1F260A729100AABD40 /* harr2890_projectUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,11 +468,6 @@
 			isa = PBXTargetDependency;
 			target = AEE23CF5260A729000AABD40 /* harr2890_project */;
 			targetProxy = AEE23D10260A729100AABD40 /* PBXContainerItemProxy */;
-		};
-		AEE23D1C260A729100AABD40 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AEE23CF5260A729000AABD40 /* harr2890_project */;
-			targetProxy = AEE23D1B260A729100AABD40 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -670,6 +614,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = BYQ4H97ADA;
 				INFOPLIST_FILE = harr2890_project/Info.plist;
@@ -693,6 +638,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = BYQ4H97ADA;
 				INFOPLIST_FILE = harr2890_project/Info.plist;
@@ -752,46 +698,6 @@
 			};
 			name = Release;
 		};
-		AEE23D2A260A729100AABD40 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BYQ4H97ADA;
-				INFOPLIST_FILE = harr2890_projectUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ca.wlu.harr2890-projectUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = harr2890_project;
-			};
-			name = Debug;
-		};
-		AEE23D2B260A729100AABD40 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BYQ4H97ADA;
-				INFOPLIST_FILE = harr2890_projectUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ca.wlu.harr2890-projectUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = harr2890_project;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -818,15 +724,6 @@
 			buildConfigurations = (
 				AEE23D27260A729100AABD40 /* Debug */,
 				AEE23D28260A729100AABD40 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AEE23D29260A729100AABD40 /* Build configuration list for PBXNativeTarget "harr2890_projectUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AEE23D2A260A729100AABD40 /* Debug */,
-				AEE23D2B260A729100AABD40 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
