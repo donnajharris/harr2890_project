@@ -62,7 +62,8 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         // Add the returned Item to the list
         let title = nameField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let date = dateField.date
-        let type = setType(typeField: typeField)
+        //let type = setType(typeField: typeField)
+        let type = ItemHelper.setType(typeField: typeField)
 
 
         // new set to true because this item has changed
@@ -92,21 +93,21 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
     
     
     // Turns the segment control into somtehing usable, as an ItemType
-    func setType(typeField: UISegmentedControl) -> Item.ItemType {
-        var type : Item.ItemType
-        
-        switch typeField.selectedSegmentIndex {
-        case Item.ON:
-            type = Item.ItemType.ON
-        case Item.BY:
-            type = Item.ItemType.BY
-        default:
-            type = Item.ItemType.ON
-        }
-
-        return type
-        
-    } // setType
+//    func setType(typeField: UISegmentedControl) -> Item.ItemType {
+//        var type : Item.ItemType
+//
+//        switch typeField.selectedSegmentIndex {
+//        case Item.ON:
+//            type = Item.ItemType.ON
+//        case Item.BY:
+//            type = Item.ItemType.BY
+//        default:
+//            type = Item.ItemType.ON
+//        }
+//
+//        return type
+//
+//    } // setType
 
 }
 

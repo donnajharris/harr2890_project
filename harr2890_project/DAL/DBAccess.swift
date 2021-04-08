@@ -53,7 +53,7 @@ class DBAccess {
         
         let insert = itemsTable.insert(
                 itemTitle <- item.getTitle(),
-                itemType <- Item.getTypeString(item: item),
+                itemType <- ItemHelper.getTypeString(item: item),
                 itemDate <- item.getDate()
         )
         
@@ -71,7 +71,7 @@ class DBAccess {
 
         let update = filteredTable.update(
             itemTitle <- item.getTitle(),
-            itemType <- Item.getTypeString(item: item),
+            itemType <- ItemHelper.getTypeString(item: item),
             itemDate <- item.getDate()
         )
         
@@ -91,7 +91,7 @@ class DBAccess {
             let item = Item(id: itemRow[itemId],
                             title: itemRow[itemTitle],
                             date: itemRow[itemDate]!,
-                            type: Item.translateToItemType(string: itemRow[itemType])!,
+                            type: ItemHelper.translateToItemType(string: itemRow[itemType])!,
                             changed: false)
             
             items.append(item)

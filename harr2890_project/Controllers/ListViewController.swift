@@ -134,7 +134,7 @@ class ListViewController: UITableViewController, UITabBarDelegate {
             cell?.date?.text = tableData[indexPath.row].getDateString()
         
             // set the preposition type text
-            cell?.type?.text = Item.getTypeString(item: tableData[indexPath.row])
+            cell?.type?.text = ItemHelper.getTypeString(item: tableData[indexPath.row])
         
             return cell! // return  the cell to the table view
         

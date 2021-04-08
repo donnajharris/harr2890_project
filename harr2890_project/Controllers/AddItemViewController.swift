@@ -70,7 +70,8 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
         // Add the returned Item to the list
         let title = nameField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let date = dateField.date
-        let type = setType(typeField: typeField)
+        //let type = setType(typeField: typeField)
+        let type = ItemHelper.setType(typeField: typeField)
 
 
         // isNew flag is set to indicate a new item
@@ -81,21 +82,21 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
     
     // TODO: this should be moved!
     
-    // Turns the segment control into somtehing usable, as an ItemType
-    func setType(typeField: UISegmentedControl) -> Item.ItemType {
-        var type : Item.ItemType
-        
-        switch typeField.selectedSegmentIndex {
-        case Item.ON:
-            type = Item.ItemType.ON
-        case Item.BY:
-            type = Item.ItemType.BY
-        default:
-            type = Item.ItemType.ON
-        }
-
-        return type
-        
-    } // setType
+//    // Turns the segment control into somtehing usable, as an ItemType
+//    func setType(typeField: UISegmentedControl) -> Item.ItemType {
+//        var type : Item.ItemType
+//        
+//        switch typeField.selectedSegmentIndex {
+//        case Item.ON:
+//            type = Item.ItemType.ON
+//        case Item.BY:
+//            type = Item.ItemType.BY
+//        default:
+//            type = Item.ItemType.ON
+//        }
+//
+//        return type
+//        
+//    } // setType
 
 }

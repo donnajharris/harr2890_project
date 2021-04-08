@@ -28,7 +28,7 @@ class ItemViewController: UIViewController {
         isModalInPresentation = true
         
         nameField.text = item?.getTitle()
-        typeField.text = Item.getTypeString(item: item!)
+        typeField.text = ItemHelper.getTypeString(item: item!)
         dateField.text = item?.getDateString()
     }
     
@@ -75,14 +75,12 @@ class ItemViewController: UIViewController {
             
                 // Update item on display
                 nameField.text = changedItem.getTitle()
-                typeField.text = Item.getTypeString(item: changedItem)
+                typeField.text = ItemHelper.getTypeString(item: changedItem)
                 dateField.text = changedItem.getDateString()
                 
                 // Prepare to update on return to list table view
                 item = changedItem
             }
-            
-
         }
     } // unwindToItemList
     
