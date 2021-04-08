@@ -14,10 +14,7 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
     @IBOutlet weak var typeField: UISegmentedControl!
     @IBOutlet weak var dateField: UIDatePicker!
     @IBOutlet weak var saveButton: UIButton!
-    
-
-    
-    
+        
     private var item : Item?
 
     func getChangedItem() -> Item? {
@@ -58,11 +55,10 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
             os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
-               
+  
         // Add the returned Item to the list
         let title = nameField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let date = dateField.date
-        //let type = setType(typeField: typeField)
         let type = ItemHelper.setType(typeField: typeField)
 
 
@@ -72,6 +68,11 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         item?.setDate(value: date)
         item?.setChangedFlag(changed: true)
 
+        let handler = ItemHandler()
+        
+        if handler.itemIsValid(item: item!) == false {
+            item = nil
+        }
 
     } // prepare
     
@@ -91,23 +92,6 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
     } // textFieldShouldReturn
     
     
-    
-    // Turns the segment control into somtehing usable, as an ItemType
-//    func setType(typeField: UISegmentedControl) -> Item.ItemType {
-//        var type : Item.ItemType
-//
-//        switch typeField.selectedSegmentIndex {
-//        case Item.ON:
-//            type = Item.ItemType.ON
-//        case Item.BY:
-//            type = Item.ItemType.BY
-//        default:
-//            type = Item.ItemType.ON
-//        }
-//
-//        return type
-//
-//    } // setType
 
 }
 

@@ -65,23 +65,19 @@ class ItemViewController: UIViewController {
         if let vc = sender.source as? EditItemViewController,
            let changedItem = vc.getChangedItem() {
 
-            print("Changed after edit")
-            print(changedItem)
-            
-            print("compared to item")
-            print(item!)
-            
-            if item!.hasChanged() {
-            
-                // Update item on display
+                // Update item on VIEW display
                 nameField.text = changedItem.getTitle()
                 typeField.text = ItemHelper.getTypeString(item: changedItem)
                 dateField.text = changedItem.getDateString()
-                
+
                 // Prepare to update on return to list table view
                 item = changedItem
             }
+        else {
+            item = nil
+            print("Problem...")
         }
+    
     } // unwindToItemList
     
     

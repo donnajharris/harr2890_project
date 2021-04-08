@@ -15,22 +15,25 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet weak var dateField: UIDatePicker!
     @IBOutlet weak var saveButton: UIButton!
     
-    
     private var item : Item?
 
+    
     func getNewItem() -> Item? {
         return item
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         // default without time on date picker
         dateField.datePickerMode = .date
         dateField.preferredDatePickerStyle = .wheels
         
+        // Handle the text field’s user input through delegate callbacks
         self.nameField.delegate = self // set delegate
+        
+        // Enable the Save button only if the text fields have valid input
+        updateSaveButtonState()
 
     }
     
@@ -55,6 +58,24 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
         return true
     } // textFieldShouldReturn
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        // Disables the Save button while editing a text field
+        saveButton.isEnabled = false
+    } // textFieldDidBeginEditing
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        updateSaveButtonState()
+    } // textFieldDidEndEditing
+
+    private func updateSaveButtonState() {
+        // Disable the Save button if the text fields are empty.
+        let name = nameField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        let result = !name.isEmpty
+
+        saveButton.isEnabled = result
+    }  // updateSaveButtonState
+    
     
     // For the Save Button
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -66,37 +87,22 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
             os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
-               
-        // Add the returned Item to the list
+                
+        // Prepare the returned Item to be added to the list
         let title = nameField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let date = dateField.date
-        //let type = setType(typeField: typeField)
         let type = ItemHelper.setType(typeField: typeField)
-
 
         // isNew flag is set to indicate a new item
         item = Item(title: title, date: date, type: type, changed: true)
+        
+        let handler = ItemHandler()
+        
+        if handler.itemIsValid(item: item!) == false {
+            item = nil
+        }
 
     } // prepare
-    
-    
-    // TODO: this should be moved!
-    
-//    // Turns the segment control into somtehing usable, as an ItemType
-//    func setType(typeField: UISegmentedControl) -> Item.ItemType {
-//        var type : Item.ItemType
-//        
-//        switch typeField.selectedSegmentIndex {
-//        case Item.ON:
-//            type = Item.ItemType.ON
-//        case Item.BY:
-//            type = Item.ItemType.BY
-//        default:
-//            type = Item.ItemType.ON
-//        }
-//
-//        return type
-//        
-//    } // setType
+
 
 }

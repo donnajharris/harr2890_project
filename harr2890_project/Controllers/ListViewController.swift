@@ -194,7 +194,12 @@ class ListViewController: UITableViewController, UITabBarDelegate {
             
                 sortDataByDate()
                 myTableView.reloadData()
+        } else {
+            
+            // This fails somewhat gracefully, but silently at the UI level
+            print("Error adding the item")
         }
+        
     } // unwindToItemList
 
     
@@ -217,8 +222,12 @@ class ListViewController: UITableViewController, UITabBarDelegate {
                 sortDataByDate()
                 myTableView.reloadData()
             }
+        } else {
             
+            // This fails somewhat gracefully, but silently at the UI level
+            print("Error editing the selected item")
         }
+        
     } // unwindToItemList
         
     
