@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		AE0E8EC4261D75E1000BB7E0 /* Mock_DBAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0E8EC3261D75E1000BB7E0 /* Mock_DBAccess.swift */; };
 		AE2313CA260AC58300A21B17 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2313C9260AC58300A21B17 /* AddItemViewController.swift */; };
+		AE3EBB922622B6F50047DBEF /* CategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3EBB912622B6F50047DBEF /* CategoryListViewController.swift */; };
+		AE3EBB9D2622B7040047DBEF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3EBB9C2622B7040047DBEF /* Category.swift */; };
 		AE4A488E260BF12500E45D96 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE4A488D260BF12500E45D96 /* libsqlite3.tbd */; };
 		AE5E1637261D66EE00993DDB /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE5E1621261D66DA00993DDB /* SQLite.framework */; };
 		AE5E1638261D66EE00993DDB /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE5E1621261D66DA00993DDB /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -114,6 +116,8 @@
 /* Begin PBXFileReference section */
 		AE0E8EC3261D75E1000BB7E0 /* Mock_DBAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock_DBAccess.swift; sourceTree = "<group>"; };
 		AE2313C9260AC58300A21B17 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		AE3EBB912622B6F50047DBEF /* CategoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListViewController.swift; sourceTree = "<group>"; };
+		AE3EBB9C2622B7040047DBEF /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		AE4A488D260BF12500E45D96 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		AE4A4892260BF1F200E45D96 /* harr2890_project-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "harr2890_project-Bridging-Header.h"; sourceTree = "<group>"; };
 		AE5E1616261D66D900993DDB /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
@@ -214,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				AEE23D2F260A7C0200AABD40 /* Item.swift */,
+				AE3EBB9C2622B7040047DBEF /* Category.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -234,6 +239,7 @@
 				AE65321A261CC02400EC8A4A /* EditItemViewController.swift */,
 				AEE23CFD260A729000AABD40 /* ListViewController.swift */,
 				AE65321E261CC09A00EC8A4A /* ItemViewController.swift */,
+				AE3EBB912622B6F50047DBEF /* CategoryListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -504,6 +510,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEAEF741261E9DBE007BC751 /* ItemHelper.swift in Sources */,
+				AE3EBB922622B6F50047DBEF /* CategoryListViewController.swift in Sources */,
 				AE7F70C62613A24900253CAE /* DBAccess.swift in Sources */,
 				AEE23D30260A7C0200AABD40 /* Item.swift in Sources */,
 				AEE23CFE260A729000AABD40 /* ListViewController.swift in Sources */,
@@ -515,6 +522,7 @@
 				AEE23D04260A729000AABD40 /* harr2890_project.xcdatamodeld in Sources */,
 				AE2313CA260AC58300A21B17 /* AddItemViewController.swift in Sources */,
 				AE65321F261CC09A00EC8A4A /* ItemViewController.swift in Sources */,
+				AE3EBB9D2622B7040047DBEF /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

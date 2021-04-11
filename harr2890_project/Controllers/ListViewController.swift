@@ -47,6 +47,7 @@ class ListViewController: UITableViewController, UITabBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // TODO: Consider removing this...
         // suppress the noise of the UI Constraint messages while developing logic
         UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
         
@@ -285,6 +286,8 @@ class ListViewController: UITableViewController, UITabBarDelegate {
     } // sortDataByDate
     
 
+    // TODO: Move out somewhere??
+    
     func dataFilePath() -> String {
         let urls = FileManager.default.urls(for:
             .documentDirectory, in: .userDomainMask)
