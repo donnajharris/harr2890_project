@@ -53,23 +53,6 @@ class CategoryListViewController: UITableViewController {
             
             myTableView.reloadData()
             
-            
-            // OLD WAY
-                // Add a new item.
-//                let newIndexPath = IndexPath(row: categories.count, section: 0)
-//
-//                categories.append(newCategory)
-//                myTableView.insertRows(at: [newIndexPath], with: .automatic)
-            
-                // add category to the DB
-            
-                //let rowId = database?.insertItem(item: newCategory)
-                //newCategory.setId(value: rowId!)
-            
-                //sortDataByDate()
-            
-            
-           //     myTableView.reloadData()
         } else {
             
             // This fails somewhat gracefully, but silently at the UI level

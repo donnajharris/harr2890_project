@@ -129,9 +129,7 @@ class MockedDatabaseAccess : DatabaseAccess {
     
     func getAllCategories() throws -> [ItemCategory] {
         
-        print("\n\nIt's the MOCKED layer. Working.... getAllCategories()\n\n")
-
-        // This data is designed to be out of order
+        // This data is designed to be in ID order, but NOT in alphabetical order
         var categoriesInIdOrder = [ItemCategory]()
         categoriesInIdOrder.append(ItemCategory(id: Int64(1), name: "Second Category"))
         categoriesInIdOrder.append(ItemCategory(id: Int64(2), name: "Third Category"))
@@ -141,21 +139,16 @@ class MockedDatabaseAccess : DatabaseAccess {
     }
     
     func insertCategory(category: ItemCategory) throws -> Int64 {
-                
-        return Int64(4)  // value that matches with Happy Path test
+        return Int64(4)  // value that matches with Happy Path test, the returned ID of new row
     }
     
     func updateCategory(category: ItemCategory, rowId: Int64) -> Int {
-        return Int(ItemCategory.UNDEFINED)
+        return Int(1)  // value that matches with Happy Path test, 1 updated row
 
     }
     
     func removeCategory(rowId: Int64) throws -> Int {
-        
-        return Int(1)  // value that matches with Happy Path, 1 deleted test
-        
-        //return Int(ItemCategory.UNDEFINED)
-
+        return Int(1)  // value that matches with Happy Path test, 1 deleted row
     }
     
 }
