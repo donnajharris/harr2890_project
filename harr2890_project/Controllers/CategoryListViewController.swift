@@ -9,21 +9,43 @@ import UIKit
 
 class CategoryCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
+   // @IBOutlet weak var editName: UITextField!
 }
 
 class CategoryListViewController: UITableViewController {
 
     private let cellIdentifier = "ReuseIdentifier"
 
-    private var categories = [Category]() // the data source
+    private var categories = [ItemCategory]() // the data source
     
     @IBOutlet weak var myTableView: UITableView!
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+                
+        navigationItem.leftBarButtonItem = editButtonItem
         
-        loadDummyCategories()
+        //loadDummyCategories()
+        
+        let bl = BusinessLayer()
+        
+        // TEST FIRST
+//        let testCat = ItemCategory(name: "In Context")
+//        bl.addNewCategory(category: testCat, data: &categories)
+
+        // REAL
+        bl.loadCategories(data: &categories)
+        
+        print(categories.count)
+        
+        for c in categories {
+            print(c)
+        }
+        
+        //categories.append(ItemCategory(id: 55, name: "55!"))
+                
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -32,13 +54,13 @@ class CategoryListViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        myTableView.reloadData()
-
-    }
+//
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//        myTableView.reloadData()
+//
+//    }
     
 
     // MARK: - Table view data source
@@ -63,6 +85,9 @@ class CategoryListViewController: UITableViewController {
               }
         
             cell?.name?.text = categories[indexPath.row].getName()
+        
+//            cell?.editName?.text = categories[indexPath.row].getName()
+//            cell?.editName?.isUserInteractionEnabled = false
                             
             return cell! // return  the cell to the table view
         
@@ -77,17 +102,34 @@ class CategoryListViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            // first
+            categories.remove(at: indexPath.row)
+            
+            // second - Delete the row from the data source
+            myTableView.deleteRows(at: [indexPath], with: .fade)
+            
+            
+            // third - TODO: remove from database
+            
+            
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+            
+            
+
+            
         }    
     }
-    */
+    
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
 
     /*
     // Override to support rearranging the table view.
@@ -125,7 +167,7 @@ class CategoryListViewController: UITableViewController {
             
             let catName = "Category \(i+1)"
             
-            let cat = Category(name: catName)
+            let cat = ItemCategory(name: catName)
             categories.append(cat)
             
             i += 1

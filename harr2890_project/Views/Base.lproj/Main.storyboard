@@ -125,7 +125,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="dVC-Sn-bfh">
                             <connections>
-                                <segue destination="n60-cZ-BeV" kind="unwind" unwindAction="unwindToItemListWithSender:" id="dXx-JH-TWb"/>
+                                <segue destination="n60-cZ-BeV" kind="unwind" unwindAction="unwindToViewWithSender:" id="GOP-8d-8dw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -415,7 +415,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Uu2-yb-4Q2"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="s5H-F0-3WR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -434,7 +434,7 @@
                     <tabBarItem key="tabBarItem" title="Categories" image="square.and.pencil" catalog="system" id="lte-iw-0DE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kSl-5p-9UK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

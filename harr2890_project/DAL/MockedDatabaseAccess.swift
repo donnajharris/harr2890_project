@@ -8,9 +8,11 @@
 import Foundation
 
 
-class Mock_DBAccess {
+class MockedDatabaseAccess : DatabaseAccess {
     
-    init(path: String) {
+    
+    //required init(path: String) {
+    required init() {
        
         // should fail immediately if it doesn't work
 //        database = try! Connection(path)
@@ -19,6 +21,8 @@ class Mock_DBAccess {
         
     } // init
     
+    
+    // MARK: - Item operations
     
     private func initItemsTable() {
 //        try! database.run(itemsTable.create(ifNotExists: true) { t in
@@ -119,6 +123,37 @@ class Mock_DBAccess {
         return result
         
     } // removeItem
+    
+    
+    // MARK: - Category operations
+    
+    func getAllCategories() throws -> [ItemCategory] {
+        
+        print("\n\nIt's the MOCKED layer. Working.... getAllCategories()\n\n")
+
+        // This data is designed to be out of order
+        var categoriesInIdOrder = [ItemCategory]()
+        categoriesInIdOrder.append(ItemCategory(id: Int64(1), name: "Second Category"))
+        categoriesInIdOrder.append(ItemCategory(id: Int64(2), name: "Third Category"))
+        categoriesInIdOrder.append(ItemCategory(id: Int64(3), name: "First Category"))
+        
+        return categoriesInIdOrder
+    }
+    
+    func insertCategory(category: ItemCategory) throws -> Int64 {
+                
+        return Int64(4)  // value that matches with Happy Path test
+    }
+    
+    func updateCategory(category: ItemCategory, rowId: Int64) -> Int {
+        return Int(ItemCategory.UNDEFINED)
+
+    }
+    
+    func removeCategory(rowId: Int64) -> Int {
+        return Int(ItemCategory.UNDEFINED)
+
+    }
     
 }
 

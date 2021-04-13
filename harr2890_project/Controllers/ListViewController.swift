@@ -40,8 +40,8 @@ class ListViewController: UITableViewController, UITabBarDelegate {
         tableData = items
     }
     
-    //var database:OpaquePointer? = nil
-    private var database : DBAccess? = nil
+    //private var database : DBAccess? = nil
+    private var database : DatabaseAccess? = nil
     
     
     override func viewDidLoad() {
@@ -56,9 +56,11 @@ class ListViewController: UITableViewController, UITabBarDelegate {
             createData()
             
         case WITH_DB:
-            let path = dataFilePath()
-            print("path = \(path)")
-            database = DBAccess(path: path)
+            //let path = dataFilePath()
+            //print("path = \(path)")
+            //database = ImplementedDatabaseAccess(path: path)
+            
+            database = ImplementedDatabaseAccess()
             // then get the data...
         
         //TEST
@@ -164,7 +166,6 @@ class ListViewController: UITableViewController, UITabBarDelegate {
             let itemId = tableData[indexPath.row].getId()
             
             tableData.remove(at: indexPath.row)
-
 
             let result = database?.removeItem(rowId: Int64(itemId!))
             print("remove from DB result = \(result!)")
@@ -286,15 +287,6 @@ class ListViewController: UITableViewController, UITabBarDelegate {
     } // sortDataByDate
     
 
-    // TODO: Move out somewhere??
-    
-    func dataFilePath() -> String {
-        let urls = FileManager.default.urls(for:
-            .documentDirectory, in: .userDomainMask)
-        var url:String?
-        url = urls.first?.appendingPathComponent("itemsDB.plist").path
-        return url!
-        
-    } // dataFilePath
+
 
 }

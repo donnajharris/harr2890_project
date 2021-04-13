@@ -49,55 +49,55 @@ class AddItemVCTests: XCTestCase {
     
     // MARK: - selectedSegmentControl Tests
     
-    func test_setType_ONselected() {
-        
-        let addVC = AddItemViewController()
-        let typeField = UISegmentedControl(items: ["on", "by"])
-        typeField.selectedSegmentIndex = 0
-        
-        let expected : Item.ItemType = Item.ItemType.ON
-        
-        let actual : Item.ItemType
-        
-        actual = addVC.setType(typeField: typeField)
-        
-        
-        XCTAssertEqual(expected, actual)
-
-    }
-    
-    func test_setType_BYselected() {
-        
-        let addVC = AddItemViewController()
-        let typeField = UISegmentedControl(items: ["on", "by"])
-        typeField.selectedSegmentIndex = 1
-        
-        let expected : Item.ItemType = Item.ItemType.BY
-        
-        let actual : Item.ItemType
-        
-        actual = addVC.setType(typeField: typeField)
-        
-        
-        XCTAssertEqual(expected, actual)
-
-    }
-    
-    func test_setType_NoneSelected_defaultsToON() {
-        
-        let addVC = AddItemViewController()
-        let typeField = UISegmentedControl(items: ["on", "by"])
-        //typeField.selectedSegmentIndex = 3
-        
-        let expected : Item.ItemType = Item.ItemType.ON
-        
-        let actual : Item.ItemType
-        
-        actual = addVC.setType(typeField: typeField)
-        
-        
-        XCTAssertEqual(expected, actual)
-
-    }
+//    func test_setType_ONselected() {
+//        
+//        let addVC = AddItemViewController()
+//        let typeField = UISegmentedControl(items: ["on", "by"])
+//        typeField.selectedSegmentIndex = 0
+//        
+//        let expected : Item.ItemType = Item.ItemType.ON
+//        
+//        let actual : Item.ItemType
+//        
+//        actual = addVC.setType(typeField: typeField)
+//        
+//        
+//        XCTAssertEqual(expected, actual)
+//
+//    }
+//    
+//    func test_setType_BYselected() {
+//        
+//        let addVC = AddItemViewController()
+//        let typeField = UISegmentedControl(items: ["on", "by"])
+//        typeField.selectedSegmentIndex = 1
+//        
+//        let expected : Item.ItemType = Item.ItemType.BY
+//        
+//        let actual : Item.ItemType
+//        
+//        actual = addVC.setType(typeField: typeField)
+//        
+//        
+//        XCTAssertEqual(expected, actual)
+//
+//    }
+//    
+//    func test_setType_NoneSelected_defaultsToON() {
+//        
+//        let addVC = AddItemViewController()
+//        let typeField = UISegmentedControl(items: ["on", "by"])
+//        //typeField.selectedSegmentIndex = 3
+//        
+//        let expected : Item.ItemType = Item.ItemType.ON
+//        
+//        let actual : Item.ItemType
+//        
+//        actual = addVC.setType(typeField: typeField)
+//        
+//        
+//        XCTAssertEqual(expected, actual)
+//
+//    }
 
 }
