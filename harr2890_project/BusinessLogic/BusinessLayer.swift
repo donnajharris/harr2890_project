@@ -34,5 +34,16 @@ class BusinessLayer {
     } // addNewCategory
     
     
+    func removeCategory(index: Int, category: ItemCategory, data: inout [ItemCategory]) throws {
+        
+        if category.getId() != nil {
+            try! handler.removeCategoryFromDB(indexToDelete: index, category: category, tableData: &data)
+        } else {
+            throw CategoryHandler.CategoryError.categoryIsNil
+        }
+        
+    } // addNewCategory
+    
+    
     
 }

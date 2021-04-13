@@ -76,5 +76,33 @@ class Category_CRUD_Tests: XCTestCase {
         // assert
         XCTAssertEqual(actualCategories, expectedCategories)
     }
+    
+    
+    func test_removeCategory_returnsUpdatedCategoryList() throws {
+        
+        // arrange
+        var actualCategories = [ItemCategory]()
+        actualCategories.append(ItemCategory(id: Int64(3), name: "First Category"))
+        actualCategories.append(ItemCategory(id: Int64(1), name: "Second Category"))
+        actualCategories.append(ItemCategory(id: Int64(4), name: "Test to REMOVE Category"))
+        actualCategories.append(ItemCategory(id: Int64(2), name: "Third Category"))
+
+        let actualIndex = 2  // third item in the table list (index 2)
+        let categoryToRemove = ItemCategory(id: Int64(4), name: "Test to REMOVE Category")
+
+        var expectedCategories = [ItemCategory]()
+        expectedCategories.append(ItemCategory(id: Int64(3), name: "First Category"))
+        expectedCategories.append(ItemCategory(id: Int64(1), name: "Second Category"))
+        expectedCategories.append(ItemCategory(id: Int64(2), name: "Third Category"))
+        
+        let db = MockedDatabaseAccess()
+        let categoryHandler = CategoryHandler(dal: db)
+
+        // act
+        try categoryHandler.removeCategoryFromDB(indexToDelete: actualIndex, category: categoryToRemove, tableData: &actualCategories)
+
+        // assert
+        XCTAssertEqual(actualCategories, expectedCategories)
+    }
 
 }

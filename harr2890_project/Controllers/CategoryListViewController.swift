@@ -24,35 +24,12 @@ class CategoryListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        navigationItem.leftBarButtonItem = editButtonItem
-        
+                        
         //loadDummyCategories()
         
         let bl = BusinessLayer()
-        
-        // TEST FIRST
-//        let testCat = ItemCategory(name: "In Context")
-//        bl.addNewCategory(category: testCat, data: &categories)
-
-        // REAL
         bl.loadCategories(data: &categories)
-        
-        print(categories.count)
-        
-        for c in categories {
-            print(c)
-        }
-        
-        //categories.append(ItemCategory(id: 55, name: "55!"))
-                
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    
     }
     
 //
@@ -147,10 +124,7 @@ class CategoryListViewController: UITableViewController {
               }
         
             cell?.name?.text = categories[indexPath.row].getName()
-        
-//            cell?.editName?.text = categories[indexPath.row].getName()
-//            cell?.editName?.isUserInteractionEnabled = false
-                            
+                                    
             return cell! // return  the cell to the table view
         
     } // TV - cellForRowAt indexPath
@@ -169,23 +143,17 @@ class CategoryListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            // first
-            categories.remove(at: indexPath.row)
+            let indexToDelete = indexPath.row
+            let categoryToRemove = categories[indexToDelete]
             
-            // second - Delete the row from the data source
+            let bl = BusinessLayer()
+            try! bl.removeCategory(index: indexToDelete, category: categoryToRemove, data: &categories)
+            
             myTableView.deleteRows(at: [indexPath], with: .fade)
-            
-            
-            // third - TODO: remove from database
-            
-            
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-            
+            //myTableView.reloadData()
             
 
-            
-        }    
+        }
     }
     
     

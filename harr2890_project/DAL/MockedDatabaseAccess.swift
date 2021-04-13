@@ -150,8 +150,11 @@ class MockedDatabaseAccess : DatabaseAccess {
 
     }
     
-    func removeCategory(rowId: Int64) -> Int {
-        return Int(ItemCategory.UNDEFINED)
+    func removeCategory(rowId: Int64) throws -> Int {
+        
+        return Int(1)  // value that matches with Happy Path, 1 deleted test
+        
+        //return Int(ItemCategory.UNDEFINED)
 
     }
     

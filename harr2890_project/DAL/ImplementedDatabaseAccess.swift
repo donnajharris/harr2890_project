@@ -163,7 +163,6 @@ class ImplementedDatabaseAccess : DatabaseAccess {
         var categories = [ItemCategory]()
         
         for categoryRow in try! database!.prepare(categoriesTable) {
-            // print(categoryRow)
             
             let category = ItemCategory(id: categoryRow[categoryId],
                                         name: categoryRow[categoryName]
@@ -171,7 +170,7 @@ class ImplementedDatabaseAccess : DatabaseAccess {
             
             categories.append(category)
         }
-        
+    
         return categories
     }
     
@@ -182,12 +181,13 @@ class ImplementedDatabaseAccess : DatabaseAccess {
                 categoryName <- category.getName()
         )
         
-        let categoryId = try! database?.run(insert)
         // INSERT INTO "categories" ("categoryName") VALUES ('Category Name')
-
-        return categoryId!
-        
-        //return Int64(ItemCategory.UNDEFINED)
+        if let categoryId = try! database?.run(insert) {
+            return categoryId
+        }
+        else {
+            throw CategoryHandler.CategoryError.accessError
+        }
     }
     
     
@@ -196,8 +196,14 @@ class ImplementedDatabaseAccess : DatabaseAccess {
 
     }
     
-    func removeCategory(rowId: Int64) -> Int {
-        return Int(ItemCategory.UNDEFINED)
+    func removeCategory(rowId: Int64) throws -> Int {
+        
+        let filteredTable : Table = categoriesTable.filter(categoryId == rowId)
+        if let numberOfDeletedRows = try! database?.run(filteredTable.delete()) {
+            return numberOfDeletedRows
+        } else {
+            throw CategoryHandler.CategoryError.accessError
+        }
 
     }
     

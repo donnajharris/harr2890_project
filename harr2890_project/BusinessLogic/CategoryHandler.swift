@@ -13,6 +13,8 @@ class CategoryHandler {
     
     enum CategoryError : Error {
         case duplicateCategoryName
+        case categoryNotFound
+        case categoryIsNil
         case accessError
     }
     
@@ -58,6 +60,28 @@ class CategoryHandler {
         }
         
     } // addCatgoryToDB
+    
+    
+    func removeCategoryFromDB(indexToDelete: Int, category: ItemCategory, tableData: inout [ItemCategory]) throws {
+        
+        var numberOfDeletedRows : Int
+        
+        do {
+            try numberOfDeletedRows = databaseAccess.removeCategory(rowId: category.getId()!)
+            
+            if numberOfDeletedRows == 1 {
+                                
+                tableData.remove(at: indexToDelete)
+                //sortDataByName(data: &tableData)  // sorting should not be needed.... it should already be in order?
+            }
+            
+        } catch CategoryError.categoryNotFound {
+        
+        } catch CategoryError.accessError {
+            
+        }
+    } // removeCategoryFromDB
+
     
     
     // MARK: - Helper functions
