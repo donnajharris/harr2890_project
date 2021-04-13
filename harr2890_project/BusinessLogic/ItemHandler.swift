@@ -13,6 +13,7 @@ class ItemHandler {
         
     }
     
+
     func itemIsValid(item: Item) -> Bool {
         
         if item.getTitle() == "" {
@@ -21,6 +22,5 @@ class ItemHandler {
         
         return true
     }
-    
     
 }

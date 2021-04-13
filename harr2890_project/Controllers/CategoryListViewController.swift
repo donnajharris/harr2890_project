@@ -15,6 +15,7 @@ class CategoryCell: UITableViewCell {
 class CategoryListViewController: UITableViewController {
 
     private let cellIdentifier = "ReuseIdentifier"
+    private let addSegueId = "categoryAdd"
 
     private var categories = [ItemCategory]() // the data source
     
@@ -62,7 +63,68 @@ class CategoryListViewController: UITableViewController {
 //
 //    }
     
+    
+    // unwind from adding
+    @IBAction func unwindToCategoryList(sender: UIStoryboardSegue) {
+        
+        if let sourceVC = sender.source as? CategoryViewController,
+           let newCategory = sourceVC.getNewCategory() {
 
+            let bl = BusinessLayer()
+            
+            bl.addNewCategory(category: newCategory, data: &categories)
+            
+            myTableView.reloadData()
+            
+            
+            // OLD WAY
+                // Add a new item.
+//                let newIndexPath = IndexPath(row: categories.count, section: 0)
+//
+//                categories.append(newCategory)
+//                myTableView.insertRows(at: [newIndexPath], with: .automatic)
+            
+                // add category to the DB
+            
+                //let rowId = database?.insertItem(item: newCategory)
+                //newCategory.setId(value: rowId!)
+            
+                //sortDataByDate()
+            
+            
+           //     myTableView.reloadData()
+        } else {
+            
+            // This fails somewhat gracefully, but silently at the UI level
+            print("Error adding the category")
+        }
+        
+    } // unwindToCategoryList
+    
+    
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        super.prepare(for: segue, sender: sender)
+        
+        if segue.identifier == addSegueId {
+            return
+        }
+        
+        let category = sender as! ItemCategory
+        print(category)
+
+        // Reference: https://stackoverflow.com/questions/30209626/could-not-cast-value-of-type-uinavigationcontroller
+        
+        if segue.identifier == addSegueId {
+            let nav = segue.destination as! UINavigationController
+            let vc = nav.topViewController as! CategoryViewController
+            vc.initWithCategory(category: sender as! ItemCategory)
+        }
+        
+    } // prepare - for segue
+    
+    
     // MARK: - Table view data source
 
 //    override func numberOfSections(in tableView: UITableView) -> Int {

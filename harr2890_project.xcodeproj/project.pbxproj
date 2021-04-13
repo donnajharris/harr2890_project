@@ -11,6 +11,8 @@
 		AE0315F6262512E100442EDE /* DatabaseAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0315F5262512E100442EDE /* DatabaseAccess.swift */; };
 		AE03160526251B5700442EDE /* Category_CRUD_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE03160426251B5700442EDE /* Category_CRUD_Tests.swift */; };
 		AE03161626252FAA00442EDE /* BusinessLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE03161526252FAA00442EDE /* BusinessLayer.swift */; };
+		AE0316212625429900442EDE /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0316202625429900442EDE /* CategoryViewController.swift */; };
+		AE0316252625468A00442EDE /* CategoryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0316242625468A00442EDE /* CategoryHelper.swift */; };
 		AE0E8EC4261D75E1000BB7E0 /* MockedDatabaseAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0E8EC3261D75E1000BB7E0 /* MockedDatabaseAccess.swift */; };
 		AE2313CA260AC58300A21B17 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2313C9260AC58300A21B17 /* AddItemViewController.swift */; };
 		AE3EBB922622B6F50047DBEF /* CategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3EBB912622B6F50047DBEF /* CategoryListViewController.swift */; };
@@ -122,6 +124,8 @@
 		AE0315F5262512E100442EDE /* DatabaseAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseAccess.swift; sourceTree = "<group>"; };
 		AE03160426251B5700442EDE /* Category_CRUD_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category_CRUD_Tests.swift; sourceTree = "<group>"; };
 		AE03161526252FAA00442EDE /* BusinessLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessLayer.swift; sourceTree = "<group>"; };
+		AE0316202625429900442EDE /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		AE0316242625468A00442EDE /* CategoryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHelper.swift; sourceTree = "<group>"; };
 		AE0E8EC3261D75E1000BB7E0 /* MockedDatabaseAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedDatabaseAccess.swift; sourceTree = "<group>"; };
 		AE2313C9260AC58300A21B17 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		AE3EBB912622B6F50047DBEF /* CategoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +215,7 @@
 				AEAEF74D261E9ECD007BC751 /* ItemHandler.swift */,
 				AE0315EA262511CD00442EDE /* CategoryHandler.swift */,
 				AE03161526252FAA00442EDE /* BusinessLayer.swift */,
+				AE0316242625468A00442EDE /* CategoryHelper.swift */,
 			);
 			path = BusinessLogic;
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 				AEE23CFD260A729000AABD40 /* ListViewController.swift */,
 				AE65321E261CC09A00EC8A4A /* ItemViewController.swift */,
 				AE3EBB912622B6F50047DBEF /* CategoryListViewController.swift */,
+				AE0316202625429900442EDE /* CategoryViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -530,6 +536,7 @@
 				AE03161626252FAA00442EDE /* BusinessLayer.swift in Sources */,
 				AE0315F6262512E100442EDE /* DatabaseAccess.swift in Sources */,
 				AE0E8EC4261D75E1000BB7E0 /* MockedDatabaseAccess.swift in Sources */,
+				AE0316252625468A00442EDE /* CategoryHelper.swift in Sources */,
 				AEAEF74E261E9ECD007BC751 /* ItemHandler.swift in Sources */,
 				AE65321B261CC02400EC8A4A /* EditItemViewController.swift in Sources */,
 				AEE23CFA260A729000AABD40 /* AppDelegate.swift in Sources */,
@@ -537,6 +544,7 @@
 				AEE23D04260A729000AABD40 /* harr2890_project.xcdatamodeld in Sources */,
 				AE2313CA260AC58300A21B17 /* AddItemViewController.swift in Sources */,
 				AE65321F261CC09A00EC8A4A /* ItemViewController.swift in Sources */,
+				AE0316212625429900442EDE /* CategoryViewController.swift in Sources */,
 				AE3EBB9D2622B7040047DBEF /* ItemCategory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
