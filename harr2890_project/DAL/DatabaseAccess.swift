@@ -22,7 +22,7 @@ protocol DatabaseAccess {
     
     // MARK: - Category operations
     func insertCategory(category: ItemCategory) throws -> Int64
-    func updateCategory(category: ItemCategory, rowId: Int64) -> Int
+    func updateCategory(category: ItemCategory, rowId: Int64) throws -> Int
     func removeCategory(rowId: Int64) throws -> Int
     func getAllCategories() throws -> [ItemCategory]
 

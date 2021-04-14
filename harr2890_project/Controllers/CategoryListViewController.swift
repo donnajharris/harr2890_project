@@ -16,6 +16,7 @@ class CategoryListViewController: UITableViewController {
 
     private let cellIdentifier = "ReuseIdentifier"
     private let addSegueId = "categoryAdd"
+    private let editSegueId = "categoryEdit"
 
     private var categories = [ItemCategory]() // the data source
     
@@ -41,16 +42,27 @@ class CategoryListViewController: UITableViewController {
 //    }
     
     
-    // unwind from adding
+    // unwind from adding or editing
     @IBAction func unwindToCategoryList(sender: UIStoryboardSegue) {
         
         if let sourceVC = sender.source as? CategoryViewController,
-           let newCategory = sourceVC.getNewCategory() {
+           let returnedCategory = sourceVC.getNewCategory() {
 
             let bl = BusinessLayer()
+            let mode = sourceVC.getMode()
             
-            bl.addNewCategory(category: newCategory, data: &categories)
-            
+            if mode == .add {
+                bl.addNewCategory(category: returnedCategory, data: &categories)
+            } else if mode == .edit {
+                
+                print("IT'S time to UPDATE!!!")
+                print(returnedCategory)
+                
+                // TODO: check that it has changed
+                
+                // then...
+                try! bl.updateCategory(category: returnedCategory, data: &categories)
+            }
             myTableView.reloadData()
             
         } else {
@@ -80,6 +92,10 @@ class CategoryListViewController: UITableViewController {
             let nav = segue.destination as! UINavigationController
             let vc = nav.topViewController as! CategoryViewController
             vc.initWithCategory(category: sender as! ItemCategory)
+        } else if segue.identifier == editSegueId {
+            let nav = segue.destination as! UINavigationController
+            let vc = nav.topViewController as! CategoryViewController
+            vc.updateWithCategory(category: sender as! ItemCategory)
         }
         
     } // prepare - for segue
@@ -111,6 +127,21 @@ class CategoryListViewController: UITableViewController {
             return cell! // return  the cell to the table view
         
     } // TV - cellForRowAt indexPath
+    
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        print("\n\nYou selected row \(indexPath) -- good job!\n\n")
+        
+         tableView.deselectRow(at: indexPath, animated: true)
+         performSegue(withIdentifier: editSegueId,
+                      sender: categories[indexPath.row])
+        
+        print(categories[indexPath.row])
+
+    }  // TV - didSelectRowAt
+    
     
 
     /*

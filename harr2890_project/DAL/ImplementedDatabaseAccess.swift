@@ -191,10 +191,19 @@ class ImplementedDatabaseAccess : DatabaseAccess {
     }
     
     
-    func updateCategory(category: ItemCategory, rowId: Int64) -> Int {
-        return Int(ItemCategory.UNDEFINED)
+    func updateCategory(category: ItemCategory, rowId: Int64) throws -> Int {
+        
+        let filteredTable : Table = categoriesTable.filter(categoryId == rowId)
 
+        let update = filteredTable.update(
+            categoryName <- category.getName()
+        )
+        
+        let numberOfUpdatedRows = try! database?.run(update)
+        
+        return numberOfUpdatedRows!
     }
+    
     
     func removeCategory(rowId: Int64) throws -> Int {
         

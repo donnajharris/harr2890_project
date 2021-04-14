@@ -10,24 +10,45 @@ import OSLog
 
 class CategoryViewController: UIViewController {
 
+    enum Mode {
+        case add
+        case edit
+    }
+    
     @IBOutlet weak var categoryName: UITextField!
     @IBOutlet weak var saveButton: UIButton!
     
     private var category : ItemCategory?
+    private var mode : Mode = .add // default
 
     func getNewCategory() -> ItemCategory? {
         return category
     }
     
+    func getMode() -> Mode {
+        return mode
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if mode == .edit {
+            self.categoryName.text = category?.getName()
+        }
+        
         // Do any additional setup after loading the view.
     }
     
     
     func initWithCategory(category: ItemCategory) {
         self.category = category
+        self.mode = .add
+    }
+    
+    
+    func updateWithCategory(category: ItemCategory) {
+        self.category = category
+        self.mode = .edit
     }
 
     
@@ -35,6 +56,7 @@ class CategoryViewController: UIViewController {
     @IBAction func cancelPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
     
     // For the Save Button
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -50,7 +72,11 @@ class CategoryViewController: UIViewController {
         // Prepare the returned Item to be added to the list
         let name = categoryName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        category = ItemCategory(name: name)
+        if mode == .add {
+            category = ItemCategory(name: name)
+        } else if mode == .edit {
+            category?.setName(name: categoryName.text!)
+        }
         
         
         

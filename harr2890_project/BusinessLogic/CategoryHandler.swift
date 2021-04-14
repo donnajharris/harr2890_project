@@ -62,6 +62,7 @@ class CategoryHandler {
     } // addCatgoryToDB
     
     
+    // for a SINGLE removal
     func removeCategoryFromDB(indexToDelete: Int, category: ItemCategory, tableData: inout [ItemCategory]) throws {
         
         var numberOfDeletedRows : Int
@@ -73,6 +74,30 @@ class CategoryHandler {
                                 
                 tableData.remove(at: indexToDelete)
                 //sortDataByName(data: &tableData)  // sorting should not be needed.... it should already be in order?
+            }
+            
+        } catch CategoryError.categoryNotFound {
+        
+        } catch CategoryError.accessError {
+            
+        }
+    } // removeCategoryFromDB
+    
+    
+    // for a SINGLE update
+    func updateCategoryInDB(category: ItemCategory, tableData: inout [ItemCategory]) throws {
+        
+        var numberOfUpdatedRows : Int
+        
+        do {
+            
+            try numberOfUpdatedRows = databaseAccess.updateCategory(category: category, rowId: category.getId()!)
+            
+            if numberOfUpdatedRows == 1 {
+                if let index = tableData.firstIndex(where: { $0.getId() == category.getId() }) {
+                    tableData[index] = category
+                    sortDataByName(data: &tableData)
+                }
             }
             
         } catch CategoryError.categoryNotFound {

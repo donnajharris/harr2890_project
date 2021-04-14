@@ -42,7 +42,14 @@ class BusinessLayer {
             throw CategoryHandler.CategoryError.categoryIsNil
         }
         
-    } // addNewCategory
+    } // removeCategory
+    
+    
+    func updateCategory(category: ItemCategory, data: inout [ItemCategory]) throws {
+        
+        try! handler.updateCategoryInDB(category: category, tableData: &data)
+        
+    } // updateCategory
     
     
     

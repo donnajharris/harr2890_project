@@ -142,9 +142,8 @@ class MockedDatabaseAccess : DatabaseAccess {
         return Int64(4)  // value that matches with Happy Path test, the returned ID of new row
     }
     
-    func updateCategory(category: ItemCategory, rowId: Int64) -> Int {
+    func updateCategory(category: ItemCategory, rowId: Int64) throws -> Int {
         return Int(1)  // value that matches with Happy Path test, 1 updated row
-
     }
     
     func removeCategory(rowId: Int64) throws -> Int {

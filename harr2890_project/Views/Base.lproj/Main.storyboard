@@ -291,6 +291,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="myTableView" destination="13b-oE-8zG" id="ZzN-Kf-iEw"/>
+                        <segue destination="LYp-Yj-Nmf" kind="presentation" identifier="categoryEdit" id="3AV-hm-LET"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XZQ-vV-M6e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -529,6 +530,9 @@
             <point key="canvasLocation" x="1734.375" y="1410"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="3AV-hm-LET"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>

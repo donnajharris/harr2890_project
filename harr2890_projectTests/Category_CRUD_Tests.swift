@@ -26,7 +26,7 @@ class Category_CRUD_Tests: XCTestCase {
 //    }
     
     
-    func test_getAllCategories_returnsAllCategories() throws {
+    func test_getCategoriesFromDB_returnsAllCategories() throws {
         
         // arrange
         var actualCategories = [ItemCategory]()  // start empty
@@ -47,7 +47,7 @@ class Category_CRUD_Tests: XCTestCase {
     }
     
 
-    func test_insertCategory_returnsUpdatedCategoryList() throws {
+    func test_addCategoryToDB_returnsUpdatedCategoryList() throws {
         // arrange
         var actualCategories = [ItemCategory]()
         actualCategories.append(ItemCategory(id: Int64(3), name: "First Category"))
@@ -74,7 +74,7 @@ class Category_CRUD_Tests: XCTestCase {
     }
     
     
-    func test_removeCategory_returnsUpdatedCategoryList() throws {
+    func test_removeCategoryFromDB_returnsUpdatedCategoryList() throws {
         
         // arrange
         var actualCategories = [ItemCategory]()
@@ -99,6 +99,35 @@ class Category_CRUD_Tests: XCTestCase {
 
         // assert
         XCTAssertEqual(actualCategories, expectedCategories)
+    }
+    
+    
+    func test_updateCategoryInDB_returnsUpdatedCategoryInList() throws {
+
+        // arrange
+        var actualCategories = [ItemCategory]()
+        actualCategories.append(ItemCategory(id: Int64(3), name: "First Category"))
+        actualCategories.append(ItemCategory(id: Int64(1), name: "Second Category"))
+        actualCategories.append(ItemCategory(id: Int64(4), name: "Test to EDIT Category"))
+        actualCategories.append(ItemCategory(id: Int64(2), name: "Third Category"))
+
+        let updateCategoryWith = ItemCategory(id: Int64(4), name: "Edited Name")
+
+        var expectedCategories = [ItemCategory]()
+        expectedCategories.append(ItemCategory(id: Int64(4), name: "Edited Name"))
+        expectedCategories.append(ItemCategory(id: Int64(3), name: "First Category"))
+        expectedCategories.append(ItemCategory(id: Int64(1), name: "Second Category"))
+        expectedCategories.append(ItemCategory(id: Int64(2), name: "Third Category"))
+        
+        let db = MockedDatabaseAccess()
+        let categoryHandler = CategoryHandler(dal: db)
+
+        // act
+        try categoryHandler.updateCategoryInDB(category: updateCategoryWith, tableData: &actualCategories)
+
+        // assert
+        XCTAssertEqual(actualCategories, expectedCategories)
+        
     }
 
 }
