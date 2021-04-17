@@ -9,7 +9,6 @@ import UIKit
 
 class CategoryCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
-   // @IBOutlet weak var editName: UITextField!
 }
 
 class CategoryListViewController: UITableViewController {
@@ -17,19 +16,14 @@ class CategoryListViewController: UITableViewController {
     private let cellIdentifier = "ReuseIdentifier"
     private let addSegueId = "categoryAdd"
     private let editSegueId = "categoryEdit"
-
     private var categories = [ItemCategory]() // the data source
-    private var snapshotOfCategories = [ItemCategory]() // a copy for post-operation evaluation
-
     
     @IBOutlet weak var myTableView: UITableView!
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                        
-        //loadDummyCategories()
-        
+
         let bl = CategoryBL()
         bl.loadCategories(data: &categories)
     

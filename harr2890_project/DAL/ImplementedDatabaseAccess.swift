@@ -36,8 +36,6 @@ class ImplementedDatabaseAccess : DatabaseAccess {
     let categoryName = Expression<String>("name")
     
     
-    
-    //required init(path: String) {
     required init() {
         
         // should fail immediately if it doesn't work
@@ -66,12 +64,6 @@ class ImplementedDatabaseAccess : DatabaseAccess {
             t.column(itemType)
             t.column(itemDate)
         })
-        // CREATE TABLE "items" (
-        //     "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        //     "title" TEXT,
-        //     "type" TEXT,
-        //     "date" DATE
-        // )
 
     } // createItemsTable
     
@@ -81,10 +73,6 @@ class ImplementedDatabaseAccess : DatabaseAccess {
             t.column(categoryId, primaryKey: .autoincrement)
             t.column(categoryName)
         })
-        // CREATE TABLE "categories" (
-        //     "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        //     "name" TEXT
-        // )
 
     } // createItemsTable
     
@@ -103,8 +91,6 @@ class ImplementedDatabaseAccess : DatabaseAccess {
         )
         
         let itemId = try! database?.run(insert)
-        // INSERT INTO "items" ("title", "type", "date") VALUES ('MyTitle', 'BY', DateObject)
-
         return itemId!
         
     } // insertItem
@@ -166,7 +152,6 @@ class ImplementedDatabaseAccess : DatabaseAccess {
     
     func getAllCategories() throws -> [ItemCategory] {
         
-        print("\n\nIt's the REAL deal. Working.... getAllCategories()\n\n")
         var categories = [ItemCategory]()
         
         for categoryRow in try! database!.prepare(categoriesTable) {
@@ -188,7 +173,6 @@ class ImplementedDatabaseAccess : DatabaseAccess {
                 categoryName <- category.getName()
         )
         
-        // INSERT INTO "categories" ("categoryName") VALUES ('Category Name')
         if let categoryId = try! database?.run(insert) {
             return categoryId
         }

@@ -12,10 +12,7 @@ class CategoryBL {
     let db : DatabaseAccess
     let handler : CategoryHandler
     
-    init() {
-        //let db = ImplementedDatabaseAccess()
-        //let handler = CategoryHandler(dal: db)
-        
+    init() {        
         db = ImplementedDatabaseAccess()
         handler = CategoryHandler(dal: db)
     }
