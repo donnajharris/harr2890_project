@@ -18,6 +18,7 @@
 		AE3EBB922622B6F50047DBEF /* CategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3EBB912622B6F50047DBEF /* CategoryListViewController.swift */; };
 		AE3EBB9D2622B7040047DBEF /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3EBB9C2622B7040047DBEF /* ItemCategory.swift */; };
 		AE4A488E260BF12500E45D96 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE4A488D260BF12500E45D96 /* libsqlite3.tbd */; };
+		AE54DB0B2626A4B10057DE58 /* CategoryHelper_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE54DB0A2626A4B10057DE58 /* CategoryHelper_Tests.swift */; };
 		AE5E1637261D66EE00993DDB /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE5E1621261D66DA00993DDB /* SQLite.framework */; };
 		AE5E1638261D66EE00993DDB /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE5E1621261D66DA00993DDB /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AE65321B261CC02400EC8A4A /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE65321A261CC02400EC8A4A /* EditItemViewController.swift */; };
@@ -132,6 +133,7 @@
 		AE3EBB9C2622B7040047DBEF /* ItemCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategory.swift; sourceTree = "<group>"; };
 		AE4A488D260BF12500E45D96 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		AE4A4892260BF1F200E45D96 /* harr2890_project-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "harr2890_project-Bridging-Header.h"; sourceTree = "<group>"; };
+		AE54DB0A2626A4B10057DE58 /* CategoryHelper_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHelper_Tests.swift; sourceTree = "<group>"; };
 		AE5E1616261D66D900993DDB /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		AE65321A261CC02400EC8A4A /* EditItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
 		AE65321E261CC09A00EC8A4A /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				AE6E54BF260B0B5E004CE1EB /* AddItemVCTests.swift */,
 				AE99B280261D72E1004B846E /* CRUD_Tests.swift */,
 				AE03160426251B5700442EDE /* Category_CRUD_Tests.swift */,
+				AE54DB0A2626A4B10057DE58 /* CategoryHelper_Tests.swift */,
 			);
 			path = harr2890_projectTests;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE54DB0B2626A4B10057DE58 /* CategoryHelper_Tests.swift in Sources */,
 				AE99B281261D72E1004B846E /* CRUD_Tests.swift in Sources */,
 				AE03160526251B5700442EDE /* Category_CRUD_Tests.swift in Sources */,
 				AEE23D14260A729100AABD40 /* harr2890_projectTests.swift in Sources */,

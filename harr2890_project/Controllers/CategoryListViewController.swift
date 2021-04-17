@@ -19,6 +19,8 @@ class CategoryListViewController: UITableViewController {
     private let editSegueId = "categoryEdit"
 
     private var categories = [ItemCategory]() // the data source
+    private var snapshotOfCategories = [ItemCategory]() // a copy for post-operation evaluation
+
     
     @IBOutlet weak var myTableView: UITableView!
 
@@ -51,16 +53,17 @@ class CategoryListViewController: UITableViewController {
             let bl = BusinessLayer()
             let mode = sourceVC.getMode()
             
+            let helper = CategoryHelper()
+            
+            if helper.categoryAlreadyExists(category: returnedCategory, categories: categories) {
+                // ignore... TODO: throw something?
+                return
+            }
+            
+            
             if mode == .add {
                 bl.addNewCategory(category: returnedCategory, data: &categories)
             } else if mode == .edit {
-                
-                print("IT'S time to UPDATE!!!")
-                print(returnedCategory)
-                
-                // TODO: check that it has changed
-                
-                // then...
                 try! bl.updateCategory(category: returnedCategory, data: &categories)
             }
             myTableView.reloadData()

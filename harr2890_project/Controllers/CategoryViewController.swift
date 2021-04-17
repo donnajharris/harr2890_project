@@ -20,6 +20,8 @@ class CategoryViewController: UIViewController {
     
     private var category : ItemCategory?
     private var mode : Mode = .add // default
+    private var originalCategoryName : String?
+    
 
     func getNewCategory() -> ItemCategory? {
         return category
@@ -34,6 +36,7 @@ class CategoryViewController: UIViewController {
 
         if mode == .edit {
             self.categoryName.text = category?.getName()
+            self.originalCategoryName = category?.getName()
         }
         
         // Do any additional setup after loading the view.
@@ -72,16 +75,24 @@ class CategoryViewController: UIViewController {
         // Prepare the returned Item to be added to the list
         let name = categoryName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        if mode == .add {
-            category = ItemCategory(name: name)
-        } else if mode == .edit {
-            category?.setName(name: categoryName.text!)
+        let helper = CategoryHelper()
+        
+        //if helper.categoryNameIsValid(category: category!) == false {
+        if helper.categoryNameIsValid(categoryName: name) == false {
+            category = nil
+            return // TODO? Throw something instead, give error? prevent submission?
         }
         
-        
-        
-        if CategoryHelper.categoryIsValid(category: category!) == false {
-            category = nil
+        if mode == .add {
+            category = ItemCategory(name: name)
+            
+        } else if mode == .edit && category != nil && originalCategoryName != nil {
+                        
+            if helper.categoryHasBeenChanged(category: category!, newName: categoryName.text!) {
+                                
+                category?.setName(name: categoryName.text!)
+            }
+            
         }
 
     } // prepare
