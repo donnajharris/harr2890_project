@@ -121,7 +121,7 @@ class CategoryListViewController: UITableViewController {
         
             cell?.name?.text = categories[indexPath.row].getName()
                                     
-            return cell! // return  the cell to the table view
+            return cell! // return the cell to the table view
         
     } // TV - cellForRowAt indexPath
     

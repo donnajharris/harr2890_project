@@ -123,11 +123,6 @@
                                 <segue destination="n60-cZ-BeV" kind="unwind" unwindAction="unwindToHomeWithUnwindSegue:" id="pua-iP-V9X"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="dVC-Sn-bfh">
-                            <connections>
-                                <segue destination="n60-cZ-BeV" kind="unwind" unwindAction="unwindToViewWithSender:" id="GOP-8d-8dw"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="dateField" destination="zcf-Th-LMA" id="IDa-mx-7B0"/>
@@ -155,42 +150,72 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZm-B9-7ZE">
-                                <rect key="frame" x="126" y="427" width="68" height="30"/>
+                                <rect key="frame" x="126" y="292" width="68" height="30"/>
                                 <state key="normal" title="Save Item"/>
                                 <connections>
                                     <segue destination="khH-7L-vS2" kind="unwind" unwindAction="unwindToItemListWithSender:" id="nap-Y6-YZA"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter what you want to recall" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H49-f7-LsF">
-                                <rect key="frame" x="16" y="76" width="288" height="34"/>
+                                <rect key="frame" x="16" y="76" width="288" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="C9A-XV-kcR">
-                                <rect key="frame" x="125.5" y="125" width="69" height="32"/>
+                                <rect key="frame" x="86" y="124.5" width="69" height="34"/>
                                 <segments>
                                     <segment title="on"/>
                                     <segment title="by"/>
                                 </segments>
                             </segmentedControl>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="qqY-bP-zAl">
-                                <rect key="frame" x="0.0" y="171" width="320" height="216"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="qqY-bP-zAl">
+                                <rect key="frame" x="163" y="117" width="141" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="TZb-z5-pzT"/>
+                                    <constraint firstAttribute="width" constant="141" id="a1z-vF-VLM"/>
+                                </constraints>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erP-Kv-Nq5">
+                                <rect key="frame" x="23" y="192" width="132" height="29"/>
+                                <state key="normal" title="Select Category"/>
+                                <connections>
+                                    <segue destination="uFf-ku-CY0" kind="presentation" id="eh5-K6-pay"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PsJ-GY-CBL">
+                                <rect key="frame" x="163" y="196" width="127" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="VTn-yM-L6B"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mWs-Lo-Tva"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="qqY-bP-zAl" firstAttribute="centerX" secondItem="mWs-Lo-Tva" secondAttribute="centerX" id="4Ap-f8-fVD"/>
+                            <constraint firstItem="LZm-B9-7ZE" firstAttribute="top" secondItem="erP-Kv-Nq5" secondAttribute="bottom" constant="71" id="193-BE-PfD"/>
+                            <constraint firstItem="PsJ-GY-CBL" firstAttribute="leading" secondItem="erP-Kv-Nq5" secondAttribute="trailing" constant="8" symbolic="YES" id="35g-N5-RMn"/>
                             <constraint firstItem="H49-f7-LsF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mWs-Lo-Tva" secondAttribute="leading" id="5za-LS-jMU"/>
+                            <constraint firstItem="C9A-XV-kcR" firstAttribute="leading" secondItem="mWs-Lo-Tva" secondAttribute="leading" constant="86" id="87L-Zu-VYq"/>
+                            <constraint firstItem="PsJ-GY-CBL" firstAttribute="leading" secondItem="qqY-bP-zAl" secondAttribute="leading" id="ETF-vl-9ol"/>
                             <constraint firstItem="H49-f7-LsF" firstAttribute="centerX" secondItem="mWs-Lo-Tva" secondAttribute="centerX" id="GM3-ch-e1V"/>
-                            <constraint firstItem="LZm-B9-7ZE" firstAttribute="centerX" secondItem="mWs-Lo-Tva" secondAttribute="centerX" id="OuC-Zn-W86"/>
-                            <constraint firstItem="LZm-B9-7ZE" firstAttribute="top" secondItem="qqY-bP-zAl" secondAttribute="bottom" constant="40" id="TjN-L9-aHe"/>
+                            <constraint firstItem="qqY-bP-zAl" firstAttribute="trailing" secondItem="H49-f7-LsF" secondAttribute="trailing" id="J9w-nR-JKZ"/>
+                            <constraint firstItem="erP-Kv-Nq5" firstAttribute="top" secondItem="C9A-XV-kcR" secondAttribute="bottom" constant="34.5" id="O0h-4U-iy7"/>
+                            <constraint firstItem="PsJ-GY-CBL" firstAttribute="top" secondItem="qqY-bP-zAl" secondAttribute="bottom" constant="31" id="QbW-9q-kZT"/>
+                            <constraint firstItem="LZm-B9-7ZE" firstAttribute="centerX" secondItem="H49-f7-LsF" secondAttribute="centerX" id="QeI-MM-4xL"/>
+                            <constraint firstItem="qqY-bP-zAl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="C9A-XV-kcR" secondAttribute="trailing" symbolic="YES" id="cIc-RG-aZn"/>
+                            <constraint firstItem="mWs-Lo-Tva" firstAttribute="trailing" secondItem="PsJ-GY-CBL" secondAttribute="trailing" constant="30" id="cr2-ak-iqX"/>
+                            <constraint firstItem="erP-Kv-Nq5" firstAttribute="top" secondItem="sS6-9K-FBi" secondAttribute="top" constant="192" id="d2A-DV-bRd"/>
                             <constraint firstItem="H49-f7-LsF" firstAttribute="top" secondItem="mWs-Lo-Tva" secondAttribute="top" constant="20" id="fbJ-5X-VMI"/>
-                            <constraint firstItem="C9A-XV-kcR" firstAttribute="centerX" secondItem="mWs-Lo-Tva" secondAttribute="centerX" id="iLh-Ql-aH0"/>
-                            <constraint firstItem="C9A-XV-kcR" firstAttribute="top" secondItem="H49-f7-LsF" secondAttribute="bottom" constant="15" id="ntX-ZI-JUX"/>
-                            <constraint firstItem="qqY-bP-zAl" firstAttribute="top" secondItem="C9A-XV-kcR" secondAttribute="bottom" constant="15" id="ogP-qB-bYI"/>
+                            <constraint firstItem="qqY-bP-zAl" firstAttribute="centerY" secondItem="C9A-XV-kcR" secondAttribute="centerY" id="fnQ-8O-Gb7"/>
+                            <constraint firstItem="erP-Kv-Nq5" firstAttribute="centerY" secondItem="PsJ-GY-CBL" secondAttribute="centerY" id="n18-hZ-rvd"/>
                             <constraint firstItem="mWs-Lo-Tva" firstAttribute="trailing" secondItem="H49-f7-LsF" secondAttribute="trailing" constant="16" id="wqI-xz-b9J"/>
+                            <constraint firstItem="LZm-B9-7ZE" firstAttribute="top" secondItem="PsJ-GY-CBL" secondAttribute="bottom" constant="75" id="xqS-YO-7Rz"/>
+                            <constraint firstItem="qqY-bP-zAl" firstAttribute="top" secondItem="H49-f7-LsF" secondAttribute="bottom" constant="8" symbolic="YES" id="yAB-pu-tWy"/>
+                            <constraint firstItem="erP-Kv-Nq5" firstAttribute="leading" secondItem="mWs-Lo-Tva" secondAttribute="leading" constant="23" id="ySZ-ua-3ub"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="QE4-RV-prk" appends="YES" id="tsJ-T3-bTm"/>
@@ -202,16 +227,13 @@
                                 <action selector="cancelPressed:" destination="dEB-0M-fge" id="GGR-7q-Uwc"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="oaZ-aq-Yuo">
-                            <connections>
-                                <segue destination="khH-7L-vS2" kind="unwind" unwindAction="unwindToItemListWithSender:" id="Ess-Bd-rJn"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="categoryLabel" destination="PsJ-GY-CBL" id="VKD-XG-A82"/>
                         <outlet property="dateField" destination="qqY-bP-zAl" id="LCS-Qy-425"/>
                         <outlet property="nameField" destination="H49-f7-LsF" id="mvb-qg-QyG"/>
                         <outlet property="saveButton" destination="LZm-B9-7ZE" id="nOB-HX-4Z7"/>
+                        <outlet property="selectCategoryButton" destination="erP-Kv-Nq5" id="5t6-z5-FrR"/>
                         <outlet property="typeField" destination="C9A-XV-kcR" id="GQB-Gp-adS"/>
                     </connections>
                 </viewController>
@@ -223,7 +245,56 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4095" y="-246"/>
+            <point key="canvasLocation" x="4095" y="-246.25"/>
+        </scene>
+        <!--Select Category-->
+        <scene sceneID="RQv-hM-O09">
+            <objects>
+                <tableViewController id="RO8-9e-va3" customClass="SimpleCategoryListViewController" customModule="harr2890_project" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ery-B3-jno">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReuseIdentifier" id="Ll3-az-xkW" customClass="SimpleCategoryCell" customModule="harr2890_project" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ll3-az-xkW" id="HyK-Qw-1E4">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtW-Nd-dfp">
+                                            <rect key="frame" x="125" y="11.5" width="70" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <constraints>
+                                    <constraint firstItem="ZtW-Nd-dfp" firstAttribute="centerY" secondItem="Ll3-az-xkW" secondAttribute="centerY" id="MAU-YH-aRP"/>
+                                    <constraint firstItem="ZtW-Nd-dfp" firstAttribute="centerX" secondItem="Ll3-az-xkW" secondAttribute="centerX" id="SZA-Un-Fy4"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="name" destination="ZtW-Nd-dfp" id="d3w-SF-XkJ"/>
+                                    <segue destination="gH6-mB-UBM" kind="unwind" unwindAction="unwindToAddItemWithSender:" id="lmg-el-lls"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="RO8-9e-va3" id="OdJ-aQ-Cm6"/>
+                            <outlet property="delegate" destination="RO8-9e-va3" id="vMX-YR-lwg"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Select Category" id="hrp-sT-toO"/>
+                    <connections>
+                        <outlet property="myTableView" destination="Ery-B3-jno" id="yXp-5i-Abr"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iAM-Oi-67Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="gH6-mB-UBM" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="6097.5" y="-246.25"/>
         </scene>
         <!--Due Not Forget-->
         <scene sceneID="N6d-xD-toU">
@@ -363,7 +434,7 @@
                     <tabBarItem key="tabBarItem" title="List" image="list.dash" catalog="system" id="9lM-mw-0FQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zow-8o-VtI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -480,7 +551,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Uu2-yb-4Q2"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="s5H-F0-3WR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -528,6 +599,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ufh-cM-yA2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1734.375" y="1410"/>
+        </scene>
+        <!--Select Category-->
+        <scene sceneID="Gcb-3J-mbf">
+            <objects>
+                <navigationController title="Select Category" automaticallyAdjustsScrollViewInsets="NO" id="uFf-ku-CY0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P9W-TV-dud">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="RO8-9e-va3" kind="relationship" relationship="rootViewController" id="TV4-q3-Ec9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8bf-az-wqy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5100" y="-246.25"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

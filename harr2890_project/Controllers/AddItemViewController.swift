@@ -13,7 +13,12 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var typeField: UISegmentedControl!
     @IBOutlet weak var dateField: UIDatePicker!
+    @IBOutlet weak var categoryLabel: UILabel!
+    
+    
+    @IBOutlet weak var selectCategoryButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
+    
     
     private var item : Item?
 
@@ -26,8 +31,8 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
         super.viewDidLoad()
                 
         // default without time on date picker
-        dateField.datePickerMode = .date
-        dateField.preferredDatePickerStyle = .wheels
+//        dateField.datePickerMode = .date
+//        dateField.preferredDatePickerStyle = .wheels
         
         // Handle the text field’s user input through delegate callbacks
         self.nameField.delegate = self // set delegate
@@ -77,6 +82,22 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
     }  // updateSaveButtonState
     
     
+    
+    
+    @IBAction func unwindToAddItem(sender: UIStoryboardSegue) {
+        
+        print("HEY-Oooooo!")
+        
+        if let sourceVC = sender.source as? SimpleCategoryListViewController,
+           let returnedCategory = sourceVC.getSelectedCategory() {
+
+            print("Yup... this should do it... \(categoryLabel.text!)")
+            
+            categoryLabel.text = returnedCategory.getName()
+        }
+    } // unwindToAddItem
+    
+    
     // For the Save Button
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -84,7 +105,7 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
         
         // Configure the destination view controller only when the save button is pressed.
         guard let button = sender as? UIButton, button === saveButton else {
-            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            //os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
                 
@@ -104,6 +125,7 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
         }
 
     } // prepare
+    
 
 
 }

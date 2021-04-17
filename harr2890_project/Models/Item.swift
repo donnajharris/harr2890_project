@@ -46,6 +46,8 @@ class Item : Equatable, CustomStringConvertible {
     
     private var changed : Bool
     
+    private var category : ItemCategory?
+
     
     init(title: String, date: Date, type: ItemType, changed: Bool) {
         self.id = Item.UNDEFINED
@@ -53,6 +55,7 @@ class Item : Equatable, CustomStringConvertible {
         self.date = date
         self.type = type
         self.changed = changed
+        self.category = nil
     }
     
     init(id: Int64, title: String, date: Date, type: ItemType, changed: Bool) {
@@ -61,8 +64,9 @@ class Item : Equatable, CustomStringConvertible {
         self.date = date
         self.type = type
         self.changed = changed
-
+        self.category = nil
     }
+    
     
     func getId() -> Int64? {
         return id
@@ -135,5 +139,12 @@ class Item : Equatable, CustomStringConvertible {
     }
     
     
+    func setCategory(category: ItemCategory) {
+        self.category = category
+    }
+    
+    func getCategory() -> ItemCategory? {
+        return self.category
+    }
 
 }
