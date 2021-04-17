@@ -21,6 +21,8 @@ class ItemCategory : Equatable, CustomStringConvertible {
     } // ==
     
     
+    
+    
     static let UNDEFINED : Int64 = -999
     
     private var id : Int64?

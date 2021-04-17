@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		AE0315EB262511CD00442EDE /* CategoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0315EA262511CD00442EDE /* CategoryHandler.swift */; };
 		AE0315F6262512E100442EDE /* DatabaseAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0315F5262512E100442EDE /* DatabaseAccess.swift */; };
-		AE03160526251B5700442EDE /* CategoryHandler_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE03160426251B5700442EDE /* CategoryHandler_Tests.swift */; };
-		AE03161626252FAA00442EDE /* BusinessLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE03161526252FAA00442EDE /* BusinessLayer.swift */; };
+		AE03161626252FAA00442EDE /* CategoryBL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE03161526252FAA00442EDE /* CategoryBL.swift */; };
 		AE0316212625429900442EDE /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0316202625429900442EDE /* CategoryViewController.swift */; };
 		AE0316252625468A00442EDE /* CategoryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0316242625468A00442EDE /* CategoryHelper.swift */; };
 		AE0E8EC4261D75E1000BB7E0 /* MockedDatabaseAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0E8EC3261D75E1000BB7E0 /* MockedDatabaseAccess.swift */; };
@@ -19,6 +18,10 @@
 		AE3EBB9D2622B7040047DBEF /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3EBB9C2622B7040047DBEF /* ItemCategory.swift */; };
 		AE4A488E260BF12500E45D96 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE4A488D260BF12500E45D96 /* libsqlite3.tbd */; };
 		AE54DB0B2626A4B10057DE58 /* CategoryHelper_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE54DB0A2626A4B10057DE58 /* CategoryHelper_Tests.swift */; };
+		AE54DB47262A736D0057DE58 /* CategoryHandler_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE54DB46262A736D0057DE58 /* CategoryHandler_Tests.swift */; };
+		AE54DB4F262A7C2A0057DE58 /* ItemBL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE54DB4E262A7C2A0057DE58 /* ItemBL.swift */; };
+		AE54DB55262A827C0057DE58 /* ItemHelper_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE54DB54262A827C0057DE58 /* ItemHelper_Tests.swift */; };
+		AE54DB59262A82910057DE58 /* ItemHandler_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE54DB58262A82910057DE58 /* ItemHandler_Tests.swift */; };
 		AE5E1637261D66EE00993DDB /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE5E1621261D66DA00993DDB /* SQLite.framework */; };
 		AE5E1638261D66EE00993DDB /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE5E1621261D66DA00993DDB /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AE65321B261CC02400EC8A4A /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE65321A261CC02400EC8A4A /* EditItemViewController.swift */; };
@@ -123,8 +126,7 @@
 /* Begin PBXFileReference section */
 		AE0315EA262511CD00442EDE /* CategoryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHandler.swift; sourceTree = "<group>"; };
 		AE0315F5262512E100442EDE /* DatabaseAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseAccess.swift; sourceTree = "<group>"; };
-		AE03160426251B5700442EDE /* CategoryHandler_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHandler_Tests.swift; sourceTree = "<group>"; };
-		AE03161526252FAA00442EDE /* BusinessLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessLayer.swift; sourceTree = "<group>"; };
+		AE03161526252FAA00442EDE /* CategoryBL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBL.swift; sourceTree = "<group>"; };
 		AE0316202625429900442EDE /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		AE0316242625468A00442EDE /* CategoryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHelper.swift; sourceTree = "<group>"; };
 		AE0E8EC3261D75E1000BB7E0 /* MockedDatabaseAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedDatabaseAccess.swift; sourceTree = "<group>"; };
@@ -134,6 +136,10 @@
 		AE4A488D260BF12500E45D96 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		AE4A4892260BF1F200E45D96 /* harr2890_project-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "harr2890_project-Bridging-Header.h"; sourceTree = "<group>"; };
 		AE54DB0A2626A4B10057DE58 /* CategoryHelper_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHelper_Tests.swift; sourceTree = "<group>"; };
+		AE54DB46262A736D0057DE58 /* CategoryHandler_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHandler_Tests.swift; sourceTree = "<group>"; };
+		AE54DB4E262A7C2A0057DE58 /* ItemBL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemBL.swift; sourceTree = "<group>"; };
+		AE54DB54262A827C0057DE58 /* ItemHelper_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHelper_Tests.swift; sourceTree = "<group>"; };
+		AE54DB58262A82910057DE58 /* ItemHandler_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHandler_Tests.swift; sourceTree = "<group>"; };
 		AE5E1616261D66D900993DDB /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		AE65321A261CC02400EC8A4A /* EditItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
 		AE65321E261CC09A00EC8A4A /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
@@ -213,10 +219,11 @@
 		AE6531DF261CA63700EC8A4A /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
-				AEAEF740261E9DBE007BC751 /* ItemHelper.swift */,
+				AE54DB4E262A7C2A0057DE58 /* ItemBL.swift */,
 				AEAEF74D261E9ECD007BC751 /* ItemHandler.swift */,
+				AEAEF740261E9DBE007BC751 /* ItemHelper.swift */,
+				AE03161526252FAA00442EDE /* CategoryBL.swift */,
 				AE0315EA262511CD00442EDE /* CategoryHandler.swift */,
-				AE03161526252FAA00442EDE /* BusinessLayer.swift */,
 				AE0316242625468A00442EDE /* CategoryHelper.swift */,
 			);
 			path = BusinessLogic;
@@ -326,8 +333,10 @@
 				AEE23D15260A729100AABD40 /* Info.plist */,
 				AE6E54BF260B0B5E004CE1EB /* AddItemVCTests.swift */,
 				AE99B280261D72E1004B846E /* CRUD_Tests.swift */,
-				AE03160426251B5700442EDE /* CategoryHandler_Tests.swift */,
 				AE54DB0A2626A4B10057DE58 /* CategoryHelper_Tests.swift */,
+				AE54DB46262A736D0057DE58 /* CategoryHandler_Tests.swift */,
+				AE54DB54262A827C0057DE58 /* ItemHelper_Tests.swift */,
+				AE54DB58262A82910057DE58 /* ItemHandler_Tests.swift */,
 			);
 			path = harr2890_projectTests;
 			sourceTree = "<group>";
@@ -534,9 +543,10 @@
 				AE3EBB922622B6F50047DBEF /* CategoryListViewController.swift in Sources */,
 				AE7F70C62613A24900253CAE /* ImplementedDatabaseAccess.swift in Sources */,
 				AE0315EB262511CD00442EDE /* CategoryHandler.swift in Sources */,
+				AE54DB4F262A7C2A0057DE58 /* ItemBL.swift in Sources */,
 				AEE23D30260A7C0200AABD40 /* Item.swift in Sources */,
 				AEE23CFE260A729000AABD40 /* ListViewController.swift in Sources */,
-				AE03161626252FAA00442EDE /* BusinessLayer.swift in Sources */,
+				AE03161626252FAA00442EDE /* CategoryBL.swift in Sources */,
 				AE0315F6262512E100442EDE /* DatabaseAccess.swift in Sources */,
 				AE0E8EC4261D75E1000BB7E0 /* MockedDatabaseAccess.swift in Sources */,
 				AE0316252625468A00442EDE /* CategoryHelper.swift in Sources */,
@@ -556,9 +566,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE54DB59262A82910057DE58 /* ItemHandler_Tests.swift in Sources */,
 				AE54DB0B2626A4B10057DE58 /* CategoryHelper_Tests.swift in Sources */,
 				AE99B281261D72E1004B846E /* CRUD_Tests.swift in Sources */,
-				AE03160526251B5700442EDE /* CategoryHandler_Tests.swift in Sources */,
+				AE54DB55262A827C0057DE58 /* ItemHelper_Tests.swift in Sources */,
+				AE54DB47262A736D0057DE58 /* CategoryHandler_Tests.swift in Sources */,
 				AEE23D14260A729100AABD40 /* harr2890_projectTests.swift in Sources */,
 				AE6E54C0260B0B5E004CE1EB /* AddItemVCTests.swift in Sources */,
 			);

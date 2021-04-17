@@ -9,18 +9,109 @@ import Foundation
 
 class ItemHandler {
     
-    init() {
-        
+    let databaseAccess : DatabaseAccess
+    
+    enum ItemError : Error {
+        case itemNotFound
+        case itemIsNil
+        case accessError
     }
     
-
-    func itemIsValid(item: Item) -> Bool {
+    init(dal: DatabaseAccess) {
+        databaseAccess = dal
+    }
+    
+    
+    func getItemsFromDB(tableData: inout [Item]) throws {
         
-        if item.getTitle() == "" {
-            return false
+        var returnedData : [Item]
+        
+        do {
+            try returnedData = databaseAccess.getAllItems()
+            
+            sortDataByDate(data: &returnedData)
+            
+            tableData = returnedData
+
+        } catch ItemError.accessError {
+            
         }
         
-        return true
-    }
+    } // getItemsFromDB
+    
+    
+    func addItemToDB(item: Item, tableData: inout [Item]) throws {
+
+        var itemId : Int64
+        
+        do {
+            try itemId = databaseAccess.insertItem(item: item)
+            
+            if itemId > 0 {
+                item.setId(value: itemId)
+                tableData.append(item)
+                sortDataByDate(data: &tableData)
+            }
+                    
+        } catch ItemError.accessError {
+            
+        }
+        
+    } // addItemToDB
+    
+    
+    // for a SINGLE removal
+    func removeItemFromDB(indexToDelete: Int, item: Item, tableData: inout [Item]) throws {
+        
+        var numberOfDeletedRows : Int
+        
+        do {
+            try numberOfDeletedRows = databaseAccess.removeItem(rowId: item.getId()!)
+            
+            if numberOfDeletedRows == 1 {
+                                
+                tableData.remove(at: indexToDelete)
+            }
+            
+        } catch ItemError.itemNotFound {
+        
+        } catch ItemError.accessError {
+            
+        }
+    } // removeItemFromDB
+    
+    
+    // for a SINGLE update
+    func updateItemInDB(item: Item, tableData: inout [Item]) throws {
+        
+        var numberOfUpdatedRows : Int
+        
+        do {
+            
+            try numberOfUpdatedRows = databaseAccess.updateItem(item: item, rowId: item.getId()!)
+            
+            if numberOfUpdatedRows == 1 {
+                if let index = tableData.firstIndex(where: { $0.getId() == item.getId() }) {
+                    tableData[index] = item
+                    sortDataByDate(data: &tableData)
+                }
+            }
+            
+        } catch ItemError.itemNotFound {
+        
+        } catch ItemError.accessError {
+            
+        }
+    } // updateItemInDB
+
+    
+    
+    // MARK: - Helper functions
+    
+    func sortDataByDate(data: inout [Item]) {
+        data.sort {
+            $0.getDate() < $1.getDate()
+        }
+    } // sortDataByDate
     
 }

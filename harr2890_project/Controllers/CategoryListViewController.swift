@@ -30,7 +30,7 @@ class CategoryListViewController: UITableViewController {
                         
         //loadDummyCategories()
         
-        let bl = BusinessLayer()
+        let bl = CategoryBL()
         bl.loadCategories(data: &categories)
     
     }
@@ -50,7 +50,7 @@ class CategoryListViewController: UITableViewController {
         if let sourceVC = sender.source as? CategoryViewController,
            let returnedCategory = sourceVC.getNewCategory() {
 
-            let bl = BusinessLayer()
+            let bl = CategoryBL()
             let mode = sourceVC.getMode()
             
             let helper = CategoryHelper()
@@ -163,7 +163,7 @@ class CategoryListViewController: UITableViewController {
             let indexToDelete = indexPath.row
             let categoryToRemove = categories[indexToDelete]
             
-            let bl = BusinessLayer()
+            let bl = CategoryBL()
             try! bl.removeCategory(index: indexToDelete, category: categoryToRemove, data: &categories)
             
             myTableView.deleteRows(at: [indexPath], with: .fade)

@@ -27,8 +27,10 @@ class ItemViewController: UIViewController {
         
         isModalInPresentation = true
         
+        let helper = ItemHelper()
+        
         nameField.text = item?.getTitle()
-        typeField.text = ItemHelper.getTypeString(item: item!)
+        typeField.text = helper.getTypeString(item: item!)
         dateField.text = item?.getDateString()
     }
     
@@ -64,10 +66,12 @@ class ItemViewController: UIViewController {
         
         if let vc = sender.source as? EditItemViewController,
            let changedItem = vc.getChangedItem() {
+            
+            let helper = ItemHelper()
 
                 // Update item on VIEW display
                 nameField.text = changedItem.getTitle()
-                typeField.text = ItemHelper.getTypeString(item: changedItem)
+                typeField.text = helper.getTypeString(item: changedItem)
                 dateField.text = changedItem.getDateString()
 
                 // Prepare to update on return to list table view

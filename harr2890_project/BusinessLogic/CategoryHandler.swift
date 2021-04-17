@@ -37,7 +37,7 @@ class CategoryHandler {
             
         }
         
-    } // getAllCategories
+    } // getCategoriesFromDB
     
     
     func addCategoryToDB(category: ItemCategory, tableData: inout [ItemCategory]) throws {
@@ -59,7 +59,7 @@ class CategoryHandler {
             
         }
         
-    } // addCatgoryToDB
+    } // addCategoryToDB
     
     
     // for a SINGLE removal
@@ -105,15 +105,24 @@ class CategoryHandler {
         } catch CategoryError.accessError {
             
         }
-    } // removeCategoryFromDB
+    } // updateCategoryInDB
 
     
     
     // MARK: - Helper functions
     
     func sortDataByName(data: inout [ItemCategory]) {
+        // Case is not a sort
         data.sort {
             $0.getName() < $1.getName()
         }
+        
+        // case is ignored
+//
+//        _ = data.sorted(by: { (category1, category2) -> Bool in
+//            return category1.getName().localizedCompare(category2.getName()) == .orderedAscending
+//        })
+        
+        
     } // sortDataByName
 }

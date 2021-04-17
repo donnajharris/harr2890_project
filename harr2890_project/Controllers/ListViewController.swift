@@ -8,16 +8,10 @@
 
 import UIKit
 
-let NO_DB = 0
-let WITH_DB = 1
-
-let MODE = WITH_DB //NO_DB
-
 class TableViewCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var type: UILabel!
-    
 }
 
 
@@ -29,19 +23,19 @@ class ListViewController: UITableViewController, UITabBarDelegate {
     private let showSegueId = "ShowItemDetails"
     private let addSegueId = "AddingItem"
     private let cellIdentifier = "ListViewReuseIdentifier"
-    private var tableData = [Item]() // the data source
+    private var items = [Item]() // the data source
     
     // for testing (for now...)
-    func getTableData() -> [Item] {
-        return tableData
-    }
+//    func getTableData() -> [Item] {
+//        return tableData
+//    }
+//
+//    func setTableData(items: [Item]) {
+//        tableData = items
+//    }
     
-    func setTableData(items: [Item]) {
-        tableData = items
-    }
+    //private var database : DatabaseAccess? = nil
     
-    //private var database : DBAccess? = nil
-    private var database : DatabaseAccess? = nil
     
     
     override func viewDidLoad() {
@@ -51,28 +45,31 @@ class ListViewController: UITableViewController, UITabBarDelegate {
         // suppress the noise of the UI Constraint messages while developing logic
         UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
         
-        switch MODE {
-        case NO_DB:
-            createData()
-            
-        case WITH_DB:
-            //let path = dataFilePath()
-            //print("path = \(path)")
-            //database = ImplementedDatabaseAccess(path: path)
-            
-            database = ImplementedDatabaseAccess()
-            // then get the data...
+        let bl = ItemBL()
+        bl.loadItems(data: &items)
         
-        //TEST
-            //testAddDataToDB()
-            testGetAllDataFromDB()  // TODO: rework this to get something else on startup?
-            //testDeleteRow1()
-            
-        default:
-            createData()
-        }
-        
-        sortDataByDate()
+//        switch MODE {
+//        case NO_DB:
+//            createData()
+//
+//        case WITH_DB:
+//            //let path = dataFilePath()
+//            //print("path = \(path)")
+//            //database = ImplementedDatabaseAccess(path: path)
+//
+//            database = ImplementedDatabaseAccess()
+//            // then get the data...
+//
+//        //TEST
+//            //testAddDataToDB()
+//            testGetAllDataFromDB()  // TODO: rework this to get something else on startup?
+//            //testDeleteRow1()
+//
+//        default:
+//            createData()
+//        }
+//
+//        //sortDataByDate()
         
         
     } // viewDidLoad
@@ -86,37 +83,40 @@ class ListViewController: UITableViewController, UITabBarDelegate {
         let date1 = formatter.date(from: "25/05/2022")
         let item3 = Item(title: "Do something with roast beef!!!", date: date1!, type: Item.ItemType.BY, changed: false)
 
-        let resultId = database?.insertItem(item: item3)
+        //let resultId = try! database?.insertItem(item: item3)
         
-        print("result = \(resultId!)")
+        let bl = ItemBL()
+        bl.addNewItem(item: item3, data: &items)
         
-        item3.setId(value: resultId!)
+//        print("result = \(resultId!)")
+//
+//        item3.setId(value: resultId!)
         
     } //testAddDataToDB
     
-    
-    func testDeleteRow1() {
-        
-        let result = database?.removeItem(rowId: 1)
-        print("result = \(result!)")
-
-    } // testDeleteRow1
-    
-    
-    func testGetAllDataFromDB() {
-        let result = database?.getAllItems()
-        //print("result = \(result!)")
-        
-        tableData = result!
-
-    } // testGetAllDataFromDB
-    
-    
+//
+//    func testDeleteRow1() {
+//
+//        let result = try! database?.removeItem(rowId: 1)
+//        print("result = \(result!)")
+//
+//    } // testDeleteRow1
+//
+//
+//    func testGetAllDataFromDB() {
+//        let result = try! database?.getAllItems()
+//        //print("result = \(result!)")
+//
+//        tableData = result!
+//
+//    } // testGetAllDataFromDB
+//
+//
     
     // MARK: - TableView methods
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return tableData.count
+       return items.count
     }
     
     
@@ -131,13 +131,14 @@ class ListViewController: UITableViewController, UITabBarDelegate {
               }
         
             // set the cell item title
-            cell?.title?.text = tableData[indexPath.row].getTitle()
+            cell?.title?.text = items[indexPath.row].getTitle()
                             
             // set the cell text
-            cell?.date?.text = tableData[indexPath.row].getDateString()
+            cell?.date?.text = items[indexPath.row].getDateString()
         
             // set the preposition type text
-            cell?.type?.text = ItemHelper.getTypeString(item: tableData[indexPath.row])
+            let helper = ItemHelper()
+            cell?.type?.text = helper.getTypeString(item: items[indexPath.row])
         
             return cell! // return  the cell to the table view
         
@@ -146,13 +147,13 @@ class ListViewController: UITableViewController, UITabBarDelegate {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        print("\n\nYou selected row \(indexPath) -- good job!\n\n")
+        //print("\n\nYou selected row \(indexPath) -- good job!\n\n")
         
          tableView.deselectRow(at: indexPath, animated: true)
          performSegue(withIdentifier: showSegueId,
-                      sender: tableData[indexPath.row])
+                      sender: items[indexPath.row])
         
-        print(tableData[indexPath.row])
+        //print(items[indexPath.row])
 
     }  // TV - didSelectRowAt
     
@@ -163,13 +164,12 @@ class ListViewController: UITableViewController, UITabBarDelegate {
         // IDEAS for archiving: https://stackoverflow.com/questions/48515945/swipe-to-delete-with-multiple-options
         
         if editingStyle == .delete {
-            let itemId = tableData[indexPath.row].getId()
+            let indexToDelete = indexPath.row
+            let itemToRemove = items[indexToDelete]
             
-            tableData.remove(at: indexPath.row)
-
-            let result = database?.removeItem(rowId: Int64(itemId!))
-            print("remove from DB result = \(result!)")
-
+            let bl = ItemBL()
+            try! bl.removeItem(index: indexToDelete, item: itemToRemove, data: &items)
+            
             myTableView.deleteRows(at: [indexPath], with: .fade)
         }
     } // TV - editingStyle forRowAt
@@ -182,19 +182,24 @@ class ListViewController: UITableViewController, UITabBarDelegate {
     @IBAction func unwindToItemList(sender: UIStoryboardSegue) {
         
         if let sourceVC = sender.source as? AddItemViewController,
-           let newItem = sourceVC.getNewItem() {
+           let returnedItem = sourceVC.getNewItem() {
+            
+                let bl = ItemBL()
 
                 // Add a new item.
-                let newIndexPath = IndexPath(row: tableData.count, section: 0)
+                //let newIndexPath = IndexPath(row: items.count, section: 0)
             
-                tableData.append(newItem)
-                myTableView.insertRows(at: [newIndexPath], with: .automatic)
+                bl.addNewItem(item: returnedItem, data: &items)
+
+            
+                //items.append(returnedItem)
+                //myTableView.insertRows(at: [newIndexPath], with: .automatic)
             
                 // add item to the DB
-                let rowId = database?.insertItem(item: newItem)
-                newItem.setId(value: rowId!)
+                //let rowId = try! database?.insertItem(item: returnedItem)
+                //returnedItem.setId(value: rowId!)
             
-                sortDataByDate()
+                //sortDataByDate()
                 myTableView.reloadData()
         } else {
             
@@ -209,19 +214,23 @@ class ListViewController: UITableViewController, UITabBarDelegate {
     @IBAction func unwindToItemListFromView(sender: UIStoryboardSegue) {
         
         if let sourceVC = sender.source as? ItemViewController,
-           let item = sourceVC.getItem() {
+           let returnedItem = sourceVC.getItem() {
 
-            if item.hasChanged() {
-            
-                print(item)
+            if returnedItem.hasChanged() {
                 
-                let updatedRows = database?.updateItem(item: item, rowId: item.getId()!)
-                if updatedRows != 1 {
-                    print("Problem updating row with\n\t\(item)")
-                    return
-                }
+                let bl = ItemBL()
+                
+                try! bl.updateItem(item: returnedItem, data: &items)
+            
+                //print(returnedItem)
+                
+//                let updatedRows = try! database?.updateItem(item: returnedItem, rowId: returnedItem.getId()!)
+//                if updatedRows != 1 {
+//                    print("Problem updating row with\n\t\(returnedItem)")
+//                    return
+//                }
     
-                sortDataByDate()
+                //sortDataByDate()
                 myTableView.reloadData()
             }
         } else {
@@ -269,22 +278,22 @@ class ListViewController: UITableViewController, UITabBarDelegate {
 
 
         let item2 = Item(title: "Credit card expires", date: date3!, type: Item.ItemType.ON, changed: false)
-        tableData.append(item2)
+        items.append(item2)
         
         let item3 = Item(title: "Use roast beef", date: date1!, type: Item.ItemType.BY, changed: false)
-        tableData.append(item3)
+        items.append(item3)
         
         let item1 = Item(title: "Passport expires", date: date2!, type: Item.ItemType.ON, changed: false)
-        tableData.append(item1)
+        items.append(item1)
   
      } // createData
     
     
-    func sortDataByDate() {
-        tableData.sort {
-            $0.getDate() < $1.getDate()
-        }
-    } // sortDataByDate
+//    func sortDataByDate() {
+//        tableData.sort {
+//            $0.getDate() < $1.getDate()
+//        }
+//    } // sortDataByDate
     
 
 

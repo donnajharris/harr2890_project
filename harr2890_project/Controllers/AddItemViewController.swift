@@ -91,14 +91,15 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
         // Prepare the returned Item to be added to the list
         let title = nameField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let date = dateField.date
-        let type = ItemHelper.setType(typeField: typeField)
+        
+        let helper = ItemHelper()
+        
+        let type = helper.setType(typeField: typeField)
 
         // isNew flag is set to indicate a new item
         item = Item(title: title, date: date, type: type, changed: true)
-        
-        let handler = ItemHandler()
-        
-        if handler.itemIsValid(item: item!) == false {
+                
+        if helper.itemIsValid(item: item!) == false {
             item = nil
         }
 

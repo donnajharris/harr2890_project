@@ -59,7 +59,9 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         // Add the returned Item to the list
         let title = nameField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let date = dateField.date
-        let type = ItemHelper.setType(typeField: typeField)
+        
+        let helper = ItemHelper()
+        let type = helper.setType(typeField: typeField)
 
 
         // new set to true because this item has changed
@@ -68,9 +70,7 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         item?.setDate(value: date)
         item?.setChangedFlag(changed: true)
 
-        let handler = ItemHandler()
-        
-        if handler.itemIsValid(item: item!) == false {
+        if helper.itemIsValid(item: item!) == false {
             item = nil
         }
 

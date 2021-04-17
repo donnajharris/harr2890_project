@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BusinessLayer {
+class CategoryBL {
     
     let db : DatabaseAccess
     let handler : CategoryHandler

@@ -9,7 +9,9 @@ import Foundation
 
 class Item : Equatable, CustomStringConvertible {
     
-    var description: String { return "ITEM Id: \(id!)\n\(title) \(ItemHelper.getTypeString(item: self)) \(getDateString())\nChanged? \(changed)"}
+    private let helper = ItemHelper()
+    
+    var description: String { return "ITEM Id: \(id!)\n\(title) \(helper.getTypeString(item: self)) \(getDateString())\nChanged? \(changed)"}
     
     
     static func == (lhs: Item, rhs: Item) -> Bool {

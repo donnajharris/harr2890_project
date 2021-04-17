@@ -9,25 +9,9 @@ import XCTest
 @testable import harr2890_project
 
 class CategoryHandler_Tests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-//    func testPerformanceExample() throws {
-//        // This is an example of a performance test case.
-//        self.measure {
-//            // Put the code you want to measure the time of here.
-//        }
-//    }
     
-    
-    func test_sortDataByName_alphabeticOrder() { //}( data: inout [ItemCategory])
-    
+    func test_sortDataByName_alphabeticOrder() {
+        
         // arrange
         var categories = [ItemCategory]()
         categories.append(ItemCategory(id: Int64(2), name: "Third Category"))
@@ -51,6 +35,33 @@ class CategoryHandler_Tests: XCTestCase {
     }
     
     
+    func test_sortDataByName_alphabeticOrderIgnoreCasing() {
+    
+        // arrange
+        var categories = [ItemCategory]()
+        categories.append(ItemCategory(id: Int64(2), name: "Third Category"))
+        categories.append(ItemCategory(id: Int64(3), name: "First Category"))
+        categories.append(ItemCategory(id: Int64(1), name: "Second Category"))
+        categories.append(ItemCategory(id: Int64(4), name: "flexibility"))
+
+
+        var expectedCategories = [ItemCategory]()
+        expectedCategories.append(ItemCategory(id: Int64(3), name: "First Category"))
+        expectedCategories.append(ItemCategory(id: Int64(4), name: "flexibility"))
+        expectedCategories.append(ItemCategory(id: Int64(1), name: "Second Category"))
+        expectedCategories.append(ItemCategory(id: Int64(2), name: "Third Category"))
+        
+        
+        // act
+        let db = MockedDatabaseAccess()
+        let categoryHandler = CategoryHandler(dal: db)
+        categoryHandler.sortDataByName(data: &categories)
+        
+        
+        // assert
+        XCTAssertEqual(expectedCategories, categories)
+    }
+    
     
     func test_getCategoriesFromDB_returnsAllCategories() throws {
         
@@ -69,7 +80,7 @@ class CategoryHandler_Tests: XCTestCase {
         try categoryHandler.getCategoriesFromDB(tableData: &actualCategories)
 
         // assert
-        XCTAssertEqual(actualCategories, expectedCategories)
+        XCTAssertEqual(expectedCategories, actualCategories)
     }
     
 
@@ -96,7 +107,7 @@ class CategoryHandler_Tests: XCTestCase {
         try categoryHandler.addCategoryToDB(category: categoryToAdd, tableData: &actualCategories)
 
         // assert
-        XCTAssertEqual(actualCategories, expectedCategories)
+        XCTAssertEqual(expectedCategories, actualCategories)
     }
     
     
@@ -124,7 +135,7 @@ class CategoryHandler_Tests: XCTestCase {
         try categoryHandler.removeCategoryFromDB(indexToDelete: actualIndex, category: categoryToRemove, tableData: &actualCategories)
 
         // assert
-        XCTAssertEqual(actualCategories, expectedCategories)
+        XCTAssertEqual(expectedCategories, actualCategories)
     }
     
     
@@ -152,8 +163,9 @@ class CategoryHandler_Tests: XCTestCase {
         try categoryHandler.updateCategoryInDB(category: updateCategoryWith, tableData: &actualCategories)
 
         // assert
-        XCTAssertEqual(actualCategories, expectedCategories)
-        
+        XCTAssertEqual(expectedCategories, actualCategories)
+
     }
 
 }
+

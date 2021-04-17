@@ -92,11 +92,13 @@ class ImplementedDatabaseAccess : DatabaseAccess {
     
     // MARK: - Item operations
     
-    func insertItem(item: Item) -> Int64 {
+    func insertItem(item: Item) throws -> Int64 {
+        
+        let helper = ItemHelper()
         
         let insert = itemsTable.insert(
                 itemTitle <- item.getTitle(),
-                itemType <- ItemHelper.getTypeString(item: item),
+                itemType <- helper.getTypeString(item: item),
                 itemDate <- item.getDate()
         )
         
@@ -108,13 +110,15 @@ class ImplementedDatabaseAccess : DatabaseAccess {
     } // insertItem
     
     
-    func updateItem(item: Item, rowId: Int64) -> Int {
+    func updateItem(item: Item, rowId: Int64) throws -> Int {
         
+        let helper = ItemHelper()
+
         let filteredTable : Table = itemsTable.filter(itemId == rowId)
 
         let update = filteredTable.update(
             itemTitle <- item.getTitle(),
-            itemType <- ItemHelper.getTypeString(item: item),
+            itemType <- helper.getTypeString(item: item),
             itemDate <- item.getDate()
         )
         
@@ -124,7 +128,10 @@ class ImplementedDatabaseAccess : DatabaseAccess {
     } // updateItem
 
     
-    func getAllItems() -> [Item] {
+    func getAllItems() throws -> [Item] {
+        
+        let helper = ItemHelper()
+
         var items = [Item]()
         
         for itemRow in try! database!.prepare(itemsTable) {
@@ -134,7 +141,7 @@ class ImplementedDatabaseAccess : DatabaseAccess {
             let item = Item(id: itemRow[itemId],
                             title: itemRow[itemTitle],
                             date: itemRow[itemDate]!,
-                            type: ItemHelper.translateToItemType(string: itemRow[itemType])!,
+                            type: helper.translateToItemType(string: itemRow[itemType])!,
                             changed: false)
             
             items.append(item)
@@ -145,7 +152,7 @@ class ImplementedDatabaseAccess : DatabaseAccess {
     } // getAllItems
     
     
-    func removeItem(rowId: Int64) -> Int {
+    func removeItem(rowId: Int64) throws -> Int {
         
         let filteredTable : Table = itemsTable.filter(itemId == rowId)
         let numberOfDeletedRows = try! database?.run(filteredTable.delete())

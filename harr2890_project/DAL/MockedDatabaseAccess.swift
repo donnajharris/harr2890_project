@@ -10,118 +10,43 @@ import Foundation
 
 class MockedDatabaseAccess : DatabaseAccess {
     
-    
-    //required init(path: String) {
     required init() {
-       
-        // should fail immediately if it doesn't work
-//        database = try! Connection(path)
-//
-//        initItemsTable()
-        
+
     } // init
     
     
     // MARK: - Item operations
     
-    private func initItemsTable() {
-//        try! database.run(itemsTable.create(ifNotExists: true) { t in
-//            t.column(itemId, primaryKey: .autoincrement)
-//            t.column(itemTitle)
-//            t.column(itemType)
-//            t.column(itemDate)
-//        })
-        
-        // CREATE TABLE "items" (
-        //     "id" INTEGER PRIMARY KEY NOT NULL,
-        //     "title" TEXT,
-        //     "type" TEXT,
-        //     "date" DATE
-        // )
-
-    } // createItemsTable
-    
-    
-    func insertItem(item: Item) -> Int64 {
-        
-//        let insert = itemsTable.insert(
-//                itemTitle <- item.getTitle(),
-//                itemType <- Item.getTypeString(item: item),
-//                itemDate <- item.getDate()
-//        )
-//
-//        let itemId = try! database.run(insert)
-//        // INSERT INTO "items" ("title", "type", "date") VALUES ('MyTitle', 'BY', DateObject)
-
-        let itemId : Int64 = 78
-        
-        return itemId
-        
+    func insertItem(item: Item) throws -> Int64 {
+        return Int64(4)  // value that matches with Happy Path test, the returned ID of new row
     } // insertItem
     
     
-    func updateItem(item: Item, rowId: Int64) -> Int {
-        
-//        let filteredTable : Table = itemsTable.filter(itemId == rowId)
-//
-//        let update = filteredTable.update(
-//            itemTitle <- item.getTitle(),
-//            itemType <- Item.getTypeString(item: item),
-//            itemDate <- item.getDate()
-//        )
-//
-        let updatedRows : Int = 1  //= try! database.run(update)
-        
-        return updatedRows
+    func updateItem(item: Item, rowId: Int64) throws -> Int {
+        return Int(1)  // value that matches with Happy Path test: 1 updated row
     } // updateItem
 
     
-    func getAllItems() -> [Item] {
+    func getAllItems() throws -> [Item] {
         var items = [Item]()
-        
-//        for itemRow in try! database.prepare(itemsTable) {
-//
-//            // print(itemRow)
-//
-//            let item = Item(id: itemRow[itemId],
-//                            title: itemRow[itemTitle],
-//                            date: itemRow[itemDate]!,
-//                            type: Item.translateToItemType(string: itemRow[itemType])!,
-//                            changed: false)
-//
-//            items.append(item)
-//        }
         
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
-        let date1 = formatter.date(from: "25/03/2021")  // 1
-        let date2 = formatter.date(from: "22/09/2021")  // 2
-        let date3 = formatter.date(from: "02/01/2022")  // 3
-
-
-        let item1 = Item(title: "[1] Credit card expires", date: date2!, type: Item.ItemType.ON, changed: false)
-        items.append(item1)
+        let date1 = formatter.date(from: "25/03/2021")
+        let date2 = formatter.date(from: "22/09/2021")
+        let date3 = formatter.date(from: "02/01/2022")
         
-        let item2 = Item(title: "[2] Use roast beef", date: date1!, type: Item.ItemType.BY, changed: false)
-        items.append(item2)
+        items.append(Item(id: Int64(3), title: "Third Item", date: date3!, type: Item.ItemType.ON, changed: false))
+        items.append(Item(id: Int64(2), title: "Second Item", date: date2!, type: Item.ItemType.ON, changed: false))
+        items.append(Item(id: Int64(1), title: "First Item", date: date1!, type: Item.ItemType.ON, changed: false))
         
-        let item3 = Item(title: "[3] Passport expires", date: date3!, type: Item.ItemType.ON, changed: false)
-        items.append(item3)
-        
-        return items
+        return items  // returns data that needs to be sorted chronologically still
         
     } // getAllItems
     
     
-    func removeItem(rowId: Int64) -> Int {
-        
-//        let filteredTable : Table = itemsTable.filter(itemId == rowId)
-//        let result = try! database.run(filteredTable.delete())
-        
-        let result : Int = 1
-        
-        return result
-        
+    func removeItem(rowId: Int64) throws -> Int {
+        return Int(1)  // value that matches with Happy Path test: 1 deleted row
     } // removeItem
     
     
@@ -143,11 +68,11 @@ class MockedDatabaseAccess : DatabaseAccess {
     }
     
     func updateCategory(category: ItemCategory, rowId: Int64) throws -> Int {
-        return Int(1)  // value that matches with Happy Path test, 1 updated row
+        return Int(1)  // value that matches with Happy Path test: 1 updated row
     }
     
     func removeCategory(rowId: Int64) throws -> Int {
-        return Int(1)  // value that matches with Happy Path test, 1 deleted row
+        return Int(1)  // value that matches with Happy Path test: 1 deleted row
     }
     
 }
