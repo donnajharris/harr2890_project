@@ -1,5 +1,5 @@
 //
-//  Category_CRUD_Tests.swift
+//  CategoryHandler_Tests.swift
 //  harr2890_projectTests
 //
 //  Created by Donna Harris on 2021-04-12.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import harr2890_project
 
-class Category_CRUD_Tests: XCTestCase {
+class CategoryHandler_Tests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -24,6 +24,32 @@ class Category_CRUD_Tests: XCTestCase {
 //            // Put the code you want to measure the time of here.
 //        }
 //    }
+    
+    
+    func test_sortDataByName_alphabeticOrder() { //}( data: inout [ItemCategory])
+    
+        // arrange
+        var categories = [ItemCategory]()
+        categories.append(ItemCategory(id: Int64(2), name: "Third Category"))
+        categories.append(ItemCategory(id: Int64(3), name: "First Category"))
+        categories.append(ItemCategory(id: Int64(1), name: "Second Category"))
+
+        var expectedCategories = [ItemCategory]()
+        expectedCategories.append(ItemCategory(id: Int64(3), name: "First Category"))
+        expectedCategories.append(ItemCategory(id: Int64(1), name: "Second Category"))
+        expectedCategories.append(ItemCategory(id: Int64(2), name: "Third Category"))
+        
+        
+        // act
+        let db = MockedDatabaseAccess()
+        let categoryHandler = CategoryHandler(dal: db)
+        categoryHandler.sortDataByName(data: &categories)
+        
+        
+        // assert
+        XCTAssertEqual(expectedCategories, categories)
+    }
+    
     
     
     func test_getCategoriesFromDB_returnsAllCategories() throws {

@@ -111,7 +111,7 @@ class CategoryHandler {
     
     // MARK: - Helper functions
     
-    func sortDataByName( data: inout [ItemCategory]) {
+    func sortDataByName(data: inout [ItemCategory]) {
         data.sort {
             $0.getName() < $1.getName()
         }

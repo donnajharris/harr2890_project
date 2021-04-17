@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		AE0315EB262511CD00442EDE /* CategoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0315EA262511CD00442EDE /* CategoryHandler.swift */; };
 		AE0315F6262512E100442EDE /* DatabaseAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0315F5262512E100442EDE /* DatabaseAccess.swift */; };
-		AE03160526251B5700442EDE /* Category_CRUD_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE03160426251B5700442EDE /* Category_CRUD_Tests.swift */; };
+		AE03160526251B5700442EDE /* CategoryHandler_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE03160426251B5700442EDE /* CategoryHandler_Tests.swift */; };
 		AE03161626252FAA00442EDE /* BusinessLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE03161526252FAA00442EDE /* BusinessLayer.swift */; };
 		AE0316212625429900442EDE /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0316202625429900442EDE /* CategoryViewController.swift */; };
 		AE0316252625468A00442EDE /* CategoryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0316242625468A00442EDE /* CategoryHelper.swift */; };
@@ -123,7 +123,7 @@
 /* Begin PBXFileReference section */
 		AE0315EA262511CD00442EDE /* CategoryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHandler.swift; sourceTree = "<group>"; };
 		AE0315F5262512E100442EDE /* DatabaseAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseAccess.swift; sourceTree = "<group>"; };
-		AE03160426251B5700442EDE /* Category_CRUD_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category_CRUD_Tests.swift; sourceTree = "<group>"; };
+		AE03160426251B5700442EDE /* CategoryHandler_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHandler_Tests.swift; sourceTree = "<group>"; };
 		AE03161526252FAA00442EDE /* BusinessLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessLayer.swift; sourceTree = "<group>"; };
 		AE0316202625429900442EDE /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		AE0316242625468A00442EDE /* CategoryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHelper.swift; sourceTree = "<group>"; };
@@ -326,7 +326,7 @@
 				AEE23D15260A729100AABD40 /* Info.plist */,
 				AE6E54BF260B0B5E004CE1EB /* AddItemVCTests.swift */,
 				AE99B280261D72E1004B846E /* CRUD_Tests.swift */,
-				AE03160426251B5700442EDE /* Category_CRUD_Tests.swift */,
+				AE03160426251B5700442EDE /* CategoryHandler_Tests.swift */,
 				AE54DB0A2626A4B10057DE58 /* CategoryHelper_Tests.swift */,
 			);
 			path = harr2890_projectTests;
@@ -558,7 +558,7 @@
 			files = (
 				AE54DB0B2626A4B10057DE58 /* CategoryHelper_Tests.swift in Sources */,
 				AE99B281261D72E1004B846E /* CRUD_Tests.swift in Sources */,
-				AE03160526251B5700442EDE /* Category_CRUD_Tests.swift in Sources */,
+				AE03160526251B5700442EDE /* CategoryHandler_Tests.swift in Sources */,
 				AEE23D14260A729100AABD40 /* harr2890_projectTests.swift in Sources */,
 				AE6E54C0260B0B5E004CE1EB /* AddItemVCTests.swift in Sources */,
 			);
