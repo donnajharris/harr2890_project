@@ -26,9 +26,7 @@
 		AE5E1638261D66EE00993DDB /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE5E1621261D66DA00993DDB /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AE65321B261CC02400EC8A4A /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE65321A261CC02400EC8A4A /* EditItemViewController.swift */; };
 		AE65321F261CC09A00EC8A4A /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE65321E261CC09A00EC8A4A /* ItemViewController.swift */; };
-		AE6E54C0260B0B5E004CE1EB /* AddItemVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E54BF260B0B5E004CE1EB /* AddItemVCTests.swift */; };
 		AE7F70C62613A24900253CAE /* ImplementedDatabaseAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F70C52613A24900253CAE /* ImplementedDatabaseAccess.swift */; };
-		AE99B281261D72E1004B846E /* CRUD_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE99B280261D72E1004B846E /* CRUD_Tests.swift */; };
 		AEAEF741261E9DBE007BC751 /* ItemHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAEF740261E9DBE007BC751 /* ItemHelper.swift */; };
 		AEAEF74E261E9ECD007BC751 /* ItemHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAEF74D261E9ECD007BC751 /* ItemHandler.swift */; };
 		AEBF18B9261D841200B9665E /* harr2890_projectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBF18B8261D841200B9665E /* harr2890_projectUITests.swift */; };
@@ -39,7 +37,6 @@
 		AEE23D04260A729000AABD40 /* harr2890_project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AEE23D02260A729000AABD40 /* harr2890_project.xcdatamodeld */; };
 		AEE23D06260A729000AABD40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEE23D05260A729000AABD40 /* Assets.xcassets */; };
 		AEE23D09260A729000AABD40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE23D07260A729000AABD40 /* LaunchScreen.storyboard */; };
-		AEE23D14260A729100AABD40 /* harr2890_projectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23D13260A729100AABD40 /* harr2890_projectTests.swift */; };
 		AEE23D30260A7C0200AABD40 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23D2F260A7C0200AABD40 /* Item.swift */; };
 /* End PBXBuildFile section */
 
@@ -143,9 +140,7 @@
 		AE5E1616261D66D900993DDB /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		AE65321A261CC02400EC8A4A /* EditItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
 		AE65321E261CC09A00EC8A4A /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
-		AE6E54BF260B0B5E004CE1EB /* AddItemVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemVCTests.swift; sourceTree = "<group>"; };
 		AE7F70C52613A24900253CAE /* ImplementedDatabaseAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImplementedDatabaseAccess.swift; sourceTree = "<group>"; };
-		AE99B280261D72E1004B846E /* CRUD_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRUD_Tests.swift; sourceTree = "<group>"; };
 		AEAEF740261E9DBE007BC751 /* ItemHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHelper.swift; sourceTree = "<group>"; };
 		AEAEF74D261E9ECD007BC751 /* ItemHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHandler.swift; sourceTree = "<group>"; };
 		AEBF18B6261D841200B9665E /* harr2890_projectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = harr2890_projectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,7 +156,6 @@
 		AEE23D08260A729000AABD40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AEE23D0A260A729000AABD40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEE23D0F260A729100AABD40 /* harr2890_projectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = harr2890_projectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AEE23D13260A729100AABD40 /* harr2890_projectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = harr2890_projectTests.swift; sourceTree = "<group>"; };
 		AEE23D15260A729100AABD40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEE23D2F260A7C0200AABD40 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -329,10 +323,7 @@
 		AEE23D12260A729100AABD40 /* harr2890_projectTests */ = {
 			isa = PBXGroup;
 			children = (
-				AEE23D13260A729100AABD40 /* harr2890_projectTests.swift */,
 				AEE23D15260A729100AABD40 /* Info.plist */,
-				AE6E54BF260B0B5E004CE1EB /* AddItemVCTests.swift */,
-				AE99B280261D72E1004B846E /* CRUD_Tests.swift */,
 				AE54DB0A2626A4B10057DE58 /* CategoryHelper_Tests.swift */,
 				AE54DB46262A736D0057DE58 /* CategoryHandler_Tests.swift */,
 				AE54DB54262A827C0057DE58 /* ItemHelper_Tests.swift */,
@@ -568,11 +559,8 @@
 			files = (
 				AE54DB59262A82910057DE58 /* ItemHandler_Tests.swift in Sources */,
 				AE54DB0B2626A4B10057DE58 /* CategoryHelper_Tests.swift in Sources */,
-				AE99B281261D72E1004B846E /* CRUD_Tests.swift in Sources */,
 				AE54DB55262A827C0057DE58 /* ItemHelper_Tests.swift in Sources */,
 				AE54DB47262A736D0057DE58 /* CategoryHandler_Tests.swift in Sources */,
-				AEE23D14260A729100AABD40 /* harr2890_projectTests.swift in Sources */,
-				AE6E54C0260B0B5E004CE1EB /* AddItemVCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

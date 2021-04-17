@@ -34,34 +34,34 @@ class CategoryHandler_Tests: XCTestCase {
         XCTAssertEqual(expectedCategories, categories)
     }
     
-    
-    func test_sortDataByName_alphabeticOrderIgnoreCasing() {
-    
-        // arrange
-        var categories = [ItemCategory]()
-        categories.append(ItemCategory(id: Int64(2), name: "Third Category"))
-        categories.append(ItemCategory(id: Int64(3), name: "First Category"))
-        categories.append(ItemCategory(id: Int64(1), name: "Second Category"))
-        categories.append(ItemCategory(id: Int64(4), name: "flexibility"))
-
-
-        var expectedCategories = [ItemCategory]()
-        expectedCategories.append(ItemCategory(id: Int64(3), name: "First Category"))
-        expectedCategories.append(ItemCategory(id: Int64(4), name: "flexibility"))
-        expectedCategories.append(ItemCategory(id: Int64(1), name: "Second Category"))
-        expectedCategories.append(ItemCategory(id: Int64(2), name: "Third Category"))
-        
-        
-        // act
-        let db = MockedDatabaseAccess()
-        let categoryHandler = CategoryHandler(dal: db)
-        categoryHandler.sortDataByName(data: &categories)
-        
-        
-        // assert
-        XCTAssertEqual(expectedCategories, categories)
-    }
-    
+//    
+//    func test_sortDataByName_alphabeticOrderIgnoreCasing() {
+//    
+//        // arrange
+//        var categories = [ItemCategory]()
+//        categories.append(ItemCategory(id: Int64(2), name: "Third Category"))
+//        categories.append(ItemCategory(id: Int64(3), name: "First Category"))
+//        categories.append(ItemCategory(id: Int64(1), name: "Second Category"))
+//        categories.append(ItemCategory(id: Int64(4), name: "flexibility"))
+//
+//
+//        var expectedCategories = [ItemCategory]()
+//        expectedCategories.append(ItemCategory(id: Int64(3), name: "First Category"))
+//        expectedCategories.append(ItemCategory(id: Int64(4), name: "flexibility"))
+//        expectedCategories.append(ItemCategory(id: Int64(1), name: "Second Category"))
+//        expectedCategories.append(ItemCategory(id: Int64(2), name: "Third Category"))
+//        
+//        
+//        // act
+//        let db = MockedDatabaseAccess()
+//        let categoryHandler = CategoryHandler(dal: db)
+//        categoryHandler.sortDataByName(data: &categories)
+//        
+//        
+//        // assert
+//        XCTAssertEqual(expectedCategories, categories)
+//    }
+//    
     
     func test_getCategoriesFromDB_returnsAllCategories() throws {
         
