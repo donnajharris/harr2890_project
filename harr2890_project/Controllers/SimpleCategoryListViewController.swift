@@ -9,20 +9,29 @@ import UIKit
 import OSLog
 
 
+/* https://medium.com/@astitv96/passing-data-between-view-controllers-using-delegate-and-protocol-ios-swift-4-beginners-e32828862d3f
+ */
+protocol MyDataSendingDelegateProtocol : NSObjectProtocol {
+    func sendDataToFirstViewController(data: String)
+}
+
 class SimpleCategoryCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
 }
 
 class SimpleCategoryListViewController: UITableViewController {
 
-    private let selectSegueId = "categorySelect"
+    weak var delegate : MyDataSendingDelegateProtocol? = nil
+
+    
+//    private let selectSegueId = "categorySelect"
     private let cellIdentifier = "ReuseIdentifier"
     private var categories = [ItemCategory]() // the data source
     
     @IBOutlet weak var myTableView: UITableView!
     
     private var category : ItemCategory?
-    
+
     func getSelectedCategory() -> ItemCategory? {
         return category
     }
@@ -49,9 +58,9 @@ class SimpleCategoryListViewController: UITableViewController {
     //        return 0
     //    }
 
-        override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return categories.count
-        }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return categories.count
+    }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -73,17 +82,40 @@ class SimpleCategoryListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-         tableView.deselectRow(at: indexPath, animated: true)
-         //performSegue(withIdentifier: selectSegueId, sender: categories[indexPath.row])
+        tableView.deselectRow(at: indexPath, animated: true)
         
-        //category?.setName(name: categories[indexPath.row].getName())
-        category = categories[indexPath.row]
-//        
-//        print("\n\nShould work: \(categories[indexPath.row].getName())\n\n")
-//        
-//        print("\nDouble checking: \(category!.getName())")
+        
 
+        category = categories[indexPath.row]
+
+        print("You clickeed \(category!.getName())")
+        print("delegate is \(self.delegate)")
+        
+        
+        if self.delegate != nil && self.category?.getName() != nil {
+            print("\tPlease work....\n")
+            let dataToBeSent = self.category?.getName()
+            self.delegate?.sendDataToFirstViewController(data: dataToBeSent!)
+            dismiss(animated: true, completion: nil)
+        }
+        
+//        print("\nThe selected: \(category!.getName())")
+//
+//        print("delegate: \(delegate)")
+//
+//        if let delegate = delegate,
+//           category != nil {
+//
+//
+//
+//            delegate.doSomethingWith(data: category!.getName())
+//
+//            print("\tPlease work....\n")
+//        }
+        
     }  // TV - didSelectRowAt
     
+    
 
+    
 }

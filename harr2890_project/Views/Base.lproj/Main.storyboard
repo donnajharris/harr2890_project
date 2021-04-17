@@ -179,7 +179,7 @@
                                 <rect key="frame" x="23" y="192" width="132" height="29"/>
                                 <state key="normal" title="Select Category"/>
                                 <connections>
-                                    <segue destination="uFf-ku-CY0" kind="presentation" id="eh5-K6-pay"/>
+                                    <segue destination="RO8-9e-va3" kind="presentation" identifier="categorySelect" id="hqB-5G-738"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PsJ-GY-CBL">
@@ -277,7 +277,6 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="name" destination="ZtW-Nd-dfp" id="d3w-SF-XkJ"/>
-                                    <segue destination="gH6-mB-UBM" kind="unwind" unwindAction="unwindToAddItemWithSender:" id="lmg-el-lls"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -292,9 +291,8 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iAM-Oi-67Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="gH6-mB-UBM" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6097.5" y="-246.25"/>
+            <point key="canvasLocation" x="4948" y="-246"/>
         </scene>
         <!--Due Not Forget-->
         <scene sceneID="N6d-xD-toU">
@@ -434,7 +432,7 @@
                     <tabBarItem key="tabBarItem" title="List" image="list.dash" catalog="system" id="9lM-mw-0FQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zow-8o-VtI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -551,7 +549,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Uu2-yb-4Q2"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="s5H-F0-3WR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -599,24 +597,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ufh-cM-yA2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1734.375" y="1410"/>
-        </scene>
-        <!--Select Category-->
-        <scene sceneID="Gcb-3J-mbf">
-            <objects>
-                <navigationController title="Select Category" automaticallyAdjustsScrollViewInsets="NO" id="uFf-ku-CY0" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P9W-TV-dud">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="RO8-9e-va3" kind="relationship" relationship="rootViewController" id="TV4-q3-Ec9"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8bf-az-wqy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5100" y="-246.25"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

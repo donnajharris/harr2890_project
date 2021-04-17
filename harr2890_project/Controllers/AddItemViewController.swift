@@ -8,8 +8,19 @@
 import UIKit
 import os.log
 
-class AddItemViewController: UIViewController, UINavigationControllerDelegate, UITextFieldDelegate {
 
+
+class AddItemViewController: UIViewController, UINavigationControllerDelegate, UITextFieldDelegate, MyDataSendingDelegateProtocol {
+    
+    
+    func sendDataToFirstViewController(data: String) {
+        self.categoryLabel.text = data
+    }
+    
+
+    private let selectSegueId = "categorySelect"
+
+    
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var typeField: UISegmentedControl!
     @IBOutlet weak var dateField: UIDatePicker!
@@ -82,26 +93,33 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
     }  // updateSaveButtonState
     
     
-    
-    
-    @IBAction func unwindToAddItem(sender: UIStoryboardSegue) {
-        
-        print("HEY-Oooooo!")
-        
-        if let sourceVC = sender.source as? SimpleCategoryListViewController,
-           let returnedCategory = sourceVC.getSelectedCategory() {
-
-            print("Yup... this should do it... \(categoryLabel.text!)")
-            
-            categoryLabel.text = returnedCategory.getName()
-        }
-    } // unwindToAddItem
-    
+//    @IBAction func unwindToAddWithCategory(sender: UIStoryboardSegue) {
+//
+//        if let sourceVC = sender.source as? SimpleCategoryListViewController,
+//           let selectedCategory = sourceVC.getSelectedCategory() {
+//
+//
+//        }
+//
+//    } // unwindToAddWithCategory
+//
+//
     
     // For the Save Button
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         super.prepare(for: segue, sender: sender)
+        
+        print("Prepare...")
+        
+        if segue.identifier == selectSegueId {
+            
+            print("PREPARE....")
+            let secondVC: SimpleCategoryListViewController = segue.destination as! SimpleCategoryListViewController
+            secondVC.delegate = self
+            return
+        }
+        
         
         // Configure the destination view controller only when the save button is pressed.
         guard let button = sender as? UIButton, button === saveButton else {
@@ -126,6 +144,12 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
 
     } // prepare
     
-
+    
+    func doSomethingWith(data: String) {
+    // Do something here after receiving data from destination view controller
+        
+        print("YOU'RE GONNA DO SOMETHING")
+        categoryLabel.text = data
+    }
 
 }
