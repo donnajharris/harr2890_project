@@ -19,6 +19,8 @@ class ListViewController: UITableViewController, UITabBarDelegate {
     
     @IBOutlet weak var myTableView: UITableView!
 
+//    private let bl = BusinessLogic()
+    
     let simpleTableIdentifier = "table_identifier"
     private let showSegueId = "ShowItemDetails"
     private let addSegueId = "AddingItem"
@@ -29,12 +31,14 @@ class ListViewController: UITableViewController, UITabBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        _ = BusinessLogic()
+        
         // TODO: Consider removing this...
         // suppress the noise of the UI Constraint messages while developing logic
         UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
         
-        let bl = ItemBL()
-        bl.loadItems(data: &items)
+        //let bl = ItemBL()
+        BusinessLogic.bl.loadItems(data: &items)
         
     } // viewDidLoad
     
@@ -45,12 +49,12 @@ class ListViewController: UITableViewController, UITabBarDelegate {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
         let date1 = formatter.date(from: "25/05/2022")
-        let item3 = Item(title: "Do something with roast beef!!!", date: date1!, type: Item.ItemType.BY, changed: false)
+        let item3 = Item(title: "Do something with roast beef!!!", date: date1!, type: Item.ItemType.BY, category: CategoryHelper.UNCATEGORIZED, changed: false)
 
         //let resultId = try! database?.insertItem(item: item3)
         
-        let bl = ItemBL()
-        bl.addNewItem(item: item3, data: &items)
+        //let bl = ItemBL()
+        BusinessLogic.bl.addNewItem(item: item3, data: &items)
           
     } //testAddDataToDB
 
@@ -105,8 +109,8 @@ class ListViewController: UITableViewController, UITabBarDelegate {
             let indexToDelete = indexPath.row
             let itemToRemove = items[indexToDelete]
             
-            let bl = ItemBL()
-            try! bl.removeItem(index: indexToDelete, item: itemToRemove, data: &items)
+            //let bl = ItemBL()
+            try! BusinessLogic.bl.removeItem(index: indexToDelete, item: itemToRemove, data: &items)
             
             myTableView.deleteRows(at: [indexPath], with: .fade)
         }
@@ -122,8 +126,8 @@ class ListViewController: UITableViewController, UITabBarDelegate {
         if let sourceVC = sender.source as? AddItemViewController,
            let returnedItem = sourceVC.getNewItem() {
             
-                let bl = ItemBL()
-                bl.addNewItem(item: returnedItem, data: &items)
+                //let bl = ItemBL()
+                BusinessLogic.bl.addNewItem(item: returnedItem, data: &items)
                 myTableView.reloadData()
         } else {
             
@@ -142,8 +146,8 @@ class ListViewController: UITableViewController, UITabBarDelegate {
 
             if returnedItem.hasChanged() {
                 
-                let bl = ItemBL()
-                try! bl.updateItem(item: returnedItem, data: &items)
+                //let bl = ItemBL()
+                try! BusinessLogic.bl.updateItem(item: returnedItem, data: &items)
                 myTableView.reloadData()
             }
         } else {
@@ -190,13 +194,13 @@ class ListViewController: UITableViewController, UITabBarDelegate {
         let date3 = formatter.date(from: "02/01/2022")
 
 
-        let item2 = Item(title: "Credit card expires", date: date3!, type: Item.ItemType.ON, changed: false)
+        let item2 = Item(title: "Credit card expires", date: date3!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false)
         items.append(item2)
         
-        let item3 = Item(title: "Use roast beef", date: date1!, type: Item.ItemType.BY, changed: false)
+        let item3 = Item(title: "Use roast beef", date: date1!, type: Item.ItemType.BY, category: CategoryHelper.UNCATEGORIZED, changed: false)
         items.append(item3)
         
-        let item1 = Item(title: "Passport expires", date: date2!, type: Item.ItemType.ON, changed: false)
+        let item1 = Item(title: "Passport expires", date: date2!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false)
         items.append(item1)
   
      } // createData

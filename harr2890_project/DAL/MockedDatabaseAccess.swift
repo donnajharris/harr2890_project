@@ -10,7 +10,7 @@ import Foundation
 
 class MockedDatabaseAccess : DatabaseAccess {
     
-    required init() {
+    required init() throws {
 
     } // init
     
@@ -36,9 +36,9 @@ class MockedDatabaseAccess : DatabaseAccess {
         let date2 = formatter.date(from: "22/09/2021")
         let date3 = formatter.date(from: "02/01/2022")
         
-        items.append(Item(id: Int64(3), title: "Third Item", date: date3!, type: Item.ItemType.ON, changed: false))
-        items.append(Item(id: Int64(2), title: "Second Item", date: date2!, type: Item.ItemType.ON, changed: false))
-        items.append(Item(id: Int64(1), title: "First Item", date: date1!, type: Item.ItemType.ON, changed: false))
+        items.append(Item(id: Int64(3), title: "Third Item", date: date3!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
+        items.append(Item(id: Int64(2), title: "Second Item", date: date2!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
+        items.append(Item(id: Int64(1), title: "First Item", date: date1!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
         
         return items  // returns data that needs to be sorted chronologically still
         
@@ -61,6 +61,10 @@ class MockedDatabaseAccess : DatabaseAccess {
         categoriesInIdOrder.append(ItemCategory(id: Int64(3), name: "First Category"))
         
         return categoriesInIdOrder
+    }
+    
+    func getCategory(id: Int64) throws -> ItemCategory {
+        return ItemCategory(id: Int64(1), name: "First Category")
     }
     
     func insertCategory(category: ItemCategory) throws -> Int64 {

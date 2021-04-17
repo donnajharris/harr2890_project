@@ -8,7 +8,7 @@
 import Foundation
 
 class ItemCategory : Equatable, CustomStringConvertible {
-    
+        
     var description: String { return "CATEGORY Id: \(id!)\n\(name)"}
     
     static func == (lhs: ItemCategory, rhs: ItemCategory) -> Bool {

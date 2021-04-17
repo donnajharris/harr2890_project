@@ -9,7 +9,7 @@ import Foundation
 
 protocol DatabaseAccess {
         
-    init()
+    init() throws
     
     // MARK: - Item operations
     func insertItem(item: Item) throws -> Int64
@@ -23,5 +23,5 @@ protocol DatabaseAccess {
     func updateCategory(category: ItemCategory, rowId: Int64) throws -> Int
     func removeCategory(rowId: Int64) throws -> Int
     func getAllCategories() throws -> [ItemCategory]
-
+    func getCategory(id: Int64) throws -> ItemCategory
 }

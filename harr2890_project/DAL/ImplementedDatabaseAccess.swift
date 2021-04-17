@@ -8,16 +8,15 @@
 import Foundation
 import SQLite
 
-
 class ImplementedDatabaseAccess : DatabaseAccess {
     
     private var database : Connection? = nil
-    private let DB_STRING = "itemsDB.plist"
+    private let DB_STRING = "DueNotForgetDB.plist"
 
+    private var firstRun = false
     
     private var path : String {
-        let urls = FileManager.default.urls(for:
-            .documentDirectory, in: .userDomainMask)
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let url:String?
         url = urls.first?.appendingPathComponent(DB_STRING).path
         return url!
@@ -29,6 +28,7 @@ class ImplementedDatabaseAccess : DatabaseAccess {
     let itemTitle = Expression<String>("title")
     let itemType = Expression<String>("type")
     let itemDate = Expression<Date?>("date")
+    let itemCategoryId = Expression<Int64>("categoryId")
     
     // Categories table
     let categoriesTable = Table("categories")
@@ -36,15 +36,44 @@ class ImplementedDatabaseAccess : DatabaseAccess {
     let categoryName = Expression<String>("name")
     
     
-    required init() {
+    required init() throws {
+        
+        
         
         // should fail immediately if it doesn't work
-        database = try! Connection(path)
         
-        initItemsTable()
-        initCategoriesTable()
+        do {
+            database = try Connection(path)
+
+            determineFirstRunStatus()
+
+            
+            initItemsTable()
+            try initCategoriesTable()
+        } catch {
+            print("Unexpected error: \(error)")
+        }
+
         
     } // init
+    
+    private func isFirstRun() -> Bool {
+        return firstRun
+    }
+    
+    private func determineFirstRunStatus() {
+        
+        do {
+            _ = try getAllCategories()
+        } catch {
+            print("Yeah... there's a problem and we say it's that there's no DB")
+            firstRun = true
+        }
+        
+    }
+    
+
+    
     
         
     private func dataFilePath() -> String {
@@ -58,23 +87,49 @@ class ImplementedDatabaseAccess : DatabaseAccess {
     
     
     private func initItemsTable() {
-        try! database?.run(itemsTable.create(ifNotExists: true) { t in
-            t.column(itemId, primaryKey: .autoincrement)
-            t.column(itemTitle)
-            t.column(itemType)
-            t.column(itemDate)
-        })
+        
+        if isFirstRun() {
+            
+            try! database?.run(itemsTable.create(ifNotExists: true) { t in
+                t.column(itemId, primaryKey: .autoincrement)
+                t.column(itemTitle)
+                t.column(itemType)
+                t.column(itemDate)
+                t.column(itemCategoryId)
+            })
+        }
 
-    } // createItemsTable
+    } // initItemsTable
     
     
-    private func initCategoriesTable() {
-        try! database?.run(categoriesTable.create(ifNotExists: true) { t in
-            t.column(categoryId, primaryKey: .autoincrement)
-            t.column(categoryName)
-        })
+    private func initCategoriesTable() throws {
+        
 
-    } // createItemsTable
+        if isFirstRun() {
+            do {
+                try database?.run(categoriesTable.create(ifNotExists: true) {
+                    t in
+                    t.column(categoryId, primaryKey: .autoincrement)
+                    t.column(categoryName)
+                })
+                
+                // Add  Uncategorized
+                
+                let result = try insertCategory(category: CategoryHelper.UNCATEGORIZED)
+                
+                if result != 1 {
+                    print("Unexpected error: \(result) but should have been 1")
+                }
+                
+               
+            } catch {
+                // real problem
+                print("Unexpected error: \(error)")
+            }
+        }
+
+
+    } // initCategoriesTable
     
     
     
@@ -83,11 +138,12 @@ class ImplementedDatabaseAccess : DatabaseAccess {
     func insertItem(item: Item) throws -> Int64 {
         
         let helper = ItemHelper()
-        
+
         let insert = itemsTable.insert(
                 itemTitle <- item.getTitle(),
                 itemType <- helper.getTypeString(item: item),
-                itemDate <- item.getDate()
+                itemDate <- item.getDate(),
+                itemCategoryId <- Int64(item.getCategory()!.getId()!)
         )
         
         let itemId = try! database?.run(insert)
@@ -122,12 +178,15 @@ class ImplementedDatabaseAccess : DatabaseAccess {
         
         for itemRow in try! database!.prepare(itemsTable) {
 
-            // print(itemRow)
+            print(itemRow)
+            
+            let category = try! getCategory(id: itemRow[itemCategoryId])
             
             let item = Item(id: itemRow[itemId],
                             title: itemRow[itemTitle],
                             date: itemRow[itemDate]!,
                             type: helper.translateToItemType(string: itemRow[itemType])!,
+                            category: category,
                             changed: false)
             
             items.append(item)
@@ -154,7 +213,7 @@ class ImplementedDatabaseAccess : DatabaseAccess {
         
         var categories = [ItemCategory]()
         
-        for categoryRow in try! database!.prepare(categoriesTable) {
+        for categoryRow in try database!.prepare(categoriesTable) {
             
             let category = ItemCategory(id: categoryRow[categoryId],
                                         name: categoryRow[categoryName]
@@ -167,13 +226,36 @@ class ImplementedDatabaseAccess : DatabaseAccess {
     }
     
     
+    func getCategory(id: Int64) throws -> ItemCategory {
+        
+        var categories = [ItemCategory]()
+        
+        let filteredTable : Table = categoriesTable.filter(categoryId == id)
+        
+        for categoryRow in try! database!.prepare(filteredTable)
+        {
+            let category = ItemCategory(id: categoryRow[categoryId],
+                                        name: categoryRow[categoryName]
+            )
+            
+            categories.append(category)
+        }
+        
+        if categories.count != 1 {
+            // throws
+        }
+    
+        return categories[0]
+    }
+    
+    
     func insertCategory(category: ItemCategory) throws -> Int64 {
         
         let insert = categoriesTable.insert(
                 categoryName <- category.getName()
         )
         
-        if let categoryId = try! database?.run(insert) {
+        if let categoryId = try database?.run(insert) {
             return categoryId
         }
         else {

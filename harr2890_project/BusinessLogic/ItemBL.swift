@@ -7,13 +7,13 @@
 
 import Foundation
 
-class ItemBL {
+class XXXItemBL {
     
-    let db : DatabaseAccess
-    let handler : ItemHandler
+    private let db : DatabaseAccess
+    private let handler : ItemHandler
     
     init() {
-        db = ImplementedDatabaseAccess()
+        db = try! ImplementedDatabaseAccess()
         handler = ItemHandler(dal: db)
     }
     
@@ -25,6 +25,8 @@ class ItemBL {
     
     
     func addNewItem(item: Item, data: inout [Item]) {
+        
+        print(item)
         
         try! handler.addItemToDB(item: item, tableData: &data)
         

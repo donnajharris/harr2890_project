@@ -7,13 +7,13 @@
 
 import Foundation
 
-class CategoryBL {
+class XXXCategoryBL {
     
-    let db : DatabaseAccess
-    let handler : CategoryHandler
+    private let db : DatabaseAccess
+    private let handler : CategoryHandler
     
     init() {        
-        db = ImplementedDatabaseAccess()
+        db = try! ImplementedDatabaseAccess()
         handler = CategoryHandler(dal: db)
     }
     
@@ -32,6 +32,10 @@ class CategoryBL {
     
     
     func removeCategory(index: Int, category: ItemCategory, data: inout [ItemCategory]) throws {
+        
+        if category == CategoryHelper.UNCATEGORIZED  {
+            throw CategoryHandler.CategoryError.cannotRemoveUncategorized            
+        }
         
         if category.getId() != nil {
             try! handler.removeCategoryFromDB(indexToDelete: index, category: category, tableData: &data)

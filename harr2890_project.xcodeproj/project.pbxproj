@@ -18,6 +18,7 @@
 		AE3EBB9D2622B7040047DBEF /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3EBB9C2622B7040047DBEF /* ItemCategory.swift */; };
 		AE4A488E260BF12500E45D96 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE4A488D260BF12500E45D96 /* libsqlite3.tbd */; };
 		AE4C8B27262ABA6000EDCBDE /* SimpleCategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4C8B26262ABA6000EDCBDE /* SimpleCategoryListViewController.swift */; };
+		AE4C8B35262B904C00EDCBDE /* BusinessLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4C8B34262B904C00EDCBDE /* BusinessLogic.swift */; };
 		AE54DB0B2626A4B10057DE58 /* CategoryHelper_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE54DB0A2626A4B10057DE58 /* CategoryHelper_Tests.swift */; };
 		AE54DB47262A736D0057DE58 /* CategoryHandler_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE54DB46262A736D0057DE58 /* CategoryHandler_Tests.swift */; };
 		AE54DB4F262A7C2A0057DE58 /* ItemBL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE54DB4E262A7C2A0057DE58 /* ItemBL.swift */; };
@@ -134,6 +135,7 @@
 		AE4A488D260BF12500E45D96 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		AE4A4892260BF1F200E45D96 /* harr2890_project-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "harr2890_project-Bridging-Header.h"; sourceTree = "<group>"; };
 		AE4C8B26262ABA6000EDCBDE /* SimpleCategoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCategoryListViewController.swift; sourceTree = "<group>"; };
+		AE4C8B34262B904C00EDCBDE /* BusinessLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessLogic.swift; sourceTree = "<group>"; };
 		AE54DB0A2626A4B10057DE58 /* CategoryHelper_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHelper_Tests.swift; sourceTree = "<group>"; };
 		AE54DB46262A736D0057DE58 /* CategoryHandler_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHandler_Tests.swift; sourceTree = "<group>"; };
 		AE54DB4E262A7C2A0057DE58 /* ItemBL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemBL.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				AE03161526252FAA00442EDE /* CategoryBL.swift */,
 				AE0315EA262511CD00442EDE /* CategoryHandler.swift */,
 				AE0316242625468A00442EDE /* CategoryHelper.swift */,
+				AE4C8B34262B904C00EDCBDE /* BusinessLogic.swift */,
 			);
 			path = BusinessLogic;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 				AE0315EB262511CD00442EDE /* CategoryHandler.swift in Sources */,
 				AE54DB4F262A7C2A0057DE58 /* ItemBL.swift in Sources */,
 				AEE23D30260A7C0200AABD40 /* Item.swift in Sources */,
+				AE4C8B35262B904C00EDCBDE /* BusinessLogic.swift in Sources */,
 				AEE23CFE260A729000AABD40 /* ListViewController.swift in Sources */,
 				AE03161626252FAA00442EDE /* CategoryBL.swift in Sources */,
 				AE0315F6262512E100442EDE /* DatabaseAccess.swift in Sources */,

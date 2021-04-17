@@ -34,14 +34,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keW-jn-TcU">
+                                <rect key="frame" x="125" y="266.5" width="70" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="T4T-CL-Q8E"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="keW-jn-TcU" firstAttribute="centerX" secondItem="T4T-CL-Q8E" secondAttribute="centerX" id="PQ2-Dk-9r4"/>
                             <constraint firstItem="HsA-On-yQ9" firstAttribute="top" secondItem="vwG-L8-hqH" secondAttribute="bottom" constant="50" id="Uxv-Od-6Ja"/>
                             <constraint firstItem="vwG-L8-hqH" firstAttribute="top" secondItem="X85-18-iD6" secondAttribute="bottom" constant="40" id="WOG-40-AFU"/>
                             <constraint firstItem="X85-18-iD6" firstAttribute="top" secondItem="T4T-CL-Q8E" secondAttribute="top" constant="20" id="bDI-4L-7YW"/>
                             <constraint firstItem="X85-18-iD6" firstAttribute="centerX" secondItem="T4T-CL-Q8E" secondAttribute="centerX" id="gQd-i5-wlw"/>
+                            <constraint firstItem="keW-jn-TcU" firstAttribute="top" secondItem="HsA-On-yQ9" secondAttribute="bottom" constant="50" id="rKT-Yg-Xk0"/>
                             <constraint firstItem="vwG-L8-hqH" firstAttribute="centerX" secondItem="T4T-CL-Q8E" secondAttribute="centerX" id="wWk-ye-hTE"/>
                             <constraint firstItem="HsA-On-yQ9" firstAttribute="centerX" secondItem="T4T-CL-Q8E" secondAttribute="centerX" id="wwp-9z-YMq"/>
                         </constraints>
@@ -59,6 +67,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="categoryField" destination="keW-jn-TcU" id="B1e-qy-fzF"/>
                         <outlet property="dateField" destination="HsA-On-yQ9" id="c8u-14-w2K"/>
                         <outlet property="nameField" destination="X85-18-iD6" id="Lfe-wr-jLa"/>
                         <outlet property="typeField" destination="vwG-L8-hqH" id="X5W-Ua-13a"/>
@@ -179,7 +188,7 @@
                                 <rect key="frame" x="23" y="192" width="132" height="29"/>
                                 <state key="normal" title="Select Category"/>
                                 <connections>
-                                    <segue destination="RO8-9e-va3" kind="presentation" identifier="categorySelect" id="hqB-5G-738"/>
+                                    <segue destination="RO8-9e-va3" kind="presentation" identifier="categorySelect" id="0IX-Aa-wx3"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PsJ-GY-CBL">
@@ -250,7 +259,7 @@
         <!--Select Category-->
         <scene sceneID="RQv-hM-O09">
             <objects>
-                <tableViewController id="RO8-9e-va3" customClass="SimpleCategoryListViewController" customModule="harr2890_project" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Select Category" id="RO8-9e-va3" customClass="SimpleCategoryListViewController" customModule="harr2890_project" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ery-B3-jno">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -292,7 +301,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iAM-Oi-67Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4948" y="-246"/>
+            <point key="canvasLocation" x="5027" y="-246"/>
         </scene>
         <!--Due Not Forget-->
         <scene sceneID="N6d-xD-toU">
@@ -549,7 +558,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Uu2-yb-4Q2"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="s5H-F0-3WR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

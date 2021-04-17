@@ -18,14 +18,16 @@ class CategoryListViewController: UITableViewController {
     private let editSegueId = "categoryEdit"
     private var categories = [ItemCategory]() // the data source
     
+    //private let bl = BusinessLogic()
+    
     @IBOutlet weak var myTableView: UITableView!
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let bl = CategoryBL()
-        bl.loadCategories(data: &categories)
+        //let bl = CategoryBL()
+        BusinessLogic.bl.loadCategories(data: &categories)
     
     }
     
@@ -44,7 +46,7 @@ class CategoryListViewController: UITableViewController {
         if let sourceVC = sender.source as? CategoryViewController,
            let returnedCategory = sourceVC.getNewCategory() {
 
-            let bl = CategoryBL()
+            //let bl = CategoryBL()
             let mode = sourceVC.getMode()
             
             let helper = CategoryHelper()
@@ -56,9 +58,9 @@ class CategoryListViewController: UITableViewController {
             
             
             if mode == .add {
-                bl.addNewCategory(category: returnedCategory, data: &categories)
+                BusinessLogic.bl.addNewCategory(category: returnedCategory, data: &categories)
             } else if mode == .edit {
-                try! bl.updateCategory(category: returnedCategory, data: &categories)
+                try! BusinessLogic.bl.updateCategory(category: returnedCategory, data: &categories)
             }
             myTableView.reloadData()
             
@@ -128,8 +130,6 @@ class CategoryListViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        print("\n\nYou selected row \(indexPath) -- good job!\n\n")
         
          tableView.deselectRow(at: indexPath, animated: true)
          performSegue(withIdentifier: editSegueId,
@@ -157,8 +157,17 @@ class CategoryListViewController: UITableViewController {
             let indexToDelete = indexPath.row
             let categoryToRemove = categories[indexToDelete]
             
-            let bl = CategoryBL()
-            try! bl.removeCategory(index: indexToDelete, category: categoryToRemove, data: &categories)
+            //let bl = CategoryBL()
+            do {
+                try BusinessLogic.bl.removeCategory(index: indexToDelete, category: categoryToRemove, data: &categories)
+            } catch CategoryHandler.CategoryError.cannotRemoveUncategorized {
+                
+                // TODO: Add an alert here
+                print("Add an alert here")
+                
+            } catch {
+                // othrer things
+            }
             
             myTableView.deleteRows(at: [indexPath], with: .fade)
             //myTableView.reloadData()

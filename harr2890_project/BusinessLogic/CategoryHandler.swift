@@ -15,6 +15,7 @@ class CategoryHandler {
         case duplicateCategoryName
         case categoryNotFound
         case categoryIsNil
+        case cannotRemoveUncategorized
         case accessError
     }
     

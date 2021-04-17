@@ -11,7 +11,7 @@ class Item : Equatable, CustomStringConvertible {
     
     private let helper = ItemHelper()
     
-    var description: String { return "ITEM Id: \(id!)\n\(title) \(helper.getTypeString(item: self)) \(getDateString())\nChanged? \(changed)"}
+    var description: String { return "ITEM Id: \(id!)\n\(title) \(helper.getTypeString(item: self)) \(getDateString())\nCategory: \(category.getName() ?? "<uncategorized>")\nChanged? \(changed)"}
     
     
     static func == (lhs: Item, rhs: Item) -> Bool {
@@ -46,25 +46,25 @@ class Item : Equatable, CustomStringConvertible {
     
     private var changed : Bool
     
-    private var category : ItemCategory?
+    private var category : ItemCategory
 
     
-    init(title: String, date: Date, type: ItemType, changed: Bool) {
+    init(title: String, date: Date, type: ItemType, category: ItemCategory, changed: Bool) {
         self.id = Item.UNDEFINED
         self.title = title
         self.date = date
         self.type = type
         self.changed = changed
-        self.category = nil
+        self.category = category
     }
     
-    init(id: Int64, title: String, date: Date, type: ItemType, changed: Bool) {
+    init(id: Int64, title: String, date: Date, type: ItemType, category: ItemCategory, changed: Bool) {
         self.id = id
         self.title = title
         self.date = date
         self.type = type
         self.changed = changed
-        self.category = nil
+        self.category = category
     }
     
     

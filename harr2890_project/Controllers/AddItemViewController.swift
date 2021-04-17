@@ -12,9 +12,11 @@ import os.log
 
 class AddItemViewController: UIViewController, UINavigationControllerDelegate, UITextFieldDelegate, MyDataSendingDelegateProtocol {
     
+    private var category : ItemCategory? = nil
     
-    func sendDataToFirstViewController(data: String) {
-        self.categoryLabel.text = data
+    func sendDataToFirstViewController(data: ItemCategory) {
+        self.categoryLabel.text = data.getName()
+        self.category = data
     }
     
 
@@ -93,18 +95,6 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
     }  // updateSaveButtonState
     
     
-//    @IBAction func unwindToAddWithCategory(sender: UIStoryboardSegue) {
-//
-//        if let sourceVC = sender.source as? SimpleCategoryListViewController,
-//           let selectedCategory = sourceVC.getSelectedCategory() {
-//
-//
-//        }
-//
-//    } // unwindToAddWithCategory
-//
-//
-    
     // For the Save Button
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -123,7 +113,7 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
         
         // Configure the destination view controller only when the save button is pressed.
         guard let button = sender as? UIButton, button === saveButton else {
-            //os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
                 
@@ -134,22 +124,17 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
         let helper = ItemHelper()
         
         let type = helper.setType(typeField: typeField)
-
+        
+        if self.category == nil {
+            self.category = CategoryHelper.UNCATEGORIZED
+        }
         // isNew flag is set to indicate a new item
-        item = Item(title: title, date: date, type: type, changed: true)
+        item = Item(title: title, date: date, type: type, category: self.category!, changed: true)
                 
         if helper.itemIsValid(item: item!) == false {
             item = nil
         }
 
     } // prepare
-    
-    
-    func doSomethingWith(data: String) {
-    // Do something here after receiving data from destination view controller
-        
-        print("YOU'RE GONNA DO SOMETHING")
-        categoryLabel.text = data
-    }
 
 }

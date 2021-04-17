@@ -9,9 +9,12 @@ import Foundation
 
 class CategoryHelper {
     
+    static let UNCATEGORIZED : ItemCategory = ItemCategory(id: 1, name: "Uncategorized")
+    
     enum CategoryHelperError : Error {
         case invalidUsage
     }
+    
     
     init() {
         

@@ -14,6 +14,7 @@ class ItemViewController: UIViewController {
     @IBOutlet weak var nameField: UILabel!
     @IBOutlet weak var typeField: UILabel!
     @IBOutlet weak var dateField: UILabel!
+    @IBOutlet weak var categoryField: UILabel!
     
     private var item : Item?
     
@@ -32,6 +33,7 @@ class ItemViewController: UIViewController {
         nameField.text = item?.getTitle()
         typeField.text = helper.getTypeString(item: item!)
         dateField.text = item?.getDateString()
+        categoryField.text = item?.getCategory()?.getName()
     }
     
     
@@ -73,6 +75,8 @@ class ItemViewController: UIViewController {
                 nameField.text = changedItem.getTitle()
                 typeField.text = helper.getTypeString(item: changedItem)
                 dateField.text = changedItem.getDateString()
+            
+            categoryField.text = changedItem.getCategory()?.getName()
 
                 // Prepare to update on return to list table view
                 item = changedItem

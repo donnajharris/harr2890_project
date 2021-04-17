@@ -9,10 +9,12 @@ import UIKit
 import OSLog
 
 
-/* https://medium.com/@astitv96/passing-data-between-view-controllers-using-delegate-and-protocol-ios-swift-4-beginners-e32828862d3f
+/*
+REFERENCE:
+ https://medium.com/@astitv96/passing-data-between-view-controllers-using-delegate-and-protocol-ios-swift-4-beginners-e32828862d3f
  */
 protocol MyDataSendingDelegateProtocol : NSObjectProtocol {
-    func sendDataToFirstViewController(data: String)
+    func sendDataToFirstViewController(data: ItemCategory)
 }
 
 class SimpleCategoryCell: UITableViewCell {
@@ -23,8 +25,6 @@ class SimpleCategoryListViewController: UITableViewController {
 
     weak var delegate : MyDataSendingDelegateProtocol? = nil
 
-    
-//    private let selectSegueId = "categorySelect"
     private let cellIdentifier = "ReuseIdentifier"
     private var categories = [ItemCategory]() // the data source
     
@@ -40,8 +40,9 @@ class SimpleCategoryListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let bl = CategoryBL()
-        bl.loadCategories(data: &categories)
+        //let bl = CategoryBL()
+        //let bl = BusinessLogic()
+        BusinessLogic.bl.loadCategories(data: &categories)
                 
         for e in categories {
             print(e)
@@ -83,36 +84,17 @@ class SimpleCategoryListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        
 
         category = categories[indexPath.row]
 
-        print("You clickeed \(category!.getName())")
-        print("delegate is \(self.delegate)")
-        
-        
+        print("You clicked \(category!.getName())")
+                
         if self.delegate != nil && self.category?.getName() != nil {
-            print("\tPlease work....\n")
-            let dataToBeSent = self.category?.getName()
+            let dataToBeSent = self.category
             self.delegate?.sendDataToFirstViewController(data: dataToBeSent!)
             dismiss(animated: true, completion: nil)
         }
-        
-//        print("\nThe selected: \(category!.getName())")
-//
-//        print("delegate: \(delegate)")
-//
-//        if let delegate = delegate,
-//           category != nil {
-//
-//
-//
-//            delegate.doSomethingWith(data: category!.getName())
-//
-//            print("\tPlease work....\n")
-//        }
-        
+    
     }  // TV - didSelectRowAt
     
     
