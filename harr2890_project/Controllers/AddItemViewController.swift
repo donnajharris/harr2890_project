@@ -100,11 +100,11 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
         
         super.prepare(for: segue, sender: sender)
         
-        print("Prepare...")
+        //print("Prepare...")
         
         if segue.identifier == selectSegueId {
             
-            print("PREPARE....")
+            //print("PREPARE....")
             let secondVC: SimpleCategoryListViewController = segue.destination as! SimpleCategoryListViewController
             secondVC.delegate = self
             return

@@ -117,8 +117,12 @@ class ListViewController: UITableViewController, UITabBarDelegate, UISearchBarDe
             let indexToDelete = indexPath.row
             let itemToRemove = filteredItems[indexToDelete]
             
-            //let bl = ItemBL()
             try! BusinessLogic.bl.removeItem(index: indexToDelete, item: itemToRemove, data: &filteredItems)
+            
+            if self.searchBar.text?.isEmpty != nil {
+                                
+                BusinessLogic.bl.updateOriginalListAfterDeletingFromFilter(item: itemToRemove, data: &items)
+            }
             
             myTableView.deleteRows(at: [indexPath], with: .fade)
         }
@@ -128,15 +132,27 @@ class ListViewController: UITableViewController, UITabBarDelegate, UISearchBarDe
     
     // MARK: - Navigation
     
+    
     // unwind from adding
     @IBAction func unwindToItemList(sender: UIStoryboardSegue) {
         
         if let sourceVC = sender.source as? AddItemViewController,
            let returnedItem = sourceVC.getNewItem() {
-            
-                //let bl = ItemBL()
+                        
+            if self.searchBar.text?.isEmpty != nil && self.searchBar.text?.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) != "" {
+                
+                BusinessLogic.bl.addNewItem(item: returnedItem, data: &items)
+
+                let searchText = self.searchBar.text?.lowercased()
+                
+                BusinessLogic.bl.updateFilteredListAfterAdding(searchText: searchText!, item: returnedItem, data: &filteredItems)
+            } else {
                 BusinessLogic.bl.addNewItem(item: returnedItem, data: &filteredItems)
-                myTableView.reloadData()
+                BusinessLogic.bl.updateListAfterAdding(item: returnedItem, data: &items)
+            }
+            
+            myTableView.reloadData()
+            
         } else {
             
             // This fails somewhat gracefully, but silently at the UI level
@@ -148,14 +164,23 @@ class ListViewController: UITableViewController, UITabBarDelegate, UISearchBarDe
     
     // returning up edits/viewing
     @IBAction func unwindToItemListFromView(sender: UIStoryboardSegue) {
-        
+                
         if let sourceVC = sender.source as? ItemViewController,
            let returnedItem = sourceVC.getItem() {
 
             if returnedItem.hasChanged() {
+                                
+                if self.searchBar.text?.isEmpty != nil && self.searchBar.text?.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) != "" {
+                    
+                    try! BusinessLogic.bl.updateItem(item: returnedItem, data: &items)
+                    
+                    let searchText = self.searchBar.text?.lowercased()
+                    
+                    BusinessLogic.bl.updateFilteredListAfterUpdating(searchText: searchText!, item: returnedItem, data: &filteredItems)
+                } else {
+                    try! BusinessLogic.bl.updateItem(item: returnedItem, data: &filteredItems)
+                }
                 
-                //let bl = ItemBL()
-                try! BusinessLogic.bl.updateItem(item: returnedItem, data: &filteredItems)
                 myTableView.reloadData()
             }
         } else {
@@ -175,8 +200,8 @@ class ListViewController: UITableViewController, UITabBarDelegate, UISearchBarDe
             return
         }
         
-        let item = sender as! Item
-        print(item)
+        //let item = sender as! Item
+        //print(item)
 
         // Reference: https://stackoverflow.com/questions/30209626/could-not-cast-value-of-type-uinavigationcontroller
         

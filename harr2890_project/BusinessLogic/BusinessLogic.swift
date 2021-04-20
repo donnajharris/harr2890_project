@@ -31,11 +31,25 @@ class BusinessLogic {
     
     func addNewItem(item: Item, data: inout [Item]) {
         
-        print(item)
+        //print(item)
         
         try! itemHandler.addItemToDB(item: item, tableData: &data)
         
     } // addNewItem
+    
+    
+    func updateFilteredListAfterAdding(searchText: String, item: Item, data: inout [Item]) {
+        
+        if item.getTitle().lowercased().contains(searchText) {
+            updateListAfterAdding(item: item, data: &data)
+        }
+    } // updateFilteredListAfterAdding
+    
+    func updateListAfterAdding(item: Item, data: inout [Item]) {
+        data.append(item)
+        itemHandler.sortDataByDate(data: &data)
+    }
+    
     
     
     func removeItem(index: Int, item: Item, data: inout [Item]) throws {
@@ -49,11 +63,34 @@ class BusinessLogic {
     } // removeItem
     
     
+    func updateOriginalListAfterDeletingFromFilter(item: Item, data: inout [Item]){
+
+        if let index = data.firstIndex(where: { $0.getId() == item.getId()}) {
+            data.remove(at: index)
+        }
+        
+    } // updateOriginalListAfterDeletingFromFilter
+    
+    
     func updateItem(item: Item, data: inout [Item]) throws {
         
         try! itemHandler.updateItemInDB(item: item, tableData: &data)
         
     } // updateItem
+    
+    
+    func updateFilteredListAfterUpdating(searchText: String, item: Item, data: inout [Item]) {
+        
+        if item.getTitle().lowercased().contains(searchText) {
+            itemHandler.sortDataByDate(data: &data)
+        } else {
+            if let index = data.firstIndex(where: { $0.getId() == item.getId()}) {
+                data.remove(at: index)
+            }
+        }
+        
+    } // updateFilteredListAfterUpdating
+    
     
     
     // MARK: - Categories

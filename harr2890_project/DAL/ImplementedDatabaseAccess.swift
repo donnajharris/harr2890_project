@@ -178,7 +178,7 @@ class ImplementedDatabaseAccess : DatabaseAccess {
         
         for itemRow in try! database!.prepare(itemsTable) {
 
-            print(itemRow)
+            //print(itemRow)
             
             let category = try! getCategory(id: itemRow[itemCategoryId])
             
