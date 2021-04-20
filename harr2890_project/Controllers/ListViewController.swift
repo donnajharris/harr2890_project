@@ -15,17 +15,21 @@ class TableViewCell: UITableViewCell {
 }
 
 
-class ListViewController: UITableViewController, UITabBarDelegate {
+class ListViewController: UITableViewController, UITabBarDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var myTableView: UITableView!
-
+    @IBOutlet weak var searchBar: UISearchBar!
+    
 //    private let bl = BusinessLogic()
     
     let simpleTableIdentifier = "table_identifier"
     private let showSegueId = "ShowItemDetails"
     private let addSegueId = "AddingItem"
     private let cellIdentifier = "ListViewReuseIdentifier"
+    
     private var items = [Item]() // the data source
+    private var filteredItems = [Item]() // the FILTERED data
+
     
     
     override func viewDidLoad() {
@@ -37,8 +41,12 @@ class ListViewController: UITableViewController, UITabBarDelegate {
         // suppress the noise of the UI Constraint messages while developing logic
         UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
         
+
         //let bl = ItemBL()
-        BusinessLogic.bl.loadItems(data: &items)
+        BusinessLogic.bl.loadItems(data: &filteredItems)
+        
+        items = filteredItems //
+
         
     } // viewDidLoad
     
@@ -54,7 +62,7 @@ class ListViewController: UITableViewController, UITabBarDelegate {
         //let resultId = try! database?.insertItem(item: item3)
         
         //let bl = ItemBL()
-        BusinessLogic.bl.addNewItem(item: item3, data: &items)
+        BusinessLogic.bl.addNewItem(item: item3, data: &filteredItems)
           
     } //testAddDataToDB
 
@@ -62,7 +70,7 @@ class ListViewController: UITableViewController, UITabBarDelegate {
     // MARK: - TableView methods
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return items.count
+       return filteredItems.count
     }
     
     
@@ -77,14 +85,14 @@ class ListViewController: UITableViewController, UITabBarDelegate {
               }
         
             // set the cell item title
-            cell?.title?.text = items[indexPath.row].getTitle()
+            cell?.title?.text = filteredItems[indexPath.row].getTitle()
                             
             // set the cell text
-            cell?.date?.text = items[indexPath.row].getDateString()
+            cell?.date?.text = filteredItems[indexPath.row].getDateString()
         
             // set the preposition type text
             let helper = ItemHelper()
-            cell?.type?.text = helper.getTypeString(item: items[indexPath.row])
+            cell?.type?.text = helper.getTypeString(item: filteredItems[indexPath.row])
         
             return cell! // return  the cell to the table view
         
@@ -95,7 +103,7 @@ class ListViewController: UITableViewController, UITabBarDelegate {
         
          tableView.deselectRow(at: indexPath, animated: true)
          performSegue(withIdentifier: showSegueId,
-                      sender: items[indexPath.row])
+                      sender: filteredItems[indexPath.row])
         
     }  // TV - didSelectRowAt
     
@@ -107,10 +115,10 @@ class ListViewController: UITableViewController, UITabBarDelegate {
         
         if editingStyle == .delete {
             let indexToDelete = indexPath.row
-            let itemToRemove = items[indexToDelete]
+            let itemToRemove = filteredItems[indexToDelete]
             
             //let bl = ItemBL()
-            try! BusinessLogic.bl.removeItem(index: indexToDelete, item: itemToRemove, data: &items)
+            try! BusinessLogic.bl.removeItem(index: indexToDelete, item: itemToRemove, data: &filteredItems)
             
             myTableView.deleteRows(at: [indexPath], with: .fade)
         }
@@ -127,7 +135,7 @@ class ListViewController: UITableViewController, UITabBarDelegate {
            let returnedItem = sourceVC.getNewItem() {
             
                 //let bl = ItemBL()
-                BusinessLogic.bl.addNewItem(item: returnedItem, data: &items)
+                BusinessLogic.bl.addNewItem(item: returnedItem, data: &filteredItems)
                 myTableView.reloadData()
         } else {
             
@@ -147,7 +155,7 @@ class ListViewController: UITableViewController, UITabBarDelegate {
             if returnedItem.hasChanged() {
                 
                 //let bl = ItemBL()
-                try! BusinessLogic.bl.updateItem(item: returnedItem, data: &items)
+                try! BusinessLogic.bl.updateItem(item: returnedItem, data: &filteredItems)
                 myTableView.reloadData()
             }
         } else {
@@ -181,6 +189,26 @@ class ListViewController: UITableViewController, UITabBarDelegate {
     } // prepare - for segue
     
     
+    // MARK: - Search Bar functionality
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        guard !searchText.isEmpty else {
+            // refresh the view with original
+            
+            filteredItems = items
+            myTableView.reloadData()
+            return
+        }
+        
+        filteredItems = items.filter({item -> Bool in
+            item.getTitle().lowercased().contains(searchText.lowercased())
+        })
+        
+        myTableView.reloadData()
+    }
+    
+    
 
     // MARK: - Helper functions
     
@@ -195,13 +223,13 @@ class ListViewController: UITableViewController, UITabBarDelegate {
 
 
         let item2 = Item(title: "Credit card expires", date: date3!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false)
-        items.append(item2)
+        filteredItems.append(item2)
         
         let item3 = Item(title: "Use roast beef", date: date1!, type: Item.ItemType.BY, category: CategoryHelper.UNCATEGORIZED, changed: false)
-        items.append(item3)
+        filteredItems.append(item3)
         
         let item1 = Item(title: "Passport expires", date: date2!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false)
-        items.append(item1)
+        filteredItems.append(item1)
   
      } // createData
 

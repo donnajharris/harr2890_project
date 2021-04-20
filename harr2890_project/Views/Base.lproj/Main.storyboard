@@ -441,7 +441,7 @@
                     <tabBarItem key="tabBarItem" title="List" image="list.dash" catalog="system" id="9lM-mw-0FQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zow-8o-VtI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -461,9 +461,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="f2K-tf-u1V">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="seM-mi-NpT" id="Xfw-fx-oEi"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListViewReuseIdentifier" id="5xO-5M-uIX" customClass="TableViewCell" customModule="harr2890_project" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="43.5"/>
+                                <rect key="frame" x="0.0" y="72" width="320" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5xO-5M-uIX" id="533-Rf-P3m">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -517,6 +525,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Due Not Forget" id="Eev-Ma-YM9">
                         <barButtonItem key="backBarButtonItem" title="Back" id="KvF-rc-C4V"/>
+                        <barButtonItem key="leftBarButtonItem" title="Filters" id="6V5-pz-4ww"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="XTb-s4-nFs">
                             <connections>
                                 <segue destination="iMD-Bj-gUg" kind="presentation" identifier="AddingItem" id="5mw-CN-DQl"/>
@@ -525,6 +534,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="myTableView" destination="K3a-bN-NCw" id="a4J-79-q2x"/>
+                        <outlet property="searchBar" destination="f2K-tf-u1V" id="svE-Ge-aY0"/>
                         <segue destination="CHM-Uf-e00" kind="show" identifier="ShowItemDetails" id="cmH-oz-yE0"/>
                     </connections>
                 </tableViewController>
