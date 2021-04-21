@@ -10,6 +10,7 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var category: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var type: UILabel!
 }
@@ -20,10 +21,12 @@ class ListViewController: UITableViewController, UITabBarDelegate, UISearchBarDe
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
         
-    let simpleTableIdentifier = "table_identifier"
+    private let simpleTableIdentifier = "table_identifier"
     private let showSegueId = "ShowItemDetails"
     private let addSegueId = "AddingItem"
     private let cellIdentifier = "ListViewReuseIdentifier"
+    
+    private let ROW_HEIGHT = 70
     
     private var items = [Item]() // the data source
     private var filteredItems = [Item]() // the FILTERED data
@@ -97,6 +100,9 @@ class ListViewController: UITableViewController, UITabBarDelegate, UISearchBarDe
                     reuseIdentifier: cellIdentifier)
               }
         
+            // set the cell item's category
+            cell?.category?.text = filteredItems[indexPath.row].getCategory()?.getName()
+        
             // set the cell item title
             cell?.title?.text = filteredItems[indexPath.row].getTitle()
                             
@@ -141,6 +147,11 @@ class ListViewController: UITableViewController, UITabBarDelegate, UISearchBarDe
         }
     } // TV - editingStyle forRowAt
     
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(ROW_HEIGHT)
+    }
+
     
     
     // MARK: - Navigation
@@ -241,6 +252,7 @@ class ListViewController: UITableViewController, UITabBarDelegate, UISearchBarDe
         
         filteredItems = items.filter({item -> Bool in
             item.getTitle().lowercased().contains(searchText.lowercased())
+                || item.getCategory()!.getName().lowercased().contains(searchText.lowercased())
         })
         
         myTableView.reloadData()

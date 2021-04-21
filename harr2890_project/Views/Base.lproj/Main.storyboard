@@ -441,7 +441,7 @@
                     <tabBarItem key="tabBarItem" title="List" image="list.dash" catalog="system" id="9lM-mw-0FQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zow-8o-VtI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -472,48 +472,53 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListViewReuseIdentifier" id="5xO-5M-uIX" customClass="TableViewCell" customModule="harr2890_project" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="320" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListViewReuseIdentifier" rowHeight="70" id="5xO-5M-uIX" customClass="TableViewCell" customModule="harr2890_project" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="320" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5xO-5M-uIX" id="533-Rf-P3m">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Gy-xY-1Rh">
-                                            <rect key="frame" x="16" y="12.5" width="35" height="19"/>
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vm5-nm-sfU">
-                                            <rect key="frame" x="281" y="13.5" width="31" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <rect key="frame" x="10" y="10" width="40" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIq-9g-6Hh">
-                                            <rect key="frame" x="253" y="13.5" width="25" height="17"/>
+                                            <rect key="frame" x="10" y="45.5" width="25" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[Category]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aei-JB-Znq">
+                                            <rect key="frame" x="234.5" y="40" width="75.5" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vm5-nm-sfU">
+                                            <rect key="frame" x="38" y="44" width="31" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Vm5-nm-sfU" firstAttribute="baseline" secondItem="3Gy-xY-1Rh" secondAttribute="baseline" id="5qv-0b-P1T"/>
-                                        <constraint firstItem="Vm5-nm-sfU" firstAttribute="top" secondItem="NIq-9g-6Hh" secondAttribute="top" id="ArD-bI-dQ5"/>
-                                        <constraint firstItem="3Gy-xY-1Rh" firstAttribute="leading" secondItem="533-Rf-P3m" secondAttribute="leadingMargin" id="HCK-8o-zwA"/>
-                                        <constraint firstItem="Vm5-nm-sfU" firstAttribute="leading" secondItem="NIq-9g-6Hh" secondAttribute="trailing" constant="3" id="NsH-nH-3et"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Vm5-nm-sfU" secondAttribute="trailing" constant="-8" id="etp-nv-2Ye"/>
-                                        <constraint firstItem="Vm5-nm-sfU" firstAttribute="firstBaseline" secondItem="3Gy-xY-1Rh" secondAttribute="baseline" id="w2C-g5-jSo"/>
-                                        <constraint firstItem="NIq-9g-6Hh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3Gy-xY-1Rh" secondAttribute="trailing" constant="8" symbolic="YES" id="xBN-Px-0jF"/>
+                                        <constraint firstItem="NIq-9g-6Hh" firstAttribute="leading" secondItem="533-Rf-P3m" secondAttribute="leading" constant="10" id="ArZ-aD-I0n"/>
+                                        <constraint firstAttribute="trailing" secondItem="aei-JB-Znq" secondAttribute="trailing" constant="10" id="BbF-SP-u8L"/>
+                                        <constraint firstAttribute="bottom" secondItem="NIq-9g-6Hh" secondAttribute="bottom" constant="10" id="H2R-L0-IAM"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3Gy-xY-1Rh" secondAttribute="trailing" constant="20" symbolic="YES" id="U5s-Ce-b32"/>
+                                        <constraint firstItem="3Gy-xY-1Rh" firstAttribute="top" secondItem="533-Rf-P3m" secondAttribute="top" constant="10" id="WLb-fF-s8Z"/>
+                                        <constraint firstItem="aei-JB-Znq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Vm5-nm-sfU" secondAttribute="trailing" constant="8" symbolic="YES" id="gx7-l4-Gso"/>
+                                        <constraint firstItem="Vm5-nm-sfU" firstAttribute="leading" secondItem="NIq-9g-6Hh" secondAttribute="trailing" constant="3" id="hEJ-hV-Ome"/>
+                                        <constraint firstAttribute="bottom" secondItem="Vm5-nm-sfU" secondAttribute="bottom" constant="9" id="hrT-d6-W8E"/>
+                                        <constraint firstItem="3Gy-xY-1Rh" firstAttribute="leading" secondItem="533-Rf-P3m" secondAttribute="leading" constant="10" id="oGn-i2-zsl"/>
+                                        <constraint firstAttribute="bottom" secondItem="aei-JB-Znq" secondAttribute="bottom" constant="10" id="xgq-8a-ZRg"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <constraints>
-                                    <constraint firstItem="3Gy-xY-1Rh" firstAttribute="centerY" secondItem="5xO-5M-uIX" secondAttribute="centerY" id="4N5-7y-AfB"/>
-                                    <constraint firstItem="Vm5-nm-sfU" firstAttribute="centerY" secondItem="5xO-5M-uIX" secondAttribute="centerY" id="mac-zJ-6Hl"/>
-                                    <constraint firstItem="NIq-9g-6Hh" firstAttribute="centerY" secondItem="5xO-5M-uIX" secondAttribute="centerY" id="zUl-KG-29Y"/>
-                                </constraints>
                                 <connections>
+                                    <outlet property="category" destination="aei-JB-Znq" id="0cG-KV-hs7"/>
                                     <outlet property="date" destination="Vm5-nm-sfU" id="k5X-Cd-m53"/>
                                     <outlet property="title" destination="3Gy-xY-1Rh" id="mb8-l4-AaZ"/>
                                     <outlet property="type" destination="NIq-9g-6Hh" id="cbE-nQ-gdh"/>
@@ -527,7 +532,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Due Not Forget" id="Eev-Ma-YM9">
                         <barButtonItem key="backBarButtonItem" title="Back" id="KvF-rc-C4V"/>
-                        <barButtonItem key="leftBarButtonItem" title="Filters" id="6V5-pz-4ww"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="XTb-s4-nFs">
                             <connections>
                                 <segue destination="iMD-Bj-gUg" kind="presentation" identifier="AddingItem" id="5mw-CN-DQl"/>
@@ -547,7 +551,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2072" y="-246"/>
+            <point key="canvasLocation" x="2071.875" y="-246.25"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9FO-Lz-yUP">
@@ -575,7 +579,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Uu2-yb-4Q2"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="s5H-F0-3WR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
