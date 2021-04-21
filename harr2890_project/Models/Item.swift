@@ -67,6 +67,15 @@ class Item : Equatable, CustomStringConvertible {
         self.category = category
     }
     
+    init(item: Item) {
+        self.id = Int64(item.getId() ?? Item.UNDEFINED)
+        self.title = String(item.getTitle())
+        self.date = item.getDate()
+        self.type = item.getType()
+        self.changed = Bool(item.hasChanged())
+        self.category = ItemCategory(category: item.getCategory() ?? CategoryHelper.UNCATEGORIZED)
+    }
+    
     
     func getId() -> Int64? {
         return id

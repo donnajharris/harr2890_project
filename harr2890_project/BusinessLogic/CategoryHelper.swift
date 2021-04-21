@@ -32,7 +32,10 @@ class CategoryHelper {
     
     func categoryAlreadyExists(category: ItemCategory, categories: [ItemCategory]) -> Bool {
         
-        return categories.contains(where: { $0.getName() == category.getName() })
+        return categories.contains(where: {
+            $0.getName().lowercased() == category.getName().lowercased()
+        })
+        
                 
     } // categoryAlreadyExists
     

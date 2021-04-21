@@ -114,16 +114,18 @@ class CategoryHandler {
     
     func sortDataByName(data: inout [ItemCategory]) {
         // Case is not a sort
-        data.sort {
-            $0.getName() < $1.getName()
-        }
-        
-        // case is ignored
+//        data.sort {
+//            $0.getName() < $1.getName()
+//        }
 //
-//        _ = data.sorted(by: { (category1, category2) -> Bool in
-//            return category1.getName().localizedCompare(category2.getName()) == .orderedAscending
-//        })
         
+        // Reference: https://sarunw.com/posts/different-ways-to-sort-array-of-strings-in-swift/
         
+        // case insensitive sort
+        data.sort {
+            (lhs: ItemCategory, rhs: ItemCategory) -> Bool in
+            return lhs.getName().caseInsensitiveCompare(rhs.getName()) == .orderedAscending
+        }
+
     } // sortDataByName
 }

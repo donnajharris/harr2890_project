@@ -25,7 +25,7 @@ class CategoryHandler_Tests: XCTestCase {
         
         
         // act
-        let db = MockedDatabaseAccess()
+        let db = try! MockedDatabaseAccess()
         let categoryHandler = CategoryHandler(dal: db)
         categoryHandler.sortDataByName(data: &categories)
         
@@ -73,7 +73,7 @@ class CategoryHandler_Tests: XCTestCase {
         expectedCategories.append(ItemCategory(id: Int64(1), name: "Second Category"))
         expectedCategories.append(ItemCategory(id: Int64(2), name: "Third Category"))
 
-        let db = MockedDatabaseAccess()
+        let db = try! MockedDatabaseAccess()
         let categoryHandler = CategoryHandler(dal: db)
 
         // act
@@ -100,7 +100,7 @@ class CategoryHandler_Tests: XCTestCase {
         expectedCategories.append(ItemCategory(id: Int64(1), name: "Second Category"))
         expectedCategories.append(ItemCategory(id: Int64(2), name: "Third Category"))
         
-        let db = MockedDatabaseAccess()
+        let db = try! MockedDatabaseAccess()
         let categoryHandler = CategoryHandler(dal: db)
 
         // act
@@ -128,7 +128,7 @@ class CategoryHandler_Tests: XCTestCase {
         expectedCategories.append(ItemCategory(id: Int64(1), name: "Second Category"))
         expectedCategories.append(ItemCategory(id: Int64(2), name: "Third Category"))
         
-        let db = MockedDatabaseAccess()
+        let db = try! MockedDatabaseAccess()
         let categoryHandler = CategoryHandler(dal: db)
 
         // act
@@ -156,7 +156,7 @@ class CategoryHandler_Tests: XCTestCase {
         expectedCategories.append(ItemCategory(id: Int64(1), name: "Second Category"))
         expectedCategories.append(ItemCategory(id: Int64(2), name: "Third Category"))
         
-        let db = MockedDatabaseAccess()
+        let db = try! MockedDatabaseAccess()
         let categoryHandler = CategoryHandler(dal: db)
 
         // act

@@ -21,18 +21,18 @@ class ItemHandler_Tests: XCTestCase {
         let date3 = formatter.date(from: "02/01/2022")
                 
         var items = [Item]()
-        items.append(Item(id: Int64(1), title: "Third Item", date: date3!, type: Item.ItemType.ON, changed: false))
-        items.append(Item(id: Int64(2), title: "Second Item", date: date2!, type: Item.ItemType.ON, changed: false))
-        items.append(Item(id: Int64(3), title: "First Item", date: date1!, type: Item.ItemType.ON, changed: false))
+        items.append(Item(id: Int64(1), title: "Third Item", date: date3!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
+        items.append(Item(id: Int64(2), title: "Second Item", date: date2!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
+        items.append(Item(id: Int64(3), title: "First Item", date: date1!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
 
         var expectedItems = [Item]()
-        expectedItems.append(Item(id: Int64(3), title: "First Item", date: date1!, type: Item.ItemType.ON, changed: false))
-        expectedItems.append(Item(id: Int64(2), title: "Second Item", date: date2!, type: Item.ItemType.ON, changed: false))
-        expectedItems.append(Item(id: Int64(1), title: "Third Item", date: date3!, type: Item.ItemType.ON, changed: false))
+        expectedItems.append(Item(id: Int64(3), title: "First Item", date: date1!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
+        expectedItems.append(Item(id: Int64(2), title: "Second Item", date: date2!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
+        expectedItems.append(Item(id: Int64(1), title: "Third Item", date: date3!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
 
         
         // act
-        let db = MockedDatabaseAccess()
+        let db = try! MockedDatabaseAccess()
         let itemHandler = ItemHandler(dal: db)
         itemHandler.sortDataByDate(data: &items)
         
@@ -55,11 +55,11 @@ class ItemHandler_Tests: XCTestCase {
         var actualItems = [Item]()  // start empty
 
         var expectedItems = [Item]()
-        expectedItems.append(Item(id: Int64(3), title: "First Item", date: date1!, type: Item.ItemType.ON, changed: false))
-        expectedItems.append(Item(id: Int64(2), title: "Second Item", date: date2!, type: Item.ItemType.ON, changed: false))
-        expectedItems.append(Item(id: Int64(1), title: "Third Item", date: date3!, type: Item.ItemType.ON, changed: false))
+        expectedItems.append(Item(id: Int64(3), title: "First Item", date: date1!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
+        expectedItems.append(Item(id: Int64(2), title: "Second Item", date: date2!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
+        expectedItems.append(Item(id: Int64(1), title: "Third Item", date: date3!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
 
-        let db = MockedDatabaseAccess()
+        let db = try! MockedDatabaseAccess()
         let itemHandler = ItemHandler(dal: db)
 
         // act
@@ -81,23 +81,23 @@ class ItemHandler_Tests: XCTestCase {
         let date3 = formatter.date(from: "02/01/2022")
                 
         var actualItems = [Item]()
-        actualItems.append(Item(id: Int64(1), title: "Third Item", date: date3!, type: Item.ItemType.ON, changed: false))
-        actualItems.append(Item(id: Int64(2), title: "Second Item", date: date2!, type: Item.ItemType.ON, changed: false))
-        actualItems.append(Item(id: Int64(3), title: "First Item", date: date1!, type: Item.ItemType.ON, changed: false))
+        actualItems.append(Item(id: Int64(1), title: "Third Item", date: date3!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
+        actualItems.append(Item(id: Int64(2), title: "Second Item", date: date2!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
+        actualItems.append(Item(id: Int64(3), title: "First Item", date: date1!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
 
         
         let date4 = formatter.date(from: "28/03/2021") // second date
-        let itemToAdd = Item(id: Int64(4), title: "Newly Added Item", date: date4!, type: Item.ItemType.ON, changed: false)
+        let itemToAdd = Item(id: Int64(4), title: "Newly Added Item", date: date4!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false)
         
         
         var expectedItems = [Item]()
-        expectedItems.append(Item(id: Int64(3), title: "First Item", date: date1!, type: Item.ItemType.ON, changed: false))
+        expectedItems.append(Item(id: Int64(3), title: "First Item", date: date1!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
         expectedItems.append(itemToAdd)
-        expectedItems.append(Item(id: Int64(2), title: "Second Item", date: date2!, type: Item.ItemType.ON, changed: false))
-        expectedItems.append(Item(id: Int64(1), title: "Third Item", date: date3!, type: Item.ItemType.ON, changed: false))
+        expectedItems.append(Item(id: Int64(2), title: "Second Item", date: date2!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
+        expectedItems.append(Item(id: Int64(1), title: "Third Item", date: date3!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
         
         
-        let db = MockedDatabaseAccess()
+        let db = try! MockedDatabaseAccess()
         let itemHandler = ItemHandler(dal: db)
 
         // act
@@ -118,24 +118,24 @@ class ItemHandler_Tests: XCTestCase {
         let date4 = formatter.date(from: "27/03/2021")
 
                 
-        let itemToRemove = Item(id: Int64(4), title: "Item to Remove", date: date4!, type: Item.ItemType.ON, changed: false)
+        let itemToRemove = Item(id: Int64(4), title: "Item to Remove", date: date4!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false)
 
         let actualIndex = 1  //  2nd item in the table list (index 1)
 
         var actualItems = [Item]()
-        actualItems.append(Item(id: Int64(3), title: "First Item", date: date1!, type: Item.ItemType.ON, changed: false))
+        actualItems.append(Item(id: Int64(3), title: "First Item", date: date1!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
         actualItems.append(itemToRemove)
-        actualItems.append(Item(id: Int64(2), title: "Second Item", date: date2!, type: Item.ItemType.ON, changed: false))
-        actualItems.append(Item(id: Int64(1), title: "Third Item", date: date3!, type: Item.ItemType.ON, changed: false))
+        actualItems.append(Item(id: Int64(2), title: "Second Item", date: date2!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
+        actualItems.append(Item(id: Int64(1), title: "Third Item", date: date3!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
 
         
         var expectedItems = [Item]()
-        expectedItems.append(Item(id: Int64(3), title: "First Item", date: date1!, type: Item.ItemType.ON, changed: false))
-        expectedItems.append(Item(id: Int64(2), title: "Second Item", date: date2!, type: Item.ItemType.ON, changed: false))
-        expectedItems.append(Item(id: Int64(1), title: "Third Item", date: date3!, type: Item.ItemType.ON, changed: false))
+        expectedItems.append(Item(id: Int64(3), title: "First Item", date: date1!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
+        expectedItems.append(Item(id: Int64(2), title: "Second Item", date: date2!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
+        expectedItems.append(Item(id: Int64(1), title: "Third Item", date: date3!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
         
         
-        let db = MockedDatabaseAccess()
+        let db = try! MockedDatabaseAccess()
         let itemHandler = ItemHandler(dal: db)
 
         // act
@@ -159,21 +159,21 @@ class ItemHandler_Tests: XCTestCase {
         let date4 = formatter.date(from: "28/04/2020") // makes it the oldest
         
         var actualItems = [Item]()
-        actualItems.append(Item(id: Int64(3), title: "First Item", date: date1!, type: Item.ItemType.ON, changed: false))
-        actualItems.append(Item(id: Int64(2), title: "Item To Edit", date: date2!, type: Item.ItemType.ON, changed: false))
-        actualItems.append(Item(id: Int64(1), title: "Third Item", date: date3!, type: Item.ItemType.ON, changed: false))
+        actualItems.append(Item(id: Int64(3), title: "First Item", date: date1!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
+        actualItems.append(Item(id: Int64(2), title: "Item To Edit", date: date2!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
+        actualItems.append(Item(id: Int64(1), title: "Third Item", date: date3!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
 
 
-        let updateItemWith = Item(id: Int64(2), title: "Edited Item", date: date4!, type: Item.ItemType.BY, changed: true)
+        let updateItemWith = Item(id: Int64(2), title: "Edited Item", date: date4!, type: Item.ItemType.BY, category: CategoryHelper.UNCATEGORIZED, changed: true)
 
 
         var expectedItems = [Item]()
-        expectedItems.append(Item(id: Int64(2), title: "Edited Item", date: date4!, type: Item.ItemType.BY, changed: false)) // gets reset to FALSE
-        expectedItems.append(Item(id: Int64(3), title: "First Item", date: date1!, type: Item.ItemType.ON, changed: false))
-        expectedItems.append(Item(id: Int64(1), title: "Third Item", date: date3!, type: Item.ItemType.ON, changed: false))
+        expectedItems.append(Item(id: Int64(2), title: "Edited Item", date: date4!, type: Item.ItemType.BY, category: CategoryHelper.UNCATEGORIZED, changed: false)) // gets reset to FALSE
+        expectedItems.append(Item(id: Int64(3), title: "First Item", date: date1!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
+        expectedItems.append(Item(id: Int64(1), title: "Third Item", date: date3!, type: Item.ItemType.ON, category: CategoryHelper.UNCATEGORIZED, changed: false))
 
         
-        let db = MockedDatabaseAccess()
+        let db = try! MockedDatabaseAccess()
         let itemHandler = ItemHandler(dal: db)
 
         // act

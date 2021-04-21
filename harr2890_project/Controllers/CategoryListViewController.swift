@@ -46,20 +46,25 @@ class CategoryListViewController: UITableViewController {
         if let sourceVC = sender.source as? CategoryViewController,
            let returnedCategory = sourceVC.getNewCategory() {
 
-            //let bl = CategoryBL()
             let mode = sourceVC.getMode()
-            
+
             let helper = CategoryHelper()
-            
+
             if helper.categoryAlreadyExists(category: returnedCategory, categories: categories) {
                 // ignore... TODO: throw something?
+                print("It exists... oops!")
                 return
+            } else {
+
+                print("It's good! It doesn't exist... let's edit it")
+                print("We should be able to if it is... mode = \(mode)")
             }
             
             
             if mode == .add {
                 BusinessLogic.bl.addNewCategory(category: returnedCategory, data: &categories)
             } else if mode == .edit {
+                print("Ready to update category: \(returnedCategory.getName())")
                 try! BusinessLogic.bl.updateCategory(category: returnedCategory, data: &categories)
             }
             myTableView.reloadData()
@@ -82,7 +87,8 @@ class CategoryListViewController: UITableViewController {
             return
         }
         
-        let category = sender as! ItemCategory
+        //let category = sender as! ItemCategory
+        let category = ItemCategory(category: sender as! ItemCategory)
         print(category)
 
         // Reference: https://stackoverflow.com/questions/30209626/could-not-cast-value-of-type-uinavigationcontroller
@@ -94,7 +100,8 @@ class CategoryListViewController: UITableViewController {
         } else if segue.identifier == editSegueId {
             let nav = segue.destination as! UINavigationController
             let vc = nav.topViewController as! CategoryViewController
-            vc.updateWithCategory(category: sender as! ItemCategory)
+            //vc.updateWithCategory(category: sender as! ItemCategory)
+            vc.updateWithCategory(category: category)
         }
         
     } // prepare - for segue

@@ -38,6 +38,11 @@ class ItemCategory : Equatable, CustomStringConvertible {
         self.name = name
     }
     
+    init(category: ItemCategory) {
+        self.id = Int64(category.getId() ?? ItemCategory.UNDEFINED)
+        self.name = String(category.getName())
+    }
+    
     
     func getId() -> Int64? {
         return id
