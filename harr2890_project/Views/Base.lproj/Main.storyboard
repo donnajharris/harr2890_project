@@ -464,9 +464,11 @@
                         <searchBar key="tableHeaderView" contentMode="redraw" id="f2K-tf-u1V">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <gestureRecognizers/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
                                 <outlet property="delegate" destination="seM-mi-NpT" id="Xfw-fx-oEi"/>
+                                <outletCollection property="gestureRecognizers" destination="Gn5-bW-9wW" appends="YES" id="Lbl-uF-sor"/>
                             </connections>
                         </searchBar>
                         <prototypes>
@@ -539,6 +541,11 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eqf-HU-Apo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Gn5-bW-9wW">
+                    <connections>
+                        <action selector="Tap:" destination="seM-mi-NpT" id="ffm-ZZ-FQv"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2072" y="-246"/>
         </scene>

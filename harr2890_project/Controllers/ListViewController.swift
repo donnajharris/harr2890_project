@@ -19,9 +19,7 @@ class ListViewController: UITableViewController, UITabBarDelegate, UISearchBarDe
     
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    
-//    private let bl = BusinessLogic()
-    
+        
     let simpleTableIdentifier = "table_identifier"
     private let showSegueId = "ShowItemDetails"
     private let addSegueId = "AddingItem"
@@ -30,6 +28,8 @@ class ListViewController: UITableViewController, UITabBarDelegate, UISearchBarDe
     private var items = [Item]() // the data source
     private var filteredItems = [Item]() // the FILTERED data
 
+    private var closeKeyboardButton : UIBarButtonItem? = nil
+    private var keyboardToolbar : UIToolbar? = nil
     
     
     override func viewDidLoad() {
@@ -41,11 +41,24 @@ class ListViewController: UITableViewController, UITabBarDelegate, UISearchBarDe
         // suppress the noise of the UI Constraint messages while developing logic
         UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
         
-
+        self.searchBar.delegate = self
+        searchBar.placeholder = "Search for an item"
+        
+        /* References:
+         https://stackoverflow.com/questions/6179534/add-a-button-to-hide-keyboard
+         https://www.hackingwithswift.com/forums/swift/toolbar-button-location/5666
+         */
+        keyboardToolbar = UIToolbar()
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        self.closeKeyboardButton = UIBarButtonItem(title: "Close Keyboard", style: .plain, target: self, action: #selector(self.donePressed))
+        self.keyboardToolbar!.items = [flexSpace, self.closeKeyboardButton!]
+        self.keyboardToolbar?.sizeToFit()
+        self.searchBar.inputAccessoryView = self.keyboardToolbar
+        
         //let bl = ItemBL()
         BusinessLogic.bl.loadItems(data: &filteredItems)
         
-        items = filteredItems //
+        items = filteredItems
 
         
     } // viewDidLoad
@@ -231,6 +244,30 @@ class ListViewController: UITableViewController, UITabBarDelegate, UISearchBarDe
         })
         
         myTableView.reloadData()
+    } // searchBar
+    
+    
+    @IBAction func Tap(_ sender: UITapGestureRecognizer) {
+        print("Tippity TAP!")
+        self.searchBar.resignFirstResponder()
+    }
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchBar.endEditing(true)
+    }
+    
+    @objc func donePressed() {
+        view.endEditing(true)
     }
     
     
