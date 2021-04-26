@@ -35,9 +35,18 @@ class CategoryHelper {
         return categories.contains(where: {
             $0.getName().lowercased() == category.getName().lowercased()
         })
-        
-                
+
     } // categoryAlreadyExists
+    
+    
+    func categoryWasRecased(before: String, updatedCategory: ItemCategory) -> Bool {
+        
+        if before == updatedCategory.getName() { return false }
+        
+        if before.lowercased() == updatedCategory.getName().lowercased() { return true }
+        
+        return false // would return if no match at all
+    }
     
     
     func categoryHasBeenChanged(category: ItemCategory, newName: String) -> Bool {

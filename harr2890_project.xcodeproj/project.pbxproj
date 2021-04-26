@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		AE0315EB262511CD00442EDE /* CategoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0315EA262511CD00442EDE /* CategoryHandler.swift */; };
 		AE0315F6262512E100442EDE /* DatabaseAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0315F5262512E100442EDE /* DatabaseAccess.swift */; };
-		AE03161626252FAA00442EDE /* CategoryBL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE03161526252FAA00442EDE /* CategoryBL.swift */; };
 		AE0316212625429900442EDE /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0316202625429900442EDE /* CategoryViewController.swift */; };
 		AE0316252625468A00442EDE /* CategoryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0316242625468A00442EDE /* CategoryHelper.swift */; };
 		AE0E8EC4261D75E1000BB7E0 /* MockedDatabaseAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0E8EC3261D75E1000BB7E0 /* MockedDatabaseAccess.swift */; };
@@ -19,9 +18,9 @@
 		AE4A488E260BF12500E45D96 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE4A488D260BF12500E45D96 /* libsqlite3.tbd */; };
 		AE4C8B27262ABA6000EDCBDE /* SimpleCategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4C8B26262ABA6000EDCBDE /* SimpleCategoryListViewController.swift */; };
 		AE4C8B35262B904C00EDCBDE /* BusinessLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4C8B34262B904C00EDCBDE /* BusinessLogic.swift */; };
+		AE4CDF5726374D8E008309BA /* GroupSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4CDF5626374D8E008309BA /* GroupSection.swift */; };
 		AE54DB0B2626A4B10057DE58 /* CategoryHelper_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE54DB0A2626A4B10057DE58 /* CategoryHelper_Tests.swift */; };
 		AE54DB47262A736D0057DE58 /* CategoryHandler_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE54DB46262A736D0057DE58 /* CategoryHandler_Tests.swift */; };
-		AE54DB4F262A7C2A0057DE58 /* ItemBL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE54DB4E262A7C2A0057DE58 /* ItemBL.swift */; };
 		AE54DB55262A827C0057DE58 /* ItemHelper_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE54DB54262A827C0057DE58 /* ItemHelper_Tests.swift */; };
 		AE54DB59262A82910057DE58 /* ItemHandler_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE54DB58262A82910057DE58 /* ItemHandler_Tests.swift */; };
 		AE5E1637261D66EE00993DDB /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE5E1621261D66DA00993DDB /* SQLite.framework */; };
@@ -125,7 +124,6 @@
 /* Begin PBXFileReference section */
 		AE0315EA262511CD00442EDE /* CategoryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHandler.swift; sourceTree = "<group>"; };
 		AE0315F5262512E100442EDE /* DatabaseAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseAccess.swift; sourceTree = "<group>"; };
-		AE03161526252FAA00442EDE /* CategoryBL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBL.swift; sourceTree = "<group>"; };
 		AE0316202625429900442EDE /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		AE0316242625468A00442EDE /* CategoryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHelper.swift; sourceTree = "<group>"; };
 		AE0E8EC3261D75E1000BB7E0 /* MockedDatabaseAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedDatabaseAccess.swift; sourceTree = "<group>"; };
@@ -136,9 +134,9 @@
 		AE4A4892260BF1F200E45D96 /* harr2890_project-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "harr2890_project-Bridging-Header.h"; sourceTree = "<group>"; };
 		AE4C8B26262ABA6000EDCBDE /* SimpleCategoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCategoryListViewController.swift; sourceTree = "<group>"; };
 		AE4C8B34262B904C00EDCBDE /* BusinessLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessLogic.swift; sourceTree = "<group>"; };
+		AE4CDF5626374D8E008309BA /* GroupSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSection.swift; sourceTree = "<group>"; };
 		AE54DB0A2626A4B10057DE58 /* CategoryHelper_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHelper_Tests.swift; sourceTree = "<group>"; };
 		AE54DB46262A736D0057DE58 /* CategoryHandler_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHandler_Tests.swift; sourceTree = "<group>"; };
-		AE54DB4E262A7C2A0057DE58 /* ItemBL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemBL.swift; sourceTree = "<group>"; };
 		AE54DB54262A827C0057DE58 /* ItemHelper_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHelper_Tests.swift; sourceTree = "<group>"; };
 		AE54DB58262A82910057DE58 /* ItemHandler_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHandler_Tests.swift; sourceTree = "<group>"; };
 		AE5E1616261D66D900993DDB /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
@@ -217,10 +215,8 @@
 		AE6531DF261CA63700EC8A4A /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
-				AE54DB4E262A7C2A0057DE58 /* ItemBL.swift */,
 				AEAEF74D261E9ECD007BC751 /* ItemHandler.swift */,
 				AEAEF740261E9DBE007BC751 /* ItemHelper.swift */,
-				AE03161526252FAA00442EDE /* CategoryBL.swift */,
 				AE0315EA262511CD00442EDE /* CategoryHandler.swift */,
 				AE0316242625468A00442EDE /* CategoryHelper.swift */,
 				AE4C8B34262B904C00EDCBDE /* BusinessLogic.swift */,
@@ -243,6 +239,7 @@
 			children = (
 				AEE23D2F260A7C0200AABD40 /* Item.swift */,
 				AE3EBB9C2622B7040047DBEF /* ItemCategory.swift */,
+				AE4CDF5626374D8E008309BA /* GroupSection.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -540,11 +537,10 @@
 				AE3EBB922622B6F50047DBEF /* CategoryListViewController.swift in Sources */,
 				AE7F70C62613A24900253CAE /* ImplementedDatabaseAccess.swift in Sources */,
 				AE0315EB262511CD00442EDE /* CategoryHandler.swift in Sources */,
-				AE54DB4F262A7C2A0057DE58 /* ItemBL.swift in Sources */,
 				AEE23D30260A7C0200AABD40 /* Item.swift in Sources */,
 				AE4C8B35262B904C00EDCBDE /* BusinessLogic.swift in Sources */,
+				AE4CDF5726374D8E008309BA /* GroupSection.swift in Sources */,
 				AEE23CFE260A729000AABD40 /* ListViewController.swift in Sources */,
-				AE03161626252FAA00442EDE /* CategoryBL.swift in Sources */,
 				AE0315F6262512E100442EDE /* DatabaseAccess.swift in Sources */,
 				AE4C8B27262ABA6000EDCBDE /* SimpleCategoryListViewController.swift in Sources */,
 				AE0E8EC4261D75E1000BB7E0 /* MockedDatabaseAccess.swift in Sources */,

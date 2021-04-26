@@ -21,13 +21,15 @@ class CategoryListViewController: UITableViewController {
     //private let bl = BusinessLogic()
     
     @IBOutlet weak var myTableView: UITableView!
+    
+    private var lastSelectedCategory : String? = nil
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //let bl = CategoryBL()
-        BusinessLogic.bl.loadCategories(data: &categories)
+        BusinessLogic.layer.loadCategories(data: &categories)
     
     }
     
@@ -49,23 +51,19 @@ class CategoryListViewController: UITableViewController {
             let mode = sourceVC.getMode()
 
             let helper = CategoryHelper()
-
-            if helper.categoryAlreadyExists(category: returnedCategory, categories: categories) {
-                // ignore... TODO: throw something?
-                print("It exists... oops!")
-                return
-            } else {
-
-                print("It's good! It doesn't exist... let's edit it")
-                print("We should be able to if it is... mode = \(mode)")
-            }
             
-            
-            if mode == .add {
-                BusinessLogic.bl.addNewCategory(category: returnedCategory, data: &categories)
+            if mode == .add && !helper.categoryAlreadyExists(category: returnedCategory, categories: categories) {
+                BusinessLogic.layer.addNewCategory(category: returnedCategory, data: &categories)
+                
             } else if mode == .edit {
-                print("Ready to update category: \(returnedCategory.getName())")
-                try! BusinessLogic.bl.updateCategory(category: returnedCategory, data: &categories)
+                
+                if  helper.categoryWasRecased(before: lastSelectedCategory!, updatedCategory: returnedCategory) ||
+                    !helper.categoryAlreadyExists(category: returnedCategory, categories: categories) {
+                
+                    print("Ready to update category: \(returnedCategory.getName())")
+                    try! BusinessLogic.layer.updateCategory(category: returnedCategory, data: &categories)
+                    BusinessLogic.layer.setCategoriesChanged(didChange: true)
+                }
             }
             myTableView.reloadData()
             
@@ -87,7 +85,6 @@ class CategoryListViewController: UITableViewController {
             return
         }
         
-        //let category = sender as! ItemCategory
         let category = ItemCategory(category: sender as! ItemCategory)
         print(category)
 
@@ -142,7 +139,9 @@ class CategoryListViewController: UITableViewController {
          performSegue(withIdentifier: editSegueId,
                       sender: categories[indexPath.row])
         
-        print(categories[indexPath.row])
+        lastSelectedCategory = categories[indexPath.row].getName()
+        
+        print("lastSelectedCategory = \(lastSelectedCategory!)")
 
     }  // TV - didSelectRowAt
     
@@ -164,9 +163,8 @@ class CategoryListViewController: UITableViewController {
             let indexToDelete = indexPath.row
             let categoryToRemove = categories[indexToDelete]
             
-            //let bl = CategoryBL()
             do {
-                try BusinessLogic.bl.removeCategory(index: indexToDelete, category: categoryToRemove, data: &categories)
+                try BusinessLogic.layer.removeCategory(index: indexToDelete, category: categoryToRemove, data: &categories)
             } catch CategoryHandler.CategoryError.cannotRemoveUncategorized {
                 
                 // TODO: Add an alert here
@@ -212,31 +210,5 @@ class CategoryListViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    
-    
-    func loadDummyCategories() {
-        
-        let count = 10
-        var i = 0
-        
-        while i < count {
-            
-            let catName = "Category \(i+1)"
-            
-            let cat = ItemCategory(name: catName)
-            categories.append(cat)
-            
-            i += 1
-        }
-        
-        
-        // check it
-        
-        for e in categories {
-            print("\(e.getName())")
-        }
-        
-    }
 
 }

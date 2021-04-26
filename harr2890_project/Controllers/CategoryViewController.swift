@@ -26,11 +26,7 @@ class CategoryViewController: UIViewController {
     func getNewCategory() -> ItemCategory? {
         return category
     }
-    
-//    func getOriginalCategoryName() -> String? {
-//        return originalCategoryName
-//    }
-    
+
     func getMode() -> Mode {
         return mode
     }
@@ -41,6 +37,8 @@ class CategoryViewController: UIViewController {
         if mode == .edit {
             self.categoryName.text = category?.getName()
             self.originalCategoryName = String(category?.getName() ?? "")
+            
+            self.saveButton.setTitle("Update", for: UIControl.State.normal)
             
             print("We're looking \(originalCategoryName!) to start with...")
         }
@@ -85,7 +83,6 @@ class CategoryViewController: UIViewController {
 
         let helper = CategoryHelper()
         
-        //if helper.categoryNameIsValid(category: category!) == false {
         if helper.categoryNameIsValid(categoryName: name) == false {
             print("is a blank - rteurning nil")
             category = nil

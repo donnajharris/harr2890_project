@@ -39,6 +39,8 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         
         self.nameField.delegate = self // set delegate
 
+        self.saveButton.setTitle("Update", for: UIControl.State.normal)
+        
         
         print("Enter the Edit Item view")
         print(item!)

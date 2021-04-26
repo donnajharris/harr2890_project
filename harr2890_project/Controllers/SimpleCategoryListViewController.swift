@@ -42,7 +42,7 @@ class SimpleCategoryListViewController: UITableViewController {
 
         //let bl = CategoryBL()
         //let bl = BusinessLogic()
-        BusinessLogic.bl.loadCategories(data: &categories)
+        BusinessLogic.layer.loadCategories(data: &categories)
                 
         for e in categories {
             print(e)

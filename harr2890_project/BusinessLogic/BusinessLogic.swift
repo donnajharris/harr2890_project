@@ -9,11 +9,13 @@ import Foundation
 
 class BusinessLogic {
     
-    static let bl = BusinessLogic()
+    static let layer = BusinessLogic()
     
     private let db : DatabaseAccess
     private let itemHandler : ItemHandler
     private let categoryHandler : CategoryHandler
+    
+    private var categoriesChanged : Bool = false
 
     
     init() {
@@ -132,4 +134,15 @@ class BusinessLogic {
     } // updateCategory
     
     
+    func categoryListHasChanged() -> Bool {
+        return categoriesChanged
+    }
+    
+    func setCategoriesChanged(didChange: Bool) {
+        self.categoriesChanged = didChange
+    }
+    
+    func resetCategoriesChanged() {
+        self.categoriesChanged = false
+    }
 }
