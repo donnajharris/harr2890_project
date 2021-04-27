@@ -147,8 +147,8 @@ class BusinessLogic {
     }
     
     
-    func getAllItemsWithLocations() -> [Item] {
+    func getAllItemsWithLocations(daysFilter: Int) -> [Item] {
         
-        return itemHandler.getAllItemsWithLocationsFromDatabase()
+        return itemHandler.getAllItemsWithLocationsFromDatabase(daysFilter: daysFilter)
     }
 }

@@ -25,8 +25,6 @@ class ListViewController: UITableViewController, UITabBarDelegate, UISearchBarDe
     private let showSegueId = "ShowItemDetails"
     private let addSegueId = "AddingItem"
     private let cellIdentifier = "ListViewReuseIdentifier"
-
-//    private var sections = [GroupedSection<Date, Item>]()
     
     private let ROW_HEIGHT = 70
     
@@ -69,10 +67,6 @@ class ListViewController: UITableViewController, UITabBarDelegate, UISearchBarDe
 
         BusinessLogic.layer.loadItems(data: &filteredItems)
         items = filteredItems
-        
-
-//        self.sections = GroupedSection.group(rows: self.filteredItems, by: { firstDayOfMonth(date: $0.getDate()) })
-//        self.sections.sort { lhs, rhs in lhs.sectionItem < rhs.sectionItem }
 
         myTableView.reloadData()
 
@@ -92,32 +86,6 @@ class ListViewController: UITableViewController, UITabBarDelegate, UISearchBarDe
     } //testAddDataToDB
 
     
-    // MARK: - Section headers / tableView methods
-//
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        return self.sections.count
-//    }
-//
-//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        let section = self.sections[section]
-//        let date = section.sectionItem
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "MMMM yyyy"
-//        return dateFormatter.string(from: date)
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        let section = self.sections[section]
-//        return section.rows.count
-//    }
-//
-//    private func firstDayOfMonth(date: Date) -> Date {
-//        let calendar = Calendar.current
-//        let components = calendar.dateComponents([.year, .month], from: date)
-//        return calendar.date(from: components)!
-//    }
-    
-    
     // MARK: - TableView methods
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -128,12 +96,6 @@ class ListViewController: UITableViewController, UITabBarDelegate, UISearchBarDe
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TableViewCell
-        
-//        let section = self.sections[indexPath.section]
-//        print("\t\t >> Section is = \(section.rows)")
-//        
-//        
-        
 
         if cell == nil {
             cell = TableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: cellIdentifier)
@@ -168,9 +130,7 @@ class ListViewController: UITableViewController, UITabBarDelegate, UISearchBarDe
     
     // REMOVING item from display AND database
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        // IDEAS for archiving: https://stackoverflow.com/questions/48515945/swipe-to-delete-with-multiple-options
-        
+                
         if editingStyle == .delete {
             let indexToDelete = indexPath.row
             let itemToRemove = filteredItems[indexToDelete]

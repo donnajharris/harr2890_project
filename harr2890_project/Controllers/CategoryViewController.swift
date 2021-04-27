@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import OSLog
 
 class CategoryViewController: UIViewController {
 
@@ -69,7 +68,7 @@ class CategoryViewController: UIViewController {
         
         // Configure the destination view controller only when the save button is pressed.
         guard let button = sender as? UIButton, button === saveButton else {
-            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            //print("The save button was not pressed, cancelling")
             return
         }
                 
@@ -77,9 +76,6 @@ class CategoryViewController: UIViewController {
         categoryName.text = categoryName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let name = categoryName.text!
         
-        //print("name of returned Category: |\(name)|")
-        //print("name of original Category: \(String(describing: originalCategoryName))")
-
         let helper = CategoryHelper()
         
         if helper.categoryNameIsValid(categoryName: name) == false {

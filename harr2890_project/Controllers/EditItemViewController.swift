@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import os.log
 
 class EditItemViewController: UIViewController, UINavigationControllerDelegate, UITextFieldDelegate {
 
@@ -54,7 +53,7 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         
         // Configure the destination view controller only when the save button is pressed.
         guard let button = sender as? UIButton, button === saveButton else {
-            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            //print("The save button was not pressed, cancelling")
             return
         }
   

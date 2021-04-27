@@ -105,10 +105,10 @@ class ItemHandler {
     } // updateItemInDB
     
     
-    func getAllItemsWithLocationsFromDatabase() -> [Item] {
+    func getAllItemsWithLocationsFromDatabase(daysFilter: Int) -> [Item] {
         
         do {
-            return try databaseAccess.getAllItemsWithLocations()
+            return try databaseAccess.getAllItemsWithLocations(daysFilter: daysFilter)
 
         } catch ItemError.accessError {
             

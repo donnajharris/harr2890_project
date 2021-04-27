@@ -7,9 +7,6 @@
 
 import UIKit
 import MapKit
-import os.log
-
-
 
 class AddItemViewController: UIViewController, UINavigationControllerDelegate, UITextFieldDelegate, MyDataSendingDelegateProtocol {
     
@@ -20,9 +17,7 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
         self.category = data
     }
     
-
     private let selectSegueId = "categorySelect"
-
     
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var typeField: UISegmentedControl!
@@ -117,7 +112,7 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
         
         // Configure the destination view controller only when the save button is pressed.
         guard let button = sender as? UIButton, button === saveButton else {
-            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            //print("The save button was not pressed, cancelling")
             return
         }
                 
@@ -157,6 +152,6 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
         
                 coordinatesLabel.text = "Lat: " + String(newLocation!.latitude) + " \nLong: " + String(newLocation!.longitude)
         }
-    }
+    } // unwindToAddItemWithLocation
 
 }

@@ -53,7 +53,6 @@ class ImplementedDatabaseAccess : DatabaseAccess {
             print("Unexpected error: \(error)")
         }
 
-        
     } // init
     
     private func isFirstRun() -> Bool {
@@ -68,18 +67,7 @@ class ImplementedDatabaseAccess : DatabaseAccess {
             firstRun = true
         }
         
-    }
-    
-
-//    private func dataFilePath() -> String {
-//        let urls = FileManager.default.urls(for:
-//            .documentDirectory, in: .userDomainMask)
-//        var url:String?
-//        url = urls.first?.appendingPathComponent(DB_STRING).path
-//        return url!
-//
-//    } // dataFilePath
-//
+    } // determineFirstRunStatus
     
     private func initItemsTable() {
         
@@ -200,14 +188,33 @@ class ImplementedDatabaseAccess : DatabaseAccess {
     } // getAllItems
     
     
-    func getAllItemsWithLocations() throws -> [Item] {
+    
+    
+    func getAllItemsWithLocations(daysFilter: Int) throws -> [Item] {
         
         let helper = ItemHelper()
 
         var itemsWithLocations = [Item]()
         
+        let daysFilterInSeconds = daysFilter*24*60*60
+        let dateNow = Date()
+        
+        print("Date Now: \(dateNow)")
+        
+        let dateBoundary = Date(timeInterval: TimeInterval(daysFilterInSeconds), since: dateNow)
+        
+        print("Date Boundary: \(dateBoundary)\n\n\n")
+        
         let filteredTable : Table = itemsTable.filter(  itemLatitude != Double(Item.UNDEFINED) &&
-                                                        itemLongitude != Double(Item.UNDEFINED))
+                                                        itemLongitude != Double(Item.UNDEFINED)
+                                                        && itemType == "by" ||
+                                                            (itemType == "on" && itemDate < dateNow-1)
+                                                        
+                                                         //&& ((itemType == "by" && itemDate > dateNow-daysFilterInSeconds) ||
+                                                         //   (itemType == "on" && itemDate < dateNow-1))
+                                                        //&& itemDate < dateBoundary
+                                                        //&& itemDate < dateNow
+        )
 
         for itemRow in try! database!.prepare(filteredTable) {
 

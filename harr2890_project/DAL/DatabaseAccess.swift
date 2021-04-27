@@ -16,7 +16,7 @@ protocol DatabaseAccess {
     func updateItem(item: Item, rowId: Int64) throws -> Int
     func removeItem(rowId: Int64) throws -> Int
     func getAllItems() throws -> [Item]
-    func getAllItemsWithLocations() throws -> [Item]
+    func getAllItemsWithLocations(daysFilter: Int) throws -> [Item]
 
     
     // MARK: - Category operations

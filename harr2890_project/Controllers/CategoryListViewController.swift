@@ -57,7 +57,6 @@ class CategoryListViewController: UITableViewController {
                 if  helper.categoryWasRecased(before: lastSelectedCategory!, updatedCategory: returnedCategory) ||
                     !helper.categoryAlreadyExists(category: returnedCategory, categories: categories) {
                 
-                    //print("Ready to update category: \(returnedCategory.getName())")
                     try! BusinessLogic.layer.updateCategory(category: returnedCategory, data: &categories)
                     BusinessLogic.layer.setCategoriesChanged(didChange: true)
                 }
@@ -83,7 +82,6 @@ class CategoryListViewController: UITableViewController {
         }
         
         let category = ItemCategory(category: sender as! ItemCategory)
-        //print(category)
 
         // Reference: https://stackoverflow.com/questions/30209626/could-not-cast-value-of-type-uinavigationcontroller
         
@@ -101,11 +99,6 @@ class CategoryListViewController: UITableViewController {
     
     
     // MARK: - Table view data source
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count
@@ -134,8 +127,6 @@ class CategoryListViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         lastSelectedCategory = categories[indexPath.row].getName()
-        //print("lastSelectedCategory = \(lastSelectedCategory!)")
-
 
         if lastSelectedCategory != CategoryHelper.UNCATEGORIZED.getName() {
         
@@ -187,12 +178,6 @@ class CategoryListViewController: UITableViewController {
             myTableView.deleteRows(at: [indexPath], with: .fade)
 
         }
-    }
-    
-    
-//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//        return true
-//    }
-
+    } // TV - commit editingStyle
 
 }

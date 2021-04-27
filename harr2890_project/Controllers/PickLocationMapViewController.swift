@@ -74,8 +74,6 @@ class PickLocationMapViewController : UIViewController, CLLocationManagerDelegat
             let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
             let region = MKCoordinateRegion(center: place, span: span)
             mapViewToAdd.setRegion(region, animated: true)
-        } else {
-            print("\tUGH!! I dunno!")
         }
         
     } //updateMapByCurrentLocation
@@ -90,7 +88,7 @@ class PickLocationMapViewController : UIViewController, CLLocationManagerDelegat
 
         let newAnnotation = MKPointAnnotation()
         newAnnotation.coordinate = locationCoordinates
-        newAnnotation.title = "This Is Item"
+        newAnnotation.title = "Location to Add"
 
         // in case there is something from before ... we only want the latest
         mapViewToAdd.removeAnnotations(mapViewToAdd.annotations)

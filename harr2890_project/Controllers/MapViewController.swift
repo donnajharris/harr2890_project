@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 
 
-// FIRST..... Setup permissions for location in Info.plist  ....
+// FIRST STPE..... ensure you setup permissions for location in Info.plist  ....
 // - Add: NSLocationAlwaysAndWhenInUseUsageDescription (aka "Privacy - Location Always and When In Use Usage Description")
 // - Add: NSLocationWhenInUseUsageDescription (aka "Privacy - Location When In Use Usage Description")
 
@@ -53,6 +53,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     override func viewDidAppear(_ animated: Bool) {
         updateMapByCurrentLocation()
+        displayAllItemsWithLocations()
     }
     
     
@@ -68,23 +69,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
             let region = MKCoordinateRegion(center: place, span: span)
             mapViewOnTab.setRegion(region, animated: true)
-        } else {
-            print("\tUGH!! I dunno!")
         }
         
     } //updateMapByCurrentLocation
 
     
     // Feature for demo purposes
-    // This should be refined in future to load only a subset of locations to the map view
+    // This should be refined in future to load only a *requested* subset of locations to the map view
     func displayAllItemsWithLocations() {
         
         let helper = ItemHelper()
-        
-        // for now...
-        addSampleLocations()
-        
-        let itemsWithLocations = BusinessLogic.layer.getAllItemsWithLocations()
+
+        // current arbitrary implementation includes... 
+        let FILTER = 30
+        let itemsWithLocations = BusinessLogic.layer.getAllItemsWithLocations(daysFilter: FILTER)
         
         for item in itemsWithLocations {
             let place = CLLocationCoordinate2D(latitude: item.getLatitude(), longitude: item.getLongitude())
@@ -99,7 +97,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
     
     func addSampleLocations() {
-        // adding locations
+        // adding test locations
         
         let place1 = CLLocationCoordinate2D(latitude: 43.56807194067141, longitude: -80.25863767388105) //Bank
 
