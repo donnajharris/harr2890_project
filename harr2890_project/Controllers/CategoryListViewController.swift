@@ -20,8 +20,8 @@ class CategoryListViewController: UITableViewController {
         
     @IBOutlet weak var myTableView: UITableView!
     
-    private var lastSelectedCategory : String? = nil
-
+    private var lastSelectedCategoryName : String? = nil
+    private var categoryNamesBefore : [String] = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,56 @@ class CategoryListViewController: UITableViewController {
     
     // unwind from adding or editing
     @IBAction func unwindToCategoryList(sender: UIStoryboardSegue) {
-        
+//
+//        if let sourceVC = sender.source as? CategoryViewController,
+//           let returnedCategory = sourceVC.getNewCategory() {
+//
+//            let mode = sourceVC.getMode()
+//
+//            let helper = CategoryHelper()
+//
+////            if helper.categoryAlreadyExists(category: returnedCategory, categories: categories) {
+////                popupForCategoryNameExists()
+////                return
+////            }
+//
+//            if mode == .add && !helper.categoryAlreadyExists(category: returnedCategory, categories: categories) {
+//                do {
+//                    try BusinessLogic.layer.addNewCategory(category: returnedCategory, data: &categories)
+//                } catch CategoryHandler.CategoryError.duplicateCategoryName {
+//                    return
+//                } catch {
+//
+//                }
+//
+//            } else if mode == .edit {
+//
+//              let lastSelectedCategory = ItemCategory(name: lastSelectedCategoryName!)
+//
+//                print("Before is was: \(lastSelectedCategory.getName())")
+//                print("Returned: \(returnedCategory.getName())")
+//
+//                if helper.categoryAlreadyExists(category: returnedCategory, categories: categories) == false {
+//
+//                    print(">>>>\tThat category name doesn't already exist in the list!")
+//
+//                    try! BusinessLogic.layer.updateCategory(category: returnedCategory, data: &categories)
+//                    BusinessLogic.layer.setCategoriesChanged(didChange: true)
+//
+//                } else if helper.categoryWasRecased(before: lastSelectedCategoryName!, updatedCategory: returnedCategory)  {
+//
+//                    print(">>>>\tThat category name is a recasing of the original, so we're good!!")
+//
+//
+//                    try! BusinessLogic.layer.updateCategory(category: returnedCategory, data: &categories)
+//                    BusinessLogic.layer.setCategoriesChanged(didChange: true)
+//                }
+//                else if helper.categoryAlreadyExists(category: lastSelectedCategory, categories: categories)  {
+//                    print(">>>>\tAnother case to handle...")
+//                }
+//            }
+//            myTableView.reloadData()
+            
         if let sourceVC = sender.source as? CategoryViewController,
            let returnedCategory = sourceVC.getNewCategory() {
 
@@ -49,31 +98,38 @@ class CategoryListViewController: UITableViewController {
 
             let helper = CategoryHelper()
             
-//            if helper.categoryAlreadyExists(category: returnedCategory, categories: categories) {
-//                popupForCategoryNameExists()
-//                return
-//            }
-            
             if mode == .add && !helper.categoryAlreadyExists(category: returnedCategory, categories: categories) {
-                do {
-                    try BusinessLogic.layer.addNewCategory(category: returnedCategory, data: &categories)
-                } catch CategoryHandler.CategoryError.duplicateCategoryName {
-                    return
-                } catch {
-                    
-                }
+                try! BusinessLogic.layer.addNewCategory(category: returnedCategory, data: &categories)
                 
             } else if mode == .edit {
                 
-                if  helper.categoryWasRecased(before: lastSelectedCategory!, updatedCategory: returnedCategory) ||
-                    !helper.categoryAlreadyExists(category: returnedCategory, categories: categories) {
+//                print("AFTER")
+//                for e in categoryNamesBefore {
+//                    print(e)
+//                }
+//
+//                print("AND... \(returnedCategory.getName())")
                 
+                if  helper.categoryWasRecased(before: lastSelectedCategoryName!, updatedCategory: returnedCategory) ||
+                    !helper.categoryNameAlreadyExists(newCategoryName: returnedCategory.getName(), categoryNames: categoryNamesBefore)
+                
+                {
+                
+//                    print("Ready to update category: \(returnedCategory.getName())")
                     try! BusinessLogic.layer.updateCategory(category: returnedCategory, data: &categories)
                     BusinessLogic.layer.setCategoriesChanged(didChange: true)
+                } else  {
+                    print("Error: Cannot add a category with a name that already exists.")
+                    
+                    // reset category name back to original in table list
+                    returnedCategory.setName(name: lastSelectedCategoryName!)
+                    
                 }
             }
             myTableView.reloadData()
-            
+           
+        
+        
         } else {
             
             // This fails somewhat gracefully, but silently at the UI level
@@ -83,44 +139,32 @@ class CategoryListViewController: UITableViewController {
     } // unwindToCategoryList
     
     
-//
-//    private func popupForCategoryNameExists() {
-//        let alertController = UIAlertController(title: "Sorry...",
-//                                                message: "That category name already exists.",
-//                                                preferredStyle: UIAlertController.Style.alert)
-//
-//        alertController.addAction(UIAlertAction(title: "Dismiss",
-//                                                style: UIAlertAction.Style.default,handler: nil))
-//
-//        self.present(alertController, animated: true, completion: nil)
-//
-//    } // popupForCategoryNameExists
-
-    
-
-    
+    private func setNamesOfListBefore() {
+        
+        categoryNamesBefore = [String]()
+        
+        for category in categories {
+            categoryNamesBefore.append(category.getName())
+        }
+    }
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         super.prepare(for: segue, sender: sender)
         
+        // no prep to do for this segue
         if segue.identifier == addSegueId {
             return
         }
         
-        let category = ItemCategory(category: sender as! ItemCategory)
-
         // Reference: https://stackoverflow.com/questions/30209626/could-not-cast-value-of-type-uinavigationcontroller
         
-        if segue.identifier == addSegueId {
+        if segue.identifier == editSegueId {
+                        
             let nav = segue.destination as! UINavigationController
             let vc = nav.topViewController as! CategoryViewController
-            vc.initWithCategory(category: sender as! ItemCategory)
-        } else if segue.identifier == editSegueId {
-            let nav = segue.destination as! UINavigationController
-            let vc = nav.topViewController as! CategoryViewController
-            vc.updateWithCategory(category: category)
+            vc.updateWithCategory(category: sender as! ItemCategory)
         }
         
     } // prepare - for segue
@@ -149,48 +193,26 @@ class CategoryListViewController: UITableViewController {
     } // TV - cellForRowAt indexPath
     
     
+    // edit category
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        lastSelectedCategory = categories[indexPath.row].getName()
-
-        if lastSelectedCategory != CategoryHelper.UNCATEGORIZED.getName() {
+        lastSelectedCategoryName = categories[indexPath.row].getName()
         
+        setNamesOfListBefore()
+
+        if lastSelectedCategoryName != CategoryHelper.UNCATEGORIZED.getName() {
+                    
             performSegue(withIdentifier: editSegueId,
                       sender: categories[indexPath.row])
+            
         } else {
             popupForUncategorized()
         }
         
 
     }  // TV - didSelectRowAt
-    
-    
-    private func popupForUncategorized() {
-        let alertController = UIAlertController(title: "Sorry...",
-                                                message: "The 'Uncategorized' category cannot be altered.",
-                                                preferredStyle: UIAlertController.Style.alert)
-
-        alertController.addAction(UIAlertAction(title: "Dismiss",
-                                                style: UIAlertAction.Style.default,handler: nil))
-
-        self.present(alertController, animated: true, completion: nil)
-        
-    } // popupForUncategorized
-    
-    private func popupForCategoryCannotBeDeletedYet() {
-        let alertController = UIAlertController(title: "Sorry...",
-                                                message: "That category cannot be deleted while it has items associated with it.",
-                                                preferredStyle: UIAlertController.Style.alert)
-
-        alertController.addAction(UIAlertAction(title: "Dismiss",
-                                                style: UIAlertAction.Style.default,handler: nil))
-
-        self.present(alertController, animated: true, completion: nil)
-        
-    } // popupForCategoryCannotBeDeletedYet
-
     
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -225,5 +247,35 @@ class CategoryListViewController: UITableViewController {
 
         }
     } // TV - commit editingStyle
+
+    
+    // MARK: - Popup Alerts
+    
+    private func popupForUncategorized() {
+        let alertController = UIAlertController(title: "Sorry...",
+                                                message: "The 'Uncategorized' category cannot be altered.",
+                                                preferredStyle: UIAlertController.Style.alert)
+
+        alertController.addAction(UIAlertAction(title: "Dismiss",
+                                                style: UIAlertAction.Style.default,handler: nil))
+
+        self.present(alertController, animated: true, completion: nil)
+        
+    } // popupForUncategorized
+    
+    
+    private func popupForCategoryCannotBeDeletedYet() {
+        let alertController = UIAlertController(title: "Sorry...",
+                                                message: "That category cannot be deleted while it has items associated with it.",
+                                                preferredStyle: UIAlertController.Style.alert)
+
+        alertController.addAction(UIAlertAction(title: "Dismiss",
+                                                style: UIAlertAction.Style.default,handler: nil))
+
+        self.present(alertController, animated: true, completion: nil)
+        
+    } // popupForCategoryCannotBeDeletedYet
+    
+     
 
 }

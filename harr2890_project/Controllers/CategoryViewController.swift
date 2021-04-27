@@ -34,8 +34,11 @@ class CategoryViewController: UIViewController {
         super.viewDidLoad()
 
         if mode == .edit {
+                        
             self.categoryName.text = category?.getName()
             self.originalCategoryName = String(category?.getName() ?? "")
+            
+            self.navigationItem.title = "Edit Category Name"
             
             self.saveButton.setTitle("Update", for: UIControl.State.normal)
             
@@ -84,7 +87,7 @@ class CategoryViewController: UIViewController {
             return
         } else if name == originalCategoryName?.trimmingCharacters(in: .whitespacesAndNewlines) {
             category = nil
-            return // TODO? A different issue...
+            return // TODO
         }
         
         if mode == .add {

@@ -31,12 +31,22 @@ class CategoryHelper {
     
     
     func categoryAlreadyExists(category: ItemCategory, categories: [ItemCategory]) -> Bool {
-        
+                
         return categories.contains(where: {
             $0.getName().lowercased() == category.getName().lowercased()
         })
 
     } // categoryAlreadyExists
+    
+    
+    func categoryNameAlreadyExists(newCategoryName: String, categoryNames: [String]) -> Bool {
+        
+        return categoryNames.contains(where: {
+            $0.lowercased() == newCategoryName.lowercased()
+        })
+
+    } //categoryNameAlreadyExists
+
     
     
     func categoryWasRecased(before: String, updatedCategory: ItemCategory) -> Bool {

@@ -40,9 +40,9 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
 
         self.saveButton.setTitle("Update", for: UIControl.State.normal)
         
-        
-        print("Enter the Edit Item view")
-        print(item!)
+//        
+//        print("Enter the Edit Item view")
+//        print(item!)
     }
     
     

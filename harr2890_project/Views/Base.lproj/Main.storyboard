@@ -429,35 +429,35 @@
                     <navigationItem key="navigationItem" title="Categories" id="YJu-ek-wqK">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="7is-ve-uNx">
                             <connections>
-                                <segue destination="LYp-Yj-Nmf" kind="presentation" identifier="categoryAdd" id="le4-IE-r1D"/>
+                                <segue destination="Cfj-hR-lij" kind="show" identifier="categoryAdd" id="oHl-CQ-XuA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="myTableView" destination="13b-oE-8zG" id="ZzN-Kf-iEw"/>
-                        <segue destination="LYp-Yj-Nmf" kind="presentation" identifier="categoryEdit" id="3AV-hm-LET"/>
+                        <segue destination="Cfj-hR-lij" kind="show" identifier="categoryEdit" id="djv-rk-X0x"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XZQ-vV-M6e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1056" y="1410"/>
         </scene>
-        <!--Category View Controller-->
+        <!--Hi-->
         <scene sceneID="bLE-mG-Fki">
             <objects>
-                <viewController id="b5v-Uq-UrS" customClass="CategoryViewController" customModule="harr2890_project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Hi" id="b5v-Uq-UrS" customClass="CategoryViewController" customModule="harr2890_project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kig-yo-g2E">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYf-xO-h08">
-                                <rect key="frame" x="100" y="131" width="120" height="21"/>
+                                <rect key="frame" x="100" y="119" width="120" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rde-n5-4hZ">
-                                <rect key="frame" x="100" y="160" width="120" height="34"/>
+                                <rect key="frame" x="100" y="148" width="120" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="VRh-Oh-3pj"/>
                                 </constraints>
@@ -465,7 +465,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZXL-wM-oRd">
-                                <rect key="frame" x="143" y="224" width="34" height="30"/>
+                                <rect key="frame" x="143" y="212" width="34" height="30"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <segue destination="OFP-nD-dJo" kind="unwind" unwindAction="unwindToCategoryListWithSender:" id="fst-ry-MOi"/>
@@ -483,7 +483,7 @@
                             <constraint firstItem="qYf-xO-h08" firstAttribute="top" secondItem="R9L-o1-hVY" secondAttribute="top" constant="75" id="xgG-Sf-3OM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="IVA-xk-712">
+                    <navigationItem key="navigationItem" title="Add Category Name" id="IVA-xk-712">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="NPO-gw-izZ">
                             <connections>
                                 <action selector="cancelPressed:" destination="b5v-Uq-UrS" id="YKH-A0-RUu"/>
@@ -498,7 +498,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nQG-hX-VPa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="OFP-nD-dJo" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3069" y="1410"/>
+            <point key="canvasLocation" x="4065" y="1410"/>
         </scene>
         <!--Map View-->
         <scene sceneID="02d-93-hYY">
@@ -656,7 +656,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Zd2-2d-3mS"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BY7-KQ-ZBy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -675,7 +675,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Uu2-yb-4Q2"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="s5H-F0-3WR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -706,24 +706,6 @@
             </objects>
             <point key="canvasLocation" x="19" y="1410"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Mp7-L2-fSc">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LYp-Yj-Nmf" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0Im-ps-LxD">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="b5v-Uq-UrS" kind="relationship" relationship="rootViewController" id="G3l-R1-q9W"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ufh-cM-yA2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2072" y="1410"/>
-        </scene>
         <!--Map-->
         <scene sceneID="a8z-fy-8tz">
             <objects>
@@ -743,9 +725,28 @@
             </objects>
             <point key="canvasLocation" x="1056" y="-1285"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ZMe-Qg-DE1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Cfj-hR-lij" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="8OP-pw-7je"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ITm-wO-EA7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="b5v-Uq-UrS" kind="relationship" relationship="rootViewController" id="lTi-Uv-QSF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Noo-B5-EZ1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3067.5" y="1410"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3AV-hm-LET"/>
+        <segue reference="djv-rk-X0x"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="list.dash" catalog="system" width="128" height="85"/>
