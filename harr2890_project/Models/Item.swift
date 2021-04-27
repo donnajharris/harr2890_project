@@ -182,11 +182,11 @@ class Item : Equatable, CustomStringConvertible {
     }
     
     func getLatitude() -> Double {
-        return location.latitude ?? Double(Item.UNDEFINED)
+        return location.latitude
     }
     
     func getLongitude() -> Double {
-        return location.longitude ?? Double(Item.UNDEFINED)
+        return location.longitude
     }
 
 }

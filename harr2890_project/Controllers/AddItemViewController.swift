@@ -32,6 +32,9 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet weak var selectCategoryButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     
+    @IBAction func addLocationButton(_ sender: Any) {
+    }
+    @IBOutlet weak var coordinatesLabel: UILabel!
     
     private var item : Item?
 

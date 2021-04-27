@@ -150,6 +150,35 @@
             </objects>
             <point key="canvasLocation" x="4095" y="628"/>
         </scene>
+        <!--Pick Location-->
+        <scene sceneID="rbS-Yv-pRa">
+            <objects>
+                <viewController id="IIb-iY-jOI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zl5-9r-4Aw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="n4A-7C-zcL">
+                                <rect key="frame" x="0.0" y="44" width="320" height="387"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ZLj-XD-EYb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="n4A-7C-zcL" secondAttribute="trailing" id="EdV-Dj-4iS"/>
+                            <constraint firstItem="n4A-7C-zcL" firstAttribute="leading" secondItem="ZLj-XD-EYb" secondAttribute="leading" id="PPx-Uh-ssc"/>
+                            <constraint firstItem="ZLj-XD-EYb" firstAttribute="bottom" secondItem="n4A-7C-zcL" secondAttribute="bottom" id="XFR-vd-aw7"/>
+                            <constraint firstItem="n4A-7C-zcL" firstAttribute="top" secondItem="ZLj-XD-EYb" secondAttribute="top" id="dKW-sr-fy0"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Pick Location" id="plp-cO-Z7n">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="a9R-Ng-2Nt"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pAb-dF-XnM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3838" y="-1103"/>
+        </scene>
         <!--Add New Item-->
         <scene sceneID="Bak-AS-wby">
             <objects>
@@ -188,7 +217,7 @@
                                 <rect key="frame" x="23" y="192" width="132" height="29"/>
                                 <state key="normal" title="Select Category"/>
                                 <connections>
-                                    <segue destination="RO8-9e-va3" kind="presentation" identifier="categorySelect" id="0IX-Aa-wx3"/>
+                                    <segue destination="RO8-9e-va3" kind="show" id="fQf-Ix-qNL"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PsJ-GY-CBL">
@@ -200,11 +229,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exj-pz-KZM">
+                                <rect key="frame" x="38" y="241" width="90" height="30"/>
+                                <state key="normal" title="Add Location"/>
+                                <connections>
+                                    <action selector="addLocationButton:" destination="dEB-0M-fge" eventType="touchUpInside" id="BFF-oz-I2K"/>
+                                    <segue destination="IIb-iY-jOI" kind="show" id="5iA-ir-xf8"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coordinates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4R-Ub-VBn">
+                                <rect key="frame" x="163" y="246" width="92.5" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="t31-lP-jOo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mWs-Lo-Tva"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="mWs-Lo-Tva" firstAttribute="trailing" secondItem="R4R-Ub-VBn" secondAttribute="trailing" constant="64.5" id="0HC-XU-2lX"/>
                             <constraint firstItem="LZm-B9-7ZE" firstAttribute="top" secondItem="erP-Kv-Nq5" secondAttribute="bottom" constant="71" id="193-BE-PfD"/>
                             <constraint firstItem="PsJ-GY-CBL" firstAttribute="leading" secondItem="erP-Kv-Nq5" secondAttribute="trailing" constant="8" symbolic="YES" id="35g-N5-RMn"/>
                             <constraint firstItem="H49-f7-LsF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mWs-Lo-Tva" secondAttribute="leading" id="5za-LS-jMU"/>
@@ -215,12 +262,16 @@
                             <constraint firstItem="erP-Kv-Nq5" firstAttribute="top" secondItem="C9A-XV-kcR" secondAttribute="bottom" constant="34.5" id="O0h-4U-iy7"/>
                             <constraint firstItem="PsJ-GY-CBL" firstAttribute="top" secondItem="qqY-bP-zAl" secondAttribute="bottom" constant="31" id="QbW-9q-kZT"/>
                             <constraint firstItem="LZm-B9-7ZE" firstAttribute="centerX" secondItem="H49-f7-LsF" secondAttribute="centerX" id="QeI-MM-4xL"/>
+                            <constraint firstItem="R4R-Ub-VBn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="exj-pz-KZM" secondAttribute="trailing" constant="8" symbolic="YES" id="TOB-fX-6hf"/>
                             <constraint firstItem="qqY-bP-zAl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="C9A-XV-kcR" secondAttribute="trailing" symbolic="YES" id="cIc-RG-aZn"/>
                             <constraint firstItem="mWs-Lo-Tva" firstAttribute="trailing" secondItem="PsJ-GY-CBL" secondAttribute="trailing" constant="30" id="cr2-ak-iqX"/>
                             <constraint firstItem="erP-Kv-Nq5" firstAttribute="top" secondItem="sS6-9K-FBi" secondAttribute="top" constant="192" id="d2A-DV-bRd"/>
                             <constraint firstItem="H49-f7-LsF" firstAttribute="top" secondItem="mWs-Lo-Tva" secondAttribute="top" constant="20" id="fbJ-5X-VMI"/>
                             <constraint firstItem="qqY-bP-zAl" firstAttribute="centerY" secondItem="C9A-XV-kcR" secondAttribute="centerY" id="fnQ-8O-Gb7"/>
+                            <constraint firstItem="exj-pz-KZM" firstAttribute="top" secondItem="erP-Kv-Nq5" secondAttribute="bottom" constant="20" id="hVR-VR-O89"/>
                             <constraint firstItem="erP-Kv-Nq5" firstAttribute="centerY" secondItem="PsJ-GY-CBL" secondAttribute="centerY" id="n18-hZ-rvd"/>
+                            <constraint firstItem="R4R-Ub-VBn" firstAttribute="top" secondItem="PsJ-GY-CBL" secondAttribute="bottom" constant="29" id="p5p-w3-5ae"/>
+                            <constraint firstItem="exj-pz-KZM" firstAttribute="leading" secondItem="mWs-Lo-Tva" secondAttribute="leading" constant="38" id="uMB-XU-UQ5"/>
                             <constraint firstItem="mWs-Lo-Tva" firstAttribute="trailing" secondItem="H49-f7-LsF" secondAttribute="trailing" constant="16" id="wqI-xz-b9J"/>
                             <constraint firstItem="LZm-B9-7ZE" firstAttribute="top" secondItem="PsJ-GY-CBL" secondAttribute="bottom" constant="75" id="xqS-YO-7Rz"/>
                             <constraint firstItem="qqY-bP-zAl" firstAttribute="top" secondItem="H49-f7-LsF" secondAttribute="bottom" constant="8" symbolic="YES" id="yAB-pu-tWy"/>
@@ -239,6 +290,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="categoryLabel" destination="PsJ-GY-CBL" id="VKD-XG-A82"/>
+                        <outlet property="coordinatesLabel" destination="R4R-Ub-VBn" id="E64-FC-TFu"/>
                         <outlet property="dateField" destination="qqY-bP-zAl" id="LCS-Qy-425"/>
                         <outlet property="nameField" destination="H49-f7-LsF" id="mvb-qg-QyG"/>
                         <outlet property="saveButton" destination="LZm-B9-7ZE" id="nOB-HX-4Z7"/>
@@ -261,7 +313,7 @@
             <objects>
                 <tableViewController title="Select Category" id="RO8-9e-va3" customClass="SimpleCategoryListViewController" customModule="harr2890_project" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ery-B3-jno">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>

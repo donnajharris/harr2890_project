@@ -149,6 +149,6 @@ class BusinessLogic {
     
     func getAllItemsWithLocations() -> [Item] {
         
-        return try! itemHandler.getAllItemsWithLocationsFromDatabase()
+        return itemHandler.getAllItemsWithLocationsFromDatabase()
     }
 }
