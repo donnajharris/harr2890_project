@@ -61,6 +61,16 @@ class Item : Equatable, CustomStringConvertible {
         self.category = category
     }
     
+    init(title: String, date: Date, type: ItemType, category: ItemCategory, changed: Bool, latitude: Double, longitude: Double) {
+        self.id = Item.UNDEFINED
+        self.title = title
+        self.date = date
+        self.type = type
+        self.changed = changed
+        self.category = category
+        self.location = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
+    }
+    
     init(id: Int64, title: String, date: Date, type: ItemType, category: ItemCategory, changed: Bool) {
         self.id = id
         self.title = title

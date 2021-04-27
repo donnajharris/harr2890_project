@@ -40,7 +40,6 @@ class CategoryViewController: UIViewController {
             
             self.saveButton.setTitle("Update", for: UIControl.State.normal)
             
-            //print("We're looking \(originalCategoryName!) to start with...")
         }
     }
     
@@ -84,11 +83,9 @@ class CategoryViewController: UIViewController {
         let helper = CategoryHelper()
         
         if helper.categoryNameIsValid(categoryName: name) == false {
-            //print("is a blank - rteurning nil")
             category = nil
             return // TODO? Throw something instead, give error? prevent submission?
         } else if name == originalCategoryName?.trimmingCharacters(in: .whitespacesAndNewlines) {
-            //print("Was the same....")
             category = nil
             return // TODO? A different issue...
         }
@@ -99,9 +96,7 @@ class CategoryViewController: UIViewController {
         } else if mode == .edit && category != nil && originalCategoryName != nil {
                         
             if helper.categoryHasBeenChanged(category: category!, newName: categoryName.text!) {
-                
                 category?.setName(name: categoryName.text!)
-                //print("Looks like we want to send back: \(category!.getName())")
             }
             
         }

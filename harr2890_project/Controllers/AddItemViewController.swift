@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 import os.log
 
 
@@ -37,7 +38,7 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet weak var coordinatesLabel: UILabel!
     
     private var item : Item?
-
+    private var newLocation : CLLocationCoordinate2D?
     
     func getNewItem() -> Item? {
         return item
@@ -52,6 +53,9 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
         
         // Handle the text field’s user input through delegate callbacks
         self.nameField.delegate = self // set delegate
+        
+        categoryLabel.text = "Uncategorized" // default label
+        coordinatesLabel.text = "" // default label
         
         // Enable the Save button only if the text fields have valid input
         updateSaveButtonState()
@@ -102,12 +106,9 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         super.prepare(for: segue, sender: sender)
-        
-        //print("Prepare...")
-        
+                
         if segue.identifier == selectSegueId {
             
-            //print("PREPARE....")
             let secondVC: SimpleCategoryListViewController = segue.destination as! SimpleCategoryListViewController
             secondVC.delegate = self
             return
@@ -132,12 +133,30 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
             self.category = CategoryHelper.UNCATEGORIZED
         }
         // isNew flag is set to indicate a new item
-        item = Item(title: title, date: date, type: type, category: self.category!, changed: true)
-                
+        if newLocation == nil {
+            item = Item(title: title, date: date, type: type, category: self.category!, changed: true)
+        } else {
+            item = Item(title: title, date: date, type: type, category: self.category!, changed: true,
+                        latitude: Double(newLocation!.latitude),
+                        longitude: Double(newLocation!.longitude))
+        }
+            
         if helper.itemIsValid(item: item!) == false {
             item = nil
         }
 
     } // prepare
+    
+    
+    @IBAction func unwindToAddItemWithLocation(_ unwindSegue: UIStoryboardSegue) {
+        
+        if let pickingMap = unwindSegue.source as? PickLocationMapViewController,
+           let coordinates = pickingMap.getChosenLocation() {
+            
+                newLocation = coordinates
+        
+                coordinatesLabel.text = "Lat: " + String(newLocation!.latitude) + " \nLong: " + String(newLocation!.longitude)
+        }
+    }
 
 }

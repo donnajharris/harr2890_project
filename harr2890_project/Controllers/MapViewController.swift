@@ -18,8 +18,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     @IBOutlet weak var mapViewOnTab: MKMapView!
     
-    let locationManager = CLLocationManager() // needed to get the phone's location
-    var isInitiallyZoomedToUserLocation: Bool = false
+    private let locationManager = CLLocationManager() // needed to get the phone's location
+    private var isInitiallyZoomedToUserLocation: Bool = false
 
     
     override func viewDidLoad() {
