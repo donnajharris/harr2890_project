@@ -155,7 +155,7 @@
             <objects>
                 <viewController id="dEB-0M-fge" customClass="AddItemViewController" customModule="harr2890_project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sS6-9K-FBi">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZm-B9-7ZE">
@@ -166,7 +166,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter what you want to recall" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H49-f7-LsF">
-                                <rect key="frame" x="16" y="76" width="288" height="33"/>
+                                <rect key="frame" x="16" y="64" width="288" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -441,7 +441,7 @@
                     <tabBarItem key="tabBarItem" title="List" image="list.dash" catalog="system" id="9lM-mw-0FQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zow-8o-VtI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -534,7 +534,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="KvF-rc-C4V"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="XTb-s4-nFs">
                             <connections>
-                                <segue destination="iMD-Bj-gUg" kind="presentation" identifier="AddingItem" id="5mw-CN-DQl"/>
+                                <segue destination="iMD-Bj-gUg" kind="show" identifier="AddingItem" id="5mw-CN-DQl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -560,7 +560,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Zd2-2d-3mS"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BY7-KQ-ZBy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -579,7 +579,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Uu2-yb-4Q2"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="s5H-F0-3WR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

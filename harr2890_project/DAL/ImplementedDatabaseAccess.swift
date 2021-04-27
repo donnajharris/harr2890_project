@@ -22,6 +22,7 @@ class ImplementedDatabaseAccess : DatabaseAccess {
         return url!
     }
     
+    
     // Items table
     let itemsTable = Table("items")
     let itemId = Expression<Int64>("id")
@@ -29,6 +30,8 @@ class ImplementedDatabaseAccess : DatabaseAccess {
     let itemType = Expression<String>("type")
     let itemDate = Expression<Date?>("date")
     let itemCategoryId = Expression<Int64>("categoryId")
+    let itemLatitude = Expression<Double>("latitude")
+    let itemLongitude = Expression<Double>("longitude")
     
     // Categories table
     let categoriesTable = Table("categories")
@@ -38,18 +41,14 @@ class ImplementedDatabaseAccess : DatabaseAccess {
     
     required init() throws {
         
-        
-        
         // should fail immediately if it doesn't work
         
         do {
             database = try Connection(path)
-
             determineFirstRunStatus()
-
-            
             initItemsTable()
             try initCategoriesTable()
+            
         } catch {
             print("Unexpected error: \(error)")
         }
@@ -66,44 +65,45 @@ class ImplementedDatabaseAccess : DatabaseAccess {
         do {
             _ = try getAllCategories()
         } catch {
-            print("Yeah... there's a problem and we say it's that there's no DB")
             firstRun = true
         }
         
     }
     
 
-    
-    
-        
-    private func dataFilePath() -> String {
-        let urls = FileManager.default.urls(for:
-            .documentDirectory, in: .userDomainMask)
-        var url:String?
-        url = urls.first?.appendingPathComponent(DB_STRING).path
-        return url!
-        
-    } // dataFilePath
-    
+//    private func dataFilePath() -> String {
+//        let urls = FileManager.default.urls(for:
+//            .documentDirectory, in: .userDomainMask)
+//        var url:String?
+//        url = urls.first?.appendingPathComponent(DB_STRING).path
+//        return url!
+//
+//    } // dataFilePath
+//
     
     private func initItemsTable() {
         
         if isFirstRun() {
-            
-            try! database?.run(itemsTable.create(ifNotExists: true) { t in
-                t.column(itemId, primaryKey: .autoincrement)
-                t.column(itemTitle)
-                t.column(itemType)
-                t.column(itemDate)
-                t.column(itemCategoryId)
-            })
+            do {
+                try database?.run(itemsTable.create(ifNotExists: true) { t in
+                    t.column(itemId, primaryKey: .autoincrement)
+                    t.column(itemTitle)
+                    t.column(itemType)
+                    t.column(itemDate)
+                    t.column(itemCategoryId)
+                    t.column(itemLatitude)
+                    t.column(itemLongitude)
+                })
+            } catch {
+                // real problem
+                print("Unexpected error: \(error)")
+            }
         }
 
     } // initItemsTable
     
     
     private func initCategoriesTable() throws {
-        
 
         if isFirstRun() {
             do {
@@ -113,14 +113,13 @@ class ImplementedDatabaseAccess : DatabaseAccess {
                     t.column(categoryName)
                 })
                 
-                // Add  Uncategorized
-                
+                // Add Uncategorized
                 let result = try insertCategory(category: CategoryHelper.UNCATEGORIZED)
-                
+
                 if result != 1 {
                     print("Unexpected error: \(result) but should have been 1")
                 }
-                
+
                
             } catch {
                 // real problem
@@ -143,7 +142,9 @@ class ImplementedDatabaseAccess : DatabaseAccess {
                 itemTitle <- item.getTitle(),
                 itemType <- helper.getTypeString(item: item),
                 itemDate <- item.getDate(),
-                itemCategoryId <- Int64(item.getCategory()!.getId()!)
+                itemCategoryId <- Int64(item.getCategory()!.getId()!),
+                itemLatitude <- Double(item.getLatitude()),
+                itemLongitude <- Double(item.getLongitude())
         )
         
         let itemId = try! database?.run(insert)
@@ -187,7 +188,9 @@ class ImplementedDatabaseAccess : DatabaseAccess {
                             date: itemRow[itemDate]!,
                             type: helper.translateToItemType(string: itemRow[itemType])!,
                             category: category,
-                            changed: false)
+                            changed: false,
+                            latitude: itemRow[itemLatitude],
+                            longitude: itemRow[itemLongitude])
             
             items.append(item)
         }

@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import MapKit
 
 class Item : Equatable, CustomStringConvertible {
     
     private let helper = ItemHelper()
     
-    var description: String { return "ITEM Id: \(id!)\n\(title) \(helper.getTypeString(item: self)) \(getDateString())\nCategory: \(category.getName() ?? "<uncategorized>")\nChanged? \(changed)"}
+    var description: String { return "ITEM Id: \(id!)\n\(title) \(helper.getTypeString(item: self)) \(getDateString())\nCategory: \(category.getName())\nChanged? \(changed)"}
     
     
     static func == (lhs: Item, rhs: Item) -> Bool {
@@ -47,6 +48,8 @@ class Item : Equatable, CustomStringConvertible {
     private var changed : Bool
     
     private var category : ItemCategory
+    
+    private var location : CLLocationCoordinate2D? = nil
 
     
     init(title: String, date: Date, type: ItemType, category: ItemCategory, changed: Bool) {
@@ -66,6 +69,17 @@ class Item : Equatable, CustomStringConvertible {
         self.changed = changed
         self.category = category
     }
+    
+    init(id: Int64, title: String, date: Date, type: ItemType, category: ItemCategory, changed: Bool, latitude: Double, longitude: Double) {
+        self.id = id
+        self.title = title
+        self.date = date
+        self.type = type
+        self.changed = changed
+        self.category = category
+        self.location = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
+    }
+    
     
     init(item: Item) {
         self.id = Int64(item.getId() ?? Item.UNDEFINED)
@@ -154,6 +168,25 @@ class Item : Equatable, CustomStringConvertible {
     
     func getCategory() -> ItemCategory? {
         return self.category
+    }
+    
+    
+    // MARK: - Location properties for mapping
+    
+    func setLocation(coordinates: CLLocationCoordinate2D) {
+        self.location = coordinates
+    }
+    
+    func getLocation() -> CLLocationCoordinate2D? {
+        return location
+    }
+    
+    func getLatitude() -> Double {
+        return location?.latitude ?? Double(Item.UNDEFINED)
+    }
+    
+    func getLongitude() -> Double {
+        return location?.longitude ?? Double(Item.UNDEFINED)
     }
 
 }

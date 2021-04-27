@@ -135,18 +135,35 @@ class CategoryListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-         tableView.deselectRow(at: indexPath, animated: true)
-         performSegue(withIdentifier: editSegueId,
-                      sender: categories[indexPath.row])
+        tableView.deselectRow(at: indexPath, animated: true)
         
         lastSelectedCategory = categories[indexPath.row].getName()
-        
         print("lastSelectedCategory = \(lastSelectedCategory!)")
+
+
+        if lastSelectedCategory != CategoryHelper.UNCATEGORIZED.getName() {
+        
+            performSegue(withIdentifier: editSegueId,
+                      sender: categories[indexPath.row])
+        } else {
+            popupForUncategorized()
+        }
+        
 
     }  // TV - didSelectRowAt
     
-    
+    private func popupForUncategorized() {
+        let alertController = UIAlertController(title: "Sorry...",
+                                                message: "The 'Uncategorized' category cannot be altered.",
+                                                preferredStyle: UIAlertController.Style.alert)
 
+        alertController.addAction(UIAlertAction(title: "Dismiss",
+                                                style: UIAlertAction.Style.default,handler: nil))
+
+        self.present(alertController, animated: true, completion: nil)
+    }
+
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -158,6 +175,12 @@ class CategoryListViewController: UITableViewController {
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if categories[indexPath.row].getName() == CategoryHelper.UNCATEGORIZED.getName() {
+            popupForUncategorized()
+            return
+        }
+        
         if editingStyle == .delete {
             
             let indexToDelete = indexPath.row
