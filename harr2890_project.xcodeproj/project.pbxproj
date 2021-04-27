@@ -30,6 +30,7 @@
 		AE7F70C62613A24900253CAE /* ImplementedDatabaseAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F70C52613A24900253CAE /* ImplementedDatabaseAccess.swift */; };
 		AEAEF741261E9DBE007BC751 /* ItemHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAEF740261E9DBE007BC751 /* ItemHelper.swift */; };
 		AEAEF74E261E9ECD007BC751 /* ItemHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAEF74D261E9ECD007BC751 /* ItemHandler.swift */; };
+		AEB796AE2637A6AB00533020 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB796AD2637A6AB00533020 /* MapViewController.swift */; };
 		AEBF18B9261D841200B9665E /* harr2890_projectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBF18B8261D841200B9665E /* harr2890_projectUITests.swift */; };
 		AEE23CFA260A729000AABD40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23CF9260A729000AABD40 /* AppDelegate.swift */; };
 		AEE23CFC260A729000AABD40 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE23CFB260A729000AABD40 /* SceneDelegate.swift */; };
@@ -145,6 +146,7 @@
 		AE7F70C52613A24900253CAE /* ImplementedDatabaseAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImplementedDatabaseAccess.swift; sourceTree = "<group>"; };
 		AEAEF740261E9DBE007BC751 /* ItemHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHelper.swift; sourceTree = "<group>"; };
 		AEAEF74D261E9ECD007BC751 /* ItemHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHandler.swift; sourceTree = "<group>"; };
+		AEB796AD2637A6AB00533020 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		AEBF18B6261D841200B9665E /* harr2890_projectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = harr2890_projectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEBF18B8261D841200B9665E /* harr2890_projectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = harr2890_projectUITests.swift; sourceTree = "<group>"; };
 		AEBF18BA261D841200B9665E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				AE3EBB912622B6F50047DBEF /* CategoryListViewController.swift */,
 				AE0316202625429900442EDE /* CategoryViewController.swift */,
 				AE4C8B26262ABA6000EDCBDE /* SimpleCategoryListViewController.swift */,
+				AEB796AD2637A6AB00533020 /* MapViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				AE0315F6262512E100442EDE /* DatabaseAccess.swift in Sources */,
 				AE4C8B27262ABA6000EDCBDE /* SimpleCategoryListViewController.swift in Sources */,
 				AE0E8EC4261D75E1000BB7E0 /* MockedDatabaseAccess.swift in Sources */,
+				AEB796AE2637A6AB00533020 /* MapViewController.swift in Sources */,
 				AE0316252625468A00442EDE /* CategoryHelper.swift in Sources */,
 				AEAEF74E261E9ECD007BC751 /* ItemHandler.swift in Sources */,
 				AE65321B261CC02400EC8A4A /* EditItemViewController.swift in Sources */,

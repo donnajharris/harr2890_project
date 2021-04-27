@@ -40,7 +40,7 @@ class CategoryViewController: UIViewController {
             
             self.saveButton.setTitle("Update", for: UIControl.State.normal)
             
-            print("We're looking \(originalCategoryName!) to start with...")
+            //print("We're looking \(originalCategoryName!) to start with...")
         }
     }
     
@@ -78,17 +78,17 @@ class CategoryViewController: UIViewController {
         categoryName.text = categoryName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let name = categoryName.text!
         
-        print("name of returned Category: |\(name)|")
-        print("name of original Category: \(String(describing: originalCategoryName))")
+        //print("name of returned Category: |\(name)|")
+        //print("name of original Category: \(String(describing: originalCategoryName))")
 
         let helper = CategoryHelper()
         
         if helper.categoryNameIsValid(categoryName: name) == false {
-            print("is a blank - rteurning nil")
+            //print("is a blank - rteurning nil")
             category = nil
             return // TODO? Throw something instead, give error? prevent submission?
         } else if name == originalCategoryName?.trimmingCharacters(in: .whitespacesAndNewlines) {
-            print("Was the same....")
+            //print("Was the same....")
             category = nil
             return // TODO? A different issue...
         }
@@ -101,7 +101,7 @@ class CategoryViewController: UIViewController {
             if helper.categoryHasBeenChanged(category: category!, newName: categoryName.text!) {
                 
                 category?.setName(name: categoryName.text!)
-                print("Looks like we want to send back: \(category!.getName())")
+                //print("Looks like we want to send back: \(category!.getName())")
             }
             
         }

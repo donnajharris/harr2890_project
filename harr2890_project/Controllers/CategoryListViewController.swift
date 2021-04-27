@@ -17,9 +17,7 @@ class CategoryListViewController: UITableViewController {
     private let addSegueId = "categoryAdd"
     private let editSegueId = "categoryEdit"
     private var categories = [ItemCategory]() // the data source
-    
-    //private let bl = BusinessLogic()
-    
+        
     @IBOutlet weak var myTableView: UITableView!
     
     private var lastSelectedCategory : String? = nil
@@ -28,7 +26,6 @@ class CategoryListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //let bl = CategoryBL()
         BusinessLogic.layer.loadCategories(data: &categories)
     
     }
@@ -60,7 +57,7 @@ class CategoryListViewController: UITableViewController {
                 if  helper.categoryWasRecased(before: lastSelectedCategory!, updatedCategory: returnedCategory) ||
                     !helper.categoryAlreadyExists(category: returnedCategory, categories: categories) {
                 
-                    print("Ready to update category: \(returnedCategory.getName())")
+                    //print("Ready to update category: \(returnedCategory.getName())")
                     try! BusinessLogic.layer.updateCategory(category: returnedCategory, data: &categories)
                     BusinessLogic.layer.setCategoriesChanged(didChange: true)
                 }
@@ -86,7 +83,7 @@ class CategoryListViewController: UITableViewController {
         }
         
         let category = ItemCategory(category: sender as! ItemCategory)
-        print(category)
+        //print(category)
 
         // Reference: https://stackoverflow.com/questions/30209626/could-not-cast-value-of-type-uinavigationcontroller
         
@@ -97,7 +94,6 @@ class CategoryListViewController: UITableViewController {
         } else if segue.identifier == editSegueId {
             let nav = segue.destination as! UINavigationController
             let vc = nav.topViewController as! CategoryViewController
-            //vc.updateWithCategory(category: sender as! ItemCategory)
             vc.updateWithCategory(category: category)
         }
         
@@ -138,7 +134,7 @@ class CategoryListViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         lastSelectedCategory = categories[indexPath.row].getName()
-        print("lastSelectedCategory = \(lastSelectedCategory!)")
+        //print("lastSelectedCategory = \(lastSelectedCategory!)")
 
 
         if lastSelectedCategory != CategoryHelper.UNCATEGORIZED.getName() {
@@ -161,19 +157,10 @@ class CategoryListViewController: UITableViewController {
                                                 style: UIAlertAction.Style.default,handler: nil))
 
         self.present(alertController, animated: true, completion: nil)
-    }
+        
+    } // popupForUncategorized
 
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    
-    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if categories[indexPath.row].getName() == CategoryHelper.UNCATEGORIZED.getName() {
@@ -188,50 +175,24 @@ class CategoryListViewController: UITableViewController {
             
             do {
                 try BusinessLogic.layer.removeCategory(index: indexToDelete, category: categoryToRemove, data: &categories)
+                
             } catch CategoryHandler.CategoryError.cannotRemoveUncategorized {
                 
-                // TODO: Add an alert here
-                print("Add an alert here")
+                popupForUncategorized()
                 
             } catch {
-                // othrer things
+                // other things
             }
             
             myTableView.deleteRows(at: [indexPath], with: .fade)
-            //myTableView.reloadData()
-            
 
         }
     }
     
     
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
+//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+//        return true
+//    }
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

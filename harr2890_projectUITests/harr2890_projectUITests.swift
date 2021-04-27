@@ -17,16 +17,6 @@
 import XCTest
 
 class harr2890_projectUITests: XCTestCase {
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-        
-        
-    }
-
-    
     
     func test1a_AddOneItem_isAdded() throws {
         // UI tests must launch the application that they test.

@@ -316,6 +316,7 @@
                     <connections>
                         <segue destination="bJt-eG-lFG" kind="relationship" relationship="viewControllers" id="hf8-Oe-O7I"/>
                         <segue destination="FFq-ey-4E1" kind="relationship" relationship="viewControllers" id="6EQ-bZ-SvA"/>
+                        <segue destination="bGv-Go-v94" kind="relationship" relationship="viewControllers" id="R6S-HX-lUI"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QDl-ya-2Pd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -433,6 +434,36 @@
                 <exit id="OFP-nD-dJo" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2731.875" y="1410"/>
+        </scene>
+        <!--Map View-->
+        <scene sceneID="02d-93-hYY">
+            <objects>
+                <viewController id="CfA-f5-czc" customClass="MapViewController" customModule="harr2890_project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xlm-Ll-9C2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="l3I-vG-mJc">
+                                <rect key="frame" x="0.0" y="44" width="320" height="387"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SoN-Cy-fh2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SoN-Cy-fh2" firstAttribute="trailing" secondItem="l3I-vG-mJc" secondAttribute="trailing" id="CVf-9R-HBz"/>
+                            <constraint firstItem="SoN-Cy-fh2" firstAttribute="bottom" secondItem="l3I-vG-mJc" secondAttribute="bottom" id="he8-7P-01b"/>
+                            <constraint firstItem="l3I-vG-mJc" firstAttribute="leading" secondItem="SoN-Cy-fh2" secondAttribute="leading" id="lB0-Il-FPd"/>
+                            <constraint firstItem="l3I-vG-mJc" firstAttribute="top" secondItem="SoN-Cy-fh2" secondAttribute="top" id="zkO-FC-hW1"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Map View" id="tWB-FE-4qF"/>
+                    <connections>
+                        <outlet property="mapViewOnTab" destination="l3I-vG-mJc" id="Sr0-Np-gVV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wi5-bt-BUT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2072" y="-1284"/>
         </scene>
         <!--List-->
         <scene sceneID="Nuy-T2-VRb">
@@ -628,12 +659,32 @@
             </objects>
             <point key="canvasLocation" x="1734.375" y="1410"/>
         </scene>
+        <!--Map-->
+        <scene sceneID="a8z-fy-8tz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bGv-Go-v94" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="hGU-Xu-QcV"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cqp-O0-55R">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="CfA-f5-czc" kind="relationship" relationship="rootViewController" id="ERc-sw-gWc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x4j-SB-RjN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="939.375" y="-1283.75"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="3AV-hm-LET"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="list.dash" catalog="system" width="128" height="85"/>
+        <image name="map" catalog="system" width="128" height="110"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

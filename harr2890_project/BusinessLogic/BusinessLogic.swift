@@ -128,7 +128,7 @@ class BusinessLogic {
     
     func updateCategory(category: ItemCategory, data: inout [ItemCategory]) throws {
         
-        print("Updating to DB ..... \(category.getName()) and it has ID: \(String(describing: category.getId()))")
+        //print("Updating to DB ..... \(category.getName()) and it has ID: \(String(describing: category.getId()))")
         try! categoryHandler.updateCategoryInDB(category: category, tableData: &data)
         
     } // updateCategory
