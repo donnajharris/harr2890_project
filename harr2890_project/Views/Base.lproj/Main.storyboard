@@ -155,11 +155,11 @@
             <objects>
                 <viewController id="IIb-iY-jOI" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zl5-9r-4Aw">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="n4A-7C-zcL">
-                                <rect key="frame" x="0.0" y="44" width="320" height="387"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZLj-XD-EYb"/>
@@ -177,7 +177,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pAb-dF-XnM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3838" y="-1103"/>
+            <point key="canvasLocation" x="5027" y="-1115"/>
         </scene>
         <!--Add New Item-->
         <scene sceneID="Bak-AS-wby">
@@ -217,7 +217,7 @@
                                 <rect key="frame" x="23" y="192" width="132" height="29"/>
                                 <state key="normal" title="Select Category"/>
                                 <connections>
-                                    <segue destination="RO8-9e-va3" kind="show" id="fQf-Ix-qNL"/>
+                                    <segue destination="RO8-9e-va3" kind="presentation" identifier="categorySelect" id="fQf-Ix-qNL"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PsJ-GY-CBL">
@@ -234,7 +234,7 @@
                                 <state key="normal" title="Add Location"/>
                                 <connections>
                                     <action selector="addLocationButton:" destination="dEB-0M-fge" eventType="touchUpInside" id="BFF-oz-I2K"/>
-                                    <segue destination="IIb-iY-jOI" kind="show" id="5iA-ir-xf8"/>
+                                    <segue destination="IIb-iY-jOI" kind="presentation" id="5iA-ir-xf8"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coordinates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4R-Ub-VBn">
@@ -313,7 +313,7 @@
             <objects>
                 <tableViewController title="Select Category" id="RO8-9e-va3" customClass="SimpleCategoryListViewController" customModule="harr2890_project" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ery-B3-jno">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -643,7 +643,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Zd2-2d-3mS"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BY7-KQ-ZBy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
