@@ -49,8 +49,19 @@ class CategoryListViewController: UITableViewController {
 
             let helper = CategoryHelper()
             
+//            if helper.categoryAlreadyExists(category: returnedCategory, categories: categories) {
+//                popupForCategoryNameExists()
+//                return
+//            }
+            
             if mode == .add && !helper.categoryAlreadyExists(category: returnedCategory, categories: categories) {
-                BusinessLogic.layer.addNewCategory(category: returnedCategory, data: &categories)
+                do {
+                    try BusinessLogic.layer.addNewCategory(category: returnedCategory, data: &categories)
+                } catch CategoryHandler.CategoryError.duplicateCategoryName {
+                    return
+                } catch {
+                    
+                }
                 
             } else if mode == .edit {
                 
@@ -70,6 +81,23 @@ class CategoryListViewController: UITableViewController {
         }
         
     } // unwindToCategoryList
+    
+    
+//
+//    private func popupForCategoryNameExists() {
+//        let alertController = UIAlertController(title: "Sorry...",
+//                                                message: "That category name already exists.",
+//                                                preferredStyle: UIAlertController.Style.alert)
+//
+//        alertController.addAction(UIAlertAction(title: "Dismiss",
+//                                                style: UIAlertAction.Style.default,handler: nil))
+//
+//        self.present(alertController, animated: true, completion: nil)
+//
+//    } // popupForCategoryNameExists
+
+    
+
     
     
 
@@ -121,7 +149,6 @@ class CategoryListViewController: UITableViewController {
     } // TV - cellForRowAt indexPath
     
     
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
@@ -139,6 +166,7 @@ class CategoryListViewController: UITableViewController {
 
     }  // TV - didSelectRowAt
     
+    
     private func popupForUncategorized() {
         let alertController = UIAlertController(title: "Sorry...",
                                                 message: "The 'Uncategorized' category cannot be altered.",
@@ -150,7 +178,20 @@ class CategoryListViewController: UITableViewController {
         self.present(alertController, animated: true, completion: nil)
         
     } // popupForUncategorized
+    
+    private func popupForCategoryCannotBeDeletedYet() {
+        let alertController = UIAlertController(title: "Sorry...",
+                                                message: "That category cannot be deleted while it has items associated with it.",
+                                                preferredStyle: UIAlertController.Style.alert)
 
+        alertController.addAction(UIAlertAction(title: "Dismiss",
+                                                style: UIAlertAction.Style.default,handler: nil))
+
+        self.present(alertController, animated: true, completion: nil)
+        
+    } // popupForCategoryCannotBeDeletedYet
+
+    
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
@@ -164,18 +205,23 @@ class CategoryListViewController: UITableViewController {
             let indexToDelete = indexPath.row
             let categoryToRemove = categories[indexToDelete]
             
-            do {
-                try BusinessLogic.layer.removeCategory(index: indexToDelete, category: categoryToRemove, data: &categories)
-                
-            } catch CategoryHandler.CategoryError.cannotRemoveUncategorized {
-                
-                popupForUncategorized()
-                
-            } catch {
-                // other things
-            }
+            if BusinessLogic.layer.categoryHasItems(categoryId: categoryToRemove.getId()!) {
+                popupForCategoryCannotBeDeletedYet()
+            } else {
             
-            myTableView.deleteRows(at: [indexPath], with: .fade)
+                do {
+                    try BusinessLogic.layer.removeCategory(index: indexToDelete, category: categoryToRemove, data: &categories)
+                    
+                } catch CategoryHandler.CategoryError.cannotRemoveUncategorized {
+                    
+                    popupForUncategorized()
+                    
+                } catch {
+                    // other things
+                }
+                
+                myTableView.deleteRows(at: [indexPath], with: .fade)
+            }
 
         }
     } // TV - commit editingStyle

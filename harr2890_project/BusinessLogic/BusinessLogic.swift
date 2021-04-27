@@ -104,9 +104,15 @@ class BusinessLogic {
     } // loadRealCategories
     
     
-    func addNewCategory(category: ItemCategory, data: inout [ItemCategory]) {
+    func addNewCategory(category: ItemCategory, data: inout [ItemCategory]) throws {
         
-        try! categoryHandler.addCategoryToDB(category: category, tableData: &data)
+        do {
+            try categoryHandler.addCategoryToDB(category: category, tableData: &data)
+        } catch CategoryHandler.CategoryError.duplicateCategoryName {
+            throw CategoryHandler.CategoryError.duplicateCategoryName
+        } catch {
+            //
+        }
         
     } // addNewCategory
     
@@ -147,8 +153,13 @@ class BusinessLogic {
     }
     
     
+    func categoryHasItems(categoryId: Int64) -> Bool {
+        return categoryHandler.categoryHasItems(categoryId: categoryId)
+    }
+    
+    
     func getAllItemsWithLocations(daysFilter: Int) -> [Item] {
-        
         return itemHandler.getAllItemsWithLocationsFromDatabase(daysFilter: daysFilter)
     }
+    
 }

@@ -55,9 +55,9 @@ class CategoryHandler {
             }
             
         } catch CategoryError.duplicateCategoryName {
-        
+            throw CategoryError.duplicateCategoryName
         } catch CategoryError.accessError {
-            
+            throw CategoryError.accessError
         }
         
     } // addCategoryToDB
@@ -107,6 +107,18 @@ class CategoryHandler {
             
         }
     } // updateCategoryInDB
+    
+    
+    func categoryHasItems(categoryId: Int64) -> Bool {
+        let items = try! databaseAccess.getItemsInCategory(categoryId: categoryId)
+        
+        if items.count > 0 {
+            return true
+        }
+        
+        return false
+    } // categoryHasItems
+    
 
     
     

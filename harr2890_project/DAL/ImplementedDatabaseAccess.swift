@@ -188,6 +188,32 @@ class ImplementedDatabaseAccess : DatabaseAccess {
     } // getAllItems
     
     
+    func getItemsInCategory(categoryId: Int64) throws -> [Item] {
+        
+        let helper = ItemHelper()
+
+        var items = [Item]()
+        
+        let filteredTable : Table = itemsTable.filter( itemCategoryId == categoryId )
+
+        for itemRow in try! database!.prepare(filteredTable) {
+            
+            let category = try! getCategory(id: itemRow[itemCategoryId])
+            
+            let item = Item(id: itemRow[itemId],
+                            title: itemRow[itemTitle],
+                            date: itemRow[itemDate]!,
+                            type: helper.translateToItemType(string: itemRow[itemType])!,
+                            category: category,
+                            changed: false,
+                            latitude: itemRow[itemLatitude],
+                            longitude: itemRow[itemLongitude])
+            
+            items.append(item)
+        }
+        
+        return items
+    } // getItemsInCategory
     
     
     func getAllItemsWithLocations(daysFilter: Int) throws -> [Item] {
@@ -205,20 +231,26 @@ class ImplementedDatabaseAccess : DatabaseAccess {
         
         print("Date Boundary: \(dateBoundary)\n\n\n")
         
+        let dateYesterday = dateNow-24*60*60
+        
         let filteredTable : Table = itemsTable.filter(  itemLatitude != Double(Item.UNDEFINED) &&
                                                         itemLongitude != Double(Item.UNDEFINED)
-                                                        && itemType == "by" ||
-                                                            (itemType == "on" && itemDate < dateNow-1)
+                                                        //&& itemType == "by"
                                                         
-                                                         //&& ((itemType == "by" && itemDate > dateNow-daysFilterInSeconds) ||
-                                                         //   (itemType == "on" && itemDate < dateNow-1))
-                                                        //&& itemDate < dateBoundary
-                                                        //&& itemDate < dateNow
+                                                        && (
+                                                            (itemType == "by" && itemDate < dateBoundary)
+                                                        ||
+                                                            (itemType == "on" && itemDate > dateYesterday)
+                                                        )
+                                                        
+//                                                        && itemDate < dateBoundary
+//                                                        && itemDate > dateYesterday
+          
         )
 
         for itemRow in try! database!.prepare(filteredTable) {
 
-            print(itemRow)
+            //print(itemRow)
             
             let category = try! getCategory(id: itemRow[itemCategoryId])
             
@@ -330,6 +362,9 @@ class ImplementedDatabaseAccess : DatabaseAccess {
         }
 
     }
+    
+    
+
     
 }
 

@@ -105,6 +105,7 @@ class ItemHandler {
     } // updateItemInDB
     
     
+    
     func getAllItemsWithLocationsFromDatabase(daysFilter: Int) -> [Item] {
         
         do {
