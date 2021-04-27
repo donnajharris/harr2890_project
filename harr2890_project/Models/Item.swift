@@ -49,7 +49,7 @@ class Item : Equatable, CustomStringConvertible {
     
     private var category : ItemCategory
     
-    private var location : CLLocationCoordinate2D? = nil
+    private var location : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: CLLocationDegrees(Double(Item.UNDEFINED)), longitude: CLLocationDegrees(Double(Item.UNDEFINED)))
 
     
     init(title: String, date: Date, type: ItemType, category: ItemCategory, changed: Bool) {
@@ -182,11 +182,11 @@ class Item : Equatable, CustomStringConvertible {
     }
     
     func getLatitude() -> Double {
-        return location?.latitude ?? Double(Item.UNDEFINED)
+        return location.latitude ?? Double(Item.UNDEFINED)
     }
     
     func getLongitude() -> Double {
-        return location?.longitude ?? Double(Item.UNDEFINED)
+        return location.longitude ?? Double(Item.UNDEFINED)
     }
 
 }

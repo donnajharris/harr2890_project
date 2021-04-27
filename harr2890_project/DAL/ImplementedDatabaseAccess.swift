@@ -200,6 +200,38 @@ class ImplementedDatabaseAccess : DatabaseAccess {
     } // getAllItems
     
     
+    func getAllItemsWithLocations() throws -> [Item] {
+        
+        let helper = ItemHelper()
+
+        var itemsWithLocations = [Item]()
+        
+        let filteredTable : Table = itemsTable.filter(  itemLatitude != Double(Item.UNDEFINED) &&
+                                                        itemLongitude != Double(Item.UNDEFINED))
+
+        for itemRow in try! database!.prepare(filteredTable) {
+
+            print(itemRow)
+            
+            let category = try! getCategory(id: itemRow[itemCategoryId])
+            
+            let item = Item(id: itemRow[itemId],
+                            title: itemRow[itemTitle],
+                            date: itemRow[itemDate]!,
+                            type: helper.translateToItemType(string: itemRow[itemType])!,
+                            category: category,
+                            changed: false,
+                            latitude: itemRow[itemLatitude],
+                            longitude: itemRow[itemLongitude])
+            
+            itemsWithLocations.append(item)
+        }
+        
+        return itemsWithLocations
+        
+    }
+    
+    
     func removeItem(rowId: Int64) throws -> Int {
         
         let filteredTable : Table = itemsTable.filter(itemId == rowId)

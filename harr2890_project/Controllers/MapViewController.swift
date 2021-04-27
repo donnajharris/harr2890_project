@@ -46,7 +46,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                         
             updateMapByCurrentLocation()
             
-            addSampleLocations()
+            // for demo
+            displayAllItemsWithLocations()
         }
     }
     
@@ -73,6 +74,28 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
     } //updateMapByCurrentLocation
 
+    
+    // Feature for demo purposes
+    // This should be refined in future to load only a subset of locations to the map view
+    func displayAllItemsWithLocations() {
+        
+        let helper = ItemHelper()
+        
+        // for now...
+        addSampleLocations()
+        
+        let itemsWithLocations = BusinessLogic.layer.getAllItemsWithLocations()
+        
+        for item in itemsWithLocations {
+            let place = CLLocationCoordinate2D(latitude: item.getLatitude(), longitude: item.getLongitude())
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = place
+            annotation.title = item.getTitle()  // Item Title
+            annotation.subtitle = helper.getTypeString(item: item) + " " + item.getDateString()    // Item Type & Date
+            mapViewOnTab.addAnnotation(annotation)
+        }
+    }
 
     
     func addSampleLocations() {

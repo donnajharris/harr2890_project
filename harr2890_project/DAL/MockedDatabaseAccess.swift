@@ -44,6 +44,11 @@ class MockedDatabaseAccess : DatabaseAccess {
         
     } // getAllItems
     
+    func getAllItemsWithLocations() throws -> [Item] {
+        // NOT IMPLEMENTED FOR TESTING
+        return [Item]()
+    }
+    
     
     func removeItem(rowId: Int64) throws -> Int {
         return Int(1)  // value that matches with Happy Path test: 1 deleted row

@@ -103,6 +103,21 @@ class ItemHandler {
             
         }
     } // updateItemInDB
+    
+    
+    func getAllItemsWithLocationsFromDatabase() -> [Item] {
+        
+        do {
+            return try databaseAccess.getAllItemsWithLocations()
+
+        } catch ItemError.accessError {
+            
+        } catch {
+            
+        }
+        
+        return [Item]() // empty if for reason it
+    } // getAllItemsWithLocationsFromDatabase
 
     
     

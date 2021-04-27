@@ -145,4 +145,10 @@ class BusinessLogic {
     func resetCategoriesChanged() {
         self.categoriesChanged = false
     }
+    
+    
+    func getAllItemsWithLocations() -> [Item] {
+        
+        return try! itemHandler.getAllItemsWithLocationsFromDatabase()
+    }
 }

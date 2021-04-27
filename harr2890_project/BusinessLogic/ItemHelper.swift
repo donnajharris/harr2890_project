@@ -11,7 +11,6 @@ import UIKit
 
 class ItemHelper {
     
-    
     enum ItemHelperError : Error {
         case invalidUsage
     }
