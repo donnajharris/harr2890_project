@@ -440,8 +440,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtW-Nd-dfp">
-                                            <rect key="frame" x="125" y="11.5" width="70" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtW-Nd-dfp">
+                                            <rect key="frame" x="99" y="11.5" width="122.5" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -529,7 +529,7 @@
                             <outlet property="delegate" destination="JJ9-Gw-D67" id="ts9-zl-g1i"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Categories" id="YJu-ek-wqK">
+                    <navigationItem key="navigationItem" title="Manage Categories" id="YJu-ek-wqK">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="7is-ve-uNx">
                             <connections>
                                 <segue destination="Cfj-hR-lij" kind="show" identifier="categoryAdd" id="oHl-CQ-XuA"/>
@@ -553,23 +553,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYf-xO-h08">
-                                <rect key="frame" x="100" y="119" width="120" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rde-n5-4hZ">
-                                <rect key="frame" x="100" y="148" width="120" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="VRh-Oh-3pj"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the name of your category" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rde-n5-4hZ" userLabel="Category Name Field">
+                                <rect key="frame" x="15" y="144" width="290" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZXL-wM-oRd">
-                                <rect key="frame" x="143" y="212" width="34" height="30"/>
-                                <state key="normal" title="Save"/>
+                                <rect key="frame" x="110" y="208" width="100" height="30"/>
+                                <state key="normal" title="Save Category"/>
                                 <connections>
                                     <segue destination="OFP-nD-dJo" kind="unwind" unwindAction="unwindToCategoryListWithSender:" id="fst-ry-MOi"/>
                                 </connections>
@@ -578,15 +569,14 @@
                         <viewLayoutGuide key="safeArea" id="R9L-o1-hVY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ZXL-wM-oRd" firstAttribute="centerX" secondItem="R9L-o1-hVY" secondAttribute="centerX" id="8ha-Bz-vad"/>
-                            <constraint firstItem="ZXL-wM-oRd" firstAttribute="top" secondItem="rde-n5-4hZ" secondAttribute="bottom" constant="30" id="FT5-Md-sC1"/>
-                            <constraint firstItem="qYf-xO-h08" firstAttribute="centerX" secondItem="R9L-o1-hVY" secondAttribute="centerX" id="Sxi-1h-Vwx"/>
-                            <constraint firstItem="rde-n5-4hZ" firstAttribute="centerX" secondItem="R9L-o1-hVY" secondAttribute="centerX" id="cRJ-wK-n75"/>
-                            <constraint firstItem="rde-n5-4hZ" firstAttribute="top" secondItem="qYf-xO-h08" secondAttribute="bottom" constant="8" symbolic="YES" id="xPP-de-o2b"/>
-                            <constraint firstItem="qYf-xO-h08" firstAttribute="top" secondItem="R9L-o1-hVY" secondAttribute="top" constant="75" id="xgG-Sf-3OM"/>
+                            <constraint firstItem="rde-n5-4hZ" firstAttribute="centerX" secondItem="R9L-o1-hVY" secondAttribute="centerX" id="0t8-3n-r4v"/>
+                            <constraint firstItem="rde-n5-4hZ" firstAttribute="top" secondItem="R9L-o1-hVY" secondAttribute="top" constant="100" id="knZ-x8-hiC"/>
+                            <constraint firstItem="ZXL-wM-oRd" firstAttribute="centerX" secondItem="R9L-o1-hVY" secondAttribute="centerX" id="kwi-3O-wSE"/>
+                            <constraint firstItem="rde-n5-4hZ" firstAttribute="leading" secondItem="R9L-o1-hVY" secondAttribute="leading" constant="15" id="qdu-XU-Q1C"/>
+                            <constraint firstItem="ZXL-wM-oRd" firstAttribute="top" secondItem="rde-n5-4hZ" secondAttribute="bottom" constant="30" id="zeu-VC-4Oq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Category Name" id="IVA-xk-712">
+                    <navigationItem key="navigationItem" title="Add Category" id="IVA-xk-712">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="NPO-gw-izZ">
                             <connections>
                                 <action selector="cancelPressed:" destination="b5v-Uq-UrS" id="YKH-A0-RUu"/>
@@ -640,7 +630,7 @@
                     <tabBarItem key="tabBarItem" title="List" image="list.dash" catalog="system" id="9lM-mw-0FQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zow-8o-VtI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -778,7 +768,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Uu2-yb-4Q2"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="s5H-F0-3WR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -797,7 +787,7 @@
                     <tabBarItem key="tabBarItem" title="Categories" image="square.and.pencil" catalog="system" id="lte-iw-0DE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kSl-5p-9UK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -816,7 +806,7 @@
                     <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="hGU-Xu-QcV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cqp-O0-55R">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

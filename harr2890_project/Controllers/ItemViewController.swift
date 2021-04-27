@@ -69,20 +69,10 @@ class ItemViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        
-        print("1")
-        
+                
         if segue.identifier == segueID {
-            print("2")
-
             let vc = segue.destination as! EditItemViewController
-            
-            print("3")
-
             vc.editItem(item: self.item!)
-            
-            print("4")
-
         }
         
     } // prepare segue

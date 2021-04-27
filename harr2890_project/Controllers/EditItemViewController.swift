@@ -31,21 +31,11 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // default without time on date picker
-//        dateField.datePickerMode = .date
-//        dateField.preferredDatePickerStyle = .wheels
-        
-        print("77")
 
-//
         self.nameField.text = item!.getTitle()
         self.typeField.selectedSegmentIndex = item!.getTypeValue()
         self.dateField.date = item!.getDate()
         
-//        self.categoryField.text = item!.getCategory()?.getName()
-//        self.locationCoordinatesField.text = item!.getLocationStringToDisplay()
-//
         if let categoryName = item?.getCategory()?.getName() {
             categoryField.text = categoryName
         } else {
