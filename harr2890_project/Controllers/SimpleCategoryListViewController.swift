@@ -39,14 +39,7 @@ class SimpleCategoryListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //let bl = CategoryBL()
-        //let bl = BusinessLogic()
         BusinessLogic.layer.loadCategories(data: &categories)
-                
-        for e in categories {
-            print(e)
-        }
-    
     }
     
     
@@ -80,8 +73,6 @@ class SimpleCategoryListViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
 
         category = categories[indexPath.row]
-
-        print("You clicked \(category!.getName())")
                 
         if self.delegate != nil && self.category?.getName() != nil {
             let dataToBeSent = self.category

@@ -749,7 +749,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Zd2-2d-3mS"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BY7-KQ-ZBy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -768,7 +768,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Uu2-yb-4Q2"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="s5H-F0-3WR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -806,7 +806,7 @@
                     <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="hGU-Xu-QcV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cqp-O0-55R">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -825,7 +825,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="8OP-pw-7je"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ITm-wO-EA7">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

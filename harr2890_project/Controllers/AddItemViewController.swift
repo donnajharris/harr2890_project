@@ -41,11 +41,7 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        // default without time on date picker
-//        dateField.datePickerMode = .date
-//        dateField.preferredDatePickerStyle = .wheels
-        
+                    
         // Handle the text field’s user input through delegate callbacks
         self.nameField.delegate = self // set delegate
         

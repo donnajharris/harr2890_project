@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 
 
-// FIRST STPE..... ensure you setup permissions for location in Info.plist  ....
+// FIRST STEP is config..... ensure you setup permissions for location in Info.plist  ....
 // - Add: NSLocationAlwaysAndWhenInUseUsageDescription (aka "Privacy - Location Always and When In Use Usage Description")
 // - Add: NSLocationWhenInUseUsageDescription (aka "Privacy - Location When In Use Usage Description")
 
@@ -53,7 +53,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     override func viewDidAppear(_ animated: Bool) {
         
-        print("View Did Appear")
         updateMapByCurrentLocation()
         displayAllItemsWithLocations()
     }
@@ -113,8 +112,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapViewOnTab.addAnnotation(annotation)
         
         
-        // REXALL: 43.55735646883398, -80.24852849740334
-
         let place2 = CLLocationCoordinate2D(latitude: 43.55735646883398, longitude: -80.24852849740334) //Drug store
 
         let annotation2 = MKPointAnnotation()

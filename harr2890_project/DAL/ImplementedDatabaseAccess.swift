@@ -114,8 +114,6 @@ class ImplementedDatabaseAccess : DatabaseAccess {
                 print("Unexpected error: \(error)")
             }
         }
-
-
     } // initCategoriesTable
     
     
@@ -166,8 +164,6 @@ class ImplementedDatabaseAccess : DatabaseAccess {
         var items = [Item]()
         
         for itemRow in try! database!.prepare(itemsTable) {
-
-            //print(itemRow)
             
             let category = try! getCategory(id: itemRow[itemCategoryId])
             
@@ -224,14 +220,12 @@ class ImplementedDatabaseAccess : DatabaseAccess {
         
         let daysFilterInSeconds = daysFilter*24*60*60
         let dateNow = Date()
-        
-        print("Date Now: \(dateNow)")
-        
+                
         let dateBoundary = Date(timeInterval: TimeInterval(daysFilterInSeconds), since: dateNow)
-        
-        print("Date Boundary: \(dateBoundary)\n\n\n")
-        
+                
         let dateYesterday = dateNow-24*60*60
+        
+        /* Using arbitrary rules for project demo */
         
         let filteredTable : Table = itemsTable.filter(
             
@@ -248,21 +242,9 @@ class ImplementedDatabaseAccess : DatabaseAccess {
             // OR show anything that is happening "on" today or tomorrow's date
             || (itemType == "on" && (itemDate > dateYesterday && itemDate < dateNow+1 ))
 
-            
-//                                                        && (
-//                                                            (itemType == "by" && itemDate < dateBoundary)
-//                                                        ||
-//                                                            (itemType == "on" && itemDate > dateYesterday)
-//                                                        )
-                
-//                                                        && itemDate < dateBoundary
-//                                                        && itemDate > dateYesterday
-          
         )
 
         for itemRow in try! database!.prepare(filteredTable) {
-
-            //print(itemRow)
             
             let category = try! getCategory(id: itemRow[itemCategoryId])
             
@@ -280,7 +262,7 @@ class ImplementedDatabaseAccess : DatabaseAccess {
         
         return itemsWithLocations
         
-    }
+    } // getAllItemsWithLocations
     
     
     func removeItem(rowId: Int64) throws -> Int {
@@ -309,7 +291,7 @@ class ImplementedDatabaseAccess : DatabaseAccess {
         }
     
         return categories
-    }
+    } // getAllCategories
     
     
     func getCategory(id: Int64) throws -> ItemCategory {
@@ -332,7 +314,7 @@ class ImplementedDatabaseAccess : DatabaseAccess {
         }
     
         return categories[0]
-    }
+    } // getCategory
     
     
     func insertCategory(category: ItemCategory) throws -> Int64 {
@@ -347,7 +329,7 @@ class ImplementedDatabaseAccess : DatabaseAccess {
         else {
             throw CategoryHandler.CategoryError.accessError
         }
-    }
+    } // insertCategory
     
     
     func updateCategory(category: ItemCategory, rowId: Int64) throws -> Int {
@@ -361,7 +343,7 @@ class ImplementedDatabaseAccess : DatabaseAccess {
         let numberOfUpdatedRows = try! database?.run(update)
         
         return numberOfUpdatedRows!
-    }
+    } // updateCategory
     
     
     func removeCategory(rowId: Int64) throws -> Int {
@@ -373,7 +355,7 @@ class ImplementedDatabaseAccess : DatabaseAccess {
             throw CategoryHandler.CategoryError.accessError
         }
 
-    }
+    } // removeCategory
     
     
 

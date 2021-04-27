@@ -30,67 +30,9 @@ class CategoryListViewController: UITableViewController {
     
     }
     
-//
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//        myTableView.reloadData()
-//
-//    }
-    
-    
     // unwind from adding or editing
     @IBAction func unwindToCategoryList(sender: UIStoryboardSegue) {
-//
-//        if let sourceVC = sender.source as? CategoryViewController,
-//           let returnedCategory = sourceVC.getNewCategory() {
-//
-//            let mode = sourceVC.getMode()
-//
-//            let helper = CategoryHelper()
-//
-////            if helper.categoryAlreadyExists(category: returnedCategory, categories: categories) {
-////                popupForCategoryNameExists()
-////                return
-////            }
-//
-//            if mode == .add && !helper.categoryAlreadyExists(category: returnedCategory, categories: categories) {
-//                do {
-//                    try BusinessLogic.layer.addNewCategory(category: returnedCategory, data: &categories)
-//                } catch CategoryHandler.CategoryError.duplicateCategoryName {
-//                    return
-//                } catch {
-//
-//                }
-//
-//            } else if mode == .edit {
-//
-//              let lastSelectedCategory = ItemCategory(name: lastSelectedCategoryName!)
-//
-//                print("Before is was: \(lastSelectedCategory.getName())")
-//                print("Returned: \(returnedCategory.getName())")
-//
-//                if helper.categoryAlreadyExists(category: returnedCategory, categories: categories) == false {
-//
-//                    print(">>>>\tThat category name doesn't already exist in the list!")
-//
-//                    try! BusinessLogic.layer.updateCategory(category: returnedCategory, data: &categories)
-//                    BusinessLogic.layer.setCategoriesChanged(didChange: true)
-//
-//                } else if helper.categoryWasRecased(before: lastSelectedCategoryName!, updatedCategory: returnedCategory)  {
-//
-//                    print(">>>>\tThat category name is a recasing of the original, so we're good!!")
-//
-//
-//                    try! BusinessLogic.layer.updateCategory(category: returnedCategory, data: &categories)
-//                    BusinessLogic.layer.setCategoriesChanged(didChange: true)
-//                }
-//                else if helper.categoryAlreadyExists(category: lastSelectedCategory, categories: categories)  {
-//                    print(">>>>\tAnother case to handle...")
-//                }
-//            }
-//            myTableView.reloadData()
-            
+    
         if let sourceVC = sender.source as? CategoryViewController,
            let returnedCategory = sourceVC.getNewCategory() {
 
@@ -102,20 +44,10 @@ class CategoryListViewController: UITableViewController {
                 try! BusinessLogic.layer.addNewCategory(category: returnedCategory, data: &categories)
                 
             } else if mode == .edit {
-                
-//                print("AFTER")
-//                for e in categoryNamesBefore {
-//                    print(e)
-//                }
-//
-//                print("AND... \(returnedCategory.getName())")
-                
+              
                 if  helper.categoryWasRecased(before: lastSelectedCategoryName!, updatedCategory: returnedCategory) ||
-                    !helper.categoryNameAlreadyExists(newCategoryName: returnedCategory.getName(), categoryNames: categoryNamesBefore)
+                    !helper.categoryNameAlreadyExists(newCategoryName: returnedCategory.getName(), categoryNames: categoryNamesBefore) {
                 
-                {
-                
-//                    print("Ready to update category: \(returnedCategory.getName())")
                     try! BusinessLogic.layer.updateCategory(category: returnedCategory, data: &categories)
                     BusinessLogic.layer.setCategoriesChanged(didChange: true)
                 } else  {
@@ -127,8 +59,6 @@ class CategoryListViewController: UITableViewController {
                 }
             }
             myTableView.reloadData()
-           
-        
         
         } else {
             
@@ -153,7 +83,7 @@ class CategoryListViewController: UITableViewController {
 
         super.prepare(for: segue, sender: sender)
         
-        // no prep to do for this segue
+        // no prep to do for the adding category segue
         if segue.identifier == addSegueId {
             return
         }

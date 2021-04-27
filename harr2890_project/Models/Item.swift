@@ -210,6 +210,6 @@ class Item : Equatable, CustomStringConvertible {
         }
         
         return toDisplay
-    }
+    } // getLocationStringToDisplay
 
 }

@@ -44,10 +44,12 @@ class MockedDatabaseAccess : DatabaseAccess {
         
     } // getAllItems
     
+    
     func getAllItemsWithLocations(daysFilter: Int) throws -> [Item] {
         // NOT YET IMPLEMENTED FOR TESTING
         return [Item]()
     }
+    
     
     func getItemsInCategory(categoryId: Int64) throws -> [Item] {
         // NOT YET IMPLEMENTED FOR TESTING

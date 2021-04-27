@@ -42,10 +42,10 @@ class ListViewController: UITableViewController, UITabBarDelegate, UISearchBarDe
         
         // TODO: Consider removing this...
         // suppress the noise of the UI Constraint messages while developing logic
-        UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
+        //UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
         
         self.searchBar.delegate = self
-        searchBar.placeholder = "Search for an item"
+        searchBar.placeholder = "Search for an item by name or category"
         
         /* References:
          https://stackoverflow.com/questions/6179534/add-a-button-to-hide-keyboard
@@ -72,19 +72,6 @@ class ListViewController: UITableViewController, UITabBarDelegate, UISearchBarDe
 
     } // viewWillAppear
     
-   
-    
-    // TODO: Repurpose to add EXAMPLES that serve as instructions?
-    func testAddDataToDB() {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
-        let date1 = formatter.date(from: "25/05/2022")
-        let item3 = Item(title: "Do something with roast beef!!!", date: date1!, type: Item.ItemType.BY, category: CategoryHelper.UNCATEGORIZED, changed: false)
-
-        BusinessLogic.layer.addNewItem(item: item3, data: &filteredItems)
-          
-    } //testAddDataToDB
-
     
     // MARK: - TableView methods
 

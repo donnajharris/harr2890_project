@@ -125,11 +125,6 @@ class CategoryHandler {
     // MARK: - Helper functions
     
     func sortDataByName(data: inout [ItemCategory]) {
-        // Case is not a sort
-//        data.sort {
-//            $0.getName() < $1.getName()
-//        }
-//
         
         // Reference: https://sarunw.com/posts/different-ways-to-sort-array-of-strings-in-swift/
         

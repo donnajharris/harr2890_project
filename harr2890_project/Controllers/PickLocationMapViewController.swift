@@ -47,15 +47,12 @@ class PickLocationMapViewController : UIViewController, CLLocationManagerDelegat
             updateMapByCurrentLocation()
             
             
-            // https://stackoverflow.com/questions/30858360/adding-a-pin-annotation-to-a-map-view-on-a-long-press-in-swift
+            // Reference: https://stackoverflow.com/questions/30858360/adding-a-pin-annotation-to-a-map-view-on-a-long-press-in-swift
             let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(userChosenLocation(gesture:)))
             mapViewToAdd.addGestureRecognizer(longGesture)
-
-//            let shortGesture = UITapGestureRecognizer(target: self, action: #selector(addLocation(gesture:)))
-//            mapView.addGestureRecognizer(shortGesture)
            
         }
-    }
+    } // viewDidLoad
     
     override func viewDidAppear(_ animated: Bool) {
         updateMapByCurrentLocation()
@@ -96,10 +93,11 @@ class PickLocationMapViewController : UIViewController, CLLocationManagerDelegat
         mapViewToAdd.addAnnotation(newAnnotation)
         
         // want to be able to isolate those coordinates for storage
-        chosenLocation = CLLocationCoordinate2D(latitude: CLLocationDegrees(newAnnotation.coordinate.latitude), longitude: CLLocationDegrees(newAnnotation.coordinate.longitude)
+        chosenLocation = CLLocationCoordinate2D(
+            latitude: CLLocationDegrees(newAnnotation.coordinate.latitude),
+            longitude: CLLocationDegrees(newAnnotation.coordinate.longitude)
         )
-        
-        
+
     } // userChosenLocation
 
 }

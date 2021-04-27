@@ -40,7 +40,7 @@ class CategoryViewController: UIViewController {
             
             self.navigationItem.title = "Edit Category Name"
             
-            self.saveButton.setTitle("Update", for: UIControl.State.normal)
+            self.saveButton.setTitle("Update Category", for: UIControl.State.normal)
             
         }
     }
@@ -83,11 +83,11 @@ class CategoryViewController: UIViewController {
         
         if helper.categoryNameIsValid(categoryName: name) == false {
             category = nil
-            popupForInvalidName()
+            print("Error: category name was not valid. Nothing was changed or saved.")
             return
         } else if name == originalCategoryName?.trimmingCharacters(in: .whitespacesAndNewlines) {
             category = nil
-            return // TODO
+            return
         }
         
         if mode == .add {
@@ -102,50 +102,5 @@ class CategoryViewController: UIViewController {
         }
 
     } // prepare
-    
-    
-    
-    private func popupForInvalidName() {
-        let alertController = UIAlertController(title: "Sorry...",
-                                                message: "The category name provided was not valid.",
-                                                preferredStyle: UIAlertController.Style.alert)
-
-//        alertController.addAction(UIAlertAction(title: "Dismiss",
-//                                                style: UIAlertAction.Style.default,
-//                                                handler: nil))
-
-        self.present(alertController, animated: true, completion: nil)
-        
-        
-        // Reference: comment 2 on https://stackoverflow.com/questions/27613926/dismiss-uialertview-after-5-seconds-swift
-        
-        print("We're waititng .... 5....")
-        // change to desired number of seconds (in this case 5 seconds)
-        let when = DispatchTime.now() + 5
-        DispatchQueue.main.asyncAfter(deadline: when){
-          // your code with delay
-          alertController.dismiss(animated: true, completion: nil)
-        }
-        
-        print("All done...")
-        
-    } // popupForCategoryNameExists
-
-    
-
-    private func popupForCategoryNameExists() {
-        let alertController = UIAlertController(title: "Sorry...",
-                                                message: "That category name already exists.",
-                                                preferredStyle: UIAlertController.Style.alert)
-
-        alertController.addAction(UIAlertAction(title: "Dismiss",
-                                                style: UIAlertAction.Style.default,
-                                                handler: nil))
-
-        self.present(alertController, animated: true, completion: nil)
-        
-        
-    } // popupForCategoryNameExists
-
     
 }

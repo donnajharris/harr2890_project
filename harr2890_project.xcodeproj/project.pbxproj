@@ -18,10 +18,8 @@
 		AE4A488E260BF12500E45D96 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE4A488D260BF12500E45D96 /* libsqlite3.tbd */; };
 		AE4C8B27262ABA6000EDCBDE /* SimpleCategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4C8B26262ABA6000EDCBDE /* SimpleCategoryListViewController.swift */; };
 		AE4C8B35262B904C00EDCBDE /* BusinessLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4C8B34262B904C00EDCBDE /* BusinessLogic.swift */; };
-		AE4CDF5726374D8E008309BA /* GroupSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4CDF5626374D8E008309BA /* GroupSection.swift */; };
 		AE54DB0B2626A4B10057DE58 /* CategoryHelper_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE54DB0A2626A4B10057DE58 /* CategoryHelper_Tests.swift */; };
 		AE54DB47262A736D0057DE58 /* CategoryHandler_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE54DB46262A736D0057DE58 /* CategoryHandler_Tests.swift */; };
-		AE54DB55262A827C0057DE58 /* ItemHelper_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE54DB54262A827C0057DE58 /* ItemHelper_Tests.swift */; };
 		AE54DB59262A82910057DE58 /* ItemHandler_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE54DB58262A82910057DE58 /* ItemHandler_Tests.swift */; };
 		AE5E1637261D66EE00993DDB /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE5E1621261D66DA00993DDB /* SQLite.framework */; };
 		AE5E1638261D66EE00993DDB /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE5E1621261D66DA00993DDB /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -128,10 +126,8 @@
 		AE4A4892260BF1F200E45D96 /* harr2890_project-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "harr2890_project-Bridging-Header.h"; sourceTree = "<group>"; };
 		AE4C8B26262ABA6000EDCBDE /* SimpleCategoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCategoryListViewController.swift; sourceTree = "<group>"; };
 		AE4C8B34262B904C00EDCBDE /* BusinessLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessLogic.swift; sourceTree = "<group>"; };
-		AE4CDF5626374D8E008309BA /* GroupSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSection.swift; sourceTree = "<group>"; };
 		AE54DB0A2626A4B10057DE58 /* CategoryHelper_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHelper_Tests.swift; sourceTree = "<group>"; };
 		AE54DB46262A736D0057DE58 /* CategoryHandler_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHandler_Tests.swift; sourceTree = "<group>"; };
-		AE54DB54262A827C0057DE58 /* ItemHelper_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHelper_Tests.swift; sourceTree = "<group>"; };
 		AE54DB58262A82910057DE58 /* ItemHandler_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHandler_Tests.swift; sourceTree = "<group>"; };
 		AE5E1616261D66D900993DDB /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		AE65321A261CC02400EC8A4A /* EditItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
@@ -225,7 +221,6 @@
 			children = (
 				AEE23D2F260A7C0200AABD40 /* Item.swift */,
 				AE3EBB9C2622B7040047DBEF /* ItemCategory.swift */,
-				AE4CDF5626374D8E008309BA /* GroupSection.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -306,7 +301,6 @@
 				AEE23D15260A729100AABD40 /* Info.plist */,
 				AE54DB0A2626A4B10057DE58 /* CategoryHelper_Tests.swift */,
 				AE54DB46262A736D0057DE58 /* CategoryHandler_Tests.swift */,
-				AE54DB54262A827C0057DE58 /* ItemHelper_Tests.swift */,
 				AE54DB58262A82910057DE58 /* ItemHandler_Tests.swift */,
 			);
 			path = harr2890_projectTests;
@@ -479,7 +473,6 @@
 				AE0315EB262511CD00442EDE /* CategoryHandler.swift in Sources */,
 				AEE23D30260A7C0200AABD40 /* Item.swift in Sources */,
 				AE4C8B35262B904C00EDCBDE /* BusinessLogic.swift in Sources */,
-				AE4CDF5726374D8E008309BA /* GroupSection.swift in Sources */,
 				AEE23CFE260A729000AABD40 /* ListViewController.swift in Sources */,
 				AE0315F6262512E100442EDE /* DatabaseAccess.swift in Sources */,
 				AE4C8B27262ABA6000EDCBDE /* SimpleCategoryListViewController.swift in Sources */,
@@ -504,7 +497,6 @@
 			files = (
 				AE54DB59262A82910057DE58 /* ItemHandler_Tests.swift in Sources */,
 				AE54DB0B2626A4B10057DE58 /* CategoryHelper_Tests.swift in Sources */,
-				AE54DB55262A827C0057DE58 /* ItemHelper_Tests.swift in Sources */,
 				AE54DB47262A736D0057DE58 /* CategoryHandler_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
