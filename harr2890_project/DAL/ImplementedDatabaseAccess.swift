@@ -233,16 +233,28 @@ class ImplementedDatabaseAccess : DatabaseAccess {
         
         let dateYesterday = dateNow-24*60*60
         
-        let filteredTable : Table = itemsTable.filter(  itemLatitude != Double(Item.UNDEFINED) &&
-                                                        itemLongitude != Double(Item.UNDEFINED)
-                                                        //&& itemType == "by"
-                                                        
-                                                        && (
-                                                            (itemType == "by" && itemDate < dateBoundary)
-                                                        ||
-                                                            (itemType == "on" && itemDate > dateYesterday)
-                                                        )
-                                                        
+        let filteredTable : Table = itemsTable.filter(
+            
+            // item has a location defined
+            itemLatitude != Double(Item.UNDEFINED) &&
+            itemLongitude != Double(Item.UNDEFINED) &&
+            
+            // AND show anything overdue
+            itemDate < dateYesterday
+            
+            // OR show anything that needs to happen "by" date boundary
+            || (itemType == "by" && itemDate < dateBoundary)
+
+            // OR show anything that is happening "on" today or tomorrow's date
+            || (itemType == "on" && (itemDate > dateYesterday && itemDate < dateNow+1 ))
+
+            
+//                                                        && (
+//                                                            (itemType == "by" && itemDate < dateBoundary)
+//                                                        ||
+//                                                            (itemType == "on" && itemDate > dateYesterday)
+//                                                        )
+                
 //                                                        && itemDate < dateBoundary
 //                                                        && itemDate > dateYesterday
           

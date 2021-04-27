@@ -52,6 +52,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        print("View Did Appear")
         updateMapByCurrentLocation()
         displayAllItemsWithLocations()
     }
@@ -78,10 +80,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     // This should be refined in future to load only a *requested* subset of locations to the map view
     func displayAllItemsWithLocations() {
         
+        // clear all annotations to start fresh
+        mapViewOnTab.removeAnnotations(mapViewOnTab.annotations)
+        
         let helper = ItemHelper()
 
         // current arbitrary implementation includes... 
-        let FILTER = 30
+        let FILTER = 10 // days
         let itemsWithLocations = BusinessLogic.layer.getAllItemsWithLocations(daysFilter: FILTER)
         
         for item in itemsWithLocations {
