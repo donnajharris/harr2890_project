@@ -13,7 +13,11 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
     @IBOutlet weak var typeField: UISegmentedControl!
     @IBOutlet weak var dateField: UIDatePicker!
     @IBOutlet weak var saveButton: UIButton!
-        
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var categoryField: UILabel!
+    @IBOutlet weak var coordinatesLabel: UILabel!
+    @IBOutlet weak var locationCoordinatesField: UILabel!
+    
     private var item : Item?
 
     func getChangedItem() -> Item? {
@@ -29,20 +33,40 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         super.viewDidLoad()
         
         // default without time on date picker
-        dateField.datePickerMode = .date
-        dateField.preferredDatePickerStyle = .wheels
-                
+//        dateField.datePickerMode = .date
+//        dateField.preferredDatePickerStyle = .wheels
+        
+        print("77")
+
+//
         self.nameField.text = item!.getTitle()
         self.typeField.selectedSegmentIndex = item!.getTypeValue()
         self.dateField.date = item!.getDate()
         
+//        self.categoryField.text = item!.getCategory()?.getName()
+//        self.locationCoordinatesField.text = item!.getLocationStringToDisplay()
+//
+        if let categoryName = item?.getCategory()?.getName() {
+            categoryField.text = categoryName
+        } else {
+            categoryLabel.text = ""
+            categoryField.text = "" // display nothing
+        }
+        
+        if let coordinatesString = item?.getLocationStringToDisplay() {
+            if coordinatesString.starts(with: "Lat") {
+                locationCoordinatesField.text = coordinatesString
+            } else {
+                coordinatesLabel.text = ""
+                locationCoordinatesField.text = "" // display nothing
+            }
+        }
+        
+        
         self.nameField.delegate = self // set delegate
 
-        self.saveButton.setTitle("Update", for: UIControl.State.normal)
+        self.saveButton.setTitle("Update Item", for: UIControl.State.normal)
         
-//        
-//        print("Enter the Edit Item view")
-//        print(item!)
     }
     
     

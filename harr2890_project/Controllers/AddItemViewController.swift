@@ -151,6 +151,7 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
                 newLocation = coordinates
         
                 coordinatesLabel.text = "Lat: " + String(newLocation!.latitude) + " \nLong: " + String(newLocation!.longitude)
+            
         }
     } // unwindToAddItemWithLocation
 

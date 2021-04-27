@@ -14,7 +14,10 @@ class ItemViewController: UIViewController {
     @IBOutlet weak var nameField: UILabel!
     @IBOutlet weak var typeField: UILabel!
     @IBOutlet weak var dateField: UILabel!
-    @IBOutlet weak var categoryField: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var categoryNameField: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var locationCoordinatesField: UILabel!
     
     private var item : Item?
     
@@ -33,7 +36,23 @@ class ItemViewController: UIViewController {
         nameField.text = item?.getTitle()
         typeField.text = helper.getTypeString(item: item!)
         dateField.text = item?.getDateString()
-        categoryField.text = item?.getCategory()?.getName()
+        
+        if let categoryName = item?.getCategory()?.getName() {
+            categoryNameField.text = categoryName
+        } else {
+            categoryLabel.text = ""
+            categoryNameField.text = "" // display nothing
+        }
+        
+        if let coordinatesString = item?.getLocationStringToDisplay() {
+            if coordinatesString.starts(with: "Lat") {
+                locationCoordinatesField.text = coordinatesString
+            } else {
+                locationLabel.text = ""
+                locationCoordinatesField.text = "" // display nothing
+            }
+        }
+        
     }
     
     
@@ -45,20 +64,25 @@ class ItemViewController: UIViewController {
     
     func initWithItem(item: Item) {
         self.item = item
-        
-        print("initWithItem")
-        print(item)
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
+        print("1")
+        
         if segue.identifier == segueID {
-            
+            print("2")
+
             let vc = segue.destination as! EditItemViewController
+            
+            print("3")
+
             vc.editItem(item: self.item!)
             
+            print("4")
+
         }
         
     } // prepare segue
@@ -76,14 +100,28 @@ class ItemViewController: UIViewController {
                 typeField.text = helper.getTypeString(item: changedItem)
                 dateField.text = changedItem.getDateString()
             
-            categoryField.text = changedItem.getCategory()?.getName()
-
+                if let categoryName = changedItem.getCategory()?.getName() {
+                    categoryNameField.text = categoryName
+                } else {
+                    categoryLabel.text = ""
+                    categoryNameField.text = "" // display nothing
+                }
+                
+                let coordinatesString = changedItem.getLocationStringToDisplay()
+            
+                if coordinatesString.starts(with: "Lat") {
+                    locationCoordinatesField.text = coordinatesString
+                } else {
+                    locationLabel.text = ""
+                    locationCoordinatesField.text = "" // display nothing
+                }
+            
                 // Prepare to update on return to list table view
                 item = changedItem
             }
         else {
             item = nil
-            print("Problem...")
+            print("Error: Unexpected error returning from item edit.")
         }
     
     } // unwindToItemList

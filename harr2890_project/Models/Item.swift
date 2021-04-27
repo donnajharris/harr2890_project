@@ -198,5 +198,18 @@ class Item : Equatable, CustomStringConvertible {
     func getLongitude() -> Double {
         return location.longitude
     }
+    
+    func getLocationStringToDisplay() -> String {
+        
+        var toDisplay = ""
+        
+        if location.latitude != Double(Item.UNDEFINED) && location.longitude != Double(Item.UNDEFINED) {
+            toDisplay = "Lat: " + String(location.latitude) + " \nLong: " + String(location.longitude)
+        } else {
+            toDisplay = "No location defined."
+        }
+        
+        return toDisplay
+    }
 
 }
