@@ -128,7 +128,7 @@
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter what you want to recall" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TeK-8l-G8H">
                                 <rect key="frame" x="16" y="64" width="288" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ci2-Kw-TrS">
@@ -179,7 +179,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzz-G3-phm">
-                                <rect key="frame" x="111" y="401" width="98" height="30"/>
+                                <rect key="frame" x="97" y="401" width="126" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Save Changes"/>
                                 <connections>
                                     <segue destination="n60-cZ-BeV" kind="unwind" unwindAction="unwindToViewWithSender:" id="6l0-mc-aeh"/>
@@ -304,7 +305,7 @@
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter what you want to recall" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H49-f7-LsF">
                                 <rect key="frame" x="16" y="64" width="288" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="C9A-XV-kcR">
@@ -315,7 +316,7 @@
                                 </segments>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exj-pz-KZM" userLabel="Add Location Button">
-                                <rect key="frame" x="100.5" y="288" width="119" height="33"/>
+                                <rect key="frame" x="100.5" y="306" width="119" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Set Location"/>
                                 <connections>
@@ -324,7 +325,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coordinates" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4R-Ub-VBn">
-                                <rect key="frame" x="60" y="324" width="200" height="50"/>
+                                <rect key="frame" x="60" y="340" width="200" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="VDx-ot-T6t"/>
                                     <constraint firstAttribute="height" constant="50" id="oj6-kF-vPi"/>
@@ -334,7 +335,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PsJ-GY-CBL">
-                                <rect key="frame" x="70" y="255" width="180" height="23"/>
+                                <rect key="frame" x="70" y="264" width="180" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="fvg-w3-B4c"/>
                                 </constraints>
@@ -357,8 +358,8 @@
                                 </constraints>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZm-B9-7ZE">
-                                <rect key="frame" x="120.5" y="399" width="79" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <rect key="frame" x="117" y="399" width="86" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Save Item"/>
                                 <connections>
                                     <segue destination="khH-7L-vS2" kind="unwind" unwindAction="unwindToItemListWithSender:" id="nap-Y6-YZA"/>
@@ -375,16 +376,16 @@
                             <constraint firstItem="Lhx-Q8-gJO" firstAttribute="top" secondItem="qqY-bP-zAl" secondAttribute="bottom" constant="17" id="AUV-w3-Vfn"/>
                             <constraint firstItem="C9A-XV-kcR" firstAttribute="top" secondItem="H49-f7-LsF" secondAttribute="bottom" constant="8" id="AoE-z9-jR2"/>
                             <constraint firstItem="qqY-bP-zAl" firstAttribute="leading" secondItem="exj-pz-KZM" secondAttribute="leading" id="BPG-AA-0my"/>
-                            <constraint firstItem="exj-pz-KZM" firstAttribute="top" secondItem="PsJ-GY-CBL" secondAttribute="bottom" constant="10" id="BZf-Ij-T56"/>
+                            <constraint firstItem="exj-pz-KZM" firstAttribute="top" secondItem="PsJ-GY-CBL" secondAttribute="bottom" constant="19" id="BZf-Ij-T56"/>
                             <constraint firstItem="LZm-B9-7ZE" firstAttribute="centerX" secondItem="mWs-Lo-Tva" secondAttribute="centerX" id="Edo-y6-gJo"/>
                             <constraint firstItem="H49-f7-LsF" firstAttribute="centerX" secondItem="mWs-Lo-Tva" secondAttribute="centerX" id="GM3-ch-e1V"/>
                             <constraint firstItem="LZm-B9-7ZE" firstAttribute="top" secondItem="Lhx-Q8-gJO" secondAttribute="bottom" constant="10" id="IGM-8M-V0d"/>
                             <constraint firstItem="C9A-XV-kcR" firstAttribute="centerX" secondItem="mWs-Lo-Tva" secondAttribute="centerX" id="IeG-Mo-ikA"/>
-                            <constraint firstItem="PsJ-GY-CBL" firstAttribute="top" secondItem="erP-Kv-Nq5" secondAttribute="bottom" constant="3" id="Inm-yI-DLT"/>
+                            <constraint firstItem="PsJ-GY-CBL" firstAttribute="top" secondItem="erP-Kv-Nq5" secondAttribute="bottom" constant="12" id="Inm-yI-DLT"/>
                             <constraint firstItem="mWs-Lo-Tva" firstAttribute="trailing" secondItem="Lhx-Q8-gJO" secondAttribute="trailing" constant="15" id="KOe-jH-oaj"/>
                             <constraint firstItem="erP-Kv-Nq5" firstAttribute="top" secondItem="qqY-bP-zAl" secondAttribute="bottom" constant="17" id="TO2-2I-j64"/>
                             <constraint firstItem="exj-pz-KZM" firstAttribute="centerX" secondItem="mWs-Lo-Tva" secondAttribute="centerX" id="U6j-SL-eca"/>
-                            <constraint firstItem="R4R-Ub-VBn" firstAttribute="top" secondItem="exj-pz-KZM" secondAttribute="bottom" constant="3" id="Y6p-Xd-aZ9"/>
+                            <constraint firstItem="R4R-Ub-VBn" firstAttribute="top" secondItem="exj-pz-KZM" secondAttribute="bottom" constant="1" id="Y6p-Xd-aZ9"/>
                             <constraint firstItem="H49-f7-LsF" firstAttribute="top" secondItem="mWs-Lo-Tva" secondAttribute="top" constant="20" id="fbJ-5X-VMI"/>
                             <constraint firstItem="qqY-bP-zAl" firstAttribute="centerX" secondItem="mWs-Lo-Tva" secondAttribute="centerX" id="k3l-Ap-N8P"/>
                             <constraint firstItem="R4R-Ub-VBn" firstAttribute="centerX" secondItem="mWs-Lo-Tva" secondAttribute="centerX" id="kG6-4g-c0f"/>
@@ -555,11 +556,12 @@
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the name of your category" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rde-n5-4hZ" userLabel="Category Name Field">
                                 <rect key="frame" x="15" y="144" width="290" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZXL-wM-oRd">
-                                <rect key="frame" x="110" y="208" width="100" height="30"/>
+                                <rect key="frame" x="96" y="208" width="128" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Save Category"/>
                                 <connections>
                                     <segue destination="OFP-nD-dJo" kind="unwind" unwindAction="unwindToCategoryListWithSender:" id="fst-ry-MOi"/>
@@ -630,7 +632,7 @@
                     <tabBarItem key="tabBarItem" title="List" image="list.dash" catalog="system" id="9lM-mw-0FQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zow-8o-VtI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -650,7 +652,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="f2K-tf-u1V">
+                        <searchBar key="tableHeaderView" contentMode="redraw" text="" id="f2K-tf-u1V">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <gestureRecognizers/>
@@ -768,7 +770,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Uu2-yb-4Q2"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="s5H-F0-3WR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -806,7 +808,7 @@
                     <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="hGU-Xu-QcV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cqp-O0-55R">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -825,7 +827,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="8OP-pw-7je"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ITm-wO-EA7">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

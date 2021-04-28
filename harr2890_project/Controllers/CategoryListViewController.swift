@@ -20,6 +20,8 @@ class CategoryListViewController: UITableViewController {
         
     @IBOutlet weak var myTableView: UITableView!
     
+    private let ROW_HEIGHT = 55
+    
     private var lastSelectedCategoryName : String? = nil
     private var categoryNamesBefore : [String] = [String]()
 
@@ -178,6 +180,11 @@ class CategoryListViewController: UITableViewController {
         }
     } // TV - commit editingStyle
 
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(ROW_HEIGHT)
+    }
+    
     
     // MARK: - Popup Alerts
     

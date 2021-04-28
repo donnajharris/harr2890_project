@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 /*
 REFERENCE:
  https://medium.com/@astitv96/passing-data-between-view-controllers-using-delegate-and-protocol-ios-swift-4-beginners-e32828862d3f
@@ -28,6 +27,8 @@ class SimpleCategoryListViewController: UITableViewController {
     private var categories = [ItemCategory]() // the data source
     
     @IBOutlet weak var myTableView: UITableView!
+    
+    private let ROW_HEIGHT = 55
     
     private var category : ItemCategory?
 
@@ -83,6 +84,9 @@ class SimpleCategoryListViewController: UITableViewController {
     }  // TV - didSelectRowAt
     
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(ROW_HEIGHT)
+    }
 
     
 }
